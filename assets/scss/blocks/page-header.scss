@@ -1,0 +1,68 @@
+.header {
+  padding-top: calc(var(--index) * 2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  &__logo {
+    margin-right: auto;
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    margin-right: calc(var(--index) * 4.3);
+    li {
+      margin-right: calc(var(--index) * 0.8);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    a {
+      font-weight: 700;
+      font-size: calc(var(--index) * 0.6);
+      line-height: 86%;
+      letter-spacing: -0.033em;
+      text-transform: uppercase;
+      color: #000000;
+      font-family: 'RF Dewi';
+      position: relative;
+      span {
+        display: block;
+        transition: 0.3s ease-in-out;
+        position: relative;
+      }
+      &::after {
+        content: attr(link-hover);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: block;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        pointer-events: none;
+      }
+      &:hover {
+        span {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        &::after {
+          top: 0px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__menu-btn {
+    font-size: calc(var(--index) * 4.3);
+    line-height: 86%;
+    font-weight: 700;
+    letter-spacing: -0.033em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Bebas Neue';
+    margin-top: -0.5%;
+  }
+}

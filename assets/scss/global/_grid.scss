@@ -1,0 +1,28 @@
+.container {
+  padding: 0 calc(var(--index) * 2);
+  width: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.aling-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.flex-dir-column {
+  flex-direction: column;
+}

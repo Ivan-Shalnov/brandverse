@@ -1,0 +1,40 @@
+// GLOBAL STYLES
+@import 'global/custom-variables';
+
+@import 'global/reboot';
+@import 'global/type';
+@import 'global/grid';
+@import 'global/forms';
+@import 'global/fonts';
+
+// PLUGINS STYLE
+@import 'plugins/icons';
+
+// BLOCKS STYLE
+@import 'blocks/popup-block';
+@import 'blocks/page-header';
+@import 'blocks/promo.scss';
+@import 'blocks/page-footer';
+
+body {
+  position: relative;
+  background: #e0e3e7;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'RF Dewi';
+  color: #000;
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: 16px;
+  min-width: 320px;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+}
