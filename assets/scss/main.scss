@@ -14,11 +14,12 @@
 @import 'blocks/popup-block';
 @import 'blocks/page-header';
 @import 'blocks/promo.scss';
+@import 'blocks/video-section.scss';
 @import 'blocks/page-footer';
 
 body {
   position: relative;
-  background: #e0e3e7;
+  background: #e6e7eb;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

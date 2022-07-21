@@ -3,6 +3,7 @@
   padding: calc(var(--index) * 2) 0;
   display: flex;
   padding-top: 15%;
+  position: relative;
   .row {
     display: flex;
     justify-content: space-between;
@@ -16,16 +17,20 @@
     font-style: normal;
     font-weight: 700;
     font-size: calc(var(--index) * 5.53);
-    line-height: 82%;
+    line-height: 1;
     letter-spacing: -0.033em;
     color: #000000;
     display: inline-block;
     div {
       overflow: hidden;
       display: flex;
-    }
-    div:first-child {
-      justify-content: flex-end;
+      margin-bottom: -4%;
+      &:first-child {
+        justify-content: flex-end;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     span {
       position: relative;

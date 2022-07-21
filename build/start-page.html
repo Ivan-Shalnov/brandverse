@@ -1,30 +1,35 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 	<!-- ADAPTIVITY -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	
+
 	<!-- Chrome, Firefox OS and Opera -->
 	<meta name="theme-color" content="#0099EF">
-	
+
 	<!-- Windows Phone -->
 	<meta name="msapplication-navbutton-color" content="#0099EF">
-	
+
 	<!-- iOS Safari -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 	<meta name="apple-touch-fullscreen" content="yes">
-	
+
 	<!-- CONFIG -->
 	<meta name="format-detection" content="telephone=no">
 	<title>Главная страница - Название проекта</title>
-	
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/main.min.css">
+
+
+
 </head>
+
 <body >
 
 <div class="wrapper">
@@ -61,7 +66,7 @@
 
 <section class="promo">
 	<div class="promo__circle">
-		<video height=" 256" loop autoplay muted>
+		<video loop autoplay muted playsinline>
 			<source type="video/mp4" src="img/webpage_logo_animation_rev1.mp4">
 			</source>
 		</video>
@@ -110,11 +115,23 @@
 </section>
 
 <section class="video-section">
-	<div class="play-btn">
-		<svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M0.606934 0V15L12.3926 7.5L0.606934 0Z" fill="white" />
-		</svg>
+	<div class="container">
+		<div class="video-section__player">
+			<div class="video-section__inner">
+				<div id="player"></div>
+				<video loop autoplay muted playsinline>
+					<source type="video/mp4" src="img/video.mp4">
+					</source>
+				</video>
+				<div class="play-btn">
+					<svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.606934 0V15L12.3926 7.5L0.606934 0Z" fill="white" />
+					</svg>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </section>
 
 </div>
