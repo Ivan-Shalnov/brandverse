@@ -1,29 +1,31 @@
 .line {
-  margin-bottom: calc(var(--index) * 0.766);
   height: calc(var(--index) * 0.3);
   background-color: #ffffff;
+}
+.ambassador__line {
+  margin-bottom: calc(var(--index) * 0.766);
 }
 .line--color-accent {
   background: #c5fd64;
 }
 .ambassador {
+  padding-top: calc(var(--index) * 3.5);
   padding-bottom: calc(var(--index) * 11.2);
-  position: relative;
   background: #000000;
 }
-.ambassador__video-container {
-  position: relative;
-  height: calc(var(--index) * 32.4);
-  padding-top: calc(var(--index) * 3.63);
-  padding-bottom: calc(var(--index) * 0.96);
-  display: flex;
-  justify-content: space-between;
+.ambassador__sticky-block {
+  position: sticky;
+  top: calc(var(--index) * 3.5);
+  align-self: flex-start;
+}
+.ambassador__video {
+  width: calc(var(--index) * 64);
+  height: calc(var(--index) * 36);
+  position: absolute;
+  z-index: -1;
 }
 .ambassador__remark {
-  position: absolute;
-  top: calc(var(--index) * 3.5);
-  left: 0;
-  font-family: 'RF Dewi', sans-serif;
+  margin-bottom: calc(var(--index) * 14.76);
   font-weight: 700;
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
@@ -32,19 +34,21 @@
   color: #333333;
 }
 .ambassador__title {
-  align-self: flex-end;
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 700;
   font-size: calc(var(--index) * 6.63);
-  line-height: 82%;
+  line-height: 1;
 
   letter-spacing: -0.033em;
 
   color: #c5fd64;
 }
+.ambassador__title div:not(:last-child) {
+  margin-bottom: -4%;
+}
 .ambassador__text {
+  margin-bottom: calc(var(--index) * 14.43);
   width: calc(var(--index) * 13.7);
-  font-family: 'RF Dewi', sans-serif;
   font-weight: 800;
   font-size: calc(var(--index) * 1.58);
   line-height: 96%;
@@ -55,11 +59,11 @@
 }
 .ambassador__perks-container {
   margin-left: auto;
+  z-index: 1;
   width: calc(var(--index) * 13.7);
 }
 .ambassador__perks-title {
   margin-bottom: calc(var(--index) * 6.33);
-  font-family: 'RF Dewi', sans-serif;
   font-weight: 800;
   font-size: calc(var(--index) * 1.58);
   line-height: 96%;
@@ -95,7 +99,6 @@
   right: 0;
   content: '(0' counter(count-perks) ')';
 
-  font-family: 'RF Dewi', sans-serif;
   font-weight: 700;
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
@@ -105,7 +108,6 @@
 }
 .ambassador__buy-text {
   margin-bottom: calc(var(--index) * 1.14);
-  font-family: 'RF Dewi', sans-serif;
   font-weight: 800;
   font-size: calc(var(--index) * 1.86);
   line-height: 99%;
@@ -114,7 +116,6 @@
   color: #ffffff;
 }
 .ambassador__buy-link {
-  font-family: 'RF Dewi', sans-serif;
   font-weight: 800;
   font-size: calc(var(--index) * 1.1);
   line-height: 120%;
@@ -126,8 +127,15 @@
   margin-left: calc(var(--index) * 3.73);
   width: calc(var(--index) * 1.5);
   height: calc(var(--index) * 1.5);
+  transform-origin: bottom right;
+  transition: ease-in 550ms;
+  .ambassador__buy-link:hover & {
+    transform-origin: bottom right;
+    transform: translate(calc(var(--index) * 0.45), calc(var(--index) * 0.45))
+      rotateX(180deg) rotateZ(90deg) perspective(700px);
+  }
 }
+
 .ambassador__buy-link-line {
-  margin: 0;
   margin-top: calc(var(--index) * 0.18);
 }

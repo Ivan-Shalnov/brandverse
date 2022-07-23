@@ -134,25 +134,28 @@
 
 </section>
 <section class="ambassador">
-  <div class="container">
-    <!-- VIDEO -->
-    <div class="ambassador__video-container">
-      <span class="ambassador__remark">(Token)</span>
+  <div class="container d-flex">
+    <div class="ambassador__sticky-block">
+      <video class="ambassador__video" loop autoplay muted playsinline>
+			<source type="video/mp4" src="img/ambassador_token.mp4">
+			</source>
+		</video>
+      <div class="ambassador__remark">(Token)</div>
       <div class="ambassador__title">
-        <div>Brandverse</div>
-        <div>Ambassador</div>
-        <div>Token</div>
+        <div class="split">Brandverse</div>
+        <div class="split">Ambassador</div>
+        <div class="split">Token</div>
       </div>
+    </div>
+    <div class="ambassador__perks-container">
       <div class="ambassador__text">
-        <div class="line"></div>
+        <div class="line ambassador__line"></div>
         Brandverse Ambassadors are the core of the Brandverse Community, shaping
         the future wearable brands and receiving tangible benefits as the
         ecosystem expands.
       </div>
-    </div>
-    <div class="ambassador__perks-container">
       <div class="ambassador__perks-title">
-        <div class="line"></div>
+        <div class="line ambassador__line"></div>
         <div>Ambassador</div>
         <div>Perks</div>
       </div>
@@ -203,6 +206,19 @@
     </div>
   </div>
 </section>
+<script>
+  let parent = document.querySelector(
+    '.ambassador__sticky-block',
+  ).parentElement;
+
+  while (parent) {
+    const hasOverflow = getComputedStyle(parent).overflow;
+    if (hasOverflow !== 'visible') {
+      console.log(hasOverflow, parent);
+    }
+    parent = parent.parentElement;
+  }
+</script>
 
 </div>
 
