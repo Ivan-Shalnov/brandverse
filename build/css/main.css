@@ -147,8 +147,8 @@ th {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1658590903");
-  src: url("../fonts/icofont/ico-font.eot??1658590903#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1658590903") format("woff2"), url("../fonts/icofont/ico-font.woff?1658590903") format("woff"), url("../fonts/icofont/ico-font.ttf?1658590903") format("truetype"), url("../fonts/icofont/ico-font.svg?1658590903#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1658605283");
+  src: url("../fonts/icofont/ico-font.eot??1658605283#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1658605283") format("woff2"), url("../fonts/icofont/ico-font.woff?1658605283") format("woff"), url("../fonts/icofont/ico-font.ttf?1658605283") format("truetype"), url("../fonts/icofont/ico-font.svg?1658605283#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -452,6 +452,7 @@ th {
       align-self: flex-start; }
 
 .ambassador__video {
+  display: none;
   width: calc(var(--index) * 64);
   height: calc(var(--index) * 36);
   position: absolute;
@@ -559,6 +560,7 @@ th {
   margin-top: calc(var(--index) * 0.18); }
 
 .wim {
+  position: relative;
   padding-top: calc(var(--index) * 7.8);
   padding-bottom: calc(var(--index) * 5.63);
   background-color: #fff; }
@@ -584,6 +586,12 @@ th {
     letter-spacing: -0.033em;
     -ms-flex-item-align: end;
         align-self: flex-end; }
+  .wim__remark--side-position {
+    position: absolute;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    right: calc(var(--index) * 2);
+    bottom: calc(var(--index) * 13.13); }
   .wim__cards-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -633,6 +641,91 @@ th {
     margin-top: calc(var(--index) * 0.23);
     height: calc(var(--index) * 0.067);
     background: #000000; }
+
+.team {
+  padding-top: calc(var(--index) * 6.13);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+  .team__members {
+    width: calc(var(--index) * 31.33); }
+  .team__remark {
+    margin-bottom: calc(var(--index) * 1.76); }
+  .team__members-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: calc(var(--index) * 0.56); }
+  .team__member-card {
+    padding-bottom: 86%;
+    position: relative;
+    background: #d5d9de;
+    border-radius: calc(var(--index) * 0.33);
+    overflow: hidden; }
+  .team__member-foto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; }
+  .team__social-list {
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    top: calc(var(--index) * 1);
+    left: calc(var(--index) * 0.83);
+    z-index: 5; }
+  .team__social-item {
+    width: calc(var(--index) * 0.83);
+    height: calc(var(--index) * 0.83); }
+  .team__social-icon {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%; }
+  .team__ceo {
+    width: calc(var(--index) * 21.3); }
+  .team__ceo-position {
+    margin-top: -0.23%;
+    margin-bottom: calc(var(--index) * 1);
+    display: block;
+    font-weight: 900;
+    font-size: calc(var(--index) * 1);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: #000000; }
+  .team__ceo-name {
+    margin-top: -0.29%;
+    margin-bottom: calc(var(--index) * 0.1);
+    display: block;
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: calc(var(--index) * 4.43);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: #000000; }
+  .team__ceo-mail {
+    display: block;
+    margin-top: -0.22%;
+    margin-bottom: calc(var(--index) * 6.23);
+    font-weight: 600;
+    font-size: calc(var(--index) * 0.86);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: #000000; }
+  .team__ceo-text {
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.1);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #000000; }
+
+.remark {
+  margin-bottom: -0.12%;
+  font-weight: 700;
+  font-size: calc(var(--index) * 0.53);
+  line-height: 1;
+  letter-spacing: -0.033em; }
 
 body {
   position: relative;

@@ -1,0 +1,117 @@
+.team {
+  padding-top: calc(var(--index) * 6.13);
+  display: flex;
+  justify-content: space-between;
+
+  &__members {
+    width: calc(var(--index) * 31.33);
+  }
+  &__remark {
+    margin-bottom: calc(var(--index) * 1.76);
+  }
+  &__members-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: calc(var(--index) * 0.56);
+  }
+  &__member-card {
+    padding-bottom: 86%;
+    position: relative;
+    background: #d5d9de;
+    border-radius: calc(var(--index) * 0.33);
+    overflow: hidden;
+  }
+  &__member-foto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__social-list {
+    display: flex;
+    position: absolute;
+    top: calc(var(--index) * 1);
+    left: calc(var(--index) * 0.83);
+    z-index: 5;
+  }
+
+  &__social-item {
+    width: calc(var(--index) * 0.83);
+    height: calc(var(--index) * 0.83);
+  }
+
+  &__social-icon {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  //   // .team__member-name
+
+  //   &__member-name {
+  //   }
+
+  //   // .team__member-lastname
+
+  //   &__member-lastname {
+  //   }
+
+  //   // .team__member-position
+
+  //   &__member-position {
+  //   }
+  &__ceo {
+    width: calc(var(--index) * 21.3);
+  }
+  &__ceo-position {
+    margin-top: -0.23%;
+    margin-bottom: calc(var(--index) * 1);
+    display: block;
+    font-weight: 900;
+    font-size: calc(var(--index) * 1);
+    line-height: 1;
+    letter-spacing: -0.033em;
+
+    color: #000000;
+  }
+
+  &__ceo-name {
+    margin-top: -0.29%;
+    margin-bottom: calc(var(--index) * 0.1);
+    display: block;
+    font-family: 'Bebas Neue';
+
+    font-weight: 700;
+    font-size: calc(var(--index) * 4.43);
+    line-height: 1;
+
+    letter-spacing: -0.033em;
+
+    color: #000000;
+  }
+
+  &__ceo-mail {
+    display: block;
+    margin-top: -0.22%;
+    margin-bottom: calc(var(--index) * 6.23);
+    font-weight: 600;
+    font-size: calc(var(--index) * 0.86);
+    line-height: 1;
+    letter-spacing: -0.033em;
+
+    color: #000000;
+  }
+
+  &__ceo-text {
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.1);
+    line-height: 96%;
+
+    letter-spacing: -0.033em;
+
+    color: #000000;
+  }
+}

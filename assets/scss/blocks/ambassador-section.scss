@@ -19,6 +19,7 @@
   align-self: flex-start;
 }
 .ambassador__video {
+  display: none;
   width: calc(var(--index) * 64);
   height: calc(var(--index) * 36);
   position: absolute;
