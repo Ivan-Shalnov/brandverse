@@ -129,7 +129,7 @@ h5 {
 @font-face {
   font-family: 'RF Dewi';
   src: url("../fonts/RFDewi-Ultrabold.woff2") format("woff2"), url("../fonts/RFDewi-Ultrabold.woff") format("woff");
-  font-weight: bold;
+  font-weight: 800;
   font-style: normal;
   font-display: swap; }
 
@@ -741,6 +741,122 @@ h5 {
       height: auto;
       max-width: 100%;
       max-height: 100%; }
+
+.subscribe-section {
+  padding: calc(var(--index) * 6.667) 0; }
+  .subscribe-section .container {
+    display: -ms-flexbox;
+    display: flex; }
+  .subscribe-section__name {
+    width: 26%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0; }
+  .subscribe-section__content {
+    -ms-flex-positive: 1;
+        flex-grow: 1; }
+  .subscribe-section__title {
+    font-weight: 800;
+    font-size: calc(var(--index) * 2.2);
+    line-height: 100%;
+    letter-spacing: -0.033em;
+    color: #000000;
+    margin-bottom: calc(var(--index) * 4); }
+    .subscribe-section__title div {
+      margin-bottom: -0.5%; }
+
+.subscribe-form {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: end;
+      align-items: flex-end; }
+  .subscribe-form__field {
+    margin-right: calc(var(--index) * 1.66);
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    margin-bottom: 0.25%; }
+  .subscribe-form__input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-bottom: calc(var(--index) * 1);
+    background-color: transparent;
+    width: 100%;
+    font-family: 'RF Dewi';
+    font-style: normal;
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.1);
+    line-height: 94%;
+    letter-spacing: -0.033em;
+    color: #000000; }
+    .subscribe-form__input::-webkit-input-placeholder {
+      color: #000000; }
+    .subscribe-form__input:-ms-input-placeholder {
+      color: #000000; }
+    .subscribe-form__input::-ms-input-placeholder {
+      color: #000000; }
+    .subscribe-form__input::placeholder {
+      color: #000000; }
+    .subscribe-form__input:focus {
+      outline: none; }
+  .subscribe-form__btn {
+    font-family: 'RF Dewi';
+    font-style: normal;
+    font-weight: 800;
+    font-size: calc(var(--index) * 4.33);
+    line-height: 94%;
+    letter-spacing: -0.033em;
+    color: #4f06c6;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: calc(var(--index) * 0.66);
+    display: block; }
+    .subscribe-form__btn::after {
+      content: attr(hover-text);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: block;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+      pointer-events: none; }
+    .subscribe-form__btn:hover .subscribe-form__btn-title {
+      -webkit-transform: translateY(-100%);
+              transform: translateY(-100%);
+      opacity: 0; }
+    .subscribe-form__btn:hover .subscribe-form__btn-line::after {
+      width: 0;
+      transition: 0.3s; }
+    .subscribe-form__btn:hover .subscribe-form__btn-line::before {
+      width: calc(100% + 30px);
+      transition: 0.3s;
+      transition-delay: 0.1s; }
+    .subscribe-form__btn:hover::after {
+      top: 0px;
+      opacity: 1; }
+  .subscribe-form__btn-title {
+    display: block;
+    transition: 0.3s ease-in-out;
+    position: relative; }
+  .subscribe-form__btn-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    border-bottom: solid calc(var(--index) * 0.33) #4f06c6; }
+  .subscribe-form__btn-line::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -30px;
+    width: 0%;
+    border-bottom: solid calc(var(--index) * 0.33) #4f06c6; }
 
 body {
   position: relative;
