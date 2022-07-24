@@ -44,7 +44,7 @@
     padding-right: calc(var(--index) * 1);
     padding-bottom: calc(var(--index) * 1);
     padding-left: calc(var(--index) * 1);
-    background: #edeff2;
+    background: hsla(214, 17%, 94%, 1);
     border-radius: calc(var(--index) * 0.56);
 
     font-weight: 600;
@@ -52,26 +52,30 @@
     line-height: 120%;
     letter-spacing: -0.033em;
     color: #000;
+    transition: ease-in-out 250ms;
     &:hover,
     &:focus {
-      background: #c5fd64;
+      filter: brightness(85%);
     }
     &--doubleSize {
       grid-column-end: span 2;
     }
     &--bgColorAccent {
-      background: #dadee3;
+      background: #c5fd64;
     }
   }
   &__logo-wrap {
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: calc(var(--index) * 2.8);
-    height: calc(var(--index) * 6.66);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: calc(var(--index) * 7);
+    width: calc(var(--index) * 7);
   }
   &__logo {
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
   }
   &__more-text {
     display: flex;
