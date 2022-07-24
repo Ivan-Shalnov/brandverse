@@ -6,6 +6,7 @@
 
   &__members {
     width: calc(var(--index) * 31.23);
+    cursor: pointer;
   }
   &__remark {
     margin-bottom: calc(var(--index) * 1.76);
