@@ -89,6 +89,7 @@ const colors = [
   '',
   'grey',
   'grey',
+  'grey',
   'black',
   'white',
   'grey',
