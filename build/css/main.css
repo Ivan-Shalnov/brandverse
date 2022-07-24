@@ -367,7 +367,8 @@ h5 {
   padding: calc(var(--index) * 6.67) 0; }
   .video-section__player {
     cursor: pointer;
-    transition: 0.6s ease; }
+    transition: 0.6s ease;
+    position: relative; }
     .video-section__player::after {
       content: '';
       position: absolute;
@@ -450,8 +451,7 @@ h5 {
 
 .ambassador {
   padding-top: calc(var(--index) * 3.5);
-  padding-bottom: calc(var(--index) * 11.2);
-  background: #000000; }
+  padding-bottom: calc(var(--index) * 11.2); }
 
 .ambassador__sticky-block {
   position: -webkit-sticky;
@@ -468,7 +468,7 @@ h5 {
   z-index: -1; }
 
 .ambassador__remark {
-  margin-bottom: calc(var(--index) * 14.76);
+  margin-bottom: 30vh;
   font-weight: 700;
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
@@ -492,8 +492,7 @@ h5 {
   font-weight: 800;
   font-size: calc(var(--index) * 1.58);
   line-height: 96%;
-  letter-spacing: -0.033em;
-  color: #ffffff; }
+  letter-spacing: -0.033em; }
 
 .ambassador__perks-container {
   margin-left: auto;
@@ -506,8 +505,7 @@ h5 {
   font-size: calc(var(--index) * 1.58);
   line-height: 96%;
   text-align: right;
-  letter-spacing: -0.033em;
-  color: #ffffff; }
+  letter-spacing: -0.033em; }
 
 .ambassador__perks-list {
   margin-bottom: calc(var(--index) * 7.06);
@@ -534,8 +532,7 @@ h5 {
   font-weight: 700;
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
-  letter-spacing: -0.033em;
-  color: #ffffff; }
+  letter-spacing: -0.033em; }
 
 .ambassador__buy-text {
   margin-bottom: calc(var(--index) * 1.14);
@@ -543,7 +540,7 @@ h5 {
   font-size: calc(var(--index) * 1.86);
   line-height: 99%;
   letter-spacing: -0.033em;
-  color: #ffffff; }
+  transition: color 0.3s; }
 
 .ambassador__buy-link {
   font-weight: 800;
@@ -568,11 +565,31 @@ h5 {
 .ambassador__buy-link-line {
   margin-top: calc(var(--index) * 0.18); }
 
+body.black .ambassador {
+  color: #fff; }
+  body.black .ambassador__line {
+    background-color: #fff; }
+  body.black .ambassador__text {
+    color: #fff; }
+  body.black .ambassador__title {
+    color: #c5fd64; }
+
+.ambassador {
+  color: #000; }
+  .ambassador__line {
+    background-color: #000;
+    transition: 0.3s; }
+  .ambassador__text {
+    color: #000;
+    transition: 0.3s; }
+  .ambassador__title {
+    transition: 0.3s;
+    color: #000; }
+
 .wim {
   position: relative;
   padding-top: calc(var(--index) * 7.8);
-  padding-bottom: calc(var(--index) * 5.63);
-  background-color: #fff; }
+  padding-bottom: calc(var(--index) * 5.63); }
   .wim__title-cont {
     margin-bottom: calc(var(--index) * 1.26);
     display: -ms-flexbox;
@@ -580,7 +597,6 @@ h5 {
     -ms-flex-pack: justify;
         justify-content: space-between; }
   .wim__title {
-    margin-bottom: -2%;
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: calc(var(--index) * 6.63);
@@ -1023,6 +1039,18 @@ h5 {
     width: 0%;
     border-bottom: solid calc(var(--index) * 0.33) #4f06c6; }
 
+.contacts-section {
+  padding: calc(var(--index) * 6.667) 0; }
+  .contacts-section__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(var(--index) * 7.6);
+    line-height: 82%;
+    letter-spacing: -0.033em;
+    transition: color 0.3s;
+    color: #000; }
+
 .remark {
   font-weight: 700;
   font-size: calc(var(--index) * 0.53);
@@ -1031,7 +1059,6 @@ h5 {
 
 body {
   position: relative;
-  background: #e6e7eb;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'RF Dewi';
@@ -1039,10 +1066,42 @@ body {
   font-weight: 400;
   line-height: 1.2;
   font-size: 16px;
-  min-width: 320px; }
+  min-width: 320px;
+  background-color: #e0e3e7;
+  transition: 0.3s all; }
 
 .wrapper {
   overflow: hidden; }
 
 :root {
   --index: calc(1vw + 1vh); }
+
+.sections {
+  transition: 0.4s ease-in; }
+  .sections.color-grey {
+    background-color: #e0e3e7; }
+  .sections.color-black {
+    background-color: #000; }
+  .sections.color-white {
+    background-color: #fff; }
+
+.grey {
+  background-color: #e0e3e7; }
+
+.black {
+  background-color: #000; }
+
+.white {
+  background-color: #fff; }
+
+.lightCyan {
+  background-color: #dffdff; }
+
+.darkSkyBlue {
+  background-color: #90bede; }
+
+.aquamarine {
+  background-color: #68edc6; }
+
+.electricBlue {
+  background-color: #90f3ff; }

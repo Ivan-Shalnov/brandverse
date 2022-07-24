@@ -82,3 +82,33 @@ $('.marquee').marquee({
   //true or false - should the marquee be duplicated to show an effect of continues flow
   duplicated: true,
 });
+
+// switch section colors start
+
+const colors = [
+  '',
+  'grey',
+  'grey',
+  'black',
+  'white',
+  'grey',
+  'grey',
+  'grey',
+  'grey',
+  'black',
+];
+
+const sections = [...document.getElementsByTagName('section')];
+
+window.addEventListener('scroll', function () {
+  const scrollFromTop = window.pageYOffset * 1.2;
+
+  for (let i = 0; sections.length > i; i++) {
+    if (scrollFromTop <= sections[i].offsetTop) {
+      document.body.className = colors[i];
+      break;
+    }
+  }
+});
+
+// switch section colors end

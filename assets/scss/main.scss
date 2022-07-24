@@ -21,13 +21,13 @@
 @import 'blocks/exp-section.scss';
 @import 'blocks/partners-section.scss';
 @import 'blocks/subscribe-section.scss';
+@import 'blocks/contacts-section.scss';
 @import 'blocks/page-footer';
 
 //COMPONENTS
 @import 'components/remark';
 body {
   position: relative;
-  background: #e6e7eb;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,6 +38,8 @@ body {
   line-height: 1.2;
   font-size: 16px;
   min-width: 320px;
+  background-color: #e0e3e7;
+  transition: 0.3s all;
 }
 
 .wrapper {
@@ -46,4 +48,45 @@ body {
 
 :root {
   --index: calc(1vw + 1vh);
+}
+
+.sections {
+  transition: 0.4s ease-in;
+  &.color-grey {
+    background-color: #e0e3e7;
+  }
+  &.color-black {
+    background-color: #000;
+  }
+  &.color-white {
+    background-color: #fff;
+  }
+}
+
+.grey {
+  background-color: #e0e3e7;
+}
+
+.black {
+  background-color: #000;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.lightCyan {
+  background-color: #dffdff;
+}
+
+.darkSkyBlue {
+  background-color: #90bede;
+}
+
+.aquamarine {
+  background-color: #68edc6;
+}
+
+.electricBlue {
+  background-color: #90f3ff;
 }

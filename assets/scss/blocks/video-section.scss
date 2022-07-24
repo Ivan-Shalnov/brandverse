@@ -5,6 +5,7 @@
   &__player {
     cursor: pointer;
     transition: 0.6s ease;
+    position: relative;
     &::after {
       content: '';
       position: absolute;

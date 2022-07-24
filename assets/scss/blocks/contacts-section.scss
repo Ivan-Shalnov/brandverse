@@ -1,0 +1,13 @@
+.contacts-section {
+  padding: calc(var(--index) * 6.667) 0;
+  &__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(var(--index) * 7.6);
+    line-height: 82%;
+    letter-spacing: -0.033em;
+    transition: color 0.3s;
+    color: #000;
+  }
+}

@@ -2,14 +2,12 @@
   position: relative;
   padding-top: calc(var(--index) * 7.8);
   padding-bottom: calc(var(--index) * 5.63);
-  background-color: #fff;
   &__title-cont {
     margin-bottom: calc(var(--index) * 1.26);
     display: flex;
     justify-content: space-between;
   }
   &__title {
-    margin-bottom: -2%;
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: calc(var(--index) * 6.63);

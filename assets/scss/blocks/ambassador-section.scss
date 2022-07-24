@@ -11,7 +11,6 @@
 .ambassador {
   padding-top: calc(var(--index) * 3.5);
   padding-bottom: calc(var(--index) * 11.2);
-  background: #000000;
 }
 .ambassador__sticky-block {
   position: sticky;
@@ -26,7 +25,7 @@
   z-index: -1;
 }
 .ambassador__remark {
-  margin-bottom: calc(var(--index) * 14.76);
+  margin-bottom: 30vh;
   font-weight: 700;
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
@@ -55,8 +54,6 @@
   line-height: 96%;
 
   letter-spacing: -0.033em;
-
-  color: #ffffff;
 }
 .ambassador__perks-container {
   margin-left: auto;
@@ -71,8 +68,6 @@
 
   text-align: right;
   letter-spacing: -0.033em;
-
-  color: #ffffff;
 }
 .ambassador__perks-list {
   margin-bottom: calc(var(--index) * 7.06);
@@ -104,8 +99,6 @@
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
   letter-spacing: -0.033em;
-
-  color: #ffffff;
 }
 .ambassador__buy-text {
   margin-bottom: calc(var(--index) * 1.14);
@@ -113,8 +106,7 @@
   font-size: calc(var(--index) * 1.86);
   line-height: 99%;
   letter-spacing: -0.033em;
-
-  color: #ffffff;
+  transition: color 0.3s;
 }
 .ambassador__buy-link {
   font-weight: 800;
@@ -139,4 +131,37 @@
 
 .ambassador__buy-link-line {
   margin-top: calc(var(--index) * 0.18);
+}
+
+body {
+  &.black {
+    .ambassador {
+      color: #fff;
+      &__line {
+        background-color: #fff;
+      }
+      &__text {
+        color: #fff;
+      }
+      &__title {
+        color: #c5fd64;
+      }
+    }
+  }
+}
+
+.ambassador {
+  color: #000;
+  &__line {
+    background-color: #000;
+    transition: 0.3s;
+  }
+  &__text {
+    color: #000;
+    transition: 0.3s;
+  }
+  &__title {
+    transition: 0.3s;
+    color: #000;
+  }
 }

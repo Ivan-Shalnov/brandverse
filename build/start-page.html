@@ -32,37 +32,37 @@
 
 <body >
 
+<header class="header">
+    <div class="container d-flex justify-between align-start">
+        <a href="" class="header__logo">
+            <img src="img/logo.svg" alt="">
+        </a>
 
+        <ul class="header__nav">
+            <li>
+                <a href="" target="_blank" link-hover="Twitter">
+                    <span>Twitter</span>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank" link-hover="discord">
+                    <span>discord</span>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank" link-hover="linkedin">
+                    <span>linkedin</span>
+                </a>
+            </li>
+        </ul>
 
-    <header class="header">
-        <div class="container d-flex justify-between align-start">
-            <a href="" class="header__logo">
-                <img src="img/logo.svg" alt="">
-            </a>
-
-            <ul class="header__nav">
-                <li>
-                    <a href="" target="_blank" link-hover="Twitter">
-                        <span>Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" target="_blank" link-hover="discord">
-                        <span>discord</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" target="_blank" link-hover="linkedin">
-                        <span>linkedin</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="header__menu-btn">
-                menu
-            </div>
+        <div class="header__menu-btn">
+            menu
         </div>
-    </header>
+    </div>
+</header>
+
+<main class="sections">
 
 <section class="promo">
 	<div class="promo__circle">
@@ -133,7 +133,7 @@
 	</div>
 
 </section>
-<section class="ambassador">
+<section class="ambassador" data-color="black">
   <div class="container d-flex">
     <div class="ambassador__sticky-block">
       <!-- <video class="ambassador__video" loop autoplay muted playsinline>
@@ -210,7 +210,7 @@
     parent = parent.parentElement;
   }
 </script>
-<section class="wim">
+<section class="wim" data-color="white">
   <div class="container">
     <span class="wim__remark wim__remark--side-position">(Media)</span>
     <div class="wim__title-cont">
@@ -240,10 +240,7 @@
         </div>
         <div class="wim__line"></div>
       </a>
-      <a
-        href="#"
-        class="wim__card wim__card--doubleSize wim__card--bgColorAccent"
-      >
+      <a href="#" class="wim__card wim__card--doubleSize wim__card--bgColorAccent">
         <div class="wim__logo-wrap">
           <img class="wim__logo" src="./img/forbes_logo.svg" alt="VanEck" />
         </div>
@@ -267,11 +264,7 @@
       </a>
       <a href="#" class="wim__card">
         <div class="wim__logo-wrap">
-          <img
-            class="wim__logo"
-            src="./img/nft_evening_logo.svg"
-            alt="VanEck"
-          />
+          <img class="wim__logo" src="./img/nft_evening_logo.svg" alt="VanEck" />
         </div>
         <div class="wim__more-text">
           Learn more<svg class="wim__icon-arrow">
@@ -283,8 +276,7 @@
     </div>
   </div>
 </section>
-
-<section class="team container">
+<section class="team container" data-color="grey">
   <div class="team__members">
     <h2 class="remark team__remark">(Team)</h2>
     <ul class="team__members-list">
@@ -464,7 +456,6 @@
     </p>
   </div>
 </section>
-
 
 <section class="exp-section">
 	<div class="container">
@@ -695,7 +686,17 @@
 	</div>
 </section>
 
+<section class="contacts-section">
+	<div class="container">
+		<h2 class="contacts-section__title">
+			<div>Have</div>
+			<div>You</div>
+			<div>Questions?</div>
+		</h2>
+	</div>
+</section>
 
+</main>
 
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/plugins.min.js"></script>
