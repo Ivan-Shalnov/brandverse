@@ -156,8 +156,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1658653404");
-  src: url("../fonts/icofont/ico-font.eot??1658653404#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1658653404") format("woff2"), url("../fonts/icofont/ico-font.woff?1658653404") format("woff"), url("../fonts/icofont/ico-font.ttf?1658653404") format("truetype"), url("../fonts/icofont/ico-font.svg?1658653404#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1658669654");
+  src: url("../fonts/icofont/ico-font.eot??1658669654#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1658669654") format("woff2"), url("../fonts/icofont/ico-font.woff?1658669654") format("woff"), url("../fonts/icofont/ico-font.ttf?1658669654") format("truetype"), url("../fonts/icofont/ico-font.svg?1658669654#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -734,7 +734,11 @@ h5 {
     position: relative;
     background: #d5d9de;
     border-radius: calc(var(--index) * 0.33);
-    overflow: hidden; }
+    overflow: hidden;
+    transition: ease-in-out 250ms; }
+  .team__member-card.active {
+    -webkit-filter: brightness(85%);
+            filter: brightness(85%); }
   .team__member-foto {
     position: absolute;
     width: 100%;
@@ -785,9 +789,11 @@ h5 {
     font-size: calc(var(--index) * 0.53);
     line-height: 86%;
     letter-spacing: -0.033em; }
-  .team__ceo {
+  .team__member-bio, .team__member-mail {
+    display: none; }
+  .team__current-member {
     width: calc(var(--index) * 21.3); }
-  .team__ceo-position {
+  .team__current-position {
     margin-top: -0.23%;
     margin-bottom: calc(var(--index) * 1);
     font-weight: 900;
@@ -795,7 +801,7 @@ h5 {
     line-height: 1;
     letter-spacing: -0.033em;
     color: #000000; }
-  .team__ceo-name {
+  .team__current-name {
     margin-top: -0.29%;
     margin-bottom: calc(var(--index) * 0.1);
     font-family: 'Bebas Neue';
@@ -804,7 +810,7 @@ h5 {
     line-height: 1;
     letter-spacing: -0.033em;
     color: #000000; }
-  .team__ceo-mail {
+  .team__current-mail {
     margin-top: -0.22%;
     margin-bottom: calc(var(--index) * 6.23);
     font-weight: 600;
@@ -812,7 +818,7 @@ h5 {
     line-height: 1;
     letter-spacing: -0.033em;
     color: #000000; }
-  .team__ceo-text {
+  .team__current-bio {
     font-weight: 800;
     font-size: calc(var(--index) * 1.1);
     line-height: 96%;
