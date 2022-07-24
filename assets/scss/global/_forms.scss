@@ -45,4 +45,27 @@
       outline: none;
     }
   }
+  &__btn {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: toIndex(33);
+    line-height: 120%;
+    letter-spacing: -0.033em;
+    color: $green;
+    padding-bottom: toIndex(6);
+    border-bottom: toIndex(5) solid $green;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+    width: toIndex(230);
+    svg {
+      width: toIndex(45);
+      height: toIndex(45);
+    }
+  }
 }

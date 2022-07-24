@@ -15,6 +15,11 @@
     justify-content: space-between;
   }
   &__col {
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     &:last-child {
       width: calc(var(--index) * 22.267);
     }
@@ -58,5 +63,20 @@
   }
   &__name {
     color: $purpure;
+  }
+  &__socials-title {
+    font-weight: 800;
+    font-size: toIndex(17);
+    line-height: 120%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    opacity: 0.22;
+    margin-bottom: toIndex(20);
+  }
+  .socials {
+    a {
+      font-size: toIndex(33);
+      color: #fff;
+    }
   }
 }

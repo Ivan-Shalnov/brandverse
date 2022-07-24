@@ -1,10 +1,22 @@
-.page-footer {
-
+.footer {
+  padding: toIndex(60) 0;
+  .container {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(var(--index) * 2);
+      width: calc(100% - calc(var(--index) * 4));
+      border: 1px solid rgba(#d9d9d9, 0.1);
+    }
+  }
+  &__copyright {
+    font-weight: 700;
+    font-size: toIndex(18);
+    line-height: 120%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    opacity: 0.2;
+  }
 }
-
-
-
-
-
-
-

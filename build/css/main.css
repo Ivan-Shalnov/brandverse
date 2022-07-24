@@ -175,6 +175,31 @@ h5 {
   .form__field-textarea:focus {
     outline: none; }
 
+.form__btn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  font-weight: 800;
+  font-size: calc((1vw + 1vh) * (33 / 30));
+  line-height: 120%;
+  letter-spacing: -0.033em;
+  color: #c5fd64;
+  padding-bottom: calc((1vw + 1vh) * (6 / 30));
+  border-bottom: calc((1vw + 1vh) * (5 / 30)) solid #c5fd64;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  width: calc((1vw + 1vh) * (230 / 30)); }
+  .form__btn svg {
+    width: calc((1vw + 1vh) * (45 / 30));
+    height: calc((1vw + 1vh) * (45 / 30)); }
+
 @font-face {
   font-family: 'RF Dewi';
   src: url("../fonts/RFDewi-Semibold.woff2") format("woff2"), url("../fonts/RFDewi-Semibold.woff") format("woff");
@@ -243,47 +268,6 @@ h5 {
   z-index: 10; }
   .header__logo {
     margin-right: auto; }
-  .header__nav {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-        align-items: center;
-    margin-right: calc(var(--index) * 4.3); }
-    .header__nav li {
-      margin-right: calc(var(--index) * 0.8); }
-      .header__nav li:last-child {
-        margin-right: 0; }
-    .header__nav a {
-      font-weight: 700;
-      font-size: calc(var(--index) * 0.6);
-      line-height: 86%;
-      letter-spacing: -0.033em;
-      text-transform: uppercase;
-      color: #000000;
-      font-family: 'RF Dewi';
-      position: relative;
-      display: block; }
-      .header__nav a span {
-        display: block;
-        transition: 0.3s ease-in-out;
-        position: relative; }
-      .header__nav a::after {
-        content: attr(link-hover);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        display: block;
-        opacity: 0;
-        transition: 0.3s ease-in-out;
-        pointer-events: none; }
-      .header__nav a:hover span {
-        -webkit-transform: translateY(-100%);
-                transform: translateY(-100%);
-        opacity: 0; }
-      .header__nav a:hover::after {
-        top: 0px;
-        opacity: 1; }
   .header__menu-btn {
     font-size: calc(var(--index) * 4.3);
     line-height: 86%;
@@ -293,6 +277,48 @@ h5 {
     cursor: pointer;
     font-family: 'Bebas Neue';
     margin-top: -0.5%; }
+
+.socials {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-right: calc(var(--index) * 4.3); }
+  .socials li {
+    margin-right: calc(var(--index) * 0.8); }
+    .socials li:last-child {
+      margin-right: 0; }
+  .socials a {
+    font-weight: 700;
+    font-size: calc(var(--index) * 0.6);
+    line-height: 86%;
+    letter-spacing: -0.033em;
+    text-transform: uppercase;
+    color: #000000;
+    font-family: 'RF Dewi';
+    position: relative;
+    display: block; }
+    .socials a span {
+      display: block;
+      transition: 0.3s ease-in-out;
+      position: relative; }
+    .socials a::after {
+      content: attr(link-hover);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: block;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+      pointer-events: none; }
+    .socials a:hover span {
+      -webkit-transform: translateY(-100%);
+              transform: translateY(-100%);
+      opacity: 0; }
+    .socials a:hover::after {
+      top: 0px;
+      opacity: 1; }
 
 .promo {
   min-height: 100vh;
@@ -1182,6 +1208,13 @@ h5 {
     display: flex;
     -ms-flex-pack: justify;
         justify-content: space-between; }
+  .contacts-section__col:first-child {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
   .contacts-section__col:last-child {
     width: calc(var(--index) * 22.267); }
   .contacts-section__title {
@@ -1219,6 +1252,36 @@ h5 {
       display: block; }
   .contacts-section__name {
     color: #4f06c6; }
+  .contacts-section__socials-title {
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (17 / 30));
+    line-height: 120%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    opacity: 0.22;
+    margin-bottom: calc((1vw + 1vh) * (20 / 30)); }
+  .contacts-section .socials a {
+    font-size: calc((1vw + 1vh) * (33 / 30));
+    color: #fff; }
+
+.footer {
+  padding: calc((1vw + 1vh) * (60 / 30)) 0; }
+  .footer .container {
+    position: relative; }
+    .footer .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(var(--index) * 2);
+      width: calc(100% - calc(var(--index) * 4));
+      border: 1px solid rgba(217, 217, 217, 0.1); }
+  .footer__copyright {
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (18 / 30));
+    line-height: 120%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    opacity: 0.2; }
 
 .remark {
   font-weight: 700;
