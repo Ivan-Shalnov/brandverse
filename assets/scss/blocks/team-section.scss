@@ -23,6 +23,8 @@
     border-radius: calc(var(--index) * 0.33);
     overflow: hidden;
     transition: ease-in-out 250ms;
+
+    cursor: pointer;
   }
   &__member-card.active {
     filter: brightness(85%);
