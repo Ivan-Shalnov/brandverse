@@ -14,12 +14,12 @@ for (let i = 0; i < splitElements.length; i++) {
   spliting(splitElements[i]);
 }
 
-const tl = TweenMax.staggerFrom(
-  '.promo__title div span',
-  0.8,
-  { y: '100%', ease: Power2.easeInOut, yoyo: true },
-  0.05,
-);
+// const tl = TweenMax.staggerFrom(
+//   '.promo__title div span',
+//   0.8,
+//   { y: '100%', ease: Power2.easeInOut, yoyo: true },
+//   0.05,
+// );
 
 // iframe video from youtube start
 
@@ -83,33 +83,86 @@ $('.marquee').marquee({
   duplicated: true,
 });
 
-// switch section colors start
+gsap.registerPlugin(ScrollTrigger);
 
-const colors = [
-  '',
-  'grey',
-  'grey',
-  'grey',
-  'black',
-  'white',
-  'grey',
-  'grey',
-  'grey',
-  'grey',
-  'black',
-];
-
-const sections = [...document.getElementsByTagName('section')];
-
-window.addEventListener('scroll', function () {
-  const scrollFromTop = window.pageYOffset * 1.2;
-
-  for (let i = 0; sections.length > i; i++) {
-    if (scrollFromTop <= sections[i].offsetTop) {
-      document.body.className = colors[i];
-      break;
-    }
-  }
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector('.scroller'),
+  smooth: true,
+});
+locoScroll.on('scroll', ScrollTrigger.update);
+ScrollTrigger.scrollerProxy('.scroller', {
+  scrollTop(value) {
+    return arguments.length
+      ? locoScroll.scrollTo(value, 0, 0)
+      : locoScroll.scroll.instance.scroll.y;
+  },
+  getBoundingClientRect() {
+    return {
+      top: 0,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  },
+  pinType: document.querySelector('.scroller').style.transform
+    ? 'transform'
+    : 'fixed',
 });
 
-// switch section colors end
+const contactsTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.contacts-section',
+    scroller: '.scroller',
+    start: 'top 100%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+contactsTl
+  .addLabel('start')
+  .staggerFrom(
+    '.contacts-section__title div span',
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+    'start',
+  )
+  .staggerFrom(
+    '.contacts-section__subtitle div span',
+    1.2,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.1,
+    'start',
+  )
+  .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
+
+ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+ScrollTrigger.refresh();
+
+window.addEventListener('load', function () {
+  const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
+  scrollColorElems.forEach((colorSection, i) => {
+    const prevBg = i === 0 ? '' : scrollColorElems[i - 1].dataset.bgcolor;
+    const prevText = i === 0 ? '' : scrollColorElems[i - 1].dataset.textcolor;
+
+    ScrollTrigger.create({
+      trigger: colorSection,
+      scroller: '.scroller',
+      start: 'top 50%',
+      toggleClass: 'active',
+      onEnter: () =>
+        gsap.to('body', {
+          backgroundColor: colorSection.dataset.bgcolor,
+          color: colorSection.dataset.textcolor,
+          overwrite: 'auto',
+        }),
+      onLeaveBack: () =>
+        gsap.to('body', {
+          backgroundColor: prevBg,
+          color: prevText,
+          overwrite: 'auto',
+        }),
+    });
+  });
+});

@@ -2,6 +2,13 @@
   position: relative;
   padding-top: calc(var(--index) * 7.8);
   padding-bottom: calc(var(--index) * 5.63);
+  // &.active {
+  //   .wim {
+  //     &__title {
+  //       color: #000;
+  //     }
+  //   }
+  // }
   &__title-cont {
     margin-bottom: calc(var(--index) * 1.26);
     display: flex;
@@ -12,9 +19,7 @@
     font-weight: 700;
     font-size: calc(var(--index) * 6.63);
     line-height: 1;
-
     letter-spacing: -0.033em;
-    color: #000000;
   }
   &__remark {
     margin-bottom: -0.12%;

@@ -1,13 +1,62 @@
 .contacts-section {
-  padding: calc(var(--index) * 6.667) 0;
+  padding: toIndex(200) 0;
+  &.active {
+    .contacts-section {
+      &__title {
+        color: $green;
+      }
+      &__name {
+        color: $green;
+      }
+    }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__col {
+    &:last-child {
+      width: calc(var(--index) * 22.267);
+    }
+  }
   &__title {
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 700;
     font-size: calc(var(--index) * 7.6);
-    line-height: 82%;
+    line-height: 1;
     letter-spacing: -0.033em;
     transition: color 0.3s;
-    color: #000;
+    color: $purpure;
+    div {
+      overflow: hidden;
+      display: flex;
+      padding-right: 0.033em;
+      margin-bottom: -5%;
+      span {
+        display: block;
+      }
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(var(--index) * 5.33);
+  }
+  &__subtitle {
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.6);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    max-width: calc(var(--index) * 15);
+    div {
+      overflow: hidden;
+    }
+    span {
+      display: block;
+    }
+  }
+  &__name {
+    color: $purpure;
   }
 }

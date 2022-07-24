@@ -106,7 +106,6 @@
   font-size: calc(var(--index) * 1.86);
   line-height: 99%;
   letter-spacing: -0.033em;
-  transition: color 0.3s;
 }
 .ambassador__buy-link {
   font-weight: 800;
@@ -133,10 +132,9 @@
   margin-top: calc(var(--index) * 0.18);
 }
 
-body {
-  &.black {
+.ambassador {
+  &.active {
     .ambassador {
-      color: #fff;
       &__line {
         background-color: #fff;
       }
@@ -144,17 +142,13 @@ body {
         color: #fff;
       }
       &__title {
-        color: #c5fd64;
+        color: $green;
       }
     }
   }
-}
-
-.ambassador {
-  color: #000;
   &__line {
-    background-color: #000;
     transition: 0.3s;
+    background-color: #000;
   }
   &__text {
     color: #000;

@@ -1,0 +1,48 @@
+.form {
+  &__field {
+    position: relative;
+    margin-bottom: toIndex(75);
+  }
+  &__field-input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: calc(var(--index) * 1.6);
+    font-family: 'RF Dewi';
+    font-weight: 600;
+    font-size: calc(var(--index) * 0.66);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    &::placeholder {
+      color: #ffffff;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__field-textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: toIndex(20);
+    font-family: 'RF Dewi';
+    font-weight: 600;
+    font-size: toIndex(20);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    height: toIndex(260);
+    resize: none;
+    &::placeholder {
+      color: #ffffff;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
