@@ -22,6 +22,10 @@
     background: #d5d9de;
     border-radius: calc(var(--index) * 0.33);
     overflow: hidden;
+    transition: ease-in-out 250ms;
+  }
+  &__member-card.active {
+    filter: brightness(85%);
   }
   &__member-foto {
     position: absolute;
@@ -89,10 +93,14 @@
 
     letter-spacing: -0.033em;
   }
-  &__ceo {
+  &__member-bio,
+  &__member-mail {
+    display: none;
+  }
+  &__current-member {
     width: calc(var(--index) * 21.3);
   }
-  &__ceo-position {
+  &__current-position {
     margin-top: -0.23%;
     margin-bottom: calc(var(--index) * 1);
     font-weight: 900;
@@ -103,7 +111,7 @@
     color: #000000;
   }
 
-  &__ceo-name {
+  &__current-name {
     margin-top: -0.29%;
     margin-bottom: calc(var(--index) * 0.1);
     font-family: 'Bebas Neue';
@@ -117,7 +125,7 @@
     color: #000000;
   }
 
-  &__ceo-mail {
+  &__current-mail {
     margin-top: -0.22%;
     margin-bottom: calc(var(--index) * 6.23);
     font-weight: 600;
@@ -128,7 +136,7 @@
     color: #000000;
   }
 
-  &__ceo-text {
+  &__current-bio {
     font-weight: 800;
     font-size: calc(var(--index) * 1.1);
     line-height: 96%;
