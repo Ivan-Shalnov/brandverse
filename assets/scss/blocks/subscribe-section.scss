@@ -1,0 +1,130 @@
+.subscribe-section {
+  padding: calc(var(--index) * 6.667) 0;
+  .container {
+    display: flex;
+  }
+  &__name {
+    width: 26%;
+    flex-shrink: 0;
+  }
+  &__content {
+    flex-grow: 1;
+  }
+  &__title {
+    font-weight: 800;
+    font-size: calc(var(--index) * 2.2);
+    line-height: 100%;
+    letter-spacing: -0.033em;
+    color: #000000;
+    margin-bottom: calc(var(--index) * 4);
+    div {
+      margin-bottom: -0.5%;
+    }
+  }
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: flex-end;
+  &__field {
+    margin-right: calc(var(--index) * 1.66);
+    flex-grow: 1;
+    margin-bottom: 0.25%;
+  }
+  &__input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-bottom: calc(var(--index) * 1);
+    background-color: transparent;
+    width: 100%;
+    font-family: 'RF Dewi';
+    font-style: normal;
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.1);
+    line-height: 94%;
+    letter-spacing: -0.033em;
+    color: #000000;
+    &::placeholder {
+      color: #000000;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__btn {
+    font-family: 'RF Dewi';
+    font-style: normal;
+    font-weight: 800;
+    font-size: calc(var(--index) * 4.33);
+    line-height: 94%;
+    letter-spacing: -0.033em;
+    color: #4f06c6;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: calc(var(--index) * 0.66);
+    display: block;
+    &::after {
+      content: attr(hover-text);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: block;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+      pointer-events: none;
+    }
+    &:hover {
+      .subscribe-form {
+        &__btn-title {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        &__btn-line {
+          &::after {
+            width: 0;
+            transition: 0.3s;
+          }
+          &::before {
+            width: calc(100% + 30px);
+            transition: 0.3s;
+            transition-delay: 0.1s;
+          }
+        }
+      }
+      &::after {
+        top: 0px;
+        opacity: 1;
+      }
+    }
+  }
+  &__btn-title {
+    display: block;
+    transition: 0.3s ease-in-out;
+    position: relative;
+  }
+  &__btn-line {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      border-bottom: solid calc(var(--index) * 0.33) $purpure;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -30px;
+      width: 0%;
+      border-bottom: solid calc(var(--index) * 0.33) $purpure;
+    }
+  }
+}
