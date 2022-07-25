@@ -1,6 +1,6 @@
 .discover {
-  padding-top: calc(var(--index) * 6.66);
-  padding-bottom: calc(var(--index) * 15.666);
+  padding-top: toIndex(200);
+  padding-bottom: toIndex(200);
   &--right-position {
     margin-left: auto;
   }

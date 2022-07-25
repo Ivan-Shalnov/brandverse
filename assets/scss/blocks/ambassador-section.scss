@@ -107,32 +107,98 @@
   line-height: 99%;
   letter-spacing: -0.033em;
 }
-.ambassador__buy-link {
-  font-weight: 800;
-  font-size: calc(var(--index) * 1.1);
-  line-height: 120%;
-  letter-spacing: -0.033em;
-
-  color: #c5fd64;
-}
-.ambassador__icon-union {
-  margin-left: calc(var(--index) * 3.73);
-  width: calc(var(--index) * 1.5);
-  height: calc(var(--index) * 1.5);
-  transform-origin: bottom right;
-  transition: ease-in 550ms;
-  .ambassador__buy-link:hover & {
-    transform-origin: bottom right;
-    transform: translate(calc(var(--index) * 0.45), calc(var(--index) * 0.45))
-      rotateX(180deg) rotateZ(90deg) perspective(700px);
-  }
-}
 
 .ambassador__buy-link-line {
   margin-top: calc(var(--index) * 0.18);
 }
 
 .ambassador {
+  &__buy-link {
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.1);
+    line-height: 120%;
+    letter-spacing: -0.033em;
+    color: #c5fd64;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: toIndex(15);
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: toIndex(5) solid $green;
+    }
+    svg {
+      width: calc(var(--index) * 1.5);
+      height: calc(var(--index) * 1.5);
+      stroke: $green;
+      transition: 0.4s;
+    }
+    .split {
+      display: flex;
+      span {
+        display: block;
+      }
+    }
+    &:hover {
+      svg {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      .split {
+        span {
+          animation: jumb 0.4s;
+          &:nth-child(1) {
+            animation-delay: 0s;
+          }
+          &:nth-child(2) {
+            animation-delay: 0.05s;
+          }
+          &:nth-child(3) {
+            animation-delay: 0.1s;
+          }
+          &:nth-child(4) {
+            animation-delay: 0.15s;
+          }
+          &:nth-child(5) {
+            animation-delay: 0.2s;
+          }
+          &:nth-child(6) {
+            animation-delay: 0.25s;
+          }
+          &:nth-child(7) {
+            animation-delay: 0.3s;
+          }
+          &:nth-child(8) {
+            animation-delay: 0.35s;
+          }
+          &:nth-child(9) {
+            animation-delay: 0.4s;
+          }
+          &:nth-child(10) {
+            animation-delay: 0.45s;
+          }
+          &:nth-child(11) {
+            animation-delay: 0.5s;
+          }
+          &:nth-child(12) {
+            animation-delay: 0.55s;
+          }
+          &:nth-child(13) {
+            animation-delay: 0.6s;
+          }
+          &:nth-child(14) {
+            animation-delay: 0.65s;
+          }
+        }
+      }
+    }
+  }
   &.active {
     .ambassador {
       &__line {

@@ -60,12 +60,6 @@ function playVideo() {
 
 $('.video-section__player').click(function () {
   playVideo();
-  $('html,body').animate(
-    {
-      scrollTop: $('.video-section__player').offset().top + 2,
-    },
-    'slow',
-  );
 });
 
 // iframe video from youtube end

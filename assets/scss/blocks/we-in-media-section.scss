@@ -66,33 +66,94 @@
     &--bgColorAccent {
       background: #c5fd64;
     }
+    &:hover {
+      .wim__card-more {
+        svg {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        .split {
+          span {
+            animation: jumb 0.4s;
+            &:nth-child(1) {
+              animation-delay: 0s;
+            }
+            &:nth-child(2) {
+              animation-delay: 0.1s;
+            }
+            &:nth-child(3) {
+              animation-delay: 0.2s;
+            }
+            &:nth-child(4) {
+              animation-delay: 0.3s;
+            }
+            &:nth-child(5) {
+              animation-delay: 0.4s;
+            }
+            &:nth-child(6) {
+              animation-delay: 0.5s;
+            }
+            &:nth-child(7) {
+              animation-delay: 0.6s;
+            }
+            &:nth-child(8) {
+              animation-delay: 0.7s;
+            }
+            &:nth-child(9) {
+              animation-delay: 0.8s;
+            }
+            &:nth-child(10) {
+              animation-delay: 0.9s;
+            }
+          }
+        }
+      }
+    }
   }
-  &__logo-wrap {
+  &__card-logo {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: calc(var(--index) * 2.8);
     height: calc(var(--index) * 7);
     width: calc(var(--index) * 7);
-  }
-  &__logo {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-  }
-  &__more-text {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  &__card-more {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-  }
-  &__icon-arrow {
-    display: inline-block;
-    margin-left: auto;
-    width: calc(var(--index) * 0.8);
-    height: calc(var(--index) * 0.8);
-  }
-  &__line {
-    margin-top: calc(var(--index) * 0.23);
-    height: calc(var(--index) * 0.067);
-    background: #000000;
+
+    padding-bottom: calc(var(--index) * 0.23);
+    position: relative;
+    overflow: hidden;
+    svg {
+      width: calc(var(--index) * 0.8);
+      height: calc(var(--index) * 0.8);
+      margin-left: auto;
+      transition: 0.4s;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: calc(var(--index) * 0.067);
+      background: #000000;
+    }
+    .split {
+      display: flex;
+      span {
+        display: block;
+      }
+    }
   }
 }
