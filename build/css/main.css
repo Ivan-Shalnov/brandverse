@@ -572,8 +572,7 @@ h5 {
       align-items: center;
   -ms-flex-pack: center;
       justify-content: center;
-  background: #5f1ecb;
-  transition: 0.4s ease-in; }
+  background: #5f1ecb; }
 
 .discover {
   padding-top: calc((1vw + 1vh) * (200 / 30));
@@ -1005,7 +1004,8 @@ h5 {
     background: #d5d9de;
     border-radius: calc(var(--index) * 0.33);
     overflow: hidden;
-    transition: ease-in-out 250ms; }
+    transition: ease-in-out 250ms;
+    cursor: pointer; }
   .team__member-card.active {
     -webkit-filter: brightness(85%);
             filter: brightness(85%); }
