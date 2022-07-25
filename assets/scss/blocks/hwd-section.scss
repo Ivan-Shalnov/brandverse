@@ -3,91 +3,102 @@
   padding-bottom: toIndex(130);
   position: relative;
   background: #000;
-  &__title-line {
+  &__line {
     margin-bottom: toIndex(17);
     height: toIndex(22);
     background-color: #fff;
+    margin-left: calc(var(--index) * -2);
+    margin-right: calc(var(--index) * -2);
   }
 
-  &__title {
-    // display: none;
+  &__marquee {
     margin-bottom: toIndex(337);
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: toIndex(433);
     line-height: 82%;
-
     letter-spacing: -0.052em;
-
+    white-space: nowrap;
     color: #ffffff;
+    img {
+      max-width: 100%;
+      padding: 0 toIndex(40) 0 toIndex(80);
+      height: 85%;
+    }
+    > div {
+      display: flex;
+    }
   }
-  &__barcode {
-    width: toIndex(833);
-    height: toIndex(303);
+  &__inner {
+    position: relative;
+    padding-left: 26%;
   }
-
   &__remark {
     position: absolute;
-    top: toIndex(816);
-    left: toIndex(47);
-    font-weight: 700;
-    font-size: toIndex(16);
-    line-height: 86%;
-
-    letter-spacing: -0.033em;
-
+    top: 2%;
+    left: 0;
     color: #ffffff;
   }
-  &__top-text {
-    width: toIndex(973);
-    margin-left: toIndex(660);
-  }
-  &__bottom-text {
-    margin-bottom: toIndex(212);
+  &__title {
+    margin-bottom: toIndex(200);
     position: relative;
-    margin-left: toIndex(506);
-    width: toIndex(996);
+    h2 {
+      font-weight: 800;
+      font-size: toIndex(133);
+      line-height: 1%;
+      letter-spacing: -0.033em;
+      color: #ffffff;
+      overflow: hidden;
+      span {
+        display: block;
+        line-height: 1;
+      }
+    }
   }
-
-  &__accent-text {
-    font-weight: 800;
-    font-size: toIndex(133);
-    line-height: 94%;
-
-    letter-spacing: -0.033em;
-
-    color: #ffffff;
+  &__title-top {
+    padding-left: toIndex(150);
+    position: relative;
+  }
+  &__title-bottom {
+    position: relative;
   }
   &__ampersand {
-    margin-top: toIndex(-125);
-    color: #c5fd64;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    span {
+      color: $green;
+    }
   }
   &__side-text {
     position: absolute;
-    top: toIndex(1626);
-    right: toIndex(60);
+    bottom: 0;
+    right: 0;
     font-size: toIndex(33);
     line-height: 96%;
-
     letter-spacing: -0.033em;
-
     color: #ffffff;
+    padding-bottom: toIndex(15);
   }
-  &__benefit {
-    margin-left: toIndex(506);
+  &__block {
     width: toIndex(777);
     position: relative;
   }
-  &__benefit-accent-text {
+  &__subtitle {
     margin-bottom: toIndex(78);
     width: toIndex(519);
     font-weight: 800;
     font-size: toIndex(57);
-    line-height: 96%;
-
+    line-height: 1;
     letter-spacing: -0.033em;
-
     color: #ffffff;
+    div {
+      overflow: hidden;
+      margin-bottom: -0.5%;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   &__box {
@@ -96,25 +107,21 @@
     right: 0;
     height: toIndex(9);
     width: toIndex(30);
+    background-color: #fff;
   }
 
-  &__benefit-line {
+  &__block-line {
     margin-bottom: toIndex(24);
     height: toIndex(7);
     background-color: #fff;
   }
-  &__benefit-text {
+  &__text {
     margin-left: auto;
     width: toIndex(262);
     font-weight: 900;
     font-size: toIndex(26);
     line-height: 94%;
-    /* or 24px */
-
     letter-spacing: -0.033em;
-
-    /* Белый */
-
     color: #ffffff;
   }
 }

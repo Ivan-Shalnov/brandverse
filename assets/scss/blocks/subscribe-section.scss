@@ -16,9 +16,13 @@
     line-height: 100%;
     letter-spacing: -0.033em;
     margin-bottom: calc(var(--index) * 4);
-    div {
+    span {
+      display: flex;
       margin-bottom: -0.5%;
     }
+  }
+  &__title-row {
+    display: flex;
   }
 }
 
@@ -69,7 +73,7 @@
     padding-bottom: calc(var(--index) * 0.66);
     display: block;
     &::after {
-      content: attr(hover-text);
+      content: attr(data-hover-text);
       position: absolute;
       top: 100%;
       left: 0;

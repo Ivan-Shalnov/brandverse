@@ -47,7 +47,7 @@
       position: relative;
     }
     &::after {
-      content: attr(link-hover);
+      content: attr(data-link-hover);
       position: absolute;
       top: 100%;
       left: 0;

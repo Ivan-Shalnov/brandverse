@@ -116,7 +116,7 @@ const contactsTl = gsap.timeline({
 contactsTl
   .addLabel('start')
   .staggerFrom(
-    '.contacts-section__title div span',
+    '.contacts-section__title .split span',
     0.8,
     { y: '100%', ease: Power2.easeInOut, yoyo: true },
     0.05,
