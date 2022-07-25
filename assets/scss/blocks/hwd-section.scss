@@ -1,0 +1,120 @@
+.hwd {
+  padding-top: toIndex(110);
+  padding-bottom: toIndex(130);
+  position: relative;
+  background: #000;
+  &__title-line {
+    margin-bottom: toIndex(17);
+    height: toIndex(22);
+    background-color: #fff;
+  }
+
+  &__title {
+    // display: none;
+    margin-bottom: toIndex(337);
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(433);
+    line-height: 82%;
+
+    letter-spacing: -0.052em;
+
+    color: #ffffff;
+  }
+  &__barcode {
+    width: toIndex(833);
+    height: toIndex(303);
+  }
+
+  &__remark {
+    position: absolute;
+    top: toIndex(816);
+    left: toIndex(47);
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+  &__top-text {
+    width: toIndex(973);
+    margin-left: toIndex(660);
+  }
+  &__bottom-text {
+    margin-bottom: toIndex(212);
+    position: relative;
+    margin-left: toIndex(506);
+    width: toIndex(996);
+  }
+
+  &__accent-text {
+    font-weight: 800;
+    font-size: toIndex(133);
+    line-height: 94%;
+
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+  &__ampersand {
+    margin-top: toIndex(-125);
+    color: #c5fd64;
+  }
+  &__side-text {
+    position: absolute;
+    top: toIndex(1626);
+    right: toIndex(60);
+    font-size: toIndex(33);
+    line-height: 96%;
+
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+  &__benefit {
+    margin-left: toIndex(506);
+    width: toIndex(777);
+    position: relative;
+  }
+  &__benefit-accent-text {
+    margin-bottom: toIndex(78);
+    width: toIndex(519);
+    font-weight: 800;
+    font-size: toIndex(57);
+    line-height: 96%;
+
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+
+  &__box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: toIndex(9);
+    width: toIndex(30);
+  }
+
+  &__benefit-line {
+    margin-bottom: toIndex(24);
+    height: toIndex(7);
+    background-color: #fff;
+  }
+  &__benefit-text {
+    margin-left: auto;
+    width: toIndex(262);
+    font-weight: 900;
+    font-size: toIndex(26);
+    line-height: 94%;
+    /* or 24px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+}
