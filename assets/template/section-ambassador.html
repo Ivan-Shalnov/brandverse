@@ -56,16 +56,3 @@
     </div>
   </div>
 </section>
-<script>
-  let parent = document.querySelector(
-    '.ambassador__sticky-block',
-  ).parentElement;
-
-  while (parent) {
-    const hasOverflow = getComputedStyle(parent).overflow;
-    if (hasOverflow !== 'visible') {
-      console.log(hasOverflow, parent);
-    }
-    parent = parent.parentElement;
-  }
-</script>
