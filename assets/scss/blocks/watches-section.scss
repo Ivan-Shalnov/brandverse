@@ -1,0 +1,50 @@
+.watches {
+  padding-top: toIndex(230);
+  padding-bottom: toIndex(230);
+  background: #000;
+  &__remark {
+    margin-bottom: toIndex(80);
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    /* identical to box height, or 14px */
+
+    letter-spacing: -0.033em;
+    text-align: center;
+
+    color: #ffffff;
+  }
+
+  &__watches {
+    z-index: 1;
+    margin: 0 auto;
+    width: toIndex(1052);
+    height: toIndex(1130);
+    position: relative;
+    background-image: url('../img/watches-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  &__circle {
+    width: toIndex(233);
+    height: toIndex(233);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(10%, -40%);
+  }
+  &__watches1 {
+    width: toIndex(929);
+    height: toIndex(1033);
+    position: absolute;
+    top: 2.92%;
+    transform: translateX(-38.1%);
+  }
+  &__watches2 {
+    width: toIndex(1033);
+    height: toIndex(1134);
+    position: absolute;
+    top: 35.39%;
+    transform: translateX(34.36%);
+  }
+}

@@ -744,6 +744,194 @@ h5 {
     letter-spacing: -0.033em;
     color: #ffffff; }
 
+.knw-more {
+  padding-top: calc((1vw + 1vh) * (240 / 30));
+  padding-bottom: calc((1vw + 1vh) * (230 / 30));
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  position: relative;
+  background-color: #000; }
+  .knw-more__remark {
+    position: absolute;
+    top: 0;
+    right: calc((1vw + 1vh) * (240 / 30));
+    -webkit-transform: rotate(-90deg) translateX(-50%);
+            transform: rotate(-90deg) translateX(-50%);
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    letter-spacing: -0.033em;
+    color: #333333; }
+  .knw-more__title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (233 / 30));
+    line-height: 82%;
+    /* or 191px */
+    letter-spacing: -0.033em;
+    color: #ffffff; }
+  .knw-more__link {
+    -ms-flex-item-align: end;
+        align-self: flex-end; }
+  .knw-more__link-subtitle {
+    margin-bottom: calc((1vw + 1vh) * (18 / 30));
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (33 / 30));
+    line-height: 96%;
+    text-align: right;
+    /* identical to box height, or 32px */
+    letter-spacing: -0.033em;
+    color: #4f06c6; }
+  .knw-more__link-title {
+    position: relative;
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (233 / 30));
+    line-height: 96%;
+    /* identical to box height, or 224px */
+    letter-spacing: -0.033em;
+    color: #4f06c6; }
+  .knw-more__link-line::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: calc((1vw + 1vh) * (25 / 30));
+    left: 0;
+    height: calc((1vw + 1vh) * (15 / 30));
+    width: 100%;
+    background: #4f06c6; }
+
+.watches {
+  padding-top: calc((1vw + 1vh) * (230 / 30));
+  padding-bottom: calc((1vw + 1vh) * (230 / 30));
+  background: #000; }
+  .watches__remark {
+    margin-bottom: calc((1vw + 1vh) * (80 / 30));
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    /* identical to box height, or 14px */
+    letter-spacing: -0.033em;
+    text-align: center;
+    color: #ffffff; }
+  .watches__watches {
+    z-index: 1;
+    margin: 0 auto;
+    width: calc((1vw + 1vh) * (1052 / 30));
+    height: calc((1vw + 1vh) * (1130 / 30));
+    position: relative;
+    background-image: url("../img/watches-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .watches__circle {
+    width: calc((1vw + 1vh) * (233 / 30));
+    height: calc((1vw + 1vh) * (233 / 30));
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transform: translate(10%, -40%);
+            transform: translate(10%, -40%); }
+  .watches__watches1 {
+    width: calc((1vw + 1vh) * (929 / 30));
+    height: calc((1vw + 1vh) * (1033 / 30));
+    position: absolute;
+    top: 2.92%;
+    -webkit-transform: translateX(-38.1%);
+            transform: translateX(-38.1%); }
+  .watches__watches2 {
+    width: calc((1vw + 1vh) * (1033 / 30));
+    height: calc((1vw + 1vh) * (1134 / 30));
+    position: absolute;
+    top: 35.39%;
+    -webkit-transform: translateX(34.36%);
+            transform: translateX(34.36%); }
+
+.watches-fact {
+  padding-top: calc((1vw + 1vh) * (150 / 30));
+  padding-bottom: calc((1vw + 1vh) * (150 / 30));
+  background-color: #000;
+  position: relative; }
+  .watches-fact__side-top-remark {
+    position: absolute;
+    top: 0;
+    right: calc((1vw + 1vh) * (250 / 30));
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    letter-spacing: -0.033em;
+    color: #333333;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); }
+  .watches-fact__title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (233 / 30));
+    line-height: 82%;
+    /* or 191px */
+    letter-spacing: -0.033em;
+    color: #ffffff; }
+  .watches-fact--color-green {
+    color: #c5fd64; }
+  .watches-fact__right-part {
+    margin-top: calc((1vw + 1vh) * (-191 / 30));
+    text-align: right; }
+  .watches-fact__subtext {
+    font-family: 'RF Dewi';
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (24 / 30));
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    /* Белый */
+    color: #ffffff; }
+  .watches-fact__video-pres {
+    position: relative;
+    margin-top: calc((1vw + 1vh) * (-125 / 30));
+    margin-left: auto;
+    margin-right: auto;
+    width: calc((1vw + 1vh) * (567 / 30));
+    height: calc((1vw + 1vh) * (567 / 30));
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    border-radius: 50%;
+    background: #4f06c6;
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    /* identical to box height, or 14px */
+    letter-spacing: -0.033em;
+    /* Белый */
+    color: #ffffff; }
+  .watches-fact__text {
+    margin-top: calc((1vw + 1vh) * (-105 / 30));
+    width: calc((1vw + 1vh) * (569 / 30));
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (61 / 30));
+    line-height: 94%;
+    /* or 58px */
+    letter-spacing: -0.033em;
+    /* Белый */
+    color: #ffffff; }
+  .watches-fact__side-bottom-remark {
+    position: absolute;
+    bottom: calc((1vw + 1vh) * (240 / 30));
+    right: calc((1vw + 1vh) * (250 / 30));
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    /* identical to box height, or 14px */
+    letter-spacing: -0.033em;
+    /* Белый */
+    opacity: 0.2;
+    color: #ffffff;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); }
+
 .line {
   height: calc(var(--index) * 0.3);
   background-color: #ffffff; }
