@@ -817,6 +817,7 @@ h5 {
     text-align: center;
     color: #ffffff; }
   .watches__watches {
+    z-index: 1;
     margin: 0 auto;
     width: calc((1vw + 1vh) * (1052 / 30));
     height: calc((1vw + 1vh) * (1130 / 30));
@@ -846,6 +847,90 @@ h5 {
     top: 35.39%;
     -webkit-transform: translateX(34.36%);
             transform: translateX(34.36%); }
+
+.watches-fact {
+  padding-top: calc((1vw + 1vh) * (150 / 30));
+  padding-bottom: calc((1vw + 1vh) * (150 / 30));
+  background-color: #000;
+  position: relative; }
+  .watches-fact__side-top-remark {
+    position: absolute;
+    top: 0;
+    right: calc((1vw + 1vh) * (250 / 30));
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    letter-spacing: -0.033em;
+    color: #333333;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); }
+  .watches-fact__title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (233 / 30));
+    line-height: 82%;
+    /* or 191px */
+    letter-spacing: -0.033em;
+    color: #ffffff; }
+  .watches-fact--color-green {
+    color: #c5fd64; }
+  .watches-fact__right-part {
+    margin-top: calc((1vw + 1vh) * (-191 / 30));
+    text-align: right; }
+  .watches-fact__subtext {
+    font-family: 'RF Dewi';
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (24 / 30));
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    /* Белый */
+    color: #ffffff; }
+  .watches-fact__video-pres {
+    position: relative;
+    margin-top: calc((1vw + 1vh) * (-125 / 30));
+    margin-left: auto;
+    margin-right: auto;
+    width: calc((1vw + 1vh) * (567 / 30));
+    height: calc((1vw + 1vh) * (567 / 30));
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    border-radius: 50%;
+    background: #4f06c6;
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    /* identical to box height, or 14px */
+    letter-spacing: -0.033em;
+    /* Белый */
+    color: #ffffff; }
+  .watches-fact__text {
+    margin-top: calc((1vw + 1vh) * (-105 / 30));
+    width: calc((1vw + 1vh) * (569 / 30));
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (61 / 30));
+    line-height: 94%;
+    /* or 58px */
+    letter-spacing: -0.033em;
+    /* Белый */
+    color: #ffffff; }
+  .watches-fact__side-bottom-remark {
+    position: absolute;
+    bottom: calc((1vw + 1vh) * (240 / 30));
+    right: calc((1vw + 1vh) * (250 / 30));
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    /* identical to box height, or 14px */
+    letter-spacing: -0.033em;
+    /* Белый */
+    opacity: 0.2;
+    color: #ffffff;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); }
 
 .line {
   height: calc(var(--index) * 0.3);

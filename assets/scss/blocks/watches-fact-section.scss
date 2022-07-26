@@ -1,0 +1,113 @@
+.watches-fact {
+  padding-top: toIndex(150);
+  padding-bottom: toIndex(150);
+  background-color: #000;
+  position: relative;
+
+  &__side-top-remark {
+    position: absolute;
+    top: 0;
+    right: toIndex(250);
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    letter-spacing: -0.033em;
+
+    color: #333333;
+
+    transform: rotate(-90deg);
+  }
+
+  &__title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(233);
+    line-height: 82%;
+    /* or 191px */
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+  &--color-green {
+    color: #c5fd64;
+  }
+  &__right-part {
+    margin-top: toIndex(-191);
+    text-align: right;
+  }
+
+  // .watches-fact__subtext
+
+  &__subtext {
+    font-family: 'RF Dewi';
+    font-weight: 800;
+    font-size: toIndex(24);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+  &__video-pres {
+    position: relative;
+    margin-top: toIndex(-125);
+    margin-left: auto;
+    margin-right: auto;
+    width: toIndex(567);
+    height: toIndex(567);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #4f06c6;
+
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    /* identical to box height, or 14px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+
+  // .watches-fact__text
+
+  &__text {
+    margin-top: toIndex(-105);
+    width: toIndex(569);
+    font-weight: 800;
+    font-size: toIndex(61);
+    line-height: 94%;
+    /* or 58px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+
+  // .watches-fact__side-bottom-remark
+
+  &__side-bottom-remark {
+    position: absolute;
+    bottom: toIndex(240);
+    right: toIndex(250);
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    /* identical to box height, or 14px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+    opacity: 0.2;
+    color: #ffffff;
+
+    transform: rotate(-90deg);
+  }
+}
