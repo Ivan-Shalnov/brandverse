@@ -803,6 +803,50 @@ h5 {
     width: 100%;
     background: #4f06c6; }
 
+.watches {
+  padding-top: calc((1vw + 1vh) * (230 / 30));
+  padding-bottom: calc((1vw + 1vh) * (230 / 30));
+  background: #000; }
+  .watches__remark {
+    margin-bottom: calc((1vw + 1vh) * (80 / 30));
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    /* identical to box height, or 14px */
+    letter-spacing: -0.033em;
+    text-align: center;
+    color: #ffffff; }
+  .watches__watches {
+    margin: 0 auto;
+    width: calc((1vw + 1vh) * (1052 / 30));
+    height: calc((1vw + 1vh) * (1130 / 30));
+    position: relative;
+    background-image: url("../img/watches-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .watches__circle {
+    width: calc((1vw + 1vh) * (233 / 30));
+    height: calc((1vw + 1vh) * (233 / 30));
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transform: translate(10%, -40%);
+            transform: translate(10%, -40%); }
+  .watches__watches1 {
+    width: calc((1vw + 1vh) * (929 / 30));
+    height: calc((1vw + 1vh) * (1033 / 30));
+    position: absolute;
+    top: 2.92%;
+    -webkit-transform: translateX(-38.1%);
+            transform: translateX(-38.1%); }
+  .watches__watches2 {
+    width: calc((1vw + 1vh) * (1033 / 30));
+    height: calc((1vw + 1vh) * (1134 / 30));
+    position: absolute;
+    top: 35.39%;
+    -webkit-transform: translateX(34.36%);
+            transform: translateX(34.36%); }
+
 .line {
   height: calc(var(--index) * 0.3);
   background-color: #ffffff; }
