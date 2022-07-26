@@ -1,0 +1,39 @@
+.community {
+  padding: toIndex(200) 0;
+  background-color: #fff;
+  &__marquee-top {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: toIndex(230);
+    line-height: 82%;
+    letter-spacing: -0.052em;
+    color: #000;
+    display: flex;
+    white-space: nowrap;
+    margin-bottom: toIndex(100);
+    img {
+      max-width: 100%;
+    }
+  }
+  &__marquee-bottom {
+    display: flex;
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: toIndex(230);
+    line-height: 82%;
+    letter-spacing: -0.052em;
+    color: #000;
+    white-space: nowrap;
+    img {
+      max-width: 100%;
+    }
+    > div {
+      display: flex;
+    }
+    .js-marquee {
+      align-items: center;
+    }
+  }
+}
