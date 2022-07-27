@@ -1,0 +1,76 @@
+.stay-updated {
+  padding-top: toIndex(630);
+  padding-bottom: toIndex(550);
+  background: #4f06c6;
+  &__inner-cont {
+    position: relative;
+  }
+  &__logo {
+    width: toIndex(514);
+    height: toIndex(386);
+    position: absolute;
+    top: toIndex(-255);
+    left: 77.5%;
+  }
+  &__title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(199);
+    line-height: 82%;
+    /* or 163px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+  &__subtitle-cont {
+    top: 19.94%;
+    right: 0;
+    width: 33%;
+    position: absolute;
+  }
+  &__subtitle {
+    font-weight: 800;
+    font-size: toIndex(18);
+    line-height: 96%;
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+  &__subtitle::after {
+    margin-top: toIndex(35);
+    content: '';
+    display: block;
+    width: 100%;
+    height: toIndex(4);
+    background: #ffffff;
+  }
+  &__text {
+    position: absolute;
+    top: 41.87%;
+    right: 0;
+    width: toIndex(305);
+    font-weight: 800;
+    font-size: toIndex(33);
+    line-height: 94%;
+    /* or 31px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+
+  &__join-link {
+    width: 33%;
+    position: absolute;
+    bottom: 4.9%;
+    right: 0;
+  }
+}

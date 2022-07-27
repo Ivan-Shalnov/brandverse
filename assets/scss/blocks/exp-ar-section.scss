@@ -1,0 +1,54 @@
+.exp-ar {
+  background-color: #000;
+  padding-top: toIndex(150);
+  padding-bottom: toIndex(315);
+  position: relative;
+  &__remark {
+    position: absolute;
+    top: toIndex(150);
+    left: toIndex(20);
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    /* or 14px */
+    letter-spacing: -0.033em;
+
+    color: #333333;
+  }
+  &__title {
+    position: relative;
+    margin-left: toIndex(530);
+    margin-bottom: toIndex(170);
+    font-weight: 800;
+    font-size: toIndex(133);
+    line-height: 94%;
+
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+
+  &__ampersand {
+    display: block;
+    text-align: right;
+  }
+  &__subtitle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: 800;
+    font-size: toIndex(22);
+    line-height: 96%;
+    /* or 21px */
+
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+  }
+  &__link {
+    width: toIndex(595);
+    margin-left: auto;
+  }
+}
