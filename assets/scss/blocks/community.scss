@@ -1,6 +1,5 @@
 .community {
   padding: toIndex(200) 0;
-  background-color: #e0e3e7;
   &__marquee-top {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -8,7 +7,6 @@
     font-size: toIndex(230);
     line-height: 82%;
     letter-spacing: -0.052em;
-    color: #000;
     display: flex;
     white-space: nowrap;
     margin-bottom: toIndex(100);
@@ -24,7 +22,7 @@
     font-size: toIndex(230);
     line-height: 82%;
     letter-spacing: -0.052em;
-    color: #000;
+
     white-space: nowrap;
     img {
       max-width: 100%;

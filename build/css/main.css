@@ -248,6 +248,33 @@ h5 {
     -webkit-transform: translateY(0px);
             transform: translateY(0px); } }
 
+.large-link {
+  font-family: 'Bebas Neue';
+  font-weight: 700;
+  font-size: calc((1vw + 1vh) * (200 / 30));
+  line-height: 1;
+  letter-spacing: -0.033em;
+  color: #4f06c6;
+  position: relative;
+  display: block; }
+  .large-link .split {
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden; }
+    .large-link .split:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0; }
+  .large-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: calc((1vw + 1vh) * (15 / 30));
+    background-color: #4f06c6; }
+
 @font-face {
   font-family: 'RF Dewi';
   src: url("../fonts/RFDewi-Semibold.woff2") format("woff2"), url("../fonts/RFDewi-Semibold.woff") format("woff");
@@ -387,7 +414,7 @@ h5 {
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 700;
-    font-size: calc(var(--index) * 5.53);
+    font-size: calc((1vw + 1vh) * (160 / 30));
     line-height: 1;
     letter-spacing: -0.033em;
     color: #000000;
@@ -468,7 +495,7 @@ h5 {
     display: flex;
     -ms-flex-direction: column;
         flex-direction: column;
-    width: calc(var(--index) * 13.333); }
+    width: calc((1vw + 1vh) * (400 / 30)); }
   .promo__content-text {
     font-weight: 700;
     font-size: calc(var(--index) * 0.6);
@@ -476,16 +503,17 @@ h5 {
     letter-spacing: -0.033em;
     color: #000000;
     padding-bottom: calc(var(--index) * 0.66);
-    border-bottom: 4px solid #000;
-    margin-bottom: calc(var(--index) * 2.33);
     position: relative; }
     .promo__content-text span {
       max-width: calc(var(--index) * 6.67);
       display: inline-block; }
+  .promo__content-line {
+    border-bottom: 4px solid #000;
+    margin-bottom: calc((1vw + 1vh) * (70 / 30)); }
   .promo__content-title {
     display: inline-block;
     margin-left: auto;
-    font-weight: 700;
+    font-weight: 800;
     font-size: calc(var(--index) * 1.1);
     line-height: 100%;
     letter-spacing: -0.033em;
@@ -521,7 +549,8 @@ h5 {
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; }
+      object-fit: cover;
+      border-radius: 20px; }
     .video-section__player iframe {
       position: absolute;
       top: 0;
@@ -583,87 +612,113 @@ h5 {
 .discover {
   padding-top: calc((1vw + 1vh) * (200 / 30));
   padding-bottom: calc((1vw + 1vh) * (200 / 30)); }
-  .discover--right-position {
-    margin-left: auto; }
-  .discover__right-col {
-    margin-bottom: calc(var(--index) * 4.833);
-    width: calc(var(--index) * 13.7); }
+  .discover__row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
+  .discover__col:last-child {
+    width: calc((1vw + 1vh) * (400 / 30));
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column; }
+  .discover__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (130 / 30));
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: #000000;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: -2%; }
+    .discover__title div:not(:last-child) {
+      margin-bottom: -4%; }
+    .discover__title h2 {
+      display: -ms-flexbox;
+      display: flex;
+      overflow: hidden; }
+      .discover__title h2 span {
+        display: block; }
+  .discover__title-col:first-child {
+    margin-right: 10%; }
+  .discover__top-line {
+    width: calc((1vw + 1vh) * (16 / 30));
+    height: 3px;
+    background-color: #000;
+    margin-left: auto;
+    margin-bottom: calc((1vw + 1vh) * (80 / 30)); }
   .discover__subtitle {
-    margin-bottom: calc(var(--index) * 2.333);
-    font-weight: 800;
+    font-weight: 700;
     font-size: calc(var(--index) * 0.6);
     line-height: 96%;
-    letter-spacing: -0.033em; }
+    letter-spacing: -0.033em;
+    color: #000000;
+    padding-bottom: calc(var(--index) * 0.66);
+    position: relative; }
+    .discover__subtitle p {
+      max-width: calc(var(--index) * 6.67);
+      display: inline-block; }
   .discover__line {
-    margin-top: calc(var(--index) * 0.633);
-    height: calc(var(--index) * 0.133);
-    background-color: #000; }
-  .discover__text-accent {
-    width: 50%;
-    margin-bottom: calc(var(--index) * 3.666);
-    font-weight: 800;
-    font-size: calc(var(--index) * 1.1);
-    line-height: 94%;
-    /* or 31px */
-    letter-spacing: -0.033em; }
+    border-bottom: 4px solid #000;
+    margin-bottom: calc(var(--index) * 2.33); }
   .discover__text {
-    width: 50%;
-    font-weight: 600;
-    font-size: calc(var(--index) * 0.8);
-    line-height: 120%;
-    /* or 29px */
-    letter-spacing: -0.033em;
-    color: #000000; }
-  .discover__know-more-cont {
-    width: calc(var(--index) * 22.57);
-    display: block; }
-  .discover__click-to {
-    margin-bottom: calc(var(--index) * 1.16);
+    display: inline-block;
+    margin-left: auto;
     font-weight: 800;
     font-size: calc(var(--index) * 1.1);
+    line-height: 100%;
+    letter-spacing: -0.033em;
+    color: #000000;
+    margin-bottom: calc((1vw + 1vh) * (110 / 30)); }
+    .discover__text div {
+      overflow: hidden;
+      margin-bottom: -1%; }
+      .discover__text div:last-child {
+        margin-bottom: 0; }
+  .discover__bottom-text {
+    max-width: calc((1vw + 1vh) * (200 / 30));
+    margin-bottom: calc((1vw + 1vh) * (150 / 30)); }
+  .discover__footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: end;
+        align-items: flex-end;
+    -ms-flex-direction: column;
+        flex-direction: column; }
+  .discover__footer-title {
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (33 / 30));
     line-height: 94%;
-    /* identical to box height, or 31px */
-    letter-spacing: -0.033em;
-    text-align: right;
-    /* Purple */
-    color: #4f06c6; }
-  .discover__know-more {
-    margin-bottom: calc(var(--index) * 0.56);
-    font-family: 'Bebas Neue';
-    font-weight: 700;
-    font-size: calc(var(--index) * 6.633);
-    line-height: 82%;
-    /* or 163px */
     letter-spacing: -0.033em;
     color: #4f06c6; }
-  .discover__know-more-line {
-    height: calc(var(--index) * 0.5);
-    background: #4f06c6; }
 
 .hwd {
   padding-top: calc((1vw + 1vh) * (110 / 30));
   padding-bottom: calc((1vw + 1vh) * (130 / 30));
-  position: relative;
-  background: #000; }
+  position: relative; }
+  .hwd.active .hwd__line {
+    background-color: #fff; }
   .hwd__line {
     margin-bottom: calc((1vw + 1vh) * (17 / 30));
     height: calc((1vw + 1vh) * (22 / 30));
-    background-color: #fff;
+    background-color: #000;
     margin-left: calc(var(--index) * -2);
-    margin-right: calc(var(--index) * -2); }
+    margin-right: calc(var(--index) * -2);
+    transition: 0.3s; }
   .hwd__marquee {
     margin-bottom: calc((1vw + 1vh) * (337 / 30));
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: calc((1vw + 1vh) * (433 / 30));
-    line-height: 82%;
+    line-height: 1;
     letter-spacing: -0.052em;
-    white-space: nowrap;
-    color: #ffffff; }
+    white-space: nowrap; }
     .hwd__marquee img {
-      max-width: 100%;
       padding: 0 calc((1vw + 1vh) * (40 / 30)) 0 calc((1vw + 1vh) * (80 / 30));
-      height: 85%; }
+      height: calc((1vw + 1vh) * (300 / 30)); }
     .hwd__marquee > div {
       display: -ms-flexbox;
       display: flex; }
@@ -673,8 +728,7 @@ h5 {
   .hwd__remark {
     position: absolute;
     top: 2%;
-    left: 0;
-    color: #ffffff; }
+    left: 0; }
   .hwd__title {
     margin-bottom: calc((1vw + 1vh) * (200 / 30));
     position: relative; }
@@ -683,7 +737,6 @@ h5 {
       font-size: calc((1vw + 1vh) * (133 / 30));
       line-height: 1%;
       letter-spacing: -0.033em;
-      color: #ffffff;
       overflow: hidden; }
       .hwd__title h2 span {
         display: block;
@@ -706,7 +759,6 @@ h5 {
     font-size: calc((1vw + 1vh) * (33 / 30));
     line-height: 96%;
     letter-spacing: -0.033em;
-    color: #ffffff;
     padding-bottom: calc((1vw + 1vh) * (15 / 30)); }
   .hwd__block {
     width: calc((1vw + 1vh) * (777 / 30));
@@ -717,8 +769,7 @@ h5 {
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (57 / 30));
     line-height: 1;
-    letter-spacing: -0.033em;
-    color: #ffffff; }
+    letter-spacing: -0.033em; }
     .hwd__subtitle div {
       overflow: hidden;
       margin-bottom: -0.5%; }
@@ -741,12 +792,11 @@ h5 {
     font-weight: 900;
     font-size: calc((1vw + 1vh) * (26 / 30));
     line-height: 94%;
-    letter-spacing: -0.033em;
-    color: #ffffff; }
+    letter-spacing: -0.033em; }
 
 .knw-more {
-  padding-top: calc((1vw + 1vh) * (240 / 30));
-  padding-bottom: calc((1vw + 1vh) * (230 / 30));
+  margin-top: calc((1vw + 1vh) * (200 / 30));
+  padding-bottom: calc((1vw + 1vh) * (200 / 30));
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
@@ -767,91 +817,89 @@ h5 {
   .knw-more__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: calc((1vw + 1vh) * (233 / 30));
-    line-height: 82%;
-    /* or 191px */
+    font-size: calc((1vw + 1vh) * (230 / 30));
+    line-height: 1;
     letter-spacing: -0.033em;
     color: #ffffff; }
-  .knw-more__link {
-    -ms-flex-item-align: end;
-        align-self: flex-end; }
-  .knw-more__link-subtitle {
-    margin-bottom: calc((1vw + 1vh) * (18 / 30));
+    .knw-more__title .split {
+      overflow: hidden;
+      display: -ms-flexbox;
+      display: flex; }
+      .knw-more__title .split:not(:last-child) {
+        margin-bottom: -2%; }
+  .knw-more__block {
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 2.5%; }
+  .knw-more__block-title {
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (33 / 30));
     line-height: 96%;
-    text-align: right;
-    /* identical to box height, or 32px */
     letter-spacing: -0.033em;
     color: #4f06c6; }
-  .knw-more__link-title {
-    position: relative;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
-    font-size: calc((1vw + 1vh) * (233 / 30));
-    line-height: 96%;
-    /* identical to box height, or 224px */
-    letter-spacing: -0.033em;
-    color: #4f06c6; }
-  .knw-more__link-line::after {
-    display: block;
-    content: '';
-    position: absolute;
-    bottom: calc((1vw + 1vh) * (25 / 30));
-    left: 0;
-    height: calc((1vw + 1vh) * (15 / 30));
-    width: 100%;
-    background: #4f06c6; }
 
 .watches {
-  padding-top: calc((1vw + 1vh) * (230 / 30));
-  padding-bottom: calc((1vw + 1vh) * (230 / 30));
-  background: #000; }
+  padding-top: calc((1vw + 1vh) * (200 / 30));
+  padding-bottom: calc((1vw + 1vh) * (200 / 30)); }
+  .watches .container {
+    position: relative; }
   .watches__remark {
     margin-bottom: calc((1vw + 1vh) * (80 / 30));
-    font-weight: 700;
-    font-size: calc((1vw + 1vh) * (16 / 30));
-    line-height: 86%;
-    /* identical to box height, or 14px */
-    letter-spacing: -0.033em;
-    text-align: center;
-    color: #ffffff; }
-  .watches__watches {
-    z-index: 1;
+    text-align: center; }
+  .watches__inner {
     margin: 0 auto;
-    width: calc((1vw + 1vh) * (1052 / 30));
-    height: calc((1vw + 1vh) * (1130 / 30));
+    max-width: calc((1vw + 1vh) * (1052 / 30));
+    width: 100%;
+    position: relative; }
+  .watches__main {
     position: relative;
-    background-image: url("../img/watches-bg.svg");
-    background-size: cover;
-    background-repeat: no-repeat; }
+    z-index: 1; }
+    .watches__main img {
+      display: block;
+      width: 100%; }
   .watches__circle {
+    position: absolute;
+    top: calc((1vw + 1vh) * (-120 / 30));
+    right: 0;
+    z-index: -1;
     width: calc((1vw + 1vh) * (233 / 30));
     height: calc((1vw + 1vh) * (233 / 30));
-    position: absolute;
-    top: 0;
-    right: 0;
-    -webkit-transform: translate(10%, -40%);
-            transform: translate(10%, -40%); }
+    -webkit-animation: rotate 55s linear infinite;
+            animation: rotate 55s linear infinite; }
   .watches__watches1 {
     width: calc((1vw + 1vh) * (929 / 30));
     height: calc((1vw + 1vh) * (1033 / 30));
     position: absolute;
     top: 2.92%;
-    -webkit-transform: translateX(-38.1%);
-            transform: translateX(-38.1%); }
+    left: 0;
+    z-index: 1; }
   .watches__watches2 {
     width: calc((1vw + 1vh) * (1033 / 30));
     height: calc((1vw + 1vh) * (1134 / 30));
     position: absolute;
     top: 35.39%;
-    -webkit-transform: translateX(34.36%);
-            transform: translateX(34.36%); }
+    right: 0;
+    z-index: 2; }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
 
 .watches-fact {
-  padding-top: calc((1vw + 1vh) * (150 / 30));
-  padding-bottom: calc((1vw + 1vh) * (150 / 30));
-  background-color: #000;
+  padding-top: calc((1vw + 1vh) * (200 / 30));
+  padding-bottom: calc((1vw + 1vh) * (200 / 30));
   position: relative; }
   .watches-fact__side-top-remark {
     position: absolute;
@@ -864,32 +912,48 @@ h5 {
     color: #333333;
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg); }
+  .watches-fact__row {
+    display: -ms-flexbox;
+    display: flex; }
   .watches-fact__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: calc((1vw + 1vh) * (233 / 30));
-    line-height: 82%;
-    /* or 191px */
+    font-size: calc((1vw + 1vh) * (140 / 30));
+    line-height: 1;
     letter-spacing: -0.033em;
     color: #ffffff; }
-  .watches-fact--color-green {
-    color: #c5fd64; }
-  .watches-fact__right-part {
-    margin-top: calc((1vw + 1vh) * (-191 / 30));
-    text-align: right; }
+    .watches-fact__title h2 {
+      overflow: hidden; }
+      .watches-fact__title h2:first-child {
+        color: #c5fd64; }
+      .watches-fact__title h2:not(:last-child) {
+        margin-bottom: -2%; }
+  .watches-fact__subtitle {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (140 / 30));
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    text-align: right;
+    margin-top: calc((1vw + 1vh) * (-200 / 30)); }
+    .watches-fact__subtitle h2 {
+      overflow: hidden; }
+      .watches-fact__subtitle h2:not(:last-child) {
+        margin-bottom: -2%; }
   .watches-fact__subtext {
     font-family: 'RF Dewi';
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (24 / 30));
     line-height: 96%;
     letter-spacing: -0.033em;
-    /* Белый */
-    color: #ffffff; }
-  .watches-fact__video-pres {
+    color: #ffffff;
+    text-align: right; }
+  .watches-fact__video-wrap {
     position: relative;
-    margin-top: calc((1vw + 1vh) * (-125 / 30));
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
     width: calc((1vw + 1vh) * (567 / 30));
     height: calc((1vw + 1vh) * (567 / 30));
     display: -ms-flexbox;
@@ -900,22 +964,14 @@ h5 {
         align-items: center;
     border-radius: 50%;
     background: #4f06c6;
-    font-weight: 700;
-    font-size: calc((1vw + 1vh) * (16 / 30));
-    line-height: 86%;
-    /* identical to box height, or 14px */
-    letter-spacing: -0.033em;
-    /* Белый */
-    color: #ffffff; }
+    margin-top: calc((1vw + 1vh) * (-150 / 30)); }
   .watches-fact__text {
     margin-top: calc((1vw + 1vh) * (-105 / 30));
     width: calc((1vw + 1vh) * (569 / 30));
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (61 / 30));
     line-height: 94%;
-    /* or 58px */
     letter-spacing: -0.033em;
-    /* Белый */
     color: #ffffff; }
   .watches-fact__side-bottom-remark {
     position: absolute;
@@ -933,7 +989,6 @@ h5 {
             transform: rotate(-90deg); }
 
 .exp-ar {
-  background-color: #000;
   padding-top: calc((1vw + 1vh) * (150 / 30));
   padding-bottom: calc((1vw + 1vh) * (315 / 30));
   position: relative; }
@@ -975,8 +1030,7 @@ h5 {
     margin-left: auto; }
 
 .community {
-  padding: calc((1vw + 1vh) * (200 / 30)) 0;
-  background-color: #e0e3e7; }
+  padding: calc((1vw + 1vh) * (200 / 30)) 0; }
   .community__marquee-top {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -984,7 +1038,6 @@ h5 {
     font-size: calc((1vw + 1vh) * (230 / 30));
     line-height: 82%;
     letter-spacing: -0.052em;
-    color: #000;
     display: -ms-flexbox;
     display: flex;
     white-space: nowrap;
@@ -1000,7 +1053,6 @@ h5 {
     font-size: calc((1vw + 1vh) * (230 / 30));
     line-height: 82%;
     letter-spacing: -0.052em;
-    color: #000;
     white-space: nowrap; }
     .community__marquee-bottom img {
       max-width: 100%; }
@@ -2038,36 +2090,6 @@ body {
 
 .wrapper {
   overflow: hidden; }
-
-.sections.color-grey {
-  background-color: #e0e3e7; }
-
-.sections.color-black {
-  background-color: #000; }
-
-.sections.color-white {
-  background-color: #fff; }
-
-.grey {
-  background-color: #e0e3e7; }
-
-.black {
-  background-color: #000; }
-
-.white {
-  background-color: #fff; }
-
-.lightCyan {
-  background-color: #dffdff; }
-
-.darkSkyBlue {
-  background-color: #90bede; }
-
-.aquamarine {
-  background-color: #68edc6; }
-
-.electricBlue {
-  background-color: #90f3ff; }
 
 body,
 html {

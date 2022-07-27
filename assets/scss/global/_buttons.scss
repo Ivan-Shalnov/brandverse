@@ -1,41 +1,29 @@
-
-.btn {
-  @include reset-button();
-  
-  background-color: $brand-color;
-  
-  text-align: center;
-  border-radius: 0;
-  color: #fff;
-
-  font-family: $font-family;
-  font-size: 16px;
+.large-link {
+  font-family: 'Bebas Neue';
   font-weight: 700;
-
-  line-height: 20px;
-
-  padding-top: 20px;
-  padding-bottom: 20px;
-  
-  transition: all 0.2s ease-in-out;
-  
-  &:hover {
-    background-color: lighten($brand-color, 5%);
-    box-shadow: none;
-
+  font-size: toIndex(200);
+  line-height: 1;
+  letter-spacing: -0.033em;
+  color: #4f06c6;
+  position: relative;
+  display: block;
+  .split {
+    display: flex;
+    overflow: hidden;
+    &:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
   }
-  
-  &:active {
-    transform: translateY(3px);
-    box-shadow: none;
-    background-color: darken($brand-color, 10%);
-  }
-  
-  &:active,
-  &:focus,
-  &:hover {
-    color: #fff;
-    text-decoration: none !important;
-    outline: none !important;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: toIndex(15);
+    background-color: $purpure;
   }
 }

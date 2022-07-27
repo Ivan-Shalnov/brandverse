@@ -1,6 +1,6 @@
 .knw-more {
-  padding-top: toIndex(240);
-  padding-bottom: toIndex(230);
+  margin-top: toIndex(200);
+  padding-bottom: toIndex(200);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -20,51 +20,28 @@
   &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndex(233);
-    line-height: 82%;
-    /* or 191px */
-
+    font-size: toIndex(230);
+    line-height: 1;
     letter-spacing: -0.033em;
-
     color: #ffffff;
+    .split {
+      overflow: hidden;
+      display: flex;
+      &:not(:last-child) {
+        margin-bottom: -2%;
+      }
+    }
   }
-
-  &__link {
-    align-self: flex-end;
+  &__block {
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 2.5%;
   }
-  &__link-subtitle {
-    margin-bottom: toIndex(18);
+  &__block-title {
     font-weight: 800;
     font-size: toIndex(33);
     line-height: 96%;
-    text-align: right;
-    /* identical to box height, or 32px */
-
     letter-spacing: -0.033em;
-
     color: #4f06c6;
-  }
-
-  &__link-title {
-    position: relative;
-    font-family: 'Bebas Neue';
-    font-weight: 700;
-    font-size: toIndex(233);
-    line-height: 96%;
-    /* identical to box height, or 224px */
-
-    letter-spacing: -0.033em;
-
-    color: #4f06c6;
-  }
-  &__link-line::after {
-    display: block;
-    content: '';
-    position: absolute;
-    bottom: toIndex(25);
-    left: 0;
-    height: toIndex(15);
-    width: 100%;
-    background: #4f06c6;
   }
 }
