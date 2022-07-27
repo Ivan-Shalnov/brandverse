@@ -1,6 +1,6 @@
 .community {
   padding: toIndex(200) 0;
-  background-color: #fff;
+  background-color: #e0e3e7;
   &__marquee-top {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -17,9 +17,9 @@
     }
   }
   &__marquee-bottom {
+    margin-bottom: toIndex(165);
     display: flex;
     font-family: 'Bebas Neue';
-    font-style: normal;
     font-weight: 400;
     font-size: toIndex(230);
     line-height: 82%;
@@ -35,5 +35,57 @@
     .js-marquee {
       align-items: center;
     }
+  }
+  &__cards-list {
+    display: flex;
+    justify-content: center;
+    gap: toIndex(30);
+  }
+  &__card {
+    padding: toIndex(110) toIndex(45) toIndex(220) toIndex(45);
+    width: toIndex(435);
+    position: relative;
+    background: #ffffff;
+    border-radius: toIndex(20);
+  }
+  &__card::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: toIndex(40);
+    right: toIndex(35);
+    width: toIndex(10);
+    height: toIndex(10);
+    border-radius: 50%;
+    background: #000000;
+  }
+  &__card::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: toIndex(50);
+    left: toIndex(45);
+    width: 15.25%;
+    height: toIndex(10);
+    border-radius: toIndex(5);
+    background: #c5fd64;
+  }
+  &__card-title {
+    margin-bottom: toIndex(40);
+    font-weight: 700;
+    font-size: toIndex(50);
+    line-height: 82%;
+    letter-spacing: -0.033em;
+
+    color: #000000;
+  }
+  &__card-text {
+    font-weight: 400;
+    font-size: toIndex(26);
+    line-height: 120%;
+
+    letter-spacing: -0.033em;
+
+    color: #000000;
   }
 }
