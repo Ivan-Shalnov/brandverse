@@ -16,7 +16,7 @@
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 700;
-    font-size: calc(var(--index) * 5.53);
+    font-size: toIndex(160);
     line-height: 1;
     letter-spacing: -0.033em;
     color: #000000;
@@ -101,7 +101,7 @@
     margin-bottom: auto;
     display: flex;
     flex-direction: column;
-    width: calc(var(--index) * 13.333);
+    width: toIndex(400);
   }
   &__content-text {
     font-weight: 700;
@@ -110,18 +110,21 @@
     letter-spacing: -0.033em;
     color: #000000;
     padding-bottom: calc(var(--index) * 0.66);
-    border-bottom: 4px solid #000;
-    margin-bottom: calc(var(--index) * 2.33);
+
     position: relative;
     span {
       max-width: calc(var(--index) * 6.67);
       display: inline-block;
     }
   }
+  &__content-line {
+    border-bottom: 4px solid #000;
+    margin-bottom: toIndex(70);
+  }
   &__content-title {
     display: inline-block;
     margin-left: auto;
-    font-weight: 700;
+    font-weight: 800;
     font-size: calc(var(--index) * 1.1);
     line-height: 100%;
     letter-spacing: -0.033em;

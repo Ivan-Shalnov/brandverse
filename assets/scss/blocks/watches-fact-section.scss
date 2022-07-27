@@ -1,9 +1,7 @@
 .watches-fact {
-  padding-top: toIndex(150);
-  padding-bottom: toIndex(150);
-  background-color: #000;
+  padding-top: toIndex(200);
+  padding-bottom: toIndex(200);
   position: relative;
-
   &__side-top-remark {
     position: absolute;
     top: 0;
@@ -12,48 +10,58 @@
     font-size: toIndex(16);
     line-height: 86%;
     letter-spacing: -0.033em;
-
     color: #333333;
-
     transform: rotate(-90deg);
   }
-
+  &__row {
+    display: flex;
+  }
   &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndex(233);
-    line-height: 82%;
-    /* or 191px */
+    font-size: toIndex(140);
+    line-height: 1;
     letter-spacing: -0.033em;
-
     color: #ffffff;
+    h2 {
+      overflow: hidden;
+      &:first-child {
+        color: $green;
+      }
+      &:not(:last-child) {
+        margin-bottom: -2%;
+      }
+    }
   }
-  &--color-green {
-    color: #c5fd64;
-  }
-  &__right-part {
-    margin-top: toIndex(-191);
+  &__subtitle {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(140);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: #ffffff;
     text-align: right;
+    margin-top: toIndex(-200);
+    h2 {
+      overflow: hidden;
+      &:not(:last-child) {
+        margin-bottom: -2%;
+      }
+    }
   }
-
-  // .watches-fact__subtext
-
   &__subtext {
     font-family: 'RF Dewi';
     font-weight: 800;
     font-size: toIndex(24);
     line-height: 96%;
     letter-spacing: -0.033em;
-
-    /* Белый */
-
     color: #ffffff;
+    text-align: right;
   }
-  &__video-pres {
+  &__video-wrap {
     position: relative;
-    margin-top: toIndex(-125);
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    flex-shrink: 0;
     width: toIndex(567);
     height: toIndex(567);
     display: flex;
@@ -61,17 +69,7 @@
     align-items: center;
     border-radius: 50%;
     background: #4f06c6;
-
-    font-weight: 700;
-    font-size: toIndex(16);
-    line-height: 86%;
-    /* identical to box height, or 14px */
-
-    letter-spacing: -0.033em;
-
-    /* Белый */
-
-    color: #ffffff;
+    margin-top: toIndex(-150);
   }
 
   // .watches-fact__text
@@ -82,12 +80,7 @@
     font-weight: 800;
     font-size: toIndex(61);
     line-height: 94%;
-    /* or 58px */
-
     letter-spacing: -0.033em;
-
-    /* Белый */
-
     color: #ffffff;
   }
 

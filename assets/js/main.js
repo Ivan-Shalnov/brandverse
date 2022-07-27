@@ -14,13 +14,6 @@ for (let i = 0; i < splitElements.length; i++) {
   spliting(splitElements[i]);
 }
 
-// const tl = TweenMax.staggerFrom(
-//   '.promo__title div span',
-//   0.8,
-//   { y: '100%', ease: Power2.easeInOut, yoyo: true },
-//   0.05,
-// );
-
 // iframe video from youtube start
 
 const tag = document.createElement('script');
@@ -116,6 +109,196 @@ ScrollTrigger.scrollerProxy('.scroller', {
     : 'fixed',
 });
 
+// promo animation start
+
+const promoTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.promo',
+    scroller: '.scroller',
+    start: 'top 100%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+promoTl
+  .addLabel('start', '+=1')
+  .staggerFrom(
+    '.promo__title .split span',
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+  )
+  .from(
+    '.promo__content-text',
+    0.4,
+    { opacity: 0, ease: Power2.easeInOut },
+    'start',
+  )
+  .from(
+    '.promo__content-line',
+    0.4,
+    { width: 0, ease: Power2.easeInOut },
+    'start',
+  )
+  .staggerFrom(
+    '.promo__content-title div p',
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+    'start',
+  )
+  .addLabel('startLink')
+  .from('.promo__link', 0.4, { scale: 0, ease: Power2.easeInOut }, 'start');
+
+// promo animation end
+
+// discover animation start
+const discoverTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.discover',
+    scroller: '.scroller',
+    start: 'top 100%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+discoverTl
+  .staggerFrom(
+    '.discover__title .split span',
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+  )
+  .addLabel('start', '-=1.4')
+  .from(
+    '.discover__top-line',
+    0.4,
+    { width: 0, ease: Power2.easeInOut },
+    'start',
+  )
+  .from(
+    '.discover__subtitle',
+    0.4,
+    { opacity: 0, ease: Power2.easeInOut },
+    'start',
+  )
+  .from('.discover__line', 0.4, { width: 0, ease: Power2.easeInOut }, 'start')
+  .addLabel('footer', '-=0.6')
+  .staggerFrom(
+    '.discover__text div p',
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+    'start',
+  )
+  .from(
+    '.discover__bottom-text',
+    0.4,
+    {
+      y: 10,
+      opacity: 0,
+      ease: Power2.easeInOut,
+    },
+    'footer',
+  )
+  .from(
+    '.discover__footer',
+    0.4,
+    { opacity: 0, ease: Power2.easeInOut },
+    'footer',
+  );
+// discover animation end
+
+// hwd animation start
+
+const hwdTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.hwd__title',
+    scroller: '.scroller',
+    start: 'top 80%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+hwdTl.staggerFrom(
+  '.hwd__title h2 span',
+  0.8,
+  { y: '100%', ease: Power2.easeInOut, yoyo: true },
+  0.05,
+);
+
+const hwdContentTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.hwd__block',
+    scroller: '.scroller',
+    start: 'top 80%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+hwdContentTl
+  .addLabel('start')
+  .from('.hwd__box', 0.4, { width: 0, ease: Power2.easeInOut }, 'start')
+  .staggerFrom(
+    '.hwd__subtitle div p',
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+    'start',
+  )
+  .from('.hwd__block-line', 0.4, { width: 0, ease: Power2.easeInOut }, 'start')
+  .from(
+    '.hwd__text',
+    0.4,
+    { y: 10, opacity: 0, ease: Power2.easeInOut },
+    '-=0.4',
+  );
+
+// hwd animation end
+
+// knw more animation start
+const knwMoretTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.knw-more',
+    scroller: '.scroller',
+    start: 'top 100%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+knwMoretTl.staggerFrom(
+  '.knw-more__title .split span',
+  0.8,
+  { y: '100%', ease: Power2.easeInOut, yoyo: true },
+  0.01,
+);
+// knw more animation end
+
+// watches facts animation start
+const watchesFacttTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.knw-more',
+    scroller: '.scroller',
+    start: 'top 100%',
+    end: 'bottom bottom',
+    toggleActions: 'play none none reset',
+  },
+});
+
+watchesFacttTl.staggerFrom(
+  '.knw-more__title .split span',
+  0.8,
+  { y: '100%', ease: Power2.easeInOut, yoyo: true },
+  0.01,
+);
+// watches facts animation end
+
+// contacs animation start
 const contactsTl = gsap.timeline({
   scrollTrigger: {
     trigger: '.contacts-section',
@@ -143,6 +326,8 @@ contactsTl
     'start',
   )
   .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
+
+// contacs animation end
 
 ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
 ScrollTrigger.refresh();
