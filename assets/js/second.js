@@ -133,7 +133,7 @@ const metaVerseTl = gsap.timeline({
   scrollTrigger: {
     trigger: '.metaverse',
     scroller: '.scroller',
-    start: 'top 10%',
+    start: '15% top',
     end: 'bottom bottom',
     toggleActions: 'play none none reset',
   },
