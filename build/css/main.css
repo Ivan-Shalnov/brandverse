@@ -2179,6 +2179,8 @@ h5 {
   .wrng-meta__cards-list {
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: start;
+        align-items: flex-start;
     position: relative; }
   .wrng-meta__card {
     padding: calc((1vw + 1vh) * (95 / 30)) calc((1vw + 1vh) * (50 / 30));

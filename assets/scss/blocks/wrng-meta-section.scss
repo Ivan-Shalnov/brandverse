@@ -58,6 +58,7 @@
 
   &__cards-list {
     display: flex;
+    align-items: flex-start;
     position: relative;
   }
   &__card {
