@@ -38,7 +38,7 @@ ScrollTrigger.scrollerProxy('.scroller', {
     : 'fixed',
 });
 
-////////////////////////////////////
+// CHANGE COLORS FOR SLIDE SECTION
 window.addEventListener('load', function () {
   let pinBoxes = document.querySelectorAll('.slide__wrap > div');
   let pinWrap = document.querySelector('.slide__wrap');
@@ -47,49 +47,48 @@ window.addEventListener('load', function () {
 
   // Pinning and horizontal scrolling
 
-  gsap.to('.slide__wrap', {
+  const slideScrollAnim = gsap.to('.slide__wrap', {
     scrollTrigger: {
       scroller: '.scroller',
       scrub: true,
       trigger: '.slide',
       pin: true,
-      // anticipatePin: 1,
       start: 'top top',
       end: pinWrapWidth,
-    },
-    onUpdate: () => {
-      pinBoxes.forEach(el => {
-        if (ScrollTrigger.isInViewport(el, 0.51, true)) {
-          console.log('changebg to ', el.dataset.slidebgcolor);
-          gsap.to('body', {
-            backgroundColor: el.dataset.slidebgcolor,
-            color: el.dataset.slidecolor,
-            overwrite: 'auto',
-          });
-        }
-      });
     },
     x: -horizontalScrollLength,
     ease: 'none',
   });
-  // ScrollTrigger.create({
-  //   trigger: '.reduce',
-  //   scroller: '.scroller',
-  //   horizontal: true,
-  //   start: 'left left',
-  //   onEnter: () =>
-  //     gsap.to('body', {
-  //       backgroundColor: 'red',
-  //       overwrite: 'auto',
-  //     }),
-  //   onLeaveBack: () =>
-  //     gsap.to('body', {
-  //       backgroundColor: 'blue',
-  //       overwrite: 'auto',
-  //     }),
-  // });
-  ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
+  pinBoxes.forEach((colorSection, i) => {
+    const prevBg = i === 0 ? '' : pinBoxes[i - 1].dataset.slidebgcolor;
+    const prevText = i === 0 ? '' : pinBoxes[i - 1].dataset.slidecolor;
 
+    ScrollTrigger.create({
+      containerAnimation: slideScrollAnim,
+      horizontal: true,
+      trigger: colorSection,
+      start: 'left center',
+      end: 'right center',
+      onEnter: () => {
+        gsap.to('body', {
+          backgroundColor: colorSection.dataset.slidebgcolor,
+          color: colorSection.dataset.slidecolor,
+          overwrite: 'auto',
+        });
+        const slideLineRef = colorSection.querySelector('.slide__line');
+        if (slideLineRef) {
+          gsap.to(slideLineRef, 0.4, { width: '5.5%', ease: Power2.easeInOut });
+        }
+      },
+      onLeaveBack: () =>
+        gsap.to('body', {
+          backgroundColor: prevBg,
+          color: prevText,
+          overwrite: 'auto',
+        }),
+    });
+  });
+  ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
   ScrollTrigger.refresh();
 });
 
@@ -128,6 +127,7 @@ promoSecondTl
     { opacity: 0, ease: Power2.easeInOut },
     '>',
   );
+
 //METAVERSE ANIM START
 const metaVerseTl = gsap.timeline({
   scrollTrigger: {
@@ -180,7 +180,8 @@ metaVerseTextTl
   .from('.metaverse__text', 0.4, { opacity: 0, ease: Power2.easeInOut }, '>');
 //METAVERSE ANIM END
 
-//WHATS WRONG WITH META ANIMATION START
+//WHATS WRONG WITH META ANIM
+
 const wrngMetaTl = gsap.timeline({
   scrollTrigger: {
     trigger: '.wrng-meta',
@@ -190,7 +191,6 @@ const wrngMetaTl = gsap.timeline({
     toggleActions: 'play none none reset',
   },
 });
-
 wrngMetaTl
   .addLabel('start', '+=1')
   .staggerFrom(
@@ -207,12 +207,9 @@ wrngMetaTl
     0.05,
     '>',
   );
-// WHATS WRONG WITH META ANIM END
+// WHATS WRONG WITH META ANIM
 
 //BG COLOR CHANGE
-ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-ScrollTrigger.refresh();
-
 window.addEventListener('load', function () {
   const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
   scrollColorElems.forEach((colorSection, i) => {

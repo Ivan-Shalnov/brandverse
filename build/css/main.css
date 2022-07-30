@@ -2242,14 +2242,12 @@ h5 {
   .slide__slide {
     padding-top: calc((1vw + 1vh) * (110 / 30));
     min-width: 100vw; }
-  .slide__slide::after {
-    width: calc((1vw + 1vh) * (99 / 30));
+  .slide__line {
+    width: 0;
     height: calc((1vw + 1vh) * (7 / 30));
-    display: block;
     position: absolute;
     bottom: calc((1vw + 1vh) * (110 / 30));
-    background-color: black;
-    content: ''; }
+    background-color: currentColor; }
   .slide__title {
     margin-bottom: calc((1vw + 1vh) * (75 / 30));
     font-weight: 800;

@@ -15,14 +15,12 @@
     padding-top: toIndex(110);
     min-width: 100vw;
   }
-  &__slide::after {
-    width: toIndex(99);
+  &__line {
+    width: 0;
     height: toIndex(7);
-    display: block;
     position: absolute;
     bottom: toIndex(110);
-    background-color: black;
-    content: '';
+    background-color: currentColor;
   }
   &__title {
     margin-bottom: toIndex(75);
