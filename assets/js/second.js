@@ -57,7 +57,18 @@ window.addEventListener('load', function () {
       start: 'top top',
       end: pinWrapWidth,
     },
-    // snap: 0.25,
+    onUpdate: () => {
+      pinBoxes.forEach(el => {
+        if (ScrollTrigger.isInViewport(el, 0.51, true)) {
+          console.log('changebg to ', el.dataset.slidebgcolor);
+          gsap.to('body', {
+            backgroundColor: el.dataset.slidebgcolor,
+            color: el.dataset.slidecolor,
+            overwrite: 'auto',
+          });
+        }
+      });
+    },
     x: -horizontalScrollLength,
     ease: 'none',
   });

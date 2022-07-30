@@ -2231,7 +2231,7 @@ h5 {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   min-height: 100vh;
-  overflow: hidden; }
+  overflow-x: hidden; }
   .slide__wrap {
     min-height: 100vh;
     display: -ms-flexbox;
@@ -2302,16 +2302,14 @@ h5 {
 
 .reduce {
   min-width: 100vw;
-  position: relative;
-  background: #4f06c6; }
+  position: relative; }
   .reduce__title {
     position: absolute;
     bottom: calc((1vw + 1vh) * (90 / 30));
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (333 / 30));
     line-height: 90%;
-    letter-spacing: -0.05em;
-    color: #ffffff; }
+    letter-spacing: -0.05em; }
 
 .footer {
   padding: calc((1vw + 1vh) * (60 / 30)) 0;
