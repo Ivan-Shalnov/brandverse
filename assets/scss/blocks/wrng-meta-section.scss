@@ -1,0 +1,117 @@
+.wrng-meta {
+  padding: toIndex(220) 0;
+  &__header {
+    margin-bottom: toIndex(170);
+    position: relative;
+  }
+
+  &__subtitle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    letter-spacing: -0.033em;
+  }
+
+  &__top-title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(260);
+    line-height: 1;
+    /* or 218px */
+
+    letter-spacing: -0.033em;
+    & > .split {
+      display: flex;
+      overflow-y: hidden;
+    }
+    & > .split.last-row {
+      display: inline-flex;
+    }
+    & > span {
+      margin-bottom: toIndex(-46.8);
+    }
+  }
+  &__icon-b {
+    margin-left: toIndex(15);
+    width: toIndex(182);
+    height: toIndex(182);
+  }
+  &__bottom-title {
+    margin-left: auto;
+
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(260);
+    line-height: 1;
+    /* or 218px */
+    letter-spacing: -0.033em;
+    & > .split {
+      padding-right: 8.0555%;
+      display: flex;
+      justify-content: flex-end;
+      overflow-y: hidden;
+    }
+  }
+
+  &__cards-list {
+    display: flex;
+    position: relative;
+  }
+  &__card {
+    padding: toIndex(95) toIndex(50);
+    width: toIndex(430);
+    position: relative;
+    background: #ffffff;
+    border-radius: toIndex(19);
+    &::before {
+      width: toIndex(19);
+      height: toIndex(19);
+      content: '';
+      display: block;
+      position: absolute;
+      top: toIndex(35);
+      right: toIndex(35);
+      background-image: url('../img/cross-icon.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    &:nth-child(1) {
+      bottom: toIndex(155);
+      margin-right: 8.61%;
+    }
+    &:nth-child(3) {
+      bottom: toIndex(350);
+      margin-left: auto;
+    }
+  }
+
+  &__card-title {
+    margin-bottom: toIndex(210);
+    font-weight: 800;
+    font-size: toIndex(46);
+    line-height: 90%;
+
+    letter-spacing: -0.033em;
+  }
+  &__card-text {
+    margin-left: auto;
+    width: 45%;
+    font-weight: 400;
+    font-size: toIndex(26);
+    line-height: 120%;
+    /* or 31px */
+
+    letter-spacing: -0.033em;
+    &::before {
+      margin-bottom: toIndex(25);
+      content: '';
+      display: block;
+      width: toIndex(33);
+      height: toIndex(2);
+      background: #a7adb3;
+    }
+  }
+}

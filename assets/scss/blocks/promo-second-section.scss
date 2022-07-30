@@ -1,0 +1,73 @@
+.promo-second {
+  padding-top: toIndex(245);
+  padding-bottom: toIndex(120);
+  &--color-purple {
+    color: #4f06c6;
+  }
+  &__top-title-cont {
+    position: relative;
+    & > .promo-second__subtitle {
+      position: absolute;
+      transform: rotate(-90deg) translate(-50%, 100%);
+      top: 0;
+      right: 0;
+    }
+  }
+  &__subtitle {
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    letter-spacing: -0.033em;
+  }
+
+  &__top-title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(189);
+    line-height: 1;
+
+    letter-spacing: -0.033em;
+    & > span {
+      display: flex;
+      overflow-y: hidden;
+      margin-bottom: -2%;
+    }
+    & > span:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom-title-cont {
+    margin-top: toIndex(-190);
+    margin-bottom: toIndex(30);
+    position: relative;
+    & > .promo-second__subtitle {
+      position: absolute;
+      bottom: toIndex(36);
+      left: 0;
+    }
+  }
+  &__bottom-title {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(189);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    & > span {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: -2%;
+      overflow-y: hidden;
+    }
+    & > span:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__text {
+    font-weight: 800;
+    font-size: toIndex(33);
+    line-height: 94%;
+    text-align: right;
+    letter-spacing: -0.033em;
+  }
+}

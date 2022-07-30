@@ -1,0 +1,116 @@
+.metaverse {
+  padding-top: toIndex(60);
+  padding-bottom: toIndex(460);
+
+  overflow: hidden;
+  &__line {
+    margin-bottom: toIndex(305);
+    height: toIndex(33);
+    background: #c5fd64;
+  }
+  &__marquee {
+    margin-bottom: toIndex(332);
+    min-height: toIndex(433);
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: toIndex(433);
+    line-height: 1;
+    letter-spacing: -0.052em;
+    white-space: nowrap;
+    color: #c5fd64;
+  }
+
+  &__worth-text {
+    margin-bottom: toIndex(28);
+    font-weight: 800;
+    font-size: toIndex(66);
+    line-height: 1;
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+    & > .split {
+      display: flex;
+      overflow: hidden;
+    }
+  }
+  &__report-text {
+    font-weight: 800;
+    font-size: toIndex(66);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    opacity: 0.16;
+    color: #ffffff;
+    & > .split {
+      display: flex;
+      overflow: hidden;
+    }
+  }
+  &__img-wrap {
+    margin: 0 auto;
+    margin-bottom: toIndex(155);
+    position: relative;
+    width: 93.28%;
+  }
+
+  &__img-text {
+    position: absolute;
+    top: 4%;
+    right: 0;
+    width: 14.41%;
+    font-weight: 800;
+    font-size: toIndex(33);
+    line-height: 82%;
+    /* or 27px */
+
+    letter-spacing: -0.033em;
+
+    color: #c5fd64;
+    &:before {
+      display: block;
+      margin-bottom: toIndex(50);
+      content: '';
+      width: 13.63%;
+      height: toIndex(8);
+      background: #c5fd64;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &__text-cont {
+    text-align: center;
+  }
+  &__text {
+    margin-bottom: toIndex(55);
+    font-weight: 800;
+    font-size: toIndex(33);
+    line-height: 1;
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+  }
+
+  &__acccent-text {
+    font-weight: 800;
+    font-size: toIndex(133);
+    // line-height: 1;
+    letter-spacing: -0.033em;
+
+    /* Белый */
+
+    color: #ffffff;
+    & > .split:not(:last-child) {
+      margin-bottom: toIndex(-1.33);
+    }
+    & > .split {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+  }
+}
