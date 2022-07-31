@@ -210,3 +210,36 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .partners-section {
+    &__list-item {
+      width: 320px;
+      padding: 0 10px;
+    }
+  }
+  .partner-card {
+    padding: 0 30px 40px 30px;
+    &__img {
+      height: 180px;
+      img {
+        max-width: 45%;
+        max-height: 45%;
+      }
+    }
+    &__title {
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+    &__text {
+      font-size: 17px;
+      &:first-of-type {
+        margin-bottom: 50px;
+      }
+    }
+    &__subtitle {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+}

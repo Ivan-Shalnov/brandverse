@@ -138,3 +138,32 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .watches-fact {
+    padding-bottom: toIndex(300);
+    &__title {
+      font-size: 20vw;
+    }
+    &__subtitle {
+      font-size: 20vw;
+      margin-top: 0;
+    }
+    &__subtext {
+      font-size: 24px;
+    }
+    &__video-wrap {
+      margin: 80px 0;
+      width: 140%;
+      padding-bottom: 140%;
+      left: -20%;
+    }
+    &__side-bottom-remark {
+      display: none;
+    }
+    &__text {
+      font-size: 10vw;
+      width: 100%;
+    }
+  }
+}

@@ -251,3 +251,65 @@
     }
   }
 }
+
+@media (min-width: 768px) {
+  .team {
+    &__title {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .team {
+    &__remark {
+      display: none;
+    }
+    &__title {
+      font-family: 'Bebas Neue';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24vw;
+      line-height: 82%;
+      letter-spacing: -0.033em;
+      color: #000000;
+      margin-bottom: 40px;
+    }
+    &__member-card {
+      width: 300px;
+      padding: 30px 40px 50px 30px;
+    }
+    &__member-position {
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+    &__member-foto {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+    &__member-name {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    &__member-lastname {
+      font-size: 70px;
+    }
+    &__member-mail {
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+    &__member-bio {
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+    &__social-item {
+      width: 26px;
+      height: 26px;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -65,5 +65,25 @@
     &__title {
       font-size: toIndex(260);
     }
+    &__remark {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .knw-more {
+    padding-top: toIndex(200);
+    padding-bottom: 150px;
+    &__title {
+      font-size: 21vw;
+      margin-bottom: 50px;
+    }
+    &__block-title {
+      font-size: 22px;
+    }
+    &__link {
+      font-size: 30vw;
+    }
   }
 }

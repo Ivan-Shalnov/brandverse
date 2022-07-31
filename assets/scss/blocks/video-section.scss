@@ -104,3 +104,20 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .video-section {
+    padding: toIndex(400) 0 toIndex(200);
+    &__inner {
+      border-radius: 10px;
+    }
+    &__player {
+      &::after {
+        border-radius: 10px;
+      }
+      video {
+        border-radius: 10px;
+      }
+    }
+  }
+}

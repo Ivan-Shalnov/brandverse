@@ -127,13 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
       start: 'top 50%',
       toggleClass: 'active',
       onEnter: () =>
-        gsap.to('body', {
+        gsap.to('.scroller', {
           backgroundColor: colorSection.dataset.bgcolor,
           color: colorSection.dataset.textcolor,
           overwrite: 'auto',
         }),
       onLeaveBack: () =>
-        gsap.to('body', {
+        gsap.to('.scroller', {
           backgroundColor: prevBg,
           color: prevText,
           overwrite: 'auto',
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 100%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 100%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 80%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 80%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 70%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 70%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 100%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 
@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: '.scroller',
       start: 'top 100%',
       end: 'bottom bottom',
-      toggleActions: 'play none none reset',
+      toggleActions: 'play none none reverse',
     },
   });
 

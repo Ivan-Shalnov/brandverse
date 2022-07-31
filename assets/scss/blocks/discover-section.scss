@@ -147,3 +147,41 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .discover {
+    padding-bottom: toIndex(400);
+    &__title {
+      display: block;
+      font-size: 16vw;
+      margin-bottom: 45px;
+    }
+    &__title-col {
+      width: 100%;
+      &:first-child {
+        h2 {
+          padding-left: toIndex(200);
+        }
+      }
+    }
+    &__col {
+      &:last-child {
+        width: 100%;
+      }
+    }
+    &__text {
+      font-size: 33px;
+      margin-bottom: 70px;
+    }
+    &__bottom-text {
+      margin-left: auto;
+      max-width: 191px;
+    }
+    &__footer-title {
+      font-size: 22px;
+    }
+    &__link {
+      font-size: 26.5vw;
+    }
+  }
+}

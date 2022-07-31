@@ -193,3 +193,37 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .wim {
+    &__title-cont {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    &__title {
+      font-size: 25vw;
+      line-height: 82%;
+    }
+    &__remark {
+      position: absolute;
+      bottom: 4px;
+      right: 0;
+    }
+    &__card {
+      width: 300px;
+      height: 340px;
+      padding: 30px;
+    }
+    &__card-more {
+      font-size: 17px;
+      padding-bottom: 10px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      &::after {
+        height: 2px;
+      }
+    }
+  }
+}

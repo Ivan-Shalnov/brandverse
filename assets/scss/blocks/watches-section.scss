@@ -68,3 +68,15 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .watches {
+    padding-bottom: toIndex(400);
+    &__watches1 {
+      left: -25%;
+    }
+    &__watches2 {
+      right: -19%;
+    }
+  }
+}

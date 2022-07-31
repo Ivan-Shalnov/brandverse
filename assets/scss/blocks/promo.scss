@@ -47,43 +47,43 @@
     top: calc(var(--index) * 0.5);
     left: 0;
   }
-  &__circle {
-    width: calc(var(--index) * 21);
-    height: calc(var(--index) * 21);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      @supports (-webkit-touch-callout: none) {
-        filter: contrast(96%);
-      }
-      @media not all and (min-resolution: 0.001dpcm) {
-        @supports (-webkit-appearance: none) {
-          filter: contrast(96%);
-        }
-      }
-    }
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(22px);
-      border-radius: 50%;
-      opacity: 0.9;
-    }
-  }
+  // &__circle {
+  //   width: calc(var(--index) * 21);
+  //   height: calc(var(--index) * 21);
+  //   border-radius: 50%;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   video {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     object-fit: cover;
+  //     border-radius: 50%;
+  //     @supports (-webkit-touch-callout: none) {
+  //       filter: contrast(96%);
+  //     }
+  //     @media not all and (min-resolution: 0.001dpcm) {
+  //       @supports (-webkit-appearance: none) {
+  //         filter: contrast(96%);
+  //       }
+  //     }
+  //   }
+  //   &::before {
+  //     content: '';
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     backdrop-filter: blur(22px);
+  //     border-radius: 50%;
+  //     opacity: 0.9;
+  //   }
+  // }
   &__link {
     display: flex;
     width: calc(var(--index) * 4.56);
@@ -157,14 +157,33 @@
   .promo {
     &__subtitle {
       font-size: 16px;
+      top: 16px;
     }
   }
 }
 
 @media (max-width: 767px) {
   .promo {
+    padding-top: 39vh;
     .row {
       display: block;
+    }
+    &__title {
+      font-size: 22vw;
+      margin-bottom: 50px;
+    }
+    &__content {
+      width: 100%;
+    }
+    &__content-text {
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    &__content-title {
+      font-size: 33px;
+    }
+    &__link {
+      display: none;
     }
   }
 }

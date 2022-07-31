@@ -96,3 +96,21 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .exp-ar {
+    padding-bottom: toIndex(400);
+    &__remark {
+      display: none;
+    }
+    &__title {
+      text-align: right;
+      font-size: 15vw;
+      margin-bottom: 25px;
+    }
+    &__subtitle {
+      font-size: 22px;
+      margin-bottom: 50px;
+    }
+  }
+}

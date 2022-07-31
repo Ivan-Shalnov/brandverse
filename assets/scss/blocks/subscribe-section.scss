@@ -145,6 +145,7 @@
     display: block;
     &__field {
       margin-bottom: toIndex(100);
+      margin-right: 0;
     }
     &__input {
       font-size: 33px;
@@ -152,6 +153,22 @@
     &__btn {
       width: 100%;
       font-size: 19vw;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .subscribe-section {
+    &__title {
+      margin-bottom: 140px;
+    }
+  }
+  .subscribe-form {
+    &__field {
+      margin-bottom: 50px;
+    }
+    &__input {
+      font-size: 20px;
     }
   }
 }
