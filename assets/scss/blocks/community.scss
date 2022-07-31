@@ -1,47 +1,71 @@
 .community {
-  padding: toIndex(200) 0;
-  &__marquee-top {
-    font-family: 'Bebas Neue';
-    font-style: normal;
-    font-weight: 400;
-    font-size: toIndex(230);
-    line-height: 82%;
-    letter-spacing: -0.052em;
-    display: flex;
-    white-space: nowrap;
-    margin-bottom: toIndex(100);
-    margin-left: -10%;
-    img {
-      max-width: 100%;
+  padding: toIndex(200) 0 0;
+  &.active {
+    .community {
+      &__marquee-top {
+        .black {
+          fill: #000;
+        }
+        .black-stroke {
+          stroke: #000;
+        }
+      }
+      &__marquee-bottom {
+        .black {
+          fill: #000;
+        }
+      }
     }
   }
-  &__marquee-bottom {
-    margin-bottom: toIndex(165);
-    display: flex;
-    font-family: 'Bebas Neue';
-    font-weight: 400;
-    font-size: toIndex(230);
-    line-height: 82%;
-    letter-spacing: -0.052em;
-    margin-right: -10%;
-    white-space: nowrap;
-    img {
-      max-width: 100%;
+  &__marquee-top {
+    height: toIndex(208);
+    svg {
+      max-height: 100%;
+      width: auto;
+    }
+    .black {
+      fill: #fff;
+      transition: 0.3s;
+    }
+    .black-stroke {
+      stroke: #fff;
+      transition: 0.3s;
     }
     > div {
       display: flex;
+      height: 100%;
     }
     .js-marquee {
-      align-items: center;
+      height: 100%;
+    }
+  }
+  &__marquee-bottom {
+    height: toIndex(196);
+    svg {
+      max-height: 100%;
+      width: auto;
+    }
+    .black {
+      fill: #fff;
+      transition: 0.3s;
+    }
+    > div {
+      display: flex;
+      height: 100%;
+    }
+    .js-marquee {
+      height: 100%;
     }
   }
   &__cards-list {
     display: flex;
-    justify-content: center;
-    gap: toIndex(30);
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: toIndex(80);
+    position: relative;
   }
   &__card {
-    padding: toIndex(110) toIndex(45) toIndex(220) toIndex(45);
+    padding: toIndex(110) toIndex(45) toIndex(220) toIndex(20);
     width: toIndex(435);
     position: relative;
     background: #ffffff;
@@ -82,9 +106,49 @@
     font-weight: 400;
     font-size: toIndex(26);
     line-height: 120%;
-
     letter-spacing: -0.033em;
-
     color: #000000;
+    max-width: toIndex(260);
+  }
+}
+
+@media (min-width: 1220px) {
+  .community {
+    &__card {
+      &:nth-child(2) {
+        margin-right: auto;
+        bottom: toIndex(-100);
+      }
+      &:nth-child(1) {
+        bottom: toindex(300);
+      }
+      &:nth-child(3) {
+        bottom: toIndex(200);
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .community {
+    &__cards-list {
+      display: block;
+      margin-top: toIndex(-160);
+    }
+    &__card {
+      width: 430px;
+      height: 620px;
+      padding: toIndex(160) toIndex(80);
+      margin-left: auto;
+      margin-bottom: toIndex(60);
+    }
+    &__card-title {
+      font-size: toIndex(80);
+      margin-bottom: toIndex(60);
+    }
+    &__card-text {
+      font-size: toIndex(40);
+      max-width: 70%;
+    }
   }
 }

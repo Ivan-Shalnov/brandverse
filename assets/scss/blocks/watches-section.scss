@@ -57,3 +57,14 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1199px) {
+  .watches {
+    &__watches1 {
+      left: -14%;
+    }
+    &__watches2 {
+      right: -6%;
+    }
+  }
+}

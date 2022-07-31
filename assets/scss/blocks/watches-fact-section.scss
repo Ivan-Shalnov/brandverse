@@ -19,34 +19,25 @@
   &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndex(140);
-    line-height: 1;
+    font-size: toIndex(200);
+    line-height: 82%;
     letter-spacing: -0.033em;
-    color: #ffffff;
-    h2 {
-      overflow: hidden;
-      &:first-child {
-        color: $green;
-      }
-      &:not(:last-child) {
-        margin-bottom: -2%;
-      }
+    span {
+      color: $green;
+      display: block;
     }
   }
   &__subtitle {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndex(140);
-    line-height: 1;
+    font-size: toIndex(200);
+    line-height: 82%;
     letter-spacing: -0.033em;
-    color: #ffffff;
     text-align: right;
-    margin-top: toIndex(-200);
-    h2 {
-      overflow: hidden;
-      &:not(:last-child) {
-        margin-bottom: -2%;
-      }
+    margin-top: toIndex(-160);
+    margin-bottom: toIndex(40);
+    span {
+      display: block;
     }
   }
   &__subtext {
@@ -55,7 +46,6 @@
     font-size: toIndex(24);
     line-height: 96%;
     letter-spacing: -0.033em;
-    color: #ffffff;
     text-align: right;
   }
   &__video-wrap {
@@ -81,7 +71,6 @@
     font-size: toIndex(61);
     line-height: 94%;
     letter-spacing: -0.033em;
-    color: #ffffff;
   }
 
   // .watches-fact__side-bottom-remark
@@ -99,8 +88,53 @@
 
     /* Белый */
     opacity: 0.2;
-    color: #ffffff;
 
     transform: rotate(-90deg);
+  }
+}
+
+// @media (max-width: 1299px) {
+//   .watches-fact {
+//     &__title {
+//       font-size: toIndex(180);
+//     }
+//     &__subtitle {
+//       font-size: toIndex(180);
+//       margin-top: toIndex(-140);
+//     }
+//   }
+// }
+
+@media (max-width: 1199px) {
+  .watches-fact {
+    &__title {
+      max-width: 70%;
+      font-size: toIndex(220);
+    }
+    &__subtitle {
+      font-size: toIndex(220);
+      margin-top: toIndex(-180);
+    }
+    &__subtext {
+      max-width: 220px;
+      margin-left: auto;
+      font-size: toIndex(30);
+    }
+    &__video-wrap {
+      margin-top: toIndex(100);
+      width: 70%;
+      height: 0;
+      padding-bottom: 70%;
+      margin-bottom: toIndex(80);
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &__text {
+      margin-top: 0;
+    }
   }
 }

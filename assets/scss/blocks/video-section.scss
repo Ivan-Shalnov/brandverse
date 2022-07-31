@@ -26,6 +26,7 @@
       height: 100%;
       object-fit: cover;
       border-radius: 20px;
+      pointer-events: none;
     }
     iframe {
       position: absolute;
@@ -38,6 +39,7 @@
       z-index: 1;
       opacity: 0;
       transition: 0.3s ease-in;
+      pointer-events: none;
     }
     &.active {
       width: 100vw;
@@ -93,4 +95,12 @@
   transition: 0.2s ease-in-out;
 
   // transition: top 0.5s , left 0.5s;
+}
+
+@media (max-width: 1199px) {
+  .video-section {
+    &__inner {
+      padding-top: 60%;
+    }
+  }
 }

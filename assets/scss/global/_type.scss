@@ -6,3 +6,9 @@ h5 {
   line-height: 86%;
   letter-spacing: -0.033em;
 }
+
+@media (max-width: 1299px) {
+  h5 {
+    font-size: 16px;
+  }
+}

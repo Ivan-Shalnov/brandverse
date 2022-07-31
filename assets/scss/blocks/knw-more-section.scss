@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  background-color: #000;
   &__remark {
     position: absolute;
     top: 0;
@@ -23,7 +22,6 @@
     font-size: toIndex(230);
     line-height: 1;
     letter-spacing: -0.033em;
-    color: #ffffff;
     .split {
       overflow: hidden;
       display: flex;
@@ -43,5 +41,29 @@
     line-height: 96%;
     letter-spacing: -0.033em;
     color: #4f06c6;
+  }
+}
+
+@media (max-width: 1299px) {
+  .knw-more {
+    flex-direction: column;
+    &__remark {
+      right: 10%;
+    }
+    &__title {
+      margin-bottom: toIndex(80);
+      font-size: toIndex(300);
+    }
+    &__block {
+      margin-left: auto;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .knw-more {
+    &__title {
+      font-size: toIndex(260);
+    }
   }
 }

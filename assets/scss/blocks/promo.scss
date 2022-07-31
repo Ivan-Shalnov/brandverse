@@ -138,3 +138,25 @@
     }
   }
 }
+
+@media (max-width: 1299px) {
+  .promo {
+    &__content-text {
+      font-size: 16px;
+      span {
+        max-width: 170px;
+      }
+    }
+    &__content-title {
+      font-size: 26px;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .promo {
+    &__subtitle {
+      font-size: 16px;
+    }
+  }
+}
