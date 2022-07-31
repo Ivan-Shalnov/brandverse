@@ -69,3 +69,11 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .header {
+    .socials {
+      display: none;
+    }
+  }
+}

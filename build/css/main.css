@@ -436,6 +436,10 @@ h5 {
       top: 0px;
       opacity: 1; }
 
+@media (max-width: 767px) {
+  .header .socials {
+    display: none; } }
+
 .promo {
   min-height: 100vh;
   padding: calc(var(--index) * 2) 0;
@@ -576,6 +580,10 @@ h5 {
 @media (max-width: 1199px) {
   .promo__subtitle {
     font-size: 16px; } }
+
+@media (max-width: 767px) {
+  .promo .row {
+    display: block; } }
 
 .video-section {
   position: relative;
@@ -3042,8 +3050,10 @@ body {
   line-height: 1.2;
   font-size: 16px;
   min-width: 320px;
-  background-color: #e0e3e7;
-  transition: background-color 0.3s, color transition 0.3s; }
+  background-color: #e0e3e7; }
+  @media (min-width: 768px) {
+    body {
+      transition: background-color 0.3s, color transition 0.3s; } }
 
 .wrapper {
   overflow: hidden; }
