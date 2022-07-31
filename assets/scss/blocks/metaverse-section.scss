@@ -2,15 +2,16 @@
   padding-top: toIndex(60);
   padding-bottom: toIndex(460);
 
-  overflow: hidden;
+  overflow-x: hidden;
+  &__header {
+    margin-bottom: toIndex(332);
+  }
   &__line {
     margin-bottom: toIndex(305);
     height: toIndex(33);
     background: #c5fd64;
   }
-  &__marquee {
-    margin-bottom: toIndex(332);
-    min-height: toIndex(433);
+  &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: toIndex(433);
@@ -19,6 +20,10 @@
     white-space: nowrap;
     color: #c5fd64;
   }
+  // &__title-wrap {
+  //   // display: flex;
+  //   // position: relative;
+  // }
 
   &__worth-text {
     margin-bottom: toIndex(28);

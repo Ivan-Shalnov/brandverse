@@ -37,60 +37,7 @@ ScrollTrigger.scrollerProxy('.scroller', {
     ? 'transform'
     : 'fixed',
 });
-
-// CHANGE COLORS FOR SLIDE SECTION
-window.addEventListener('load', function () {
-  let pinBoxes = document.querySelectorAll('.slide__wrap > div');
-  let pinWrap = document.querySelector('.slide__wrap');
-  let pinWrapWidth = pinWrap.offsetWidth;
-  let horizontalScrollLength = pinWrapWidth - window.innerWidth;
-
-  // Pinning and horizontal scrolling
-
-  const slideScrollAnim = gsap.to('.slide__wrap', {
-    scrollTrigger: {
-      scroller: '.scroller',
-      scrub: true,
-      trigger: '.slide',
-      pin: true,
-      start: 'top top',
-      end: pinWrapWidth,
-    },
-    x: -horizontalScrollLength,
-    ease: 'none',
-  });
-  pinBoxes.forEach((colorSection, i) => {
-    const prevBg = i === 0 ? '' : pinBoxes[i - 1].dataset.slidebgcolor;
-    const prevText = i === 0 ? '' : pinBoxes[i - 1].dataset.slidecolor;
-
-    ScrollTrigger.create({
-      containerAnimation: slideScrollAnim,
-      horizontal: true,
-      trigger: colorSection,
-      start: 'left center',
-      end: 'right center',
-      onEnter: () => {
-        gsap.to('body', {
-          backgroundColor: colorSection.dataset.slidebgcolor,
-          color: colorSection.dataset.slidecolor,
-          overwrite: 'auto',
-        });
-        const slideLineRef = colorSection.querySelector('.slide__line');
-        if (slideLineRef) {
-          gsap.to(slideLineRef, 0.4, { width: '5.5%', ease: Power2.easeInOut });
-        }
-      },
-      onLeaveBack: () =>
-        gsap.to('body', {
-          backgroundColor: prevBg,
-          color: prevText,
-          overwrite: 'auto',
-        }),
-    });
-  });
-  ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
-  ScrollTrigger.refresh();
-});
+ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
 
 ////////////////////
 
@@ -129,13 +76,38 @@ promoSecondTl
   );
 
 //METAVERSE ANIM START
+let headerScrollLength;
+window.addEventListener('load', function () {
+  const titleWrapEl = document.querySelector('.metaverse__title-wrap');
+  const containerEL = document.querySelector('.container');
+  const containerPadding =
+    parseFloat(window.getComputedStyle(containerEL)['padding-left']) * 3;
+  headerScrollLength =
+    titleWrapEl.scrollWidth + containerPadding - window.innerWidth;
+  gsap.to(titleWrapEl, {
+    x: -headerScrollLength,
+    ease: 'none',
+    scrollTrigger: {
+      scroller: '.scroller',
+      trigger: '.metaverse__header',
+      start: 'top 5%',
+      pin: true,
+      scrub: 1,
+      end: '+=' + headerScrollLength,
+      refreshPriority: 1,
+    },
+  });
+  ScrollTrigger.refresh();
+});
+
 const metaVerseTl = gsap.timeline({
   scrollTrigger: {
-    trigger: '.metaverse',
+    trigger: '.metaverse__worth-text',
     scroller: '.scroller',
-    start: '15% top',
+    start: 'top center',
     end: 'bottom bottom',
-    toggleActions: 'play none none reset',
+    toggleActions: 'play none none reverse',
+    // markers: { startColor: 'green', endColor: 'red', fontSize: '12px' },
   },
 });
 
@@ -209,6 +181,63 @@ wrngMetaTl
   );
 // WHATS WRONG WITH META ANIM
 
+// SLIDE SECTION ANIM
+
+// CHANGE COLORS FOR SLIDE SECTION
+window.addEventListener('load', function () {
+  let pinBoxes = document.querySelectorAll('.slide__wrap > div');
+  let pinWrap = document.querySelector('.slide__wrap');
+  let pinWrapWidth = pinWrap.offsetWidth;
+  let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+
+  // Pinning and horizontal scrolling
+
+  const slideScrollAnim = gsap.to('.slide__wrap', {
+    scrollTrigger: {
+      scroller: '.scroller',
+      scrub: true,
+      trigger: '.slide',
+      pin: true,
+      start: 'top top',
+      end: '+=' + pinWrapWidth,
+    },
+    x: -horizontalScrollLength,
+    ease: 'none',
+  });
+  // COLORS CHANGE
+  pinBoxes.forEach((colorSection, i) => {
+    const prevBg = i === 0 ? '' : pinBoxes[i - 1].dataset.slidebgcolor;
+    const prevText = i === 0 ? '' : pinBoxes[i - 1].dataset.slidecolor;
+
+    ScrollTrigger.create({
+      containerAnimation: slideScrollAnim,
+      horizontal: true,
+      trigger: colorSection,
+      start: 'left center',
+      end: 'right center',
+      onEnter: () => {
+        gsap.to('body', {
+          backgroundColor: colorSection.dataset.slidebgcolor,
+          color: colorSection.dataset.slidecolor,
+          overwrite: 'auto',
+        });
+        const slideLineRef = colorSection.querySelector('.slide__line');
+        if (slideLineRef) {
+          gsap.to(slideLineRef, 0.4, { width: '5.5%', ease: Power2.easeInOut });
+        }
+      },
+      onLeaveBack: () =>
+        gsap.to('body', {
+          backgroundColor: prevBg,
+          color: prevText,
+          overwrite: 'auto',
+        }),
+    });
+  });
+  ScrollTrigger.refresh();
+});
+// SLIDE SECTION ANIM
+
 //BG COLOR CHANGE
 window.addEventListener('load', function () {
   const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
@@ -235,18 +264,4 @@ window.addEventListener('load', function () {
         }),
     });
   });
-});
-
-//RUNNING TEXT
-$('.marquee').marquee({
-  //speed in milliseconds of the marquee
-  duration: 10000,
-  //gap in pixels between the tickers
-  gap: 20,
-  //time in milliseconds before the marquee will start animating
-  delayBeforeStart: 0,
-  //'left' or 'right'
-  direction: 'left',
-  //true or false - should the marquee be duplicated to show an effect of continues flow
-  duplicated: true,
 });
