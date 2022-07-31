@@ -1,0 +1,103 @@
+.slide {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  overflow-x: hidden;
+  &__wrap {
+    min-height: 100vh;
+    display: flex;
+  }
+  &__wrap > div {
+    position: relative;
+    min-height: 100vh;
+  }
+  &__slide {
+    padding-top: toIndex(110);
+    min-width: 100vw;
+  }
+  &__line {
+    width: 0;
+    height: toIndex(7);
+    position: absolute;
+    bottom: toIndex(110);
+    background-color: currentColor;
+  }
+  &__title {
+    margin-bottom: toIndex(75);
+    font-weight: 800;
+    font-size: toIndex(133);
+    line-height: 90%;
+
+    letter-spacing: -0.05em;
+    & > span {
+      display: block;
+    }
+    & > span:not(:last-child) {
+      margin-bottom: toIndex(-13);
+    }
+  }
+  &__text {
+    font-weight: 800;
+    font-size: toIndex(22);
+    line-height: 90%;
+
+    letter-spacing: -0.05em;
+  }
+}
+.solution {
+  min-width: 100vw;
+  position: relative;
+  padding-top: toIndex(90);
+  padding-bottom: toIndex(90);
+  &__line {
+    margin-bottom: toIndex(35);
+    height: toIndex(1);
+    background: #a9b5be;
+  }
+  &__row {
+    // margin-bottom: toIndex(500);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__first-text {
+    font-weight: 900;
+    font-size: toIndex(20);
+    line-height: 90%;
+
+    letter-spacing: -0.05em;
+  }
+
+  &__second-text {
+    font-weight: 600;
+    font-size: toIndex(50);
+    line-height: 1;
+    text-align: right;
+    & > span:not(:last-child) {
+      margin-bottom: -0.27%;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: toIndex(90);
+    font-weight: 800;
+    font-size: toIndex(333);
+    line-height: 90%;
+
+    letter-spacing: -0.05em;
+  }
+}
+.reduce {
+  min-width: 100vw;
+  position: relative;
+  &__title {
+    position: absolute;
+    bottom: toIndex(90);
+    font-weight: 800;
+    font-size: toIndex(333);
+    line-height: 90%;
+
+    letter-spacing: -0.05em;
+  }
+}

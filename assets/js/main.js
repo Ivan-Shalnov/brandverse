@@ -256,7 +256,6 @@ hwdContentTl
     0.4,
     { y: 10, opacity: 0, ease: Power2.easeInOut },
     0.05,
-    '-=0.4',
   );
 
 // hwd animation end
