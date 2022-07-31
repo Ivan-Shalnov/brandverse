@@ -421,30 +421,20 @@ function onYouTubeIframeAPIReady() {
     height: '1920',
     width: '1080',
     videoId: 'hVN3cc4ZWpg',
+    events: {
+      onStateChange: onPlayerStateChange,
+    },
   });
 }
 
-function onPlayerReady(event) {
-  event.target.playVideo();
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PAUSED) {
+    playerContainer.classList.toggle('active');
+  }
 }
 
-function stopVideo() {
-  player.pauseVideo();
-  playerContainer.classList.toggle('active');
-}
-
-function startPlay() {
+playerContainer.addEventListener('click', function () {
   player.playVideo();
   playerContainer.classList.toggle('active');
-}
-
-var playerState = false;
-playerContainer.addEventListener('click', function () {
-  playerState = !playerState;
-  if (playerState) {
-    startPlay();
-  } else {
-    stopVideo();
-  }
 });
 // iframe video from youtube end
