@@ -10,6 +10,17 @@
   @return $resValue;
 }
 
+.spinner-wrapper {
+  background-color: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @import 'global/reboot';
 @import 'global/type';
 @import 'global/grid';
@@ -61,14 +72,26 @@ body {
   font-size: 16px;
   min-width: 320px;
   background-color: #e0e3e7;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color transition 0.3s;
 }
 
 .wrapper {
   overflow: hidden;
 }
 
-body,
-html {
+.has-scroll-smooth {
   overflow: hidden;
+  body {
+    overflow: hidden;
+  }
+}
+
+// html,
+// body {
+//   overflow: hidden;
+// }
+
+.scroller {
+  overflow-y: auto;
+  overflow-x: hidden;
 }

@@ -27,3 +27,9 @@
     background-color: $purpure;
   }
 }
+
+@media (max-width: 1299px) {
+  .large-link {
+    font-size: 20vw;
+  }
+}

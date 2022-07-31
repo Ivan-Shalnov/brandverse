@@ -42,6 +42,10 @@
   letter-spacing: -0.033em;
 
   color: #c5fd64;
+  .split {
+    display: flex;
+    overflow: hidden;
+  }
 }
 .ambassador__title div:not(:last-child) {
   margin-bottom: -4%;

@@ -1,7 +1,7 @@
 .stay-updated {
+  margin-top: toIndex(-200);
   padding-top: toIndex(630);
   padding-bottom: toIndex(550);
-  background: #4f06c6;
   &__inner-cont {
     position: relative;
   }
@@ -17,13 +17,7 @@
     font-weight: 700;
     font-size: toIndex(199);
     line-height: 82%;
-    /* or 163px */
-
     letter-spacing: -0.033em;
-
-    /* Белый */
-
-    color: #ffffff;
   }
   &__subtitle-cont {
     top: 19.94%;
@@ -35,12 +29,7 @@
     font-weight: 800;
     font-size: toIndex(18);
     line-height: 96%;
-
     letter-spacing: -0.033em;
-
-    /* Белый */
-
-    color: #ffffff;
   }
   &__subtitle::after {
     margin-top: toIndex(35);
@@ -58,13 +47,8 @@
     font-weight: 800;
     font-size: toIndex(33);
     line-height: 94%;
-    /* or 31px */
 
     letter-spacing: -0.033em;
-
-    /* Белый */
-
-    color: #ffffff;
   }
 
   &__join-link {
@@ -72,5 +56,40 @@
     position: absolute;
     bottom: 4.9%;
     right: 0;
+  }
+}
+
+@media (max-width: 1299px) {
+  .stay-updated {
+    &__title {
+      font-size: toIndex(165);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .stay-updated {
+    &__title {
+      margin-bottom: toIndex(80);
+    }
+    &__subtitle-cont {
+      position: relative;
+      top: 0;
+      right: 0;
+      width: 100%;
+    }
+    &__subtitle {
+      font-size: 16px;
+    }
+    &__text {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+    &__join-link {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
   }
 }

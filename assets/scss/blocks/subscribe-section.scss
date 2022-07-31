@@ -18,11 +18,11 @@
     margin-bottom: calc(var(--index) * 4);
     span {
       display: flex;
-      margin-bottom: -0.5%;
     }
   }
   &__title-row {
     display: flex;
+    overflow: hidden;
   }
 }
 
