@@ -274,23 +274,6 @@ h5 {
   color: #4f06c6;
   position: relative;
   display: block; }
-  .large-link .split {
-    display: -ms-flexbox;
-    display: flex;
-    overflow: hidden; }
-    .large-link .split:last-child {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0; }
-  .large-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: calc((1vw + 1vh) * (15 / 30));
-    background-color: #4f06c6; }
 
 @media (max-width: 1299px) {
   .large-link {
@@ -2705,6 +2688,31 @@ h5 {
   font-size: calc(var(--index) * 0.53);
   line-height: 86%;
   letter-spacing: -0.033em; }
+
+.button {
+  position: relative;
+  overflow: hidden; }
+  .button > span {
+    display: -ms-flexbox;
+    display: flex; }
+  .button__left-line {
+    height: calc((1vw + 1vh) * (15 / 30));
+    width: 0%;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+  .button__right-line {
+    height: calc((1vw + 1vh) * (15 / 30));
+    width: 100%;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+  .button__split-bottom {
+    left: 0;
+    bottom: -100%;
+    position: absolute; }
 
 body {
   position: relative;
