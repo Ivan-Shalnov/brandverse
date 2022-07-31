@@ -20,102 +20,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //BUTTON HOVER
-  {
-    //MAKE STRUCTURE
-    const buttonsRefs = document.querySelectorAll('.button');
-    buttonsRefs.forEach((button) => {
-      let charsInSpan = button.textContent
-        .split('')
-        .reduce(
-          (acc, char) =>
-            char.trim() === ''
-              ? acc + '<span>&nbsp;</span>'
-              : acc + '<span>' + char + '</span>',
-          '',
-        );
-      button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
 
-      const buttonTl = gsap.timeline({ paused: true });
-      const topLettersRefs = button.querySelectorAll('.button__split-top span');
-      const bottomLettersRefs = button.querySelectorAll(
-        '.button__split-bottom span',
+  //MAKE STRUCTURE
+  const buttonsRefs = document.querySelectorAll('.button');
+  buttonsRefs.forEach((button) => {
+    let charsInSpan = button.textContent
+      .split('')
+      .reduce(
+        (acc, char) =>
+          char.trim() === ''
+            ? acc + '<span>&nbsp;</span>'
+            : acc + '<span>' + char + '</span>',
+        '',
       );
-      const leftLineRef = button.querySelector('.button__left-line');
-      const rightLineRef = button.querySelector('.button__right-line');
-      console.log(
-        'document.addEventListener ~ bottomLettersRefs',
+    button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
+
+    const buttonTl = gsap.timeline({ paused: true });
+    const topLettersRefs = button.querySelectorAll('.button__split-top span');
+    const bottomLettersRefs = button.querySelectorAll(
+      '.button__split-bottom span',
+    );
+    const leftLineRef = button.querySelector('.button__left-line');
+    const rightLineRef = button.querySelector('.button__right-line');
+    console.log(
+      'document.addEventListener ~ bottomLettersRefs',
+      bottomLettersRefs,
+    );
+    buttonTl
+      .staggerTo(
+        topLettersRefs,
+        0.4,
+        { y: '-100%', ease: Power1.easeInOut },
+        0.03,
+      )
+      .staggerTo(
         bottomLettersRefs,
-      );
-      buttonTl
-        .staggerTo(
-          topLettersRefs,
-          0.4,
-          { y: '-100%', ease: Power1.easeInOut },
-          0.03,
-        )
-        .staggerTo(
-          bottomLettersRefs,
-          0.4,
-          {
-            y: '-100%',
-            ease: Power1.easeInOut,
-          },
-          0.03,
-          0,
-        )
-        .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
-        .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
-      button.addEventListener('mouseenter', function () {
-        console.log('play');
-        buttonTl.play();
-      });
-      button.addEventListener('mouseleave', function () {
-        console.log('reverse');
-        buttonTl.reverse();
-      });
+        0.4,
+        {
+          y: '-100%',
+          ease: Power1.easeInOut,
+        },
+        0.03,
+        0,
+      )
+      .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
+      .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
+    button.addEventListener('mouseenter', function () {
+      console.log('play');
+      buttonTl.play();
     });
-  }
-  // iframe video from youtube start
-
-  const tag = document.createElement('script');
-
-  tag.src = 'https://www.youtube.com/iframe_api';
-  const firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  let player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '1080',
-      width: '1920',
-      controls: 0,
-      videoId: 'hVN3cc4ZWpg',
-      events: {
-        onStateChange: onPlayerStateChange,
-      },
+    button.addEventListener('mouseleave', function () {
+      console.log('reverse');
+      buttonTl.reverse();
     });
-  }
-  function pauseVideo() {
-    player.pauseVideo();
-    console.log('stoped');
-  }
-
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PAUSED) {
-      $('.video-section__player').removeClass('active');
-    }
-  }
-
-  function playVideo() {
-    console.log('videoPlay');
-    $('.video-section__player').addClass('active');
-    player.playVideo();
-  }
-
-  $('.video-section__player').click(function () {
-    playVideo();
   });
-  // iframe video from youtube end
 
   $('.marquee').marquee({
     //speed in milliseconds of the marquee
@@ -446,3 +404,47 @@ document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
   ScrollTrigger.refresh();
 });
+
+// iframe video from youtube start
+
+var tag = document.createElement('script');
+
+tag.src = 'https://www.youtube.com/iframe_api';
+
+var firstScriptTag = document.getElementsByTagName('script')[0];
+var playerContainer = document.getElementById('player-container');
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '1920',
+    width: '1080',
+    videoId: 'hVN3cc4ZWpg',
+  });
+}
+
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+function stopVideo() {
+  player.pauseVideo();
+  playerContainer.classList.toggle('active');
+}
+
+function startPlay() {
+  player.playVideo();
+  playerContainer.classList.toggle('active');
+}
+
+var playerState = false;
+playerContainer.addEventListener('click', function () {
+  playerState = !playerState;
+  if (playerState) {
+    startPlay();
+  } else {
+    stopVideo();
+  }
+});
+// iframe video from youtube end
