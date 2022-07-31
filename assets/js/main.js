@@ -19,6 +19,62 @@ document.addEventListener('DOMContentLoaded', () => {
     spliting(splitElements[i]);
   }
 
+  //BUTTON HOVER
+  {
+    //MAKE STRUCTURE
+    const buttonsRefs = document.querySelectorAll('.button');
+    buttonsRefs.forEach((button) => {
+      let charsInSpan = button.textContent
+        .split('')
+        .reduce(
+          (acc, char) =>
+            char.trim() === ''
+              ? acc + '<span>&nbsp;</span>'
+              : acc + '<span>' + char + '</span>',
+          '',
+        );
+      button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
+
+      const buttonTl = gsap.timeline({ paused: true });
+      const topLettersRefs = button.querySelectorAll('.button__split-top span');
+      const bottomLettersRefs = button.querySelectorAll(
+        '.button__split-bottom span',
+      );
+      const leftLineRef = button.querySelector('.button__left-line');
+      const rightLineRef = button.querySelector('.button__right-line');
+      console.log(
+        'document.addEventListener ~ bottomLettersRefs',
+        bottomLettersRefs,
+      );
+      buttonTl
+        .staggerTo(
+          topLettersRefs,
+          0.4,
+          { y: '-100%', ease: Power1.easeInOut },
+          0.03,
+        )
+        .staggerTo(
+          bottomLettersRefs,
+          0.4,
+          {
+            y: '-100%',
+            ease: Power1.easeInOut,
+          },
+          0.03,
+          0,
+        )
+        .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
+        .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
+      button.addEventListener('mouseenter', function () {
+        console.log('play');
+        buttonTl.play();
+      });
+      button.addEventListener('mouseleave', function () {
+        console.log('reverse');
+        buttonTl.reverse();
+      });
+    });
+  }
   // iframe video from youtube start
 
   const tag = document.createElement('script');

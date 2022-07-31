@@ -7,24 +7,30 @@
   color: #4f06c6;
   position: relative;
   display: block;
-  .split {
-    display: flex;
-    overflow: hidden;
-    &:last-child {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: toIndex(15);
-    background-color: $purpure;
+  // .split {
+  //   display: flex;
+  //   overflow: hidden;
+  //   &:last-child {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     opacity: 0;
+  //   }
+  // }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   height: toIndex(15);
+  //   background-color: $purpure;
+  // }
+}
+
+@media (max-width: 1299px) {
+  .large-link {
+    font-size: 20vw;
   }
 }
 
