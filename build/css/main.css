@@ -526,7 +526,7 @@ h5 {
 
 .video-section {
   position: relative;
-  padding: calc(var(--index) * 6.67) 0; }
+  padding: calc((1vw + 1vh) * (200 / 30)) 0; }
   .video-section__player {
     position: relative;
     color: #fff;
@@ -576,8 +576,7 @@ h5 {
   .video-section__inner {
     border-radius: 20px;
     position: relative;
-    padding-top: 50.1477272727%;
-    background-color: #000;
+    padding-top: 30%;
     transition: 0.6s ease;
     overflow: hidden; }
 
@@ -701,6 +700,10 @@ h5 {
   position: relative; }
   .hwd.active .hwd__line {
     background-color: #fff; }
+  .hwd.active .hwd__marquee .white {
+    fill: #fff; }
+  .hwd.active .hwd__marquee .black {
+    fill: #000; }
   .hwd__line {
     margin-bottom: calc((1vw + 1vh) * (17 / 30));
     height: calc((1vw + 1vh) * (22 / 30));
@@ -716,9 +719,15 @@ h5 {
     line-height: 1;
     letter-spacing: -0.052em;
     white-space: nowrap; }
-    .hwd__marquee img {
+    .hwd__marquee svg {
       padding: 0 calc((1vw + 1vh) * (40 / 30)) 0 calc((1vw + 1vh) * (80 / 30));
-      height: calc((1vw + 1vh) * (300 / 30)); }
+      height: calc((1vw + 1vh) * (305 / 30)); }
+    .hwd__marquee .white {
+      fill: #000;
+      transition: 0.3s; }
+    .hwd__marquee .black {
+      fill: #e0e3e7;
+      transition: 0.3s; }
     .hwd__marquee > div {
       display: -ms-flexbox;
       display: flex; }
@@ -791,8 +800,15 @@ h5 {
     width: calc((1vw + 1vh) * (262 / 30));
     font-weight: 900;
     font-size: calc((1vw + 1vh) * (26 / 30));
-    line-height: 94%;
+    line-height: 1;
     letter-spacing: -0.033em; }
+    .hwd__text div {
+      overflow: hidden;
+      margin-bottom: -0.5%; }
+      .hwd__text div:last-child {
+        margin-bottom: 0; }
+    .hwd__text p {
+      line-height: 1.2; }
 
 .knw-more {
   margin-top: calc((1vw + 1vh) * (200 / 30));
@@ -964,7 +980,16 @@ h5 {
         align-items: center;
     border-radius: 50%;
     background: #4f06c6;
-    margin-top: calc((1vw + 1vh) * (-150 / 30)); }
+    margin-top: calc((1vw + 1vh) * (-150 / 30));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    letter-spacing: -0.033em; }
   .watches-fact__text {
     margin-top: calc((1vw + 1vh) * (-105 / 30));
     width: calc((1vw + 1vh) * (569 / 30));
@@ -1041,7 +1066,8 @@ h5 {
     display: -ms-flexbox;
     display: flex;
     white-space: nowrap;
-    margin-bottom: calc((1vw + 1vh) * (100 / 30)); }
+    margin-bottom: calc((1vw + 1vh) * (100 / 30));
+    margin-left: -10%; }
     .community__marquee-top img {
       max-width: 100%; }
   .community__marquee-bottom {
@@ -1053,6 +1079,7 @@ h5 {
     font-size: calc((1vw + 1vh) * (230 / 30));
     line-height: 82%;
     letter-spacing: -0.052em;
+    margin-right: -10%;
     white-space: nowrap; }
     .community__marquee-bottom img {
       max-width: 100%; }

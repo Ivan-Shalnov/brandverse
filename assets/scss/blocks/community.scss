@@ -10,6 +10,7 @@
     display: flex;
     white-space: nowrap;
     margin-bottom: toIndex(100);
+    margin-left: -10%;
     img {
       max-width: 100%;
     }
@@ -22,7 +23,7 @@
     font-size: toIndex(230);
     line-height: 82%;
     letter-spacing: -0.052em;
-
+    margin-right: -10%;
     white-space: nowrap;
     img {
       max-width: 100%;

@@ -7,6 +7,14 @@
       &__line {
         background-color: #fff;
       }
+      &__marquee {
+        .white {
+          fill: #fff;
+        }
+        .black {
+          fill: #000;
+        }
+      }
     }
   }
   &__line {
@@ -26,9 +34,17 @@
     line-height: 1;
     letter-spacing: -0.052em;
     white-space: nowrap;
-    img {
+    svg {
       padding: 0 toIndex(40) 0 toIndex(80);
-      height: toIndex(300);
+      height: toIndex(305);
+    }
+    .white {
+      fill: #000;
+      transition: 0.3s;
+    }
+    .black {
+      fill: #e0e3e7;
+      transition: 0.3s;
     }
     > div {
       display: flex;
@@ -121,7 +137,17 @@
     width: toIndex(262);
     font-weight: 900;
     font-size: toIndex(26);
-    line-height: 94%;
+    line-height: 1;
     letter-spacing: -0.033em;
+    div {
+      overflow: hidden;
+      margin-bottom: -0.5%;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    p {
+      line-height: 1.2;
+    }
   }
 }

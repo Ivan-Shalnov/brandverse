@@ -251,10 +251,11 @@ hwdContentTl
     'start',
   )
   .from('.hwd__block-line', 0.4, { width: 0, ease: Power2.easeInOut }, 'start')
-  .from(
-    '.hwd__text',
+  .staggerFrom(
+    '.hwd__text div p',
     0.4,
     { y: 10, opacity: 0, ease: Power2.easeInOut },
+    0.05,
     '-=0.4',
   );
 
@@ -265,7 +266,7 @@ const knwMoretTl = gsap.timeline({
   scrollTrigger: {
     trigger: '.knw-more',
     scroller: '.scroller',
-    start: 'top 100%',
+    start: 'top 70%',
     end: 'bottom bottom',
     toggleActions: 'play none none reset',
   },
@@ -280,22 +281,22 @@ knwMoretTl.staggerFrom(
 // knw more animation end
 
 // watches facts animation start
-const watchesFacttTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.knw-more',
-    scroller: '.scroller',
-    start: 'top 100%',
-    end: 'bottom bottom',
-    toggleActions: 'play none none reset',
-  },
-});
+// const watchesFact tTl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.knw-more',
+//     scroller: '.scroller',
+//     start: 'top 100%',
+//     end: 'bottom bottom',
+//     toggleActions: 'play none none reset',
+//   },
+// });
 
-watchesFacttTl.staggerFrom(
-  '.knw-more__title .split span',
-  0.8,
-  { y: '100%', ease: Power2.easeInOut, yoyo: true },
-  0.01,
-);
+// watchesFact tTl.staggerFrom(
+//   '.knw-more__title .split span',
+//   0.8,
+//   { y: '100%', ease: Power2.easeInOut, yoyo: true },
+//   0.01,
+// );
 // watches facts animation end
 
 // contacs animation start
