@@ -80,3 +80,34 @@
     }
   }
 }
+
+@media (max-width: 1199px) {
+  .contacts-section {
+    &__row {
+      display: block;
+      position: relative;
+    }
+    &__col {
+      width: 100%;
+      &:last-child {
+        width: 100%;
+      }
+      .contacts-section__socials {
+        display: none;
+      }
+    }
+    &__title {
+      font-size: 26vw;
+      margin-bottom: toIndex(140);
+    }
+    &__name {
+      position: absolute;
+      top: 3%;
+      right: 0;
+    }
+    &__subtitle {
+      font-size: toIndex(85);
+      max-width: toIndex(700);
+    }
+  }
+}

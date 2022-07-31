@@ -54,3 +54,15 @@
     z-index: 1;
   }
 }
+
+@media (max-width: 1199px) {
+  .exp-section {
+    &__title {
+      font-size: toIndex(270);
+    }
+  }
+  .exp-card {
+    width: 360px;
+    height: 360px;
+  }
+}

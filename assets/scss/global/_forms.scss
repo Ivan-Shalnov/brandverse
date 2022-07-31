@@ -112,3 +112,32 @@
     transform: translateY(0px);
   }
 }
+
+@media (max-width: 1199px) {
+  .form {
+    &__field {
+      margin-bottom: 70px;
+    }
+    &__field-input {
+      font-size: 20px;
+      line-height: 96%;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #d9d9d9;
+    }
+    &__field-textarea {
+      font-size: 20px;
+      line-height: 96%;
+
+      border-bottom: 2px solid #d9d9d9;
+    }
+    &__btn {
+      width: 50%;
+      font-size: 33px;
+      line-height: 120%;
+      svg {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+}

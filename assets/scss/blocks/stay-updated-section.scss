@@ -69,6 +69,11 @@
 
 @media (max-width: 1199px) {
   .stay-updated {
+    &__logo {
+      top: toIndex(-240);
+      right: toIndex(-120);
+      left: auto;
+    }
     &__title {
       margin-bottom: toIndex(80);
     }
@@ -77,6 +82,7 @@
       top: 0;
       right: 0;
       width: 100%;
+      margin-bottom: toIndex(40);
     }
     &__subtitle {
       font-size: 16px;
@@ -85,11 +91,17 @@
       position: relative;
       top: 0;
       right: 0;
+      margin-left: auto;
+      font-size: toIndex(60);
+      width: toIndex(550);
+      margin-bottom: toIndex(250);
     }
     &__join-link {
       position: relative;
       top: 0;
       right: 0;
+      width: 100%;
+      font-size: toIndex(56);
     }
   }
 }

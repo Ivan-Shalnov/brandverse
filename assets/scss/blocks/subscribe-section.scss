@@ -131,3 +131,27 @@
     }
   }
 }
+
+@media (max-width: 1199px) {
+  .subscribe-section {
+    &__name {
+      display: none;
+    }
+    &__title {
+      font-size: toIndex(90);
+    }
+  }
+  .subscribe-form {
+    display: block;
+    &__field {
+      margin-bottom: toIndex(100);
+    }
+    &__input {
+      font-size: 33px;
+    }
+    &__btn {
+      width: 100%;
+      font-size: 19vw;
+    }
+  }
+}

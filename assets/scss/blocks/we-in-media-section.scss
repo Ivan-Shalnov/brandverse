@@ -23,10 +23,6 @@
   }
   &__remark {
     margin-bottom: -0.12%;
-    font-weight: 700;
-    font-size: calc(var(--index) * 0.53);
-    line-height: 1;
-    letter-spacing: -0.033em;
     align-self: flex-end;
   }
   &__remark--side-position {
@@ -154,6 +150,46 @@
       span {
         display: block;
       }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .wim {
+    &__title-cont {
+      margin-bottom: toIndex(120);
+      .wim__remark {
+      }
+    }
+    &__title {
+      font-size: toIndex(260);
+    }
+    &__remark--side-position {
+      display: none;
+    }
+    &__cards-container {
+      display: flex;
+      overflow-y: auto;
+      gap: 20px;
+      margin-right: calc(var(--index) * -2);
+      margin-left: calc(var(--index) * -2);
+      padding-right: calc(var(--index) * 2);
+      padding-left: calc(var(--index) * 2);
+    }
+    &__card {
+      padding-top: 0;
+      width: 430px;
+      height: 490px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__card-logo {
+      flex-grow: 1;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0;
     }
   }
 }
