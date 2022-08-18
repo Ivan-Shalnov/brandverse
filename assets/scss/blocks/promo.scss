@@ -90,6 +90,7 @@
   &__content-line {
     border-bottom: 4px solid #000;
     margin-bottom: toIndex(70);
+    position: relative;
   }
   &__content-title {
     display: inline-block;
