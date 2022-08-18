@@ -63,6 +63,7 @@
     align-items: flex-start;
     gap: toIndex(80);
     position: relative;
+    margin-top: toIndex(-100);
   }
   &__card {
     padding: toIndex(110) toIndex(45) toIndex(220) toIndex(20);
@@ -137,7 +138,7 @@
     }
     &__card {
       width: 430px;
-      height: 620px;
+      height: auto;
       padding: toIndex(160) toIndex(80);
       margin-left: auto;
       margin-bottom: toIndex(60);
@@ -148,7 +149,7 @@
     }
     &__card-text {
       font-size: toIndex(40);
-      max-width: 70%;
+      max-width: 80%;
     }
   }
 }

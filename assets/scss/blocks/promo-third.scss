@@ -1,0 +1,118 @@
+.promo-third {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: toIndex(40);
+  &.active {
+    .promo-third {
+      &__line {
+        background-color: #000;
+      }
+    }
+  }
+  &__subtitle {
+    font-weight: 800;
+    font-size: toIndex(66);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    overflow: hidden;
+    margin-bottom: -1.2%;
+    p {
+      line-height: 1.2;
+    }
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+        margin-bottom: toIndex(50);
+      }
+    }
+  }
+  &__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28.8vw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: -2%;
+    display: flex;
+    overflow: hidden;
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+        margin-bottom: -5vw;
+      }
+    }
+    span {
+      display: block;
+    }
+  }
+  &__line {
+    width: 100%;
+    height: toIndex(33);
+    background-color: #fff;
+    transition: background-color 0.3s;
+  }
+}
+
+@media (max-width: 1199px) {
+  .promo-third {
+    &__title {
+      font-size: 27.5vw;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .promo-third {
+    &__marquee {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .promo-third {
+    padding-bottom: 0;
+    align-items: center;
+    &__subtitle {
+      margin-bottom: toIndex(100);
+    }
+    &__title {
+      display: none;
+    }
+    &__marquee {
+      font-family: 'Bebas Neue';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 281.694px;
+      line-height: 86%;
+      letter-spacing: -0.041em;
+      color: #000000;
+      height: 280px;
+      margin-bottom: -30px;
+      &>div{
+        display: flex;
+        gap:20px;
+      }
+    }
+  }
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    @media (max-width: 767px) {
+      .promo-third {
+        &__marquee {
+          margin-bottom: -70px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 374px) {
+  .promo-third {
+    &__subtitle {
+      font-size: toIndexMob(24);
+    }
+  }
+}

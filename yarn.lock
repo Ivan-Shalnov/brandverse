@@ -3458,6 +3458,14 @@ gulp-imagemin@^7.1.0:
     imagemin-optipng "^7.0.0"
     imagemin-svgo "^7.0.0"
 
+gulp-js-import@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/gulp-js-import/-/gulp-js-import-1.0.6.tgz#696ac6b8fa76a866a94e000b0f0e25885e83ac25"
+  integrity sha512-sA0mNBPM3CmPOH5QEoSIitoMyyI8kwqol4dU75fsZ10ay3PA8PEzqsLI+Msgrc6LHN+8khD7dt5N8OW/q/+dTw==
+  dependencies:
+    gulp-util "^3.0.7"
+    through2 "^2.0.1"
+
 gulp-load-plugins@^2.0.0:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/gulp-load-plugins/-/gulp-load-plugins-2.0.7.tgz#69d35d27e8f9b41a00a29cfcdf236d5d17c40dbe"
@@ -7572,7 +7580,7 @@ through2-filter@^3.0.0:
     through2 "~2.0.0"
     xtend "~4.0.0"
 
-through2@2.X, through2@^2.0.0, through2@^2.0.3, through2@~2.0.0:
+through2@2.X, through2@^2.0.0, through2@^2.0.1, through2@^2.0.3, through2@~2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
   integrity sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==

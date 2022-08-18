@@ -141,6 +141,7 @@
       margin-right: calc(var(--index) * -2);
       flex-wrap: nowrap;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     &__list-item {
       width: 440px;
@@ -196,6 +197,9 @@
       &:first-of-type {
         margin-bottom: 80px;
       }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     &__subtitle {
       font-weight: 700;
@@ -216,6 +220,9 @@
     &__list-item {
       width: 320px;
       padding: 0 10px;
+    }
+    &__title {
+      font-size: toIndex(240);
     }
   }
   .partner-card {

@@ -271,6 +271,9 @@
     padding-top: toIndex(400);
     &__title {
       margin-bottom: 80px;
+      h2 {
+        font-size: toIndex(100);
+      }
     }
     &__title-top {
       padding-left: 0;

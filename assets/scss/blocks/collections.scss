@@ -1,0 +1,47 @@
+.collections {
+  padding: toIndex(200) 0;
+  &.active {
+    .collections {
+      &__line {
+        background-color: #fff;
+      }
+      &__marquee {
+        .white {
+          fill: #fff;
+        }
+        .green {
+          stroke: $green;
+        }
+      }
+    }
+  }
+  &__line {
+    height: toIndex(17);
+    width: 100%;
+    background-color: #000;
+    transition: 0.3s;
+    margin-bottom: toIndex(40);
+  }
+  &__marquee {
+    height: toIndex(208);
+    svg {
+      max-height: 100%;
+      width: auto;
+    }
+    .white {
+      fill: #000;
+      transition: 0.3s;
+    }
+    .green {
+      stroke: $purpure;
+      transition: 0.3s;
+    }
+    > div {
+      display: flex;
+      height: 100%;
+    }
+    .js-marquee {
+      height: 100%;
+    }
+  }
+}

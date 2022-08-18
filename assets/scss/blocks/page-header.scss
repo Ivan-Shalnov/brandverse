@@ -10,14 +10,21 @@
   }
 
   &__menu-btn {
+    overflow-y: hidden;
     font-size: calc(var(--index) * 4.3);
-    line-height: 86%;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -0.033em;
     text-transform: uppercase;
     cursor: pointer;
     font-family: 'Bebas Neue';
     margin-top: -0.5%;
+    &>span{
+      display: flex;
+    }
+    &>div{
+      display: none;
+    }
   }
 }
 

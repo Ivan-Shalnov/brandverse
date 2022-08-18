@@ -1,118 +1,217 @@
 .wrng-meta {
-  padding: toIndex(220) 0;
+  padding-top: 15vh;
+  padding-bottom: 15vh;
   &__header {
-    margin-bottom: toIndex(170);
-    position: relative;
+    margin-bottom: 6.8vh;
+    display: flex;
+    flex-direction: column;
   }
-
   &__subtitle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-weight: 700;
-    font-size: toIndex(16);
-    line-height: 86%;
-    letter-spacing: -0.033em;
+    display: none;
   }
-
-  &__top-title {
+  &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndex(260);
+    font-size: toIndexMob(75);
     line-height: 1;
-    /* or 218px */
 
     letter-spacing: -0.033em;
     & > .split {
       display: flex;
       overflow-y: hidden;
     }
-    & > .split.last-row {
-      display: inline-flex;
-    }
-    & > span {
-      margin-bottom: toIndex(-46.8);
+
+    & > span:not(:last-child) {
+      margin-bottom: toIndexMob(-14);
     }
   }
-  &__icon-b {
-    margin-left: toIndex(15);
-    width: toIndex(182);
-    height: toIndex(182);
+  &__lastrow.split {
+    display: inline-flex;
   }
   &__bottom-title {
     margin-left: auto;
-
-    font-family: 'Bebas Neue';
-    font-weight: 700;
-    font-size: toIndex(260);
-    line-height: 1;
-    /* or 218px */
-    letter-spacing: -0.033em;
-    & > .split {
-      padding-right: 8.0555%;
-      display: flex;
-      justify-content: flex-end;
-      overflow-y: hidden;
-    }
   }
-
-  &__cards-list {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
+  &__icon-b {
+    margin-left: toIndexMob(11);
+    width: toIndexMob(64);
+    height: auto;
   }
   &__card {
-    padding: toIndex(95) toIndex(50);
-    width: toIndex(430);
+    margin-left: auto;
+    width: toIndexMob(270);
+    padding: toIndexMob(75) toIndexMob(30);
+    min-height: toIndexMob(400);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
     background: #ffffff;
-    border-radius: toIndex(19);
+    border-radius: toIndexMob(14);
     &::before {
-      width: toIndex(19);
-      height: toIndex(19);
+      width: 66px;
+      height: 12px;
       content: '';
       display: block;
       position: absolute;
-      top: toIndex(35);
-      right: toIndex(35);
+      top: toIndexMob(20);
+      right: toIndexMob(20);
       background-image: url('../img/cross-icon.svg');
-      background-repeat: no-repeat;
-      background-size: cover;
+      background-repeat: space;
+
+      background-size: 12px;
     }
-    &:nth-child(1) {
-      bottom: toIndex(155);
-      margin-right: 8.61%;
-    }
-    &:nth-child(3) {
-      bottom: toIndex(350);
-      margin-left: auto;
+    &:not(:last-child) {
+      margin-bottom: 10px;
     }
   }
 
   &__card-title {
-    margin-bottom: toIndex(210);
+    margin-bottom: toIndexMob(110);
     font-weight: 800;
-    font-size: toIndex(46);
-    line-height: 90%;
+    font-size: toIndexMob(30);
+    line-height: 82%;
 
     letter-spacing: -0.033em;
   }
   &__card-text {
     margin-left: auto;
-    width: 45%;
-    font-weight: 400;
-    font-size: toIndex(26);
+    width: 53%;
+    font-size: toIndexMob(18);
     line-height: 120%;
     /* or 31px */
 
     letter-spacing: -0.033em;
     &::before {
-      margin-bottom: toIndex(25);
+      margin-bottom: toIndexMob(10);
       content: '';
       display: block;
-      width: toIndex(33);
-      height: toIndex(2);
+      width: 33px;
+      height: 2px;
       background: #a7adb3;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .wrng-meta {
+    &__card-title {
+      max-width: toIndexMob(187);
+    }
+  }
+}
+@media (min-width: 768px) {
+  .wrng-meta {
+    &__title {
+      font-size: toIndexTab(125);
+      & > span:not(:last-child) {
+        margin-bottom: toIndexTab(-22);
+      }
+    }
+    &__icon-b {
+      margin-left: toIndexTab(15);
+      width: toIndexTab(90);
+    }
+    &__card {
+      padding: toIndexTab(75) toIndexTab(30);
+      min-height: toIndexTab(635);
+      width: toIndexTab(430);
+      border-radius: toIndexTab(19);
+      &::before {
+        width: 89.5px;
+        height: 16.5px;
+        background-size: 16.5px;
+        top: toIndexTab(35);
+        right: toIndexTab(35);
+      }
+      &:not(:last-child) {
+        margin-bottom: toIndexTab(30);
+      }
+    }
+    &__card-title {
+      margin-bottom: toIndexTab(110);
+      font-size: toIndexTab(50);
+    }
+    &__card-text {
+      font-size: toIndexTab(26);
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .wrng-meta {
+    padding: toIndex(220) 0;
+    &__header {
+      margin-bottom: toIndex(170);
+      position: relative;
+    }
+    &__top-title {
+      max-width: toIndex(1130);
+    }
+    &__bottom-title {
+      margin-left: 42.5%;
+    }
+    &__subtitle {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-weight: 700;
+      font-size: toIndex(16);
+      letter-spacing: -0.033em;
+    }
+
+    &__title {
+      font-size: toIndex(260);
+      & > span:not(:last-child) {
+        margin-bottom: toIndex(-46.8);
+      }
+    }
+    &__icon-b {
+      margin-left: toIndex(15);
+      width: toIndex(182);
+    }
+
+    &__cards-list {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+    }
+    &__card {
+      margin-left: 0;
+      padding: toIndex(110) toIndex(50);
+      width: toIndex(430);
+      min-height: toIndex(635);
+      border-radius: toIndex(19);
+      &::before {
+        width: 113px;
+        height: 21px;
+        top: toIndex(50);
+        right: toIndex(50);
+
+        background-size: 21px;
+      }
+      &:nth-child(1) {
+        bottom: toIndex(155);
+        margin-right: 8.61%;
+      }
+      &:nth-child(3) {
+        bottom: toIndex(350);
+        margin-left: auto;
+      }
+      &__card:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+
+    &__card-title {
+      margin-bottom: toIndex(80);
+      font-size: toIndex(46);
+      line-height: 90%;
+    }
+    &__card-text {
+      width: 45%;
+      font-size: toIndex(26);
+      &::before {
+        margin-bottom: toIndex(25);
+      }
     }
   }
 }

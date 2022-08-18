@@ -66,3 +66,11 @@
     height: 360px;
   }
 }
+
+@media (max-width: 767px) {
+  .exp-section {
+    &__title {
+      font-size: toIndex(240);
+    }
+  }
+}

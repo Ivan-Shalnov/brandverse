@@ -22,6 +22,7 @@
     font-size: toIndex(230);
     line-height: 1;
     letter-spacing: -0.033em;
+    padding-right: 0.033em;
     .split {
       overflow: hidden;
       display: flex;
@@ -76,14 +77,14 @@
     padding-top: toIndex(200);
     padding-bottom: 150px;
     &__title {
-      font-size: 21vw;
+      font-size: 20.5vw;
       margin-bottom: 50px;
     }
     &__block-title {
       font-size: 22px;
     }
     &__link {
-      font-size: 30vw;
+      font-size: 26.5vw;
     }
   }
 }

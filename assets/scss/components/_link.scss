@@ -1,0 +1,69 @@
+.link {
+  position: relative;
+  overflow: hidden;
+  font-weight: 800;
+  font-size: toIndex(33);
+  line-height: 150%;
+  letter-spacing: -0.033em;
+  color: #c5fd64;
+  display: flex;
+  padding: 0;
+  & > span {
+    display: flex;
+  }
+  &__left-line {
+    height: toIndex(5);
+    width: 0%;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  &__right-line {
+    height: toIndex(5);
+    width: 100%;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  &__split-top {
+    margin-left: -0.033em;
+  }
+  &__split-bottom {
+    left: 0;
+    bottom: -100%;
+    position: absolute;
+    margin-left: -0.033em;
+  }
+  svg {
+    position: absolute;
+    bottom: toIndex(10);
+    right: 0;
+    width: toIndex(40);
+    height: toIndex(40);
+    stroke-width: toIndex(5);
+    path {
+      fill: currentColor;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .link {
+    font-size: 27px;
+    line-height: 40px;
+    padding-bottom: 6px;
+    svg {
+      width: 35px;
+      height: 35px;
+      bottom: 12px;
+    }
+    &__left-line {
+      height: 4px;
+    }
+    &__right-line {
+      height: 4px;
+    }
+  }
+}

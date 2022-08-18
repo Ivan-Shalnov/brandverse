@@ -1,28 +1,32 @@
 .button {
   position: relative;
   overflow: hidden;
+  padding: 0;
   & > span {
     display: flex;
   }
-  &__left-line {
+  &__left-line,
+  &__right-line {
     height: toIndex(15);
-    width: 0%;
     background-color: currentColor;
     position: absolute;
     bottom: 0;
+  }
+  &__left-line {
+    width: 0%;
     left: 0;
   }
   &__right-line {
-    height: toIndex(15);
     width: 100%;
-    background-color: currentColor;
-    position: absolute;
-    bottom: 0;
     right: 0;
+  }
+  &__split-top {
+    margin-left: -0.035em;
   }
   &__split-bottom {
     left: 0;
     bottom: -100%;
     position: absolute;
+    margin-left: -0.035em;
   }
 }

@@ -1,103 +1,207 @@
 .slide {
-  display: flex;
-  flex-wrap: nowrap;
-  min-height: 100vh;
-  overflow-x: hidden;
-  &__wrap {
-    min-height: 100vh;
-    display: flex;
-  }
   &__wrap > div {
     position: relative;
     min-height: 100vh;
   }
   &__slide {
-    padding-top: toIndex(110);
-    min-width: 100vw;
-  }
-  &__line {
-    width: 0;
-    height: toIndex(7);
-    position: absolute;
-    bottom: toIndex(110);
-    background-color: currentColor;
+    padding-top: 10vh;
   }
   &__title {
-    margin-bottom: toIndex(75);
+    margin-bottom: 3vh;
     font-weight: 800;
-    font-size: toIndex(133);
+    font-size: toIndexMob(50);
     line-height: 90%;
 
     letter-spacing: -0.05em;
     & > span {
-      display: block;
-    }
-    & > span:not(:last-child) {
-      margin-bottom: toIndex(-13);
+      display: flex;
+      overflow-y: hidden;
     }
   }
   &__text {
     font-weight: 800;
-    font-size: toIndex(22);
+    font-size: toIndexMob(20);
     line-height: 90%;
 
     letter-spacing: -0.05em;
+  }
+  &__line {
+    width: 33px;
+    height: 5px;
+    background-color: currentColor;
   }
 }
 .solution {
-  min-width: 100vw;
-  position: relative;
-  padding-top: toIndex(90);
-  padding-bottom: toIndex(90);
+  padding-top: 10vh;
   &__line {
-    margin-bottom: toIndex(35);
-    height: toIndex(1);
+    margin-bottom: 3vh;
+    height: 1px;
     background: #a9b5be;
   }
   &__row {
-    // margin-bottom: toIndex(500);
     display: flex;
     justify-content: space-between;
   }
-
   &__first-text {
     font-weight: 900;
-    font-size: toIndex(20);
+    font-size: toIndexMob(14);
     line-height: 90%;
 
     letter-spacing: -0.05em;
-  }
-
-  &__second-text {
-    font-weight: 600;
-    font-size: toIndex(50);
-    line-height: 1;
-    text-align: right;
-    & > span:not(:last-child) {
-      margin-bottom: -0.27%;
+    & > div {
+      overflow-y: hidden;
+      display: flex;
     }
   }
-
+  &__second-text {
+    font-weight: 600;
+    font-size: toIndexMob(33);
+    line-height: 1.18;
+    text-align: right;
+    & > div {
+      display: flex;
+      justify-content: flex-end;
+      overflow-y: hidden;
+    }
+    & > div:not(:last-child) {
+      margin-bottom: -2%;
+    }
+  }
   &__title {
-    position: absolute;
-    bottom: toIndex(90);
     font-weight: 800;
-    font-size: toIndex(333);
+    font-size: toIndexMob(88);
     line-height: 90%;
 
     letter-spacing: -0.05em;
+    & .split {
+      display: flex;
+      overflow-y: hidden;
+    }
   }
 }
 .reduce {
-  min-width: 100vw;
-  position: relative;
   &__title {
     position: absolute;
-    bottom: toIndex(90);
     font-weight: 800;
-    font-size: toIndex(333);
+    font-size: toIndexMob(88);
     line-height: 90%;
 
     letter-spacing: -0.05em;
+    & .split {
+      overflow-y: hidden;
+      display: flex;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .slide {
+    &__title {
+      font-size: toIndexTab(90);
+    }
+    &__text {
+      font-size: toIndexTab(21);
+    }
+  }
+  .solution {
+    &__first-text {
+      font-size: toIndexTab(17);
+    }
+    &__second-text {
+      font-size: toIndexTab(40);
+    }
+    &__title {
+      font-size: toIndexTab(170);
+    }
+  }
+  .reduce {
+    &__title {
+      font-size: toIndexTab(170);
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .slide {
+    &__text {
+      margin-bottom: 12vh;
+    }
+  }
+  .solution {
+    &__row {
+      margin-bottom: 28vh;
+    }
+
+    &__title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .reduce {
+    &__title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .slide {
+    display: flex;
+    overflow-x: hidden;
+    &__wrap {
+      display: flex;
+      & > div {
+        min-width: 100vw;
+      }
+    }
+    &__slide {
+      padding-top: toIndex(110);
+    }
+    &__title {
+      margin-bottom: toIndex(75);
+      font-size: toIndex(133);
+    }
+    &__text {
+      font-size: toIndex(22);
+    }
+    &__line {
+      width: 100px;
+      height: 7px;
+      position: absolute;
+      bottom: toIndex(110);
+    }
+  }
+  .solution {
+    padding-top: toIndex(90);
+    padding-bottom: toIndex(90);
+    &__line {
+      margin-bottom: toIndex(35);
+    }
+
+    &__first-text {
+      font-size: toIndex(20);
+    }
+
+    &__second-text {
+      font-size: toIndex(50);
+    }
+
+    &__title {
+      position: absolute;
+      bottom: toIndex(90);
+      font-size: toIndex(333);
+    }
+  }
+  .reduce {
+    position: relative;
+    &__title {
+      position: absolute;
+      bottom: toIndex(88);
+      font-weight: 800;
+      font-size: toIndex(333);
+    }
   }
 }

@@ -1,12 +1,25 @@
 .discover {
   padding-top: toIndex(200);
   padding-bottom: toIndex(200);
+  position: relative;
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
   &__row {
     display: flex;
     justify-content: space-between;
   }
   &__col {
+    &:first-child {
+      opacity: 0;
+    }
     &:last-child {
+      position: relative;
+      z-index: 1;
       width: toIndex(400);
       display: flex;
       flex-direction: column;
@@ -142,8 +155,14 @@
 
 @media (max-width: 1199px) {
   .discover {
+    &__col:first-child {
+      opacity: 1;
+    }
     &__title {
       font-size: toIndex(120);
+    }
+    &__video {
+      display: none;
     }
   }
 }

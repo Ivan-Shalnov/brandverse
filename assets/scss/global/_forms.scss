@@ -1,4 +1,7 @@
 .form {
+  &__success {
+    display: none;
+  }
   &__field {
     position: relative;
     margin-bottom: toIndex(75);
@@ -9,7 +12,7 @@
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #d9d9d9;
-    padding-bottom: calc(var(--index) * 1.6);
+    padding-bottom: toIndex(40);
     font-family: 'RF Dewi';
     font-weight: 600;
     font-size: calc(var(--index) * 0.66);
@@ -22,6 +25,12 @@
     &:focus {
       outline: none;
     }
+    &.error {
+      border-color: red;
+      &::placeholder {
+        color: red;
+      }
+    }
   }
   &__field-textarea {
     width: 100%;
@@ -33,7 +42,7 @@
     font-family: 'RF Dewi';
     font-weight: 600;
     font-size: toIndex(20);
-    line-height: 96%;
+    line-height: 1;
     letter-spacing: -0.033em;
     color: #ffffff;
     height: toIndex(260);
@@ -45,58 +54,42 @@
       outline: none;
     }
   }
-  &__btn {
+  &__button {
+    background-color: transparent;
+    width: 100%;
     cursor: pointer;
     border: none;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 800;
-    font-size: toIndex(33);
-    line-height: 120%;
-    letter-spacing: -0.033em;
-    color: $green;
-    padding-bottom: toIndex(6);
-    border-bottom: toIndex(5) solid $green;
+    max-width: 50%;
     margin-left: auto;
-    padding-left: 0;
-    padding-right: 0;
-    width: toIndex(230);
-    overflow: hidden;
-    svg {
-      width: toIndex(45);
-      height: toIndex(45);
-      transition: 0.4s;
+  }
+  &__field-select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: toIndex(40);
+    font-family: 'RF Dewi';
+    font-weight: 600;
+    font-size: calc(var(--index) * 0.66);
+    line-height: 1.2;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    background-image: url(../img/down-arrow.svg);
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-position-x: 100%;
+    background-size: 2%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    option {
+      color: black;
     }
-    .split {
-      display: flex;
-      span {
-        display: block;
-      }
+    &:focus {
+      outline: none;
     }
-    &:hover {
-      svg {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      .split {
-        span {
-          animation: jumb 0.4s;
-          &:nth-child(1) {
-            animation-delay: 0s;
-          }
-          &:nth-child(2) {
-            animation-delay: 0.1s;
-          }
-          &:nth-child(3) {
-            animation-delay: 0.2s;
-          }
-          &:nth-child(4) {
-            animation-delay: 0.3s;
-          }
-        }
-      }
+    &:-ms-expand {
+      display: none;
     }
   }
 }
@@ -119,25 +112,25 @@
       margin-bottom: 70px;
     }
     &__field-input {
+      line-height: 1.2;
       font-size: 20px;
-      line-height: 96%;
       padding-bottom: 40px;
       border-bottom: 2px solid #d9d9d9;
     }
     &__field-textarea {
       font-size: 20px;
-      line-height: 96%;
-
       border-bottom: 2px solid #d9d9d9;
     }
-    &__btn {
-      width: 50%;
-      font-size: 33px;
-      line-height: 120%;
-      svg {
-        width: 45px;
-        height: 45px;
-      }
+    &__field-select {
+      line-height: 1.2;
+      font-size: 20px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #d9d9d9;
+    }
+    &__button {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
     }
   }
 }

@@ -15,6 +15,7 @@
     font-size: calc(var(--index) * 2.2);
     line-height: 100%;
     letter-spacing: -0.033em;
+    line-height: 1.2;
     margin-bottom: calc(var(--index) * 4);
     span {
       display: flex;
@@ -23,6 +24,9 @@
   &__title-row {
     display: flex;
     overflow: hidden;
+    &:not(:last-child) {
+      margin-bottom: -1.5%;
+    }
   }
 }
 
@@ -53,82 +57,19 @@
     &:focus {
       outline: none;
     }
+    &.error {
+      border-color: red;
+      &::placeholder {
+        color: red;
+      }
+    }
   }
   &__btn {
-    font-family: 'RF Dewi';
-    font-style: normal;
-    font-weight: 800;
-    font-size: calc(var(--index) * 4.33);
-    line-height: 94%;
-    letter-spacing: -0.033em;
-    color: #4f06c6;
-    border: none;
-    border-radius: 0;
     background-color: transparent;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: calc(var(--index) * 0.66);
-    display: block;
-    &::after {
-      content: attr(data-hover-text);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      display: block;
-      opacity: 0;
-      transition: 0.3s ease-in-out;
-      pointer-events: none;
-    }
-    &:hover {
-      .subscribe-form {
-        &__btn-title {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-        &__btn-line {
-          &::after {
-            width: 0;
-            transition: 0.3s;
-          }
-          &::before {
-            width: calc(100% + 30px);
-            transition: 0.3s;
-            transition-delay: 0.1s;
-          }
-        }
-      }
-      &::after {
-        top: 0px;
-        opacity: 1;
-      }
-    }
+    border: none;
   }
-  &__btn-title {
-    display: block;
-    transition: 0.3s ease-in-out;
-    position: relative;
-  }
-  &__btn-line {
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      border-bottom: solid calc(var(--index) * 0.33) $purpure;
-    }
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: -30px;
-      width: 0%;
-      border-bottom: solid calc(var(--index) * 0.33) $purpure;
-    }
+  &__success {
+    display: none;
   }
 }
 
@@ -169,6 +110,9 @@
     }
     &__input {
       font-size: 20px;
+    }
+    &__btn {
+      font-size: 30vw;
     }
   }
 }

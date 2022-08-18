@@ -9,16 +9,13 @@
   $resValue: calc((1vw + 1vh) * (#{$value} / 30));
   @return $resValue;
 }
-
-.spinner-wrapper {
-  background-color: #000;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@function toIndexTab($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 17.92));
+  @return $resValue;
+}
+@function toIndexMob($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 11.87));
+  @return $resValue;
 }
 
 @import 'global/reboot';
@@ -30,6 +27,16 @@
 
 // PLUGINS STYLE
 @import 'plugins/icons';
+
+//COMPONENTS
+@import 'components/remark';
+@import 'components/button';
+@import 'components/link';
+
+// LOADING PAGE
+@import 'blocks/loading-page.scss';
+// MENU
+@import 'blocks/menu.scss';
 
 // BLOCKS STYLE
 @import 'blocks/popup-block';
@@ -51,18 +58,32 @@
 @import 'blocks/partners-section.scss';
 @import 'blocks/subscribe-section.scss';
 @import 'blocks/contacts-section.scss';
+@import 'blocks/page-footer';
+
+// second page
 @import 'blocks/promo-second-section.scss';
 @import 'blocks/metaverse-section.scss';
 @import 'blocks/wrng-meta-section.scss';
 @import 'blocks/slide-section.scss';
-@import 'blocks/page-footer';
+@import 'blocks/roadmap-section.scss';
+@import 'blocks/killer-feature.scss';
+@import 'blocks/section-enter.scss';
+@import 'blocks/section-values.scss';
 
-//COMPONENTS
-@import 'components/remark';
-@import 'components/button';
+// third page
+@import 'blocks/promo-third.scss';
+@import 'blocks/benefits.scss';
+@import 'blocks/section-text.scss';
+@import 'blocks/collections.scss';
+@import 'blocks/horizontal-section3p.scss';
+@import 'blocks/section-hwdt.scss';
+@import 'blocks/section-discuss';
+@import 'blocks/cnt-section.scss';
+
 body {
-  position: relative;
-
+  &.no-scroll{
+  overflow: hidden;
+  }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -74,7 +95,7 @@ body {
   min-width: 320px;
   background-color: #e0e3e7;
   @media (min-width: 768px) {
-    transition: background-color 0.3s, color transition 0.3s;
+    transition: background-color 0.3s, color 0.3s;
   }
 }
 

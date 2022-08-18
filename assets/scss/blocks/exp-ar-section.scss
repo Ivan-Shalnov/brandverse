@@ -11,14 +11,14 @@
     }
   }
   &.active {
-    .ambassador__buy-link {
+    .exp-ar__link {
       color: $green;
       &::after {
         border-color: $green;
       }
     }
   }
-  .ambassador__buy-link {
+  &__link {
     color: $purpure;
     &::after {
       border-color: $purpure;

@@ -1,0 +1,224 @@
+.benefits {
+  padding: toIndex(200) 0;
+  &.active {
+    .benefit-card {
+      &__line {
+        .black {
+          fill: #000;
+        }
+        .green {
+          fill: $green;
+        }
+      }
+      &__title {
+        color: $green;
+        &::after {
+          color: #fff;
+        }
+      }
+    }
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  &__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: toIndex(160);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    position: relative;
+    margin-bottom: toIndex(300);
+    h2 {
+      display: flex;
+      overflow: hidden;
+      &:not(:last-child) {
+        margin-bottom: -5%;
+      }
+      span {
+        display: block;
+      }
+    }
+    &.purpure {
+      color: $purpure;
+    }
+    &.right {
+      margin-top: toIndex(390);
+      h2 {
+        justify-content: flex-end;
+      }
+    }
+  }
+  &__circle {
+    position: absolute;
+    width: toIndex(200);
+    height: toIndex(200);
+    top: toIndex(125);
+    left: 0;
+    animation: rotate 55s linear infinite;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: toIndex(180);
+    counter-reset: counter;
+  }
+  &__list-item {
+    counter-increment: counter;
+    &:first-child {
+      grid-column-start: 2;
+      grid-column-end: 3;
+    }
+    &:last-child {
+      grid-column-start: 2;
+      grid-column-end: -1;
+    }
+  }
+}
+
+.benefit-card {
+  &__line-wrap {
+    width: toIndex(360);
+    overflow: hidden;
+  }
+  &__line {
+    width: toIndex(360);
+    margin-bottom: toIndex(60);
+    .black {
+      fill: #e0e3e7;
+      transition: 0.3s;
+    }
+    .green {
+      fill: #000;
+      transition: 0.3s;
+    }
+  }
+  &__inner {
+    position: relative;
+  }
+  &__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: toIndex(99);
+    line-height: 1;
+    letter-spacing: -0.033em;
+    color: $purpure;
+    div {
+      margin-bottom: toIndex(-15);
+      overflow: hidden;
+    }
+  }
+  &__number {
+    position: absolute;
+    top: toIndex(20);
+    right: 0;
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 1;
+    letter-spacing: -0.033em;
+
+    transition: 0.3s;
+  }
+  &__text {
+    margin-top: toIndex(20);
+    font-weight: 800;
+    font-size: toIndex(20);
+    line-height: 94%;
+    letter-spacing: -0.033em;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1199px) {
+  .benefits {
+    &__header {
+      grid-template-columns: 1fr;
+      margin-bottom: toIndex(200);
+    }
+    &__title {
+      margin-bottom: 0;
+      h2:not(:last-child) {
+        margin-bottom: -2%;
+      }
+      &.right {
+        margin-top: 0;
+      }
+    }
+    &__circle {
+      left: toIndex(200);
+    }
+    &__list {
+      grid-template-columns: 1fr 1fr;
+    }
+    &__list-item {
+      &:last-child {
+        grid-column-start: 1;
+      }
+    }
+  }
+  .benefit-card {
+    &__number {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .benefits {
+    padding-top: 0;
+    &__title {
+      &:not(:last-child) {
+        margin-bottom: toIndex(100);
+      }
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .benefits {
+    &__list {
+      grid-template-columns: 1fr;
+    }
+    &__list-item {
+      &:first-child {
+        grid-column-start: 1;
+        grid-column-end: -1;
+      }
+    }
+  }
+
+  .benefit-card {
+    &__line-wrap {
+      width: calc(100vw - (var(--index) * 4));
+    }
+    &__line {
+      width: calc(100vw - (var(--index) * 4));
+    }
+    &__title {
+      font-size: toIndex(200);
+      display: flex;
+      flex-wrap: wrap;
+      > div {
+        margin-right: 0.2em;
+      }
+    }
+    &__number {
+      font-size: 12px;
+    }
+    &__text {
+      font-size: toIndex(50);
+      margin-top: toIndex(50);
+    }
+  }
+}

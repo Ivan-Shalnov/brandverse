@@ -1,121 +1,293 @@
 .metaverse {
-  padding-top: toIndex(60);
-  padding-bottom: toIndex(460);
-
+  padding-top: 15vh;
+  padding-bottom: 15vh;
   overflow-x: hidden;
-  &__header {
-    margin-bottom: toIndex(332);
-  }
   &__line {
-    margin-bottom: toIndex(305);
-    height: toIndex(33);
-    background: #c5fd64;
+    margin-bottom: 6.5vh;
+    height: 11px;
+    background: currentColor;
+  }
+  &.active {
+    .metaverse__line {
+      background: #c5fd64;
+    }
+    .metaverse__title {
+      color: #c5fd64;
+    }
   }
   &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndex(433);
-    line-height: 1;
-    letter-spacing: -0.052em;
-    white-space: nowrap;
-    color: #c5fd64;
+    font-size: toIndexMob(77);
+    letter-spacing: -0.033em;
+    & > .split:not(:last-child) {
+      margin-bottom: toIndexMob(-14);
+    }
   }
-  // &__title-wrap {
-  //   // display: flex;
-  //   // position: relative;
-  // }
-
+  &__header {
+    margin-bottom: 28vh;
+  }
   &__worth-text {
-    margin-bottom: toIndex(28);
+    font-size: toIndexMob(33);
     font-weight: 800;
-    font-size: toIndex(66);
-    line-height: 1;
     letter-spacing: -0.033em;
 
-    color: #ffffff;
-    & > .split {
-      display: flex;
+    & span {
+      display: inline-flex;
       overflow: hidden;
     }
   }
-  &__report-text {
-    font-weight: 800;
-    font-size: toIndex(66);
-    line-height: 1;
-    letter-spacing: -0.033em;
-    opacity: 0.16;
-    color: #ffffff;
-    & > .split {
-      display: flex;
-      overflow: hidden;
-    }
+  &__sup {
+    font-size: toIndexMob(14);
+    letter-spacing: normal;
+    vertical-align: super;
+    font-weight: 700;
+    color: #333333;
   }
   &__img-wrap {
-    margin: 0 auto;
-    margin-bottom: toIndex(155);
     position: relative;
-    width: 93.28%;
   }
-
   &__img-text {
-    position: absolute;
-    top: 4%;
-    right: 0;
-    width: 14.41%;
+    position: relative;
+    max-width: 70%;
     font-weight: 800;
-    font-size: toIndex(33);
-    line-height: 82%;
+    font-size: toIndexMob(33);
     /* or 27px */
 
     letter-spacing: -0.033em;
 
     color: #c5fd64;
-    &:before {
-      display: block;
-      margin-bottom: toIndex(50);
-      content: '';
-      width: 13.63%;
-      height: toIndex(8);
-      background: #c5fd64;
+    & > div div {
+      display: flex;
+      overflow-y: hidden;
+      margin-bottom: -2%;
     }
   }
-
-  &__img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
+  &__img-text-line {
+    width: 33px;
+    height: 8px;
+    background: #c5fd64;
   }
-
   &__text-cont {
     text-align: center;
   }
   &__text {
-    margin-bottom: toIndex(55);
+    font-size: toIndexMob(20);
     font-weight: 800;
-    font-size: toIndex(33);
-    line-height: 1;
     letter-spacing: -0.033em;
-
-    color: #ffffff;
   }
-
   &__acccent-text {
+    font-size: toIndexMob(48);
+
     font-weight: 800;
-    font-size: toIndex(133);
-    // line-height: 1;
     letter-spacing: -0.033em;
-
-    /* Белый */
-
-    color: #ffffff;
-    & > .split:not(:last-child) {
-      margin-bottom: toIndex(-1.33);
-    }
     & > .split {
-      display: flex;
+      display: inline-flex;
       justify-content: center;
-      overflow: hidden;
+      overflow-y: hidden;
+    }
+    & .metaverse__sup {
+      transform: translateY(toIndexMob(-12));
+    }
+  }
+  &__note {
+    counter-increment: count-notes;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 139%;
+
+    letter-spacing: -0.033em;
+    text-decoration-line: underline;
+
+    color: #333333;
+    &::before {
+      margin-right: toIndex(3);
+      content: '(' counter(count-notes) ')';
+    }
+    & >a{
+      color: inherit;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .metaverse {
+    &__line {
+      height: 22px;
+    }
+    &__title {
+      font-size: toIndexTab(120);
+      & > .split:not(:last-child) {
+        margin-bottom: toIndexTab(-25);
+      }
+    }
+    &__worth-text {
+      font-size: toIndexTab(50);
+      & > .metaverse__sup {
+        top: toIndexTab(-25);
+      }
+    }
+    &__sup {
+      font-size: toIndexTab(14);
+    }
+    &__img-text {
+      font-size: toIndexTab(33);
+    }
+    &__text {
+      font-size: toIndexTab(26);
+    }
+    &__acccent-text {
+      font-size: toIndexTab(90);
+      & .metaverse__sup {
+        transform: translateY(toIndexTab(-20));
+      }
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .metaverse {
+    &__title {
+      & > .split {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    &__worth-text {
+      max-width: 82%;
+      text-align: center;
+
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 11vh;
+    }
+    &__img-wrap {
+      margin-bottom: 11vh;
+    }
+    &__img-text {
+      margin-bottom: 15vh;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      & > div div {
+        justify-content: center;
+      }
+    }
+    &__img-text-line {
+      margin: 0 auto 3vh auto;
+    }
+    &__img {
+      width: 202vw;
+      height: auto;
+      position: relative;
+      transform: translateX(-50%);
+      left: 50%;
+    }
+    &__text-cont {
+      margin-bottom: 12vh;
+    }
+    &__text {
+      margin-bottom: 2vh;
+    }
+    &__note {
+      line-height: 139%;
+      text-align: center;
+      &::before {
+        display: block;
+        margin: 0 auto 1vh auto;
+      }
+      &:not(:last-child) {
+        margin-bottom: 4vh;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .metaverse {
+    padding-top: toIndex(60);
+    padding-bottom: toIndex(110);
+    &__header {
+      margin-bottom: toIndex(332);
+    }
+    &__line {
+      margin-bottom: toIndex(305);
+      height: 33px;
+    }
+    &__title {
+      font-size: toIndex(433);
+      letter-spacing: -0.052em;
+      white-space: nowrap;
+      & > .split:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+
+    &__worth-text {
+      margin-bottom: toIndex(75);
+      font-size: toIndex(66);
+      max-width: 36%;
+      & > .metaverse__sup {
+        top: toIndex(-33);
+      }
+    }
+    &__sup {
+      font-size: toIndex(18);
+    }
+    &__img-wrap {
+      margin: 0 auto;
+      margin-bottom: toIndex(155);
+      width: 93.28%;
+    }
+
+    &__img-text {
+      position: absolute;
+      top: 0;
+      right: 0;
+      max-width: 14.41%;
+      font-size: toIndex(33);
+      &:before {
+        margin-bottom: toIndex(50);
+      }
+    }
+    &__img-text-line {
+      margin-bottom: toIndex(50);
+    }
+
+    &__img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    &__text-cont {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: toIndex(330);
+      max-width: 55.5%;
+    }
+    &__text {
+      margin-bottom: toIndex(55);
+      font-size: toIndex(33);
+    }
+
+    &__acccent-text {
+      font-size: toIndex(133);
+      & > .split:not(:last-child) {
+        margin-bottom: toIndex(-1.33);
+      }
+    }
+    &__notes-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: toIndex(50);
+      row-gap: toIndex(25);
+    }
+    &__note {
+      line-height: 86%;
+
+      &::before {
+        margin-right: toIndex(3);
+      }
     }
   }
 }

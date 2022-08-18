@@ -1,0 +1,67 @@
+.killer-feature {
+  padding: toIndex(200) 0;
+  .container {
+    position: relative;
+  }
+  &__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: toIndex(299);
+    line-height: 1;
+    text-align: right;
+    letter-spacing: -0.033em;
+    max-width: toIndex(720);
+    margin: 0 auto toIndex(70);
+    .split {
+      display: flex;
+      justify-content: flex-end;
+      overflow: hidden;
+      &:not(:last-child) {
+        margin-bottom: -6%;
+      }
+      span {
+        display: block;
+      }
+    }
+  }
+  &__text {
+    position: absolute;
+    top: 34%;
+    left: toIndex(60);
+    max-width: toIndex(240);
+    p {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 133%;
+      letter-spacing: -0.033em;
+      &:not(:last-child) {
+        margin-bottom: toIndex(20);
+      }
+    }
+    a {
+      color: $green;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .killer-feature {
+    &__text {
+      position: relative;
+      top: 0;
+      left: 0;
+      max-width: toIndex(720);
+      margin: 0 auto toIndex(70);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .killer-feature {
+    &__text {
+      padding-right: 20%;
+    }
+  }
+}
