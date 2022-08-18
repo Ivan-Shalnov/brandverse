@@ -447,12 +447,12 @@ h5 {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   -ms-flex-direction: column;
-      flex-direction: column; }
+      flex-direction: column;
+  padding-top: calc((1vw + 1vh) * (60 / 30)); }
   .loading.hide {
     opacity: 0;
     pointer-events: none; }
   .loading > .container {
-    padding-top: 4vh;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -675,7 +675,11 @@ h5 {
   width: 100%;
   z-index: 10; }
   .header__logo {
-    margin-right: auto; }
+    margin-right: auto;
+    width: calc((1vw + 1vh) * (166 / 30));
+    display: block; }
+    .header__logo img {
+      width: 100%; }
   .header__menu-btn {
     overflow-y: hidden;
     font-size: calc(var(--index) * 4.3);

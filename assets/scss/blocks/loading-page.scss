@@ -11,8 +11,8 @@
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   flex-direction: column;
+  padding-top: toIndex(60);
   & > .container {
-    padding-top: 4vh;
     display: flex;
     flex-direction: column;
     // justify-content: space-between;

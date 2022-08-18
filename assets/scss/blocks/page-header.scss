@@ -7,6 +7,11 @@
   z-index: 10;
   &__logo {
     margin-right: auto;
+    width: toIndex(166);
+    display: block;
+    img {
+      width: 100%;
+    }
   }
 
   &__menu-btn {
@@ -19,10 +24,10 @@
     cursor: pointer;
     font-family: 'Bebas Neue';
     margin-top: -0.5%;
-    &>span{
+    & > span {
       display: flex;
     }
-    &>div{
+    & > div {
       display: none;
     }
   }
