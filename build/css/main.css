@@ -1650,14 +1650,15 @@ h5 {
   .watches-fact__video-wrap {
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
+    -webkit-transform: perspective(1000px);
+            transform: perspective(1000px);
     transition: 250ms; }
     .watches-fact__video-wrap:hover {
       box-shadow: rgba(255, 255, 255, 0.1) 0px 22px 70px 4px; }
-      .watches-fact__video-wrap:hover > svg {
-        scale: 1.1;
-        -webkit-filter: drop-shadow(22px 5px 4px rgba(0, 0, 0, 0.5));
-                filter: drop-shadow(22px 5px 4px rgba(0, 0, 0, 0.5)); }
-    .watches-fact__video-wrap > svg {
+      .watches-fact__video-wrap:hover > span {
+        scale: 1.2;
+        text-shadow: 0px 11px 10px rgba(0, 0, 0, 0.8); }
+    .watches-fact__video-wrap > span {
       transition: 250ms;
       -webkit-transform: translateZ(30px);
               transform: translateZ(30px); } }

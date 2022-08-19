@@ -653,7 +653,7 @@ gsap.effects.ticker(tickerRefs);}
         {
           ScrollTrigger.matchMedia({
             '(min-width: 1200px)': ()=>{
-              VanillaTilt.init(document.querySelector(".watches-fact__video-wrap"),{scale:1.05,perspective: 500, transition: true,easing:                 "cubic-bezier(.03,.98,.52,.99)"});
+              VanillaTilt.init(document.querySelector(".watches-fact__video-wrap"),{scale:1.05,max:                    45,perspective: 500, transition: true,easing:                 "cubic-bezier(.03,.98,.52,.99)"});
               
             }
           })
