@@ -648,6 +648,18 @@ gsap.effects.ticker(tickerRefs);}
       // knw more animation end
 
       // ambasador animation start
+     
+      // BUTTON 3D HOVER
+        {
+          ScrollTrigger.matchMedia({
+            '(min-width: 1200px)': ()=>{
+              VanillaTilt.init(document.querySelector(".watches-fact__video-wrap"),{scale:1.05,max:                    45,perspective: 500, transition: true,easing:                 "cubic-bezier(.03,.98,.52,.99)"});
+              
+            }
+          })
+
+        }
+      // BUTTON 3D HOVER
       ScrollTrigger.matchMedia({
         '(min-width: 1200px)': function () {
           const ambasadorSectionScrollHeight =

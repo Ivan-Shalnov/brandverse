@@ -167,3 +167,34 @@
     }
   }
 }
+@media (min-width:1200px) {
+  .watches-fact {
+    @keyframes rotate{
+      0%{
+          transform: rotate(0deg);
+      }
+      100%{
+          transform: rotate(180deg);
+      }
+  }
+    &__video-wrap{
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+      transition:250ms;
+      &:hover{
+      // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 22px 70px 4px;
+      & > span {
+        scale: 1.2;
+        text-shadow: 0px 11px 10px rgba(0, 0, 0, 0.8);
+      }
+      }
+      & >span{
+        transition: 250ms;
+        transform: translateZ(30px);
+
+      }
+      
+    }
+  }
+}
