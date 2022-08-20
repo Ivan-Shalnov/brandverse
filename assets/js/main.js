@@ -6,82 +6,82 @@ const REFS = {
   const vh = document.documentElement.clientHeight / 100;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
-// number of loaded images for preloader progress
-var loadedCount = 0; //current number of images loaded
-var imagesToLoad = $('img').length; //number of slides with .bcg container
-var loadingProgress = 0; //timeline progress - starts at 0
+// // number of loaded images for preloader progress
+// var loadedCount = 0; //current number of images loaded
+// var imagesToLoad = $('img').length; //number of slides with .bcg container
+// var loadingProgress = 0; //timeline progress - starts at 0
 
-$('img')
-  .imagesLoaded({
-    background: false,
-  })
-  .progress(function (instance, image) {
-    loadProgress();
-  });
+// $('img')
+//   .imagesLoaded({
+//     background: false,
+//   })
+//   .progress(function (instance, image) {
+//     loadProgress();
+//   });
 
-function loadProgress(imgLoad, image) {
-  //one more image has been loaded
-  loadedCount++;
+// function loadProgress(imgLoad, image) {
+//   //one more image has been loaded
+//   loadedCount++;
 
-  loadingProgress = loadedCount / imagesToLoad;
+//   loadingProgress = loadedCount / imagesToLoad;
 
-  //console.log(loadingProgress);
+//   //console.log(loadingProgress);
 
-  // GSAP timeline for our progress bar
-  TweenLite.to(progressTl, 0.7, {
-    progress: loadingProgress,
-    ease: Linear.easeNone,
-  });
-}
+//   // GSAP timeline for our progress bar
+//   TweenLite.to(progressTl, 0.7, {
+//     progress: loadingProgress,
+//     ease: Linear.easeNone,
+//   });
+// }
 
-//progress animation instance. the instance's time is irrelevant, can be anything but 0 to void  immediate render
-var progressTl = new TimelineMax({
-  paused: true,
-  onUpdate: progressUpdate,
-  // onComplete: loadComplete,
-});
+// //progress animation instance. the instance's time is irrelevant, can be anything but 0 to void  immediate render
+// var progressTl = new TimelineMax({
+//   paused: true,
+//   onUpdate: progressUpdate,
+//   // onComplete: loadComplete,
+// });
 
-progressTl
-  //tween the progress bar width
-  .to($('.loading__bg-bottom'), 1, { height: '100%', ease: Linear.easeNone });
+// progressTl
+//   //tween the progress bar width
+//   .to($('.loading__bg-bottom'), 1, { height: '100%', ease: Linear.easeNone });
 
-//as the progress bar witdh updates and grows we put the precentage loaded in the screen
-function progressUpdate() {
-  //the percentage loaded based on the tween's progress
-  loadingProgress = Math.round(progressTl.progress() * 100);
-  //we put the percentage in the screen
-  $('.loading__percentage').text(loadingProgress + '%');
-}
+// //as the progress bar witdh updates and grows we put the precentage loaded in the screen
+// function progressUpdate() {
+//   //the percentage loaded based on the tween's progress
+//   loadingProgress = Math.round(progressTl.progress() * 100);
+//   //we put the percentage in the screen
+//   $('.loading__percentage').text(loadingProgress + '%');
+// }
 
-function loadComplete() {
-  // preloader out
-  $('.loading').fadeOut(400);
-  document.body.classList.remove('no-scroll');
-  // var preloaderOutTl = new TimelineMax();
+// function loadComplete() {
+//   // preloader out
+//   $('.loading').fadeOut(400);
+//   document.body.classList.remove('no-scroll');
+//   // var preloaderOutTl = new TimelineMax();
 
-  // // preloaderOutTl
-  // //   .to($('.progress'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn })
-  // //   .to($('.txt-perc'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn }, 0.1)
-  // //   .set($('body'), { className: '-=is-loading' })
-  // //   .set($('#intro'), { className: '+=is-loaded' })
-  // //   .to($('#preloader'), 0.7, { yPercent: 100, ease: Power4.easeInOut })
-  // //   .set($('#preloader'), { className: '+=is-hidden' })
-  // //   .from(
-  // //     $('#intro .title'),
-  // //     1,
-  // //     { autoAlpha: 0, ease: Power1.easeOut },
-  // //     '-=0.2',
-  // //   )
-  // //   .from($('#intro p'), 0.7, { autoAlpha: 0, ease: Power1.easeOut }, '+=0.2')
-  // //   .from(
-  // //     $('.scroll-hint'),
-  // //     0.3,
-  // //     { y: -20, autoAlpha: 0, ease: Power1.easeOut },
-  // //     '+=0.1',
-  // //   );
+//   // // preloaderOutTl
+//   // //   .to($('.progress'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn })
+//   // //   .to($('.txt-perc'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn }, 0.1)
+//   // //   .set($('body'), { className: '-=is-loading' })
+//   // //   .set($('#intro'), { className: '+=is-loaded' })
+//   // //   .to($('#preloader'), 0.7, { yPercent: 100, ease: Power4.easeInOut })
+//   // //   .set($('#preloader'), { className: '+=is-hidden' })
+//   // //   .from(
+//   // //     $('#intro .title'),
+//   // //     1,
+//   // //     { autoAlpha: 0, ease: Power1.easeOut },
+//   // //     '-=0.2',
+//   // //   )
+//   // //   .from($('#intro p'), 0.7, { autoAlpha: 0, ease: Power1.easeOut }, '+=0.2')
+//   // //   .from(
+//   // //     $('.scroll-hint'),
+//   // //     0.3,
+//   // //     { y: -20, autoAlpha: 0, ease: Power1.easeOut },
+//   // //     '+=0.1',
+//   // //   );
 
-  // return preloaderOutTl;
-}
+//   // return preloaderOutTl;
+// }
 // SPLITTING
 function spliting(element) {
   let text = element.textContent.split('');
@@ -311,7 +311,7 @@ gsap.effects.ticker(tickerRefs);}
         pinType: REFS.scroller.style.transform ? 'transform' : 'fixed',
       });
       ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-    ScrollTrigger.addEventListener('refresh', loadComplete);
+    // ScrollTrigger.addEventListener('refresh', loadComplete);
       // START INIT SCROLL
       // MENU
       {
