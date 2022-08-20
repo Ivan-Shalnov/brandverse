@@ -5065,11 +5065,6 @@ h5 {
         align-items: flex-end; }
   .section-discuss .col {
     position: relative; }
-  .section-discuss__name {
-    position: absolute;
-    top: 0;
-    right: calc((1vw + 1vh) * (60 / 30));
-    color: #000000; }
   .section-discuss__title {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -5086,17 +5081,21 @@ h5 {
       .section-discuss__title .split span {
         display: block; }
   .section-discuss__subtitle {
-    position: absolute;
-    top: 0;
-    right: 0;
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (26 / 30));
     line-height: 94%;
-    letter-spacing: -0.033em; }
-    .section-discuss__subtitle li {
-      overflow: hidden; }
+    letter-spacing: -0.033em;
+    margin-top: calc((1vw + 1vh) * (60 / 30)); }
   .section-discuss .link {
     margin-bottom: calc((1vw + 1vh) * (35 / 30)); }
+  .section-discuss .form {
+    padding-top: calc((1vw + 1vh) * (40 / 30)); }
+  .section-discuss .form__field-textarea {
+    height: calc((1vw + 1vh) * (230 / 30)); }
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .section-discuss__title {
+    font-size: calc((1vw + 1vh) * (220 / 30)); } }
 
 @media (max-width: 1199px) {
   .section-discuss .grid {
@@ -5106,7 +5105,7 @@ h5 {
     margin-bottom: calc((1vw + 1vh) * (50 / 30)); }
   .section-discuss__subtitle {
     position: relative;
-    font-size: calc((1vw + 1vh) * (60 / 30)); }
+    font-size: calc((1vw + 1vh) * (40 / 30)); }
   .section-discuss__name {
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg);

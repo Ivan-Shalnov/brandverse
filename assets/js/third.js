@@ -479,21 +479,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { y: '100%', ease: Power2.easeInOut, yoyo: true },
         0.05,
       )
-      .staggerFrom(
-        '.section-discuss__subtitle li p',
+      .from(
+        '.section-discuss__subtitle',
         0.8,
         { y: '100%', ease: Power2.easeInOut, yoyo: true },
-        0.05,
-        '-=0.8',
-      )
-      .from(
-        '.section-discuss .link',
-        0.8,
-        {
-          y: '100%',
-          opacity: 0,
-          ease: Power2.easeInOut,
-        },
         '-=0.8',
       );
     // text section animation end
@@ -1084,3 +1073,33 @@ function btnHover(button) {
   });
 }
 // BUTTON HOVER END
+
+$('.form').validate({
+  rules: {
+    email: {
+      email: true,
+      required: true,
+    },
+  },
+  messages: {
+    email: {
+      email: '',
+      required: '',
+    },
+  },
+  submitHandler: function (form) {
+    $.ajax({
+      type: 'POST',
+      url: '../mail.php',
+      data: $(form).serialize(),
+      success: function () {
+        $(form).trigger('reset');
+        $('.form__sucess').fadeIn();
+        setTimeout(function () {
+          $('.form__sucess').hide();
+        }, 1500);
+      },
+    });
+    return false; // required to block normal submit since you used ajax
+  },
+});

@@ -12,12 +12,6 @@
   .col {
     position: relative;
   }
-  &__name {
-    position: absolute;
-    top: 0;
-    right: toIndex(60);
-    color: #000000;
-  }
   &__title {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -37,19 +31,28 @@
     }
   }
   &__subtitle {
-    position: absolute;
-    top: 0;
-    right: 0;
     font-weight: 800;
     font-size: toIndex(26);
     line-height: 94%;
     letter-spacing: -0.033em;
-    li {
-      overflow: hidden;
-    }
+    margin-top: toIndex(60);
   }
   .link {
     margin-bottom: toIndex(35);
+  }
+  .form {
+    padding-top: toIndex(40);
+  }
+  .form__field-textarea {
+    height: toIndex(230);
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .section-discuss {
+    &__title {
+      font-size: toIndex(220);
+    }
   }
 }
 
@@ -64,7 +67,7 @@
     }
     &__subtitle {
       position: relative;
-      font-size: toIndex(60);
+      font-size: toIndex(40);
     }
     &__name {
       transform: rotate(-90deg);
