@@ -50,6 +50,7 @@
   }
   &__video-wrap {
     position: relative;
+    overflow: hidden;
     margin: 0 auto;
     flex-shrink: 0;
     width: toIndex(567);
@@ -60,7 +61,33 @@
     border-radius: 50%;
     background: #4f06c6;
     margin-top: toIndex(-150);
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+    &:hover{
+      &>img{
+        opacity:1;
+      }
+      &>span{
+        opacity:0;
+      }
+    }
+    &>img{
+    transition: 250ms ease-in-out;
+      opacity:0;
+      display: block;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      width:180%;
+      height:auto;
+    }
+    &>span{
+    transition: 250ms ease-in-out;
+    }
+    
   }
+  
 
   // .watches-fact__text
 
@@ -93,6 +120,22 @@
   }
 }
 
+#watches-fact__video{
+  width:100%;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  &.fullscreen{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  opacity: 1;
+  z-index: 3;
+  pointer-events: all;
+  }
+}
 // @media (max-width: 1299px) {
 //   .watches-fact {
 //     &__title {
@@ -169,14 +212,7 @@
 }
 @media (min-width:1200px) {
   .watches-fact {
-    @keyframes rotate{
-      0%{
-          transform: rotate(0deg);
-      }
-      100%{
-          transform: rotate(180deg);
-      }
-  }
+
     &__video-wrap{
       transform-style: preserve-3d;
       transform: perspective(1000px);
