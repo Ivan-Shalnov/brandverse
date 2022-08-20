@@ -325,6 +325,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
         },
         pinType: REFS.scroller.style.transform ? 'transform' : 'fixed',
       });
+      ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+      ScrollTrigger.addEventListener('refresh', loadComplete);
       // START INIT SCROLL
       // MENU
       {
@@ -685,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // ambasador animation start
 
       // BUTTON 3D HOVER
-      let watchesBtnRef = document.querySelector('.watches-fact__video-wrap');
+      let watchesBtnRef = document.querySelector('.watches-fact__play-btn');
       {
         ScrollTrigger.matchMedia({
           '(min-width: 1200px)': () => {
@@ -782,8 +784,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
         .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
 
       // contacs animation end
-      ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-      ScrollTrigger.addEventListener('refresh', loadComplete);
       ScrollTrigger.refresh();
     });
   };
@@ -830,7 +830,8 @@ function onPlayerStateChange(event) {
     playerContainer.classList.toggle('active');
   }
 }
-let watchesBtnRef = document.querySelector('.watches-fact__video-wrap');
+
+let watchesBtnRef = document.querySelector('.watches-fact__play-btn');
 
 watchesBtnRef.addEventListener('click', playFullscreen);
 function playFullscreen() {
