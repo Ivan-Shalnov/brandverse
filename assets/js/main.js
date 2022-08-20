@@ -393,7 +393,7 @@ gsap.effects.ticker(tickerRefs);}
         },
       });
 
-      promoTl.eventCallback('onStart',loadComplete)
+      promoTl
         .addLabel('start', '+=1')
         .staggerFrom(
           '.promo__title .split span',
@@ -757,7 +757,7 @@ gsap.effects.ticker(tickerRefs);}
 
     
     ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-    // ScrollTrigger.addEventListener('refresh', loadComplete);
+    ScrollTrigger.addEventListener('refresh', loadComplete);
     ScrollTrigger.refresh();
     });
   };
