@@ -55,7 +55,7 @@ function progressUpdate() {
 
 function loadComplete() {
   // preloader out
-  $('.loading').fadeOut(400);
+  document.getElementById('preloader').classList.add('hide');
   document.body.classList.remove('no-scroll');
   // var preloaderOutTl = new TimelineMax();
 
@@ -410,7 +410,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       });
 
       promoTl
-        .eventCallback('onStart', loadComplete)
         .addLabel('start', '+=1')
         .staggerFrom(
           '.promo__title .split span',
@@ -783,9 +782,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
         .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
 
       // contacs animation end
-
       ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-      // ScrollTrigger.addEventListener('refresh', loadComplete);
+      ScrollTrigger.addEventListener('refresh', loadComplete);
       ScrollTrigger.refresh();
     });
   };
