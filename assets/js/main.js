@@ -411,9 +411,9 @@ gsap.effects.ticker(tickerRefs);}
         )
         .addLabel('startLink')
         .from(
-          '.promo__link',
+          '.promo__link svg',
           0.4,
-          { scale: 0, ease: Power2.easeInOut },
+          { xPercent: 100, yPercent:100, ease: Power2.easeInOut },
           'start',
         );
       // promo animation end

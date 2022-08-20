@@ -40,7 +40,7 @@
   }
   &__input {
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgb(197.12, 199.76, 203.28);
     padding-bottom: calc(var(--index) * 1);
     background-color: transparent;
     width: 100%;
@@ -50,9 +50,9 @@
     font-size: calc(var(--index) * 1.1);
     line-height: 94%;
     letter-spacing: -0.033em;
-    color: #000000;
+    color: currentColor;
     &::placeholder {
-      color: #000000;
+      color: currentColor;
     }
     &:focus {
       outline: none;

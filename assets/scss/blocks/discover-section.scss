@@ -103,6 +103,7 @@
     flex-direction: column;
   }
   &__footer-title {
+    margin-bottom: toIndex(35);
     font-weight: 800;
     font-size: toIndex(33);
     line-height: 94%;
@@ -198,6 +199,7 @@
     }
     &__footer-title {
       font-size: 22px;
+      margin-bottom: 2.2vh;
     }
     &__link {
       font-size: 26.5vw;
