@@ -5222,7 +5222,6 @@ h5 {
     font-size: 12.7vw; } }
 
 body {
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'RF Dewi';
