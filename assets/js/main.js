@@ -410,6 +410,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       });
 
       promoTl
+        .eventCallback('onStart', loadComplete)
         .addLabel('start', '+=1')
         .staggerFrom(
           '.promo__title .split span',
@@ -685,22 +686,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // ambasador animation start
 
       // BUTTON 3D HOVER
+      let watchesBtnRef = document.querySelector('.watches-fact__video-wrap');
       {
         ScrollTrigger.matchMedia({
           '(min-width: 1200px)': () => {
-            VanillaTilt.init(
-              document.querySelector('.watches-fact__video-wrap'),
-              {
-                scale: 1.05,
-                max: 45,
-                perspective: 500,
-                transition: true,
-                easing: 'cubic-bezier(.03,.98,.52,.99)',
-              },
-            );
+            VanillaTilt.init(watchesBtnRef, {
+              scale: 1.05,
+              max: 40,
+              perspective: 500,
+              transition: true,
+              easing: 'cubic-bezier(.03,.98,.52,.99)',
+            });
           },
         });
       }
+
       // BUTTON 3D HOVER
       ScrollTrigger.matchMedia({
         '(min-width: 1200px)': function () {
@@ -785,7 +785,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // contacs animation end
 
       ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-      ScrollTrigger.addEventListener('refresh', loadComplete);
+      // ScrollTrigger.addEventListener('refresh', loadComplete);
       ScrollTrigger.refresh();
     });
   };
@@ -801,6 +801,10 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 var playerContainer = document.getElementById('player-container');
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
+let playerWatches;
+let iframe;
+const watchesContainer = document.querySelector('.watches-fact');
+const watchesPlayer = document.querySelector('.watches-fact__video');
 
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
@@ -811,6 +815,16 @@ function onYouTubeIframeAPIReady() {
       onStateChange: onPlayerStateChange,
     },
   });
+  playerWatches = new YT.Player('watches-fact__video', {
+    height: '320',
+    width: '320',
+    videoId: '0BgE91oLEN8',
+    events: {
+      // onStateChange: onPlayWatches,
+      onReady: onPlayerReady,
+      onStateChange: onPauseWatch,
+    },
+  });
 }
 
 function onPlayerStateChange(event) {
@@ -818,7 +832,26 @@ function onPlayerStateChange(event) {
     playerContainer.classList.toggle('active');
   }
 }
+let watchesBtnRef = document.querySelector('.watches-fact__video-wrap');
 
+watchesBtnRef.addEventListener('click', playFullscreen);
+function playFullscreen() {
+  iframe.classList.add('fullscreen');
+
+  playerWatches.playVideo();
+}
+function onPlayerReady(event) {
+  iframe = document.querySelector('#watches-fact__video');
+}
+function onPauseWatch(event) {
+  if (
+    event.data == YT.PlayerState.PAUSED ||
+    event.data == YT.PlayerState.ENDED
+  ) {
+    iframe.classList.remove('fullscreen');
+    playerWatches.pauseVideo();
+  }
+}
 playerContainer.addEventListener('click', function () {
   player.playVideo();
   playerContainer.classList.toggle('active');
