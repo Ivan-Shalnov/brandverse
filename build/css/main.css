@@ -3103,7 +3103,8 @@ h5 {
         color: red; }
   .subscribe-form__btn {
     background-color: transparent;
-    border: none; }
+    border: none;
+    color: var(--accentColor, #4f06c6); }
   .subscribe-form__success {
     display: none; }
 

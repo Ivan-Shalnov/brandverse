@@ -346,6 +346,7 @@ gsap.effects.ticker(tickerRefs);}
       const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
       scrollColorElems.forEach((colorSection, i) => {
         const prevBg = i === 0 ? '' : scrollColorElems[i - 1].dataset.bgcolor;
+        const accentColor=scrollColorElems[i].dataset?.accentcolor||'currentColor';
         const prevText =
           i === 0 ? '' : scrollColorElems[i - 1].dataset.textcolor;
 
@@ -355,12 +356,22 @@ gsap.effects.ticker(tickerRefs);}
           start: 'top 50%',
           end: 'bottom 50%',
           toggleClass: 'active',
-          onEnter: () =>
+          onEnter: () =>{
             gsap.to(REFS.scroller, {
               backgroundColor: colorSection.dataset.bgcolor,
               color: colorSection.dataset.textcolor,
+              '--accentColor': accentColor,
               overwrite: 'auto',
-            }),
+            })
+          },
+          onEnterBack: () =>{
+            gsap.to(REFS.scroller, {
+              backgroundColor: colorSection.dataset.bgcolor,
+              color: colorSection.dataset.textcolor,
+              '--accentColor': accentColor,
+              overwrite: 'auto',
+            })
+          },
           onLeaveBack: () =>
             gsap.to(REFS.scroller, {
               backgroundColor: prevBg,
