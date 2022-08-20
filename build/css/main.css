@@ -986,7 +986,9 @@ h5 {
     top: 0;
     left: 0;
     width: 100%;
-    height: auto; }
+    height: auto;
+    -webkit-filter: contrast(109%);
+            filter: contrast(109%); }
   .discover__row {
     display: -ms-flexbox;
     display: flex;
