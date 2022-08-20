@@ -167,66 +167,81 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   window.onload = function () {
     // TICKER
-{gsap.registerEffect({
-  name: "ticker",
-  effect(targets, config) {
-    buildTickers({
-      targets: targets,
-      clone: config.clone || (el => {
-        let clone = el.children[0].cloneNode(true);
-        el.insertBefore(clone, el.children[0]);
-        return clone;
-      })
-    });
-    function buildTickers(config, originals) {
-      let tickers;
-      if (originals && originals.clones) { // on window resizes, we should delete the old clones and reset the widths
-        originals.clones.forEach(el => el && el.parentNode && el.parentNode.removeChild(el));
-        originals.forEach((el, i) => originals.inlineWidths[i] ? (el.style.width = originals.inlineWidths[i]) : el.style.removeProperty("width"));
-        tickers = originals;
-      } else {
-        tickers = config.targets;
-      }
-      const clones = tickers.clones = [],
-        inlineWidths = tickers.inlineWidths = [];
-      tickers.forEach((el, index) => {
-        inlineWidths[index] = el.style.width;
-        el.style.width = "10000px"; // to let the children grow as much as necessary (otherwise it'll often be cropped to the viewport width)
-        el.style.display = "flex";
-        let width = el.children[0].offsetWidth,
-          cloneCount = Math.ceil(window.innerWidth / width),
-          right = el.dataset.direction === "right",
-          i;
-          el.style.gap=`${el.dataset.gap||0}px`;
-        el.style.width = width * (cloneCount + 1) + "px";
-        for (i = 0; i < cloneCount; i++) {
-          clones.push(config.clone(el));
-        }
-        gsap.fromTo(el, {
-          x: right ? -width : 0
-        }, {
-          x: right ? 0 : -width,
-          duration: width / 100 / parseFloat(el.dataset.speed || 1),
-          repeat: -1,
-          overwrite: "auto",
-          ease: "none"
-        });
+    {
+      gsap.registerEffect({
+        name: 'ticker',
+        effect(targets, config) {
+          buildTickers({
+            targets: targets,
+            clone:
+              config.clone ||
+              ((el) => {
+                let clone = el.children[0].cloneNode(true);
+                el.insertBefore(clone, el.children[0]);
+                return clone;
+              }),
+          });
+          function buildTickers(config, originals) {
+            let tickers;
+            if (originals && originals.clones) {
+              // on window resizes, we should delete the old clones and reset the widths
+              originals.clones.forEach(
+                (el) => el && el.parentNode && el.parentNode.removeChild(el),
+              );
+              originals.forEach((el, i) =>
+                originals.inlineWidths[i]
+                  ? (el.style.width = originals.inlineWidths[i])
+                  : el.style.removeProperty('width'),
+              );
+              tickers = originals;
+            } else {
+              tickers = config.targets;
+            }
+            const clones = (tickers.clones = []),
+              inlineWidths = (tickers.inlineWidths = []);
+            tickers.forEach((el, index) => {
+              inlineWidths[index] = el.style.width;
+              el.style.width = '10000px'; // to let the children grow as much as necessary (otherwise it'll often be cropped to the viewport width)
+              el.style.display = 'flex';
+              let width = el.children[0].offsetWidth,
+                cloneCount = Math.ceil(window.innerWidth / width),
+                right = el.dataset.direction === 'right',
+                i;
+              el.style.gap = `${el.dataset.gap || 0}px`;
+              el.style.width = width * (cloneCount + 1) + 'px';
+              for (i = 0; i < cloneCount; i++) {
+                clones.push(config.clone(el));
+              }
+              gsap.fromTo(
+                el,
+                {
+                  x: right ? -width : 0,
+                },
+                {
+                  x: right ? 0 : -width,
+                  duration: width / 100 / parseFloat(el.dataset.speed || 1),
+                  repeat: -1,
+                  overwrite: 'auto',
+                  ease: 'none',
+                },
+              );
+            });
+            // rerun on window resizes, otherwise there could be gaps if the user makes the window bigger.
+            originals ||
+              window.addEventListener('resize', () =>
+                buildTickers(config, tickers),
+              );
+          }
+        },
       });
-      // rerun on window resizes, otherwise there could be gaps if the user makes the window bigger.
-      originals || window.addEventListener("resize", () => buildTickers(config, tickers));
+      const tickerRefs = document.querySelectorAll('[data-ticker]');
+      gsap.effects.ticker(tickerRefs);
     }
-  }
-});
-const tickerRefs=document.querySelectorAll('[data-ticker]')
-gsap.effects.ticker(tickerRefs);}
-
-    
 
     const splitElements = document.querySelectorAll('.split');
     for (let i = 0; i < splitElements.length; i++) {
       spliting(splitElements[i]);
     }
-
 
     window.requestAnimationFrame(function () {
       //BUTTON HOVER START
@@ -346,7 +361,8 @@ gsap.effects.ticker(tickerRefs);}
       const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
       scrollColorElems.forEach((colorSection, i) => {
         const prevBg = i === 0 ? '' : scrollColorElems[i - 1].dataset.bgcolor;
-        const accentColor=scrollColorElems[i].dataset?.accentcolor||'currentColor';
+        const accentColor =
+          scrollColorElems[i].dataset?.accentcolor || 'currentColor';
         const prevText =
           i === 0 ? '' : scrollColorElems[i - 1].dataset.textcolor;
 
@@ -356,21 +372,21 @@ gsap.effects.ticker(tickerRefs);}
           start: 'top 50%',
           end: 'bottom 50%',
           toggleClass: 'active',
-          onEnter: () =>{
+          onEnter: () => {
             gsap.to(REFS.scroller, {
               backgroundColor: colorSection.dataset.bgcolor,
               color: colorSection.dataset.textcolor,
               '--accentColor': accentColor,
               overwrite: 'auto',
-            })
+            });
           },
-          onEnterBack: () =>{
+          onEnterBack: () => {
             gsap.to(REFS.scroller, {
               backgroundColor: colorSection.dataset.bgcolor,
               color: colorSection.dataset.textcolor,
               '--accentColor': accentColor,
               overwrite: 'auto',
-            })
+            });
           },
           onLeaveBack: () =>
             gsap.to(REFS.scroller, {
@@ -424,103 +440,111 @@ gsap.effects.ticker(tickerRefs);}
         .from(
           '.promo__link svg',
           0.4,
-          { xPercent: 100, yPercent:100, ease: Power2.easeInOut },
+          { xPercent: 100, yPercent: 100, ease: Power2.easeInOut },
           'start',
         );
       // promo animation end
-            // BUTTON FOLLOWING
-    ScrollTrigger.matchMedia({
-      '(min-width:1200px)':()=>{
-        const refs={
-          playerContainer: document.querySelector('.video-section__player'),
-         button: document.querySelector('.video-section__player .play-btn'),
-        }
-        let active=false;
-        const timeout=50;
-        const containerCenterPos={x:0,y:0}
-        const containerSize={
-          width: refs.playerContainer.clientWidth,
-          height: refs.playerContainer.clientHeight
-        };
-        const buttonSize={
-          width:refs.button.clientWidth, 
-          height:refs.button.clientHeight
-        };
-        const COORDS_RANGE={
-          x:{
-            min: (-containerSize.width/2)+buttonSize.width/2,
-            max: containerSize.width/2-buttonSize.width/2,
-          },
-          y:{
-            min: (-containerSize.height/2)+buttonSize.height/2,
-            max: (containerSize.height/2)-buttonSize.height/2,
-          }
-        }
-        const mousePos={x:0,y:0};
-        const currentPos={x:0, y:0};
-        let lastTime=0;
-        const pos = { x: 0, y: 0 };
-        const speed = 0.35;
+      // BUTTON FOLLOWING
+      ScrollTrigger.matchMedia({
+        '(min-width:1200px)': () => {
+          const refs = {
+            playerContainer: document.querySelector('.video-section__player'),
+            button: document.querySelector('.video-section__player .play-btn'),
+          };
+          let active = false;
+          const timeout = 50;
+          const containerCenterPos = { x: 0, y: 0 };
+          const containerSize = {
+            width: refs.playerContainer.clientWidth,
+            height: refs.playerContainer.clientHeight,
+          };
+          const buttonSize = {
+            width: refs.button.clientWidth,
+            height: refs.button.clientHeight,
+          };
+          const COORDS_RANGE = {
+            x: {
+              min: -containerSize.width / 2 + buttonSize.width / 2,
+              max: containerSize.width / 2 - buttonSize.width / 2,
+            },
+            y: {
+              min: -containerSize.height / 2 + buttonSize.height / 2,
+              max: containerSize.height / 2 - buttonSize.height / 2,
+            },
+          };
+          const mousePos = { x: 0, y: 0 };
+          const currentPos = { x: 0, y: 0 };
+          let lastTime = 0;
+          const pos = { x: 0, y: 0 };
+          const speed = 0.35;
 
-        ScrollTrigger.create({
-          scroller: REFS.scroller,
-          trigger: playerContainer,
-          onUpdate: debounce(updateCenterCoords,timeout),
+          ScrollTrigger.create({
+            scroller: REFS.scroller,
+            trigger: playerContainer,
+            onUpdate: debounce(updateCenterCoords, timeout),
             // markers: true,
-        })
-        refs.playerContainer.addEventListener('mouseenter',startFollowing)
-        refs.playerContainer.addEventListener('mouseleave',stopFollowing) 
-        function startFollowing(){
-          refs.playerContainer.addEventListener('mousemove',updateMoveCoords)
-          active=true;
-        }
-        function stopFollowing(){
-          refs.playerContainer.removeEventListener('mousemove',updateMoveCoords),
-          active=false;
-          currentPos.x=0;
-          currentPos.y=0;
-        }
-        function updateCenterCoords(){
-          if(!active)return;
-          const xPos=refs.playerContainer.getBoundingClientRect().x;
-          const yPos=refs.playerContainer.getBoundingClientRect().y;
-          const width=containerSize.width;
-          const height=containerSize.height;
+          });
+          refs.playerContainer.addEventListener('mouseenter', startFollowing);
+          refs.playerContainer.addEventListener('mouseleave', stopFollowing);
+          function startFollowing() {
+            refs.playerContainer.addEventListener(
+              'mousemove',
+              updateMoveCoords,
+            );
+            active = true;
+          }
+          function stopFollowing() {
+            refs.playerContainer.removeEventListener(
+              'mousemove',
+              updateMoveCoords,
+            ),
+              (active = false);
+            currentPos.x = 0;
+            currentPos.y = 0;
+          }
+          function updateCenterCoords() {
+            if (!active) return;
+            const xPos = refs.playerContainer.getBoundingClientRect().x;
+            const yPos = refs.playerContainer.getBoundingClientRect().y;
+            const width = containerSize.width;
+            const height = containerSize.height;
 
-          containerCenterPos.x=xPos+width/2;
-          containerCenterPos.y=yPos+height/2;
-
-        }
-        function updateMoveCoords(mouseEvent)
-  { 
-    if(Date.now()-lastTime<timeout) return
-    lastTime=Date.now();
-    if(mousePos.x===mouseEvent.clientX&&mousePos.y===mouseEvent.clientY) return
-    mousePos.x=mouseEvent.clientX;
-    mousePos.y=mouseEvent.clientY;
-    let xPos = mousePos.x-containerCenterPos.x;
-    let yPos= mousePos.y -containerCenterPos.y;
-    currentPos.x=xPos;
-    currentPos.y=yPos;
-  }
-  gsap.set(refs.button, {xPercent: -50, yPercent: -50});
-  const xSet = gsap.utils.pipe(
-    gsap.utils.clamp(COORDS_RANGE.x.min,COORDS_RANGE.x.max),
-    gsap.quickSetter(refs.button, "x", "px")
-  );
-  const ySet = gsap.utils.pipe(
-    gsap.utils.clamp(COORDS_RANGE.y.min,COORDS_RANGE.y.max),
-    gsap.quickSetter(refs.button, "y", "px")
-  );
-  gsap.ticker.add(() => {
-    const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio()); 
-    pos.x += (currentPos.x - pos.x) * dt;
-    pos.y += (currentPos.y - pos.y) * dt;
-    xSet(pos.x);
-    ySet(pos.y);
-  });
-      }
-    })
+            containerCenterPos.x = xPos + width / 2;
+            containerCenterPos.y = yPos + height / 2;
+          }
+          function updateMoveCoords(mouseEvent) {
+            if (Date.now() - lastTime < timeout) return;
+            lastTime = Date.now();
+            if (
+              mousePos.x === mouseEvent.clientX &&
+              mousePos.y === mouseEvent.clientY
+            )
+              return;
+            mousePos.x = mouseEvent.clientX;
+            mousePos.y = mouseEvent.clientY;
+            let xPos = mousePos.x - containerCenterPos.x;
+            let yPos = mousePos.y - containerCenterPos.y;
+            currentPos.x = xPos;
+            currentPos.y = yPos;
+          }
+          gsap.set(refs.button, { xPercent: -50, yPercent: -50 });
+          const xSet = gsap.utils.pipe(
+            gsap.utils.clamp(COORDS_RANGE.x.min, COORDS_RANGE.x.max),
+            gsap.quickSetter(refs.button, 'x', 'px'),
+          );
+          const ySet = gsap.utils.pipe(
+            gsap.utils.clamp(COORDS_RANGE.y.min, COORDS_RANGE.y.max),
+            gsap.quickSetter(refs.button, 'y', 'px'),
+          );
+          gsap.ticker.add(() => {
+            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+            pos.x += (currentPos.x - pos.x) * dt;
+            pos.y += (currentPos.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+          });
+        },
+      });
 
       // discover animation start
       const discoverTl = gsap.timeline({
@@ -659,17 +683,24 @@ gsap.effects.ticker(tickerRefs);}
       // knw more animation end
 
       // ambasador animation start
-     
-      // BUTTON 3D HOVER
-        {
-          ScrollTrigger.matchMedia({
-            '(min-width: 1200px)': ()=>{
-              VanillaTilt.init(document.querySelector(".watches-fact__video-wrap"),{scale:1.05,max:                    45,perspective: 500, transition: true,easing:                 "cubic-bezier(.03,.98,.52,.99)"});
-              
-            }
-          })
 
-        }
+      // BUTTON 3D HOVER
+      {
+        ScrollTrigger.matchMedia({
+          '(min-width: 1200px)': () => {
+            VanillaTilt.init(
+              document.querySelector('.watches-fact__video-wrap'),
+              {
+                scale: 1.05,
+                max: 45,
+                perspective: 500,
+                transition: true,
+                easing: 'cubic-bezier(.03,.98,.52,.99)',
+              },
+            );
+          },
+        });
+      }
       // BUTTON 3D HOVER
       ScrollTrigger.matchMedia({
         '(min-width: 1200px)': function () {
@@ -753,10 +784,9 @@ gsap.effects.ticker(tickerRefs);}
 
       // contacs animation end
 
-    
-    ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-    ScrollTrigger.addEventListener('refresh', loadComplete);
-    ScrollTrigger.refresh();
+      ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+      ScrollTrigger.addEventListener('refresh', loadComplete);
+      ScrollTrigger.refresh();
     });
   };
 });
@@ -912,7 +942,7 @@ $('.subscribe-form').validate({
 });
 
 // DEBOUNCE
-function debounce (callback, wait)  {
+function debounce(callback, wait) {
   let timeoutId = null;
   return (...args) => {
     window.clearTimeout(timeoutId);
