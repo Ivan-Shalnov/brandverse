@@ -662,15 +662,13 @@ gsap.effects.ticker(tickerRefs);}
       // BUTTON 3D HOVER
       ScrollTrigger.matchMedia({
         '(min-width: 1200px)': function () {
-          const ambasadorSectionScrollHeight =
-            document.querySelector('.ambassador').scrollHeight -
-            window.innerHeight;
           ScrollTrigger.create({
             scroller: REFS.scroller,
             trigger: '.ambassador__sticky-block',
+            endTrigger: '.ambassador__perks-container',
             pin: true,
             start: 'center center',
-            end: '+=' + ambasadorSectionScrollHeight,
+            end: 'bottom 85.5%',
           });
         },
       });

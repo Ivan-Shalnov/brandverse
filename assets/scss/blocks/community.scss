@@ -39,6 +39,12 @@
       height: 100%;
     }
   }
+  &__marquee-line{
+    height:2px;
+    background: #000000;
+opacity: 0.1;
+margin-bottom: 6.5vh;
+  }
   &__marquee-bottom {
     height: toIndex(196);
     svg {
@@ -66,7 +72,7 @@
     margin-top: toIndex(-100);
   }
   &__card {
-    padding: toIndex(110) toIndex(45) toIndex(220) toIndex(20);
+    padding: toIndex(110) toIndex(45) toIndex(220) toIndex(45);
     width: toIndex(435);
     position: relative;
     background: #ffffff;
@@ -132,6 +138,9 @@
 
 @media (max-width: 1199px) {
   .community {
+    &__marquee-line{
+      margin-bottom: 3.5vh;
+    }
     &__cards-list {
       display: block;
       margin-top: toIndex(-160);

@@ -38,7 +38,7 @@
     }
   }
   &__title div:not(:last-child) {
-    margin-bottom: -4%;
+    margin-bottom: toIndex(-35);
   }
   &__text {
     margin-bottom: calc(var(--index) * 14.43);

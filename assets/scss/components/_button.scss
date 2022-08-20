@@ -1,6 +1,6 @@
 .button {
   position: relative;
-  overflow: hidden;
+  overflow-y: hidden;
   padding: 0;
   & > span {
     display: flex;

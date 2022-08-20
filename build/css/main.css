@@ -275,7 +275,7 @@ h5 {
   font-weight: 700;
   font-size: calc((1vw + 1vh) * (200 / 30));
   line-height: 1;
-  letter-spacing: -0.033em;
+  letter-spacing: -0.029em;
   color: #4f06c6;
   position: relative;
   display: block; }
@@ -325,8 +325,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1660860530");
-  src: url("../fonts/icofont/ico-font.eot??1660860530#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1660860530") format("woff2"), url("../fonts/icofont/ico-font.woff?1660860530") format("woff"), url("../fonts/icofont/ico-font.ttf?1660860530") format("truetype"), url("../fonts/icofont/ico-font.svg?1660860530#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1660949076");
+  src: url("../fonts/icofont/ico-font.eot??1660949076#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1660949076") format("woff2"), url("../fonts/icofont/ico-font.woff?1660949076") format("woff"), url("../fonts/icofont/ico-font.ttf?1660949076") format("truetype"), url("../fonts/icofont/ico-font.svg?1660949076#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -355,7 +355,7 @@ h5 {
 
 .button {
   position: relative;
-  overflow: hidden;
+  overflow-y: hidden;
   padding: 0; }
   .button > span {
     display: -ms-flexbox;
@@ -1777,6 +1777,11 @@ h5 {
       height: 100%; }
     .community__marquee-top .js-marquee {
       height: 100%; }
+  .community__marquee-line {
+    height: 2px;
+    background: #000000;
+    opacity: 0.1;
+    margin-bottom: 6.5vh; }
   .community__marquee-bottom {
     height: calc((1vw + 1vh) * (196 / 30)); }
     .community__marquee-bottom svg {
@@ -1802,7 +1807,7 @@ h5 {
     position: relative;
     margin-top: calc((1vw + 1vh) * (-100 / 30)); }
   .community__card {
-    padding: calc((1vw + 1vh) * (110 / 30)) calc((1vw + 1vh) * (45 / 30)) calc((1vw + 1vh) * (220 / 30)) calc((1vw + 1vh) * (20 / 30));
+    padding: calc((1vw + 1vh) * (110 / 30)) calc((1vw + 1vh) * (45 / 30)) calc((1vw + 1vh) * (220 / 30)) calc((1vw + 1vh) * (45 / 30));
     width: calc((1vw + 1vh) * (435 / 30));
     position: relative;
     background: #ffffff;
@@ -1852,6 +1857,8 @@ h5 {
     bottom: calc((1vw + 1vh) * (200 / 30)); } }
 
 @media (max-width: 1199px) {
+  .community__marquee-line {
+    margin-bottom: 3.5vh; }
   .community__cards-list {
     display: block;
     margin-top: calc((1vw + 1vh) * (-160 / 30)); }
@@ -1994,7 +2001,7 @@ h5 {
       display: flex;
       overflow: hidden; }
   .ambassador__title div:not(:last-child) {
-    margin-bottom: -4%; }
+    margin-bottom: calc((1vw + 1vh) * (-35 / 30)); }
   .ambassador__text {
     margin-bottom: calc(var(--index) * 14.43);
     width: calc(var(--index) * 13.7);
