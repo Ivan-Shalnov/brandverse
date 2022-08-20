@@ -310,6 +310,8 @@ gsap.effects.ticker(tickerRefs);}
         },
         pinType: REFS.scroller.style.transform ? 'transform' : 'fixed',
       });
+      ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+    ScrollTrigger.addEventListener('refresh', loadComplete);
       // START INIT SCROLL
       // MENU
       {
@@ -661,7 +663,7 @@ gsap.effects.ticker(tickerRefs);}
       // ambasador animation start
      
       // BUTTON 3D HOVER
-      let watchesBtnRef=document.querySelector(".watches-fact__video-wrap");
+      let watchesBtnRef=document.querySelector(".watches-fact__play-btn");
       {
           ScrollTrigger.matchMedia({
             '(min-width: 1200px)': ()=>{
@@ -755,9 +757,6 @@ gsap.effects.ticker(tickerRefs);}
 
       // contacs animation end
 
-    
-    ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-    ScrollTrigger.addEventListener('refresh', loadComplete);
     ScrollTrigger.refresh();
     });
   };
@@ -805,7 +804,7 @@ function onPlayerStateChange(event) {
     playerContainer.classList.toggle('active');
   }
 }
-let watchesBtnRef=document.querySelector(".watches-fact__video-wrap");
+let watchesBtnRef=document.querySelector(".watches-fact__play-btn");
 
 watchesBtnRef.addEventListener('click',playFullscreen)
           function playFullscreen (){
