@@ -54,7 +54,7 @@ function progressUpdate() {
 
 function loadComplete() {
   // preloader out
-  $('.loading').fadeOut(400);
+  document.getElementById('preloader').classList.add('hide');
   document.body.classList.remove('no-scroll');
   // var preloaderOutTl = new TimelineMax();
 
