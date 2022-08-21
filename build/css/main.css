@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1660949076");
-  src: url("../fonts/icofont/ico-font.eot??1660949076#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1660949076") format("woff2"), url("../fonts/icofont/ico-font.woff?1660949076") format("woff"), url("../fonts/icofont/ico-font.ttf?1660949076") format("truetype"), url("../fonts/icofont/ico-font.svg?1660949076#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1661097496");
+  src: url("../fonts/icofont/ico-font.eot??1661097496#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661097496") format("woff2"), url("../fonts/icofont/ico-font.woff?1661097496") format("woff"), url("../fonts/icofont/ico-font.ttf?1661097496") format("truetype"), url("../fonts/icofont/ico-font.svg?1661097496#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1618,19 +1618,24 @@ h5 {
             transform: rotate(-90deg); }
 
 #watches-fact__video {
-  width: 100%;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  z-index: 3;
+  pointer-events: all;
+  transition: 300ms ease-in-out; }
+
+#watches-fact__video.is-hidden {
+  transition: 300ms ease-in-out;
   opacity: 0;
-  pointer-events: none; }
-  #watches-fact__video.fullscreen {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    z-index: 3;
-    pointer-events: all; }
+  pointer-events: none;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%); }
 
 @media (max-width: 1199px) {
   .watches-fact__title {
