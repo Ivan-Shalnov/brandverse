@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1660949076");
-  src: url("../fonts/icofont/ico-font.eot??1660949076#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1660949076") format("woff2"), url("../fonts/icofont/ico-font.woff?1660949076") format("woff"), url("../fonts/icofont/ico-font.ttf?1660949076") format("truetype"), url("../fonts/icofont/ico-font.svg?1660949076#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1661097496");
+  src: url("../fonts/icofont/ico-font.eot??1661097496#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661097496") format("woff2"), url("../fonts/icofont/ico-font.woff?1661097496") format("woff"), url("../fonts/icofont/ico-font.ttf?1661097496") format("truetype"), url("../fonts/icofont/ico-font.svg?1661097496#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1561,7 +1561,7 @@ h5 {
     line-height: 96%;
     letter-spacing: -0.033em;
     text-align: right; }
-  .watches-fact__video-wrap {
+  .watches-fact__play-btn {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
@@ -1580,11 +1580,11 @@ h5 {
     margin-top: calc((1vw + 1vh) * (-150 / 30));
     transition: 250ms ease-in-out;
     cursor: pointer; }
-    .watches-fact__video-wrap:hover > img {
+    .watches-fact__play-btn:hover > img {
       opacity: 1; }
-    .watches-fact__video-wrap:hover > span {
+    .watches-fact__play-btn:hover > span {
       opacity: 0; }
-    .watches-fact__video-wrap > img {
+    .watches-fact__play-btn > img {
       transition: 250ms ease-in-out;
       opacity: 0;
       display: block;
@@ -1595,7 +1595,7 @@ h5 {
               transform: translate(-50%, -50%);
       width: 180%;
       height: auto; }
-    .watches-fact__video-wrap > span {
+    .watches-fact__play-btn > span {
       transition: 250ms ease-in-out; }
   .watches-fact__text {
     margin-top: calc((1vw + 1vh) * (-105 / 30));
@@ -1619,19 +1619,24 @@ h5 {
             transform: rotate(-90deg); }
 
 #watches-fact__video {
-  width: 100%;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  z-index: 3;
+  pointer-events: all;
+  transition: 300ms ease-in-out; }
+
+#watches-fact__video.is-hidden {
+  transition: 300ms ease-in-out;
   opacity: 0;
-  pointer-events: none; }
-  #watches-fact__video.fullscreen {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    z-index: 3;
-    pointer-events: all; }
+  pointer-events: none;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%); }
 
 @media (max-width: 1199px) {
   .watches-fact__title {
@@ -1644,13 +1649,13 @@ h5 {
     max-width: 220px;
     margin-left: auto;
     font-size: calc((1vw + 1vh) * (30 / 30)); }
-  .watches-fact__video-wrap {
+  .watches-fact__play-btn {
     margin-top: calc((1vw + 1vh) * (100 / 30));
     width: 70%;
     height: 0;
     padding-bottom: 70%;
     margin-bottom: calc((1vw + 1vh) * (80 / 30)); }
-    .watches-fact__video-wrap span {
+    .watches-fact__play-btn span {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -1669,7 +1674,7 @@ h5 {
       margin-top: 0; }
     .watches-fact__subtext {
       font-size: 24px; }
-    .watches-fact__video-wrap {
+    .watches-fact__play-btn {
       margin: 80px 0;
       width: 140%;
       padding-bottom: 140%;
@@ -1681,18 +1686,18 @@ h5 {
       width: 100%; } }
 
 @media (min-width: 1200px) {
-  .watches-fact__video-wrap {
+  .watches-fact__play-btn {
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
     -webkit-transform: perspective(1000px);
             transform: perspective(1000px);
     transition: 250ms; }
-    .watches-fact__video-wrap:hover {
+    .watches-fact__play-btn:hover {
       box-shadow: rgba(255, 255, 255, 0.1) 0px 22px 70px 4px; }
-      .watches-fact__video-wrap:hover > span {
+      .watches-fact__play-btn:hover > span {
         scale: 1.2;
         text-shadow: 0px 11px 10px rgba(0, 0, 0, 0.8); }
-    .watches-fact__video-wrap > span {
+    .watches-fact__play-btn > span {
       transition: 250ms;
       -webkit-transform: translateZ(30px);
               transform: translateZ(30px); } }

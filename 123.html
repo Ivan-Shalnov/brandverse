@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <script>
+        // best way for me  with experience
+            if ('addEventListener' in document) {
+                document.addEventListener('DOMContentLoaded', function() {
+                   //your code here...
+                }, false);
+            }        
+        //-->
+        
+          window.onload = function () {
+            console.log(''+(+new Date)+': Onload fired');
+          };
+     
+          document.onreadystatechange = function () {
+            console.log(''+(+new Date)+': Ready state changed'); 
+            if (document.readyState == "complete") { 
+              console.log(''+(+new Date)+': Ready = Complete'); 
+            }
+          };
+     
+          window.addEventListener("DOMContentLoaded", function () {
+            console.log(''+(+new Date)+': DOM Content Loaded');
+          });
+        </script>
+      </head>
+      <body>
+        <h1>Test</h1>
+        <p>To see the difference between <code>onload</code> and <code>readyState == "complete"</code>
+          and <code>DOMContentLoaded</code>.</p>
+        <p>Run me with Firebug or Chrome Dev Tools, and cache disabled, and watch the console.</p>
+        <hr />
+        <img src="https://picsum.photos/200" />
+        <img src="https://picsum.photos/200" />
+        <img src="https://picsum.photos/200" />
+        <img src="https://picsum.photos/200" />
+      </body>
+</html> 

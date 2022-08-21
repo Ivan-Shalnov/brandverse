@@ -121,21 +121,26 @@
 }
 
 #watches-fact__video{
-  width:100%;
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  &.fullscreen{
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
+  width:100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+    right: 0;
+    transform: translateX(0);
   opacity: 1;
   z-index: 3;
   pointer-events: all;
-  }
+  transition: 300ms ease-in-out;
+
+  
 }
+#watches-fact__video.is-hidden{
+  transition: 300ms ease-in-out;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  }
 // @media (max-width: 1299px) {
 //   .watches-fact {
 //     &__title {

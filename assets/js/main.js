@@ -1,6 +1,7 @@
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
+let locoScroll;
 // ViewPort REAL Height
 {
   const vh = document.documentElement.clientHeight / 100;
@@ -289,7 +290,7 @@ gsap.effects.ticker(tickerRefs);}
       // START INIT SCROLL
       gsap.registerPlugin(ScrollTrigger);
 
-      const locoScroll = new LocomotiveScroll({
+      locoScroll = new LocomotiveScroll({
         el: REFS.scroller,
         smooth: true,
       });
@@ -771,6 +772,7 @@ tag.src = 'https://www.youtube.com/iframe_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
 var playerContainer = document.getElementById('player-container');
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+REFS.scroller.insertAdjacentHTML('beforebegin','<div id="watches-fact__video" class="watches-fact__video is-hidden"></div>')
 var player;
 let playerWatches;
 let iframe;
@@ -788,7 +790,7 @@ function onYouTubeIframeAPIReady() {
   });
   playerWatches=new YT.Player('watches-fact__video', {
     height: '320',
-    width: '320',
+    width: '0',
     videoId: '0BgE91oLEN8',
     events: {
       // onStateChange: onPlayWatches,
@@ -808,20 +810,22 @@ let watchesBtnRef=document.querySelector(".watches-fact__play-btn");
 
 watchesBtnRef.addEventListener('click',playFullscreen)
           function playFullscreen (){
-            iframe.classList.add('fullscreen');
-
-            playerWatches.playVideo();
+            iframe.classList.remove('is-hidden');
+            
+            setTimeout(()=>playerWatches.playVideo(),300)
           }
           function onPlayerReady(event) {
             iframe = document.querySelector('#watches-fact__video');
           }
           function onPauseWatch(event){
+
             if (event.data == YT.PlayerState.PAUSED || event.data==YT.PlayerState.ENDED) {
-              iframe.classList.remove('fullscreen');
               playerWatches.pauseVideo();
+              iframe.classList.add('is-hidden');
             }
           }
 playerContainer.addEventListener('click', function () {
+  locoScroll.scrollTo(playerContainer)
   player.playVideo();
   playerContainer.classList.toggle('active');
 });
