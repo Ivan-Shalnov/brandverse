@@ -56,7 +56,7 @@ function progressUpdate() {
 
 function loadComplete() {
   // preloader out
-  document.getElementById('preloader').classList.add('hide');
+  $('.loading').fadeOut(400);
   document.body.classList.remove('no-scroll');
   // var preloaderOutTl = new TimelineMax();
 
@@ -785,6 +785,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
 
       // contacs animation end
+
       ScrollTrigger.refresh();
     });
   };
@@ -835,6 +836,7 @@ function onPlayerStateChange(event) {
     playerContainer.classList.toggle('active');
   }
 }
+let watchesBtnRef = document.querySelector('.watches-fact__play-btn');
 
 watchesBtnRef.addEventListener('click', playFullscreen);
 function playFullscreen() {
