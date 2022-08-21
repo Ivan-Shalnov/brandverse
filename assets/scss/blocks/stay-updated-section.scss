@@ -8,6 +8,9 @@
     justify-content: space-between;
     position: relative;
   }
+  .link{
+    margin-bottom: 3%;
+  }
   &__inner {
     position: relative;
     width: toIndex(600);
@@ -27,11 +30,10 @@
     line-height: 1;
     letter-spacing: -0.033em;
     .split {
-      overflow: hidden;
+      overflow-y: hidden;
       display: flex;
-      &:not(:last-child) {
         margin-bottom: -4%;
-      }
+      
     }
   }
   &__subtitle {
@@ -40,6 +42,9 @@
     line-height: 96%;
     letter-spacing: -0.033em;
     margin-bottom: toIndex(240);
+    &>div{
+      overflow-y: hidden;
+    }
   }
   &__join-link {
     width: 33%;

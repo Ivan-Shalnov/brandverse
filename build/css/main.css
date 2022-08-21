@@ -383,6 +383,7 @@ h5 {
     margin-left: -0.035em; }
 
 .link {
+  margin-bottom: calc((1vw + 1vh) * (5 / 30));
   position: relative;
   overflow: hidden;
   font-weight: 800;
@@ -1814,7 +1815,8 @@ h5 {
     height: 2px;
     background: #000000;
     opacity: 0.1;
-    margin-bottom: 6.5vh; }
+    margin-top: 6vh;
+    margin-bottom: 6vh; }
   .community__marquee-bottom {
     height: calc((1vw + 1vh) * (196 / 30)); }
     .community__marquee-bottom svg {
@@ -1891,6 +1893,7 @@ h5 {
 
 @media (max-width: 1199px) {
   .community__marquee-line {
+    margin-top: 3.5vh;
     margin-bottom: 3.5vh; }
   .community__cards-list {
     display: block;
@@ -1939,6 +1942,8 @@ h5 {
     -ms-flex-pack: justify;
         justify-content: space-between;
     position: relative; }
+  .stay-updated .link {
+    margin-bottom: 3%; }
   .stay-updated__inner {
     position: relative;
     width: calc((1vw + 1vh) * (600 / 30));
@@ -1956,17 +1961,18 @@ h5 {
     line-height: 1;
     letter-spacing: -0.033em; }
     .stay-updated__title .split {
-      overflow: hidden;
+      overflow-y: hidden;
       display: -ms-flexbox;
-      display: flex; }
-      .stay-updated__title .split:not(:last-child) {
-        margin-bottom: -4%; }
+      display: flex;
+      margin-bottom: -4%; }
   .stay-updated__subtitle {
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (33 / 30));
     line-height: 96%;
     letter-spacing: -0.033em;
     margin-bottom: calc((1vw + 1vh) * (240 / 30)); }
+    .stay-updated__subtitle > div {
+      overflow-y: hidden; }
   .stay-updated__join-link {
     width: 33%;
     position: absolute;
@@ -2192,7 +2198,7 @@ h5 {
     position: relative; }
   .ambassador__video {
     position: absolute;
-    top: 30vh;
+    top: 43vh;
     left: 100%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);

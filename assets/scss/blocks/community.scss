@@ -43,7 +43,8 @@
     height:2px;
     background: #000000;
 opacity: 0.1;
-margin-bottom: 6.5vh;
+margin-top: 6vh;
+margin-bottom: 6vh;
   }
   &__marquee-bottom {
     height: toIndex(196);
@@ -139,6 +140,7 @@ margin-bottom: 6.5vh;
 @media (max-width: 1199px) {
   .community {
     &__marquee-line{
+      margin-top: 3.5vh;
       margin-bottom: 3.5vh;
     }
     &__cards-list {
