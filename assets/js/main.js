@@ -56,7 +56,8 @@ function progressUpdate() {
 
 function loadComplete() {
   // preloader out
-  $('.loading').fadeOut(400);
+  // $('.loading').fadeOut(400);
+  document.getElementById('preloader').classList.add('hide');
   document.body.classList.remove('no-scroll');
   // var preloaderOutTl = new TimelineMax();
 
@@ -262,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         );
         const leftLineRef = button.querySelector('.button__left-line');
         const rightLineRef = button.querySelector('.button__right-line');
-        
+
         buttonTl
           .staggerTo(
             topLettersRefs,
@@ -674,7 +675,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       );
       // knw more animation end
 
-      
       // ambasador animation start
 
       // BUTTON 3D HOVER
@@ -693,7 +693,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
       }
       // BUTTON 3D HOVER END
-        // STAY UPDATED START
+      // STAY UPDATED START
       {
         const stayUpdatedSection = gsap.timeline({
           scrollTrigger: {
@@ -704,23 +704,23 @@ document.addEventListener('DOMContentLoaded', function (event) {
             toggleActions: 'play none none reverse',
           },
         });
-         stayUpdatedSection
-           .staggerFrom(
-             '.stay-updated__title .split span',
-             0.8,
-             { y: '100%', ease: Power2.easeInOut, yoyo: true },
-             0.05,
-           )
-           .staggerFrom(
-             '.stay-updated__subtitle > div > div',
-             0.8,
-             { y: '100%', ease: Power2.easeInOut, yoyo: true },
-             0.05,
-             '<'
-           );
+        stayUpdatedSection
+          .staggerFrom(
+            '.stay-updated__title .split span',
+            0.8,
+            { y: '100%', ease: Power2.easeInOut, yoyo: true },
+            0.05,
+          )
+          .staggerFrom(
+            '.stay-updated__subtitle > div > div',
+            0.8,
+            { y: '100%', ease: Power2.easeInOut, yoyo: true },
+            0.05,
+            '<',
+          );
       }
-        // STAY UPDATED END
-        
+      // STAY UPDATED END
+
       ScrollTrigger.matchMedia({
         '(min-width: 1200px)': function () {
           ScrollTrigger.create({
