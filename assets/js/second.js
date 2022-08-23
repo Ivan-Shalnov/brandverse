@@ -1,3 +1,5 @@
+import marquee from 'https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js';
+
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -169,79 +171,20 @@ function btnHover(button) {
   });
 }
 
+{
+  const refs = document.querySelectorAll('[data-ticker]');
+  refs.forEach((el) => {
+    new marquee(el, {
+      duplicated: true,
+      direction: el.dataset.direction || 'left',
+      speed: +el.dataset.speed,
+      gap: +el.dataset.gap,
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function (event) {
   window.onload = function () {
-    // TICKER
-    {
-      gsap.registerEffect({
-        name: 'ticker',
-        effect(targets, config) {
-          buildTickers({
-            targets: targets,
-            clone:
-              config.clone ||
-              ((el) => {
-                let clone = el.children[0].cloneNode(true);
-                el.insertBefore(clone, el.children[0]);
-                return clone;
-              }),
-          });
-          function buildTickers(config, originals) {
-            let tickers;
-            if (originals && originals.clones) {
-              // on window resizes, we should delete the old clones and reset the widths
-              originals.clones.forEach(
-                (el) => el && el.parentNode && el.parentNode.removeChild(el),
-              );
-              originals.forEach((el, i) =>
-                originals.inlineWidths[i]
-                  ? (el.style.width = originals.inlineWidths[i])
-                  : el.style.removeProperty('width'),
-              );
-              tickers = originals;
-            } else {
-              tickers = config.targets;
-            }
-            const clones = (tickers.clones = []),
-              inlineWidths = (tickers.inlineWidths = []);
-            tickers.forEach((el, index) => {
-              inlineWidths[index] = el.style.width;
-              el.style.width = '10000px'; // to let the children grow as much as necessary (otherwise it'll often be cropped to the viewport width)
-              el.style.display = 'flex';
-              let width = el.children[0].offsetWidth,
-                cloneCount = Math.ceil(window.innerWidth / width),
-                right = el.dataset.direction === 'right',
-                i;
-              el.style.gap = `${el.dataset.gap || 0}px`;
-              el.style.width = width * (cloneCount + 1) + 'px';
-              for (i = 0; i < cloneCount; i++) {
-                clones.push(config.clone(el));
-              }
-              gsap.fromTo(
-                el,
-                {
-                  x: right ? -width : 0,
-                },
-                {
-                  x: right ? 0 : -width,
-                  duration: width / 100 / parseFloat(el.dataset.speed || 1),
-                  repeat: -1,
-                  overwrite: 'auto',
-                  ease: 'none',
-                },
-              );
-            });
-            // rerun on window resizes, otherwise there could be gaps if the user makes the window bigger.
-            originals ||
-              window.addEventListener('resize', () =>
-                buildTickers(config, tickers),
-              );
-          }
-        },
-      });
-      const tickerRefs = document.querySelectorAll('[data-ticker]');
-      gsap.effects.ticker(tickerRefs);
-    }
     // LOCOSCROLL
 
     gsap.registerPlugin(ScrollTrigger);
@@ -497,21 +440,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // SLIDE SECTION ANIM
     {
       const solutionAnim = function (tl) {
-        tl.addLabel('start', '+=1')
-          .staggerFrom(
-            '.solution__title .split span',
-            ...ANIMATION_PARAMS.textStaggerY100,
-          )
-          .from(
-            '.solution__second-text div span',
-            ...ANIMATION_PARAMS.textStaggerY100,
-            '>',
-          )
-          .from(
-            '.solution__first-text div span',
-            ...ANIMATION_PARAMS.textStaggerY100,
-            '<',
-          );
+        tl.addLabel('start', '+=1').staggerFrom(
+          '.solution__title .split span',
+          ...ANIMATION_PARAMS.textStaggerY100,
+        );
       };
       const reduceAnim = function (tl) {
         tl.addLabel('start', '+=1').staggerFrom(

@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1661250566");
-  src: url("../fonts/icofont/ico-font.eot??1661250566#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661250566") format("woff2"), url("../fonts/icofont/ico-font.woff?1661250566") format("woff"), url("../fonts/icofont/ico-font.ttf?1661250566") format("truetype"), url("../fonts/icofont/ico-font.svg?1661250566#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1661251504");
+  src: url("../fonts/icofont/ico-font.eot??1661251504#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661251504") format("woff2"), url("../fonts/icofont/ico-font.woff?1661251504") format("woff"), url("../fonts/icofont/ico-font.ttf?1661251504") format("truetype"), url("../fonts/icofont/ico-font.svg?1661251504#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -988,8 +988,8 @@ h5 {
     left: 0;
     width: 100%;
     height: auto;
-    -webkit-filter: contrast(109%);
-            filter: contrast(109%); }
+    -webkit-filter: contrast(105%);
+            filter: contrast(105%); }
   .discover__row {
     display: -ms-flexbox;
     display: flex;

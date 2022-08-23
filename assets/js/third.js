@@ -1,3 +1,5 @@
+import marquee from 'https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js';
+
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -94,58 +96,18 @@ function spliting(element) {
   element.innerHTML = result;
 }
 
-// BUTTON HOVER
-function btnHover(button) {
-  let charsInSpan = button.textContent
-    .split('')
-    .reduce(
-      (acc, char) =>
-        char.trim() === ''
-          ? acc + '<span>&nbsp;</span>'
-          : acc + '<span>' + char + '</span>',
-      '',
-    );
-  button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
-
-  const buttonTl = gsap.timeline({ paused: true });
-  const topLettersRefs = button.querySelectorAll('.button__split-top span');
-  const bottomLettersRefs = button.querySelectorAll(
-    '.button__split-bottom span',
-  );
-  const leftLineRef = button.querySelector('.button__left-line');
-  const rightLineRef = button.querySelector('.button__right-line');
-  console.log(
-    'document.addEventListener ~ bottomLettersRefs',
-    bottomLettersRefs,
-  );
-  buttonTl
-    .staggerTo(
-      topLettersRefs,
-      0.4,
-      { y: '-100%', ease: Power1.easeInOut },
-      0.03,
-    )
-    .staggerTo(
-      bottomLettersRefs,
-      0.4,
-      {
-        y: '-100%',
-        ease: Power1.easeInOut,
-      },
-      0.03,
-      0,
-    )
-    .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
-    .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
-  button.addEventListener('mouseenter', function () {
-    console.log('play');
-    buttonTl.play();
-  });
-  button.addEventListener('mouseleave', function () {
-    console.log('reverse');
-    buttonTl.reverse();
+{
+  const refs = document.querySelectorAll('[data-ticker]');
+  refs.forEach((el) => {
+    new marquee(el, {
+      duplicated: true,
+      direction: el.dataset.direction || 'left',
+      speed: +el.dataset.speed,
+      gap: +el.dataset.gap,
+    });
   });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   // $('.spinner-wrapper').fadeOut('slow');
 
@@ -165,85 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // }
 
   window.onload = function () {
-    // TICKER
-    {
-      gsap.registerEffect({
-        name: 'ticker',
-        effect(targets, config) {
-          buildTickers({
-            targets: targets,
-            clone:
-              config.clone ||
-              ((el) => {
-                let clone = el.children[0].cloneNode(true);
-                el.insertBefore(clone, el.children[0]);
-                return clone;
-              }),
-          });
-          function buildTickers(config, originals) {
-            let tickers;
-            if (originals && originals.clones) {
-              // on window resizes, we should delete the old clones and reset the widths
-              originals.clones.forEach(
-                (el) => el && el.parentNode && el.parentNode.removeChild(el),
-              );
-              originals.forEach((el, i) =>
-                originals.inlineWidths[i]
-                  ? (el.style.width = originals.inlineWidths[i])
-                  : el.style.removeProperty('width'),
-              );
-              tickers = originals;
-            } else {
-              tickers = config.targets;
-            }
-            const clones = (tickers.clones = []),
-              inlineWidths = (tickers.inlineWidths = []);
-            tickers.forEach((el, index) => {
-              inlineWidths[index] = el.style.width;
-              el.style.width = '10000px'; // to let the children grow as much as necessary (otherwise it'll often be cropped to the viewport width)
-              el.style.display = 'flex';
-              let width = el.children[0].offsetWidth,
-                cloneCount = Math.ceil(window.innerWidth / width),
-                right = el.dataset.direction === 'right',
-                i;
-              el.style.gap = `${el.dataset.gap || 0}px`;
-              el.style.width = width * (cloneCount + 1) + 'px';
-              for (i = 0; i < cloneCount; i++) {
-                clones.push(config.clone(el));
-              }
-              gsap.fromTo(
-                el,
-                {
-                  x: right ? -width : 0,
-                },
-                {
-                  x: right ? 0 : -width,
-                  duration: width / 100 / parseFloat(el.dataset.speed || 1),
-                  repeat: -1,
-                  overwrite: 'auto',
-                  ease: 'none',
-                },
-              );
-            });
-            // rerun on window resizes, otherwise there could be gaps if the user makes the window bigger.
-            originals ||
-              window.addEventListener('resize', () =>
-                buildTickers(config, tickers),
-              );
-          }
-        },
-      });
-      let tickerRefs = document.querySelectorAll('[data-ticker]');
-      ScrollTrigger.matchMedia({
-        '(max-width: 767px)': () =>
-          (tickerRefs = [
-            ...tickerRefs,
-            ...document.querySelectorAll('[data-ticker-before-768]'),
-          ]),
-      });
-      gsap.effects.ticker(tickerRefs);
-    }
-
     const splitElements = document.querySelectorAll('.split');
 
     gsap.registerPlugin(ScrollTrigger);

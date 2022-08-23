@@ -146,7 +146,7 @@ function btnHover(button) {
 // TICKER EFFECT
 {
   const refs = document.querySelectorAll('[data-ticker]');
-  refs.forEach(el => {
+  refs.forEach((el) => {
     new marquee(el, {
       duplicated: true,
       direction: el.dataset.direction || 'left',
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     window.requestAnimationFrame(function () {
       //BUTTON HOVER START
       const buttonsRefs = document.querySelectorAll('.button');
-      buttonsRefs.forEach(button => {
+      buttonsRefs.forEach((button) => {
         let charsInSpan = button.textContent
           .split('')
           .reduce(
@@ -823,7 +823,7 @@ playerContainer.addEventListener('click', function () {
 
 // link hover start
 const linkRefs = document.querySelectorAll('.link');
-linkRefs.forEach(link => {
+linkRefs.forEach((link) => {
   let charsInSpan = link.textContent
     .split('')
     .reduce(
