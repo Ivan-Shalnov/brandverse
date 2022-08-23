@@ -9,6 +9,11 @@
 .ambassador {
   padding-top: calc(var(--index) * 3.5);
   padding-bottom: calc(var(--index) * 11.2);
+  &.active{
+    .ambassador__remark{
+    color: #333333;
+    }
+  }
   &__video {
     height: auto;
     max-height: 100%;
@@ -21,7 +26,6 @@
     line-height: 86%;
     letter-spacing: -0.033em;
 
-    color: #333333;
   }
   &__title {
     font-family: 'Bebas Neue', sans-serif;

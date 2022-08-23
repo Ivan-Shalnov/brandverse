@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1661097496");
-  src: url("../fonts/icofont/ico-font.eot??1661097496#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661097496") format("woff2"), url("../fonts/icofont/ico-font.woff?1661097496") format("woff"), url("../fonts/icofont/ico-font.ttf?1661097496") format("truetype"), url("../fonts/icofont/ico-font.svg?1661097496#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1661250566");
+  src: url("../fonts/icofont/ico-font.eot??1661250566#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661250566") format("woff2"), url("../fonts/icofont/ico-font.woff?1661250566") format("woff"), url("../fonts/icofont/ico-font.ttf?1661250566") format("truetype"), url("../fonts/icofont/ico-font.svg?1661250566#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1720,7 +1720,7 @@ h5 {
       border-color: #4f06c6; }
   .exp-ar__remark {
     position: absolute;
-    top: calc((1vw + 1vh) * (150 / 30));
+    top: calc((1vw + 1vh) * (170 / 30));
     left: calc((1vw + 1vh) * (20 / 30));
     color: #333333; }
   .exp-ar__title {
@@ -2017,6 +2017,8 @@ h5 {
 .ambassador {
   padding-top: calc(var(--index) * 3.5);
   padding-bottom: calc(var(--index) * 11.2); }
+  .ambassador.active .ambassador__remark {
+    color: #333333; }
   .ambassador__video {
     height: auto;
     max-height: 100%;
@@ -2026,8 +2028,7 @@ h5 {
     font-weight: 700;
     font-size: calc(var(--index) * 0.53);
     line-height: 86%;
-    letter-spacing: -0.033em;
-    color: #333333; }
+    letter-spacing: -0.033em; }
   .ambassador__title {
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 700;
@@ -2330,10 +2331,16 @@ h5 {
     letter-spacing: -0.033em;
     color: #000;
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    z-index: 3; }
     .wim__card::before {
       content: '';
       position: absolute;
+      z-index: -1;
       top: 15%;
       right: 15%;
       width: 30%;
@@ -2370,8 +2377,8 @@ h5 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: calc(var(--index) * 2.8);
-    height: calc(var(--index) * 7);
-    width: calc(var(--index) * 7);
+    height: calc(var(--index) * 5);
+    width: calc(var(--index) * 5);
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -2584,7 +2591,7 @@ h5 {
   .team__current-bio {
     font-weight: 800;
     font-size: calc(var(--index) * 1.1);
-    line-height: 96%;
+    line-height: 106%;
     letter-spacing: -0.033em; }
 
 @media (max-width: 1199px) {
