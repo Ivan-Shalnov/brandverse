@@ -1,0 +1,48 @@
+@keyframes ticker-anim {
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+@keyframes ticker-anim2 {
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-200%);
+  }
+}
+.ticker{
+    white-space: nowrap;
+  &>*:first-child{
+    animation: ticker-anim 10s infinite linear;
+    animation-fill-mode: none;
+    animation-delay: -10s;
+
+  }
+  &>*:last-child{
+    animation: ticker-anim2 10s infinite linear;
+    animation-delay: -5s;
+    animation-fill-mode: none;
+
+  }
+}
+.ticker-right{
+    white-space: nowrap;
+  &>*:first-child{
+    animation: ticker-anim 10s infinite linear;
+    animation-direction: reverse;
+    animation-fill-mode: none;
+    animation-delay: -10s;
+
+  }
+  &>*:last-child{
+    animation: ticker-anim2 10s infinite linear;
+    animation-direction: reverse;
+    animation-delay: -5s;
+    animation-fill-mode: none;
+
+  }
+}
