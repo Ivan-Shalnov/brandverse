@@ -17,6 +17,7 @@
 .ticker {
   white-space: nowrap;
   & > *:first-child {
+    will-change: transform;
     animation: ticker-anim 30s infinite linear;
     animation-fill-mode: none;
     animation-delay: -30s;
@@ -30,6 +31,7 @@
 .ticker-right {
   white-space: nowrap;
   & > *:first-child {
+    will-change: transform;
     animation: ticker-anim 30s infinite linear;
     animation-direction: reverse;
     animation-fill-mode: none;
