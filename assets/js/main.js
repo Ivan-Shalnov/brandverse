@@ -1,4 +1,3 @@
-import marquee from 'https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js';
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -144,17 +143,7 @@ function btnHover(button) {
   });
 }
 // TICKER EFFECT
-{
-  const refs = document.querySelectorAll('[data-ticker]');
-  refs.forEach((el) => {
-    new marquee(el, {
-      duplicated: true,
-      direction: el.dataset.direction || 'left',
-      speed: +el.dataset.speed,
-      gap: +el.dataset.gap,
-    });
-  });
-}
+
 document.addEventListener('DOMContentLoaded', function (event) {
   // wait until window is loaded - all images, styles-sheets, fonts, links, and other media assets
   // you could also use addEventListener() instead
