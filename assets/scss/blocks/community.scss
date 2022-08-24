@@ -18,7 +18,7 @@
     }
   }
   &__marquee-top {
-    height: toIndex(208);
+    // height: toIndex(208);
     svg {
       max-height: 100%;
       width: auto;
@@ -39,12 +39,12 @@
       height: 100%;
     }
   }
-  &__marquee-line{
-    height:2px;
+  &__marquee-line {
+    height: 2px;
     background: #000000;
-opacity: 0.1;
-margin-top: 6vh;
-margin-bottom: 6vh;
+    opacity: 0.1;
+    margin-top: 6vh;
+    margin-bottom: 6vh;
   }
   &__marquee-bottom {
     height: toIndex(196);
@@ -139,7 +139,7 @@ margin-bottom: 6vh;
 
 @media (max-width: 1199px) {
   .community {
-    &__marquee-line{
+    &__marquee-line {
       margin-top: 3.5vh;
       margin-bottom: 3.5vh;
     }

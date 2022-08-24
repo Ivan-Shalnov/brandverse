@@ -12,10 +12,20 @@
   }
   &__list {
     overflow: hidden;
+    display: flex;
     > div {
       display: flex;
     }
   }
+  // .exp-cards {
+  //   &:first-child {
+  //     animation: ticker-anim 40s infinite linear;
+  //   }
+  //   &:last-child {
+  //     animation: ticker-anim2 40s infinite linear;
+  //     animation-delay: -10s;
+  //   }
+  // }
 }
 
 .js-marquee {
@@ -33,6 +43,7 @@
   overflow: hidden;
   margin: 0 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
   background: linear-gradient(
     168.55deg,
     rgba(10, 17, 33, 0.06) -4.52%,

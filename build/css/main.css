@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1661251504");
-  src: url("../fonts/icofont/ico-font.eot??1661251504#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661251504") format("woff2"), url("../fonts/icofont/ico-font.woff?1661251504") format("woff"), url("../fonts/icofont/ico-font.ttf?1661251504") format("truetype"), url("../fonts/icofont/ico-font.svg?1661251504#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1661327786");
+  src: url("../fonts/icofont/ico-font.eot??1661327786#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661327786") format("woff2"), url("../fonts/icofont/ico-font.woff?1661327786") format("woff"), url("../fonts/icofont/ico-font.ttf?1661327786") format("truetype"), url("../fonts/icofont/ico-font.svg?1661327786#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -477,36 +477,36 @@ h5 {
 .ticker {
   white-space: nowrap; }
   .ticker > *:first-child {
-    -webkit-animation: ticker-anim 10s infinite linear;
-            animation: ticker-anim 10s infinite linear;
+    -webkit-animation: ticker-anim 30s infinite linear;
+            animation: ticker-anim 30s infinite linear;
     -webkit-animation-fill-mode: none;
             animation-fill-mode: none;
-    -webkit-animation-delay: -10s;
-            animation-delay: -10s; }
+    -webkit-animation-delay: -30s;
+            animation-delay: -30s; }
   .ticker > *:last-child {
-    -webkit-animation: ticker-anim2 10s infinite linear;
-            animation: ticker-anim2 10s infinite linear;
-    -webkit-animation-delay: -5s;
-            animation-delay: -5s;
+    -webkit-animation: ticker-anim2 30s infinite linear;
+            animation: ticker-anim2 30s infinite linear;
+    -webkit-animation-delay: -15s;
+            animation-delay: -15s;
     -webkit-animation-fill-mode: none;
             animation-fill-mode: none; }
 
 .ticker-right {
   white-space: nowrap; }
   .ticker-right > *:first-child {
-    -webkit-animation: ticker-anim 10s infinite linear;
-            animation: ticker-anim 10s infinite linear;
+    -webkit-animation: ticker-anim 30s infinite linear;
+            animation: ticker-anim 30s infinite linear;
     animation-direction: reverse;
     -webkit-animation-fill-mode: none;
             animation-fill-mode: none;
-    -webkit-animation-delay: -10s;
-            animation-delay: -10s; }
+    -webkit-animation-delay: -30s;
+            animation-delay: -30s; }
   .ticker-right > *:last-child {
-    -webkit-animation: ticker-anim2 10s infinite linear;
-            animation: ticker-anim2 10s infinite linear;
+    -webkit-animation: ticker-anim2 30s infinite linear;
+            animation: ticker-anim2 30s infinite linear;
     animation-direction: reverse;
-    -webkit-animation-delay: -5s;
-            animation-delay: -5s;
+    -webkit-animation-delay: -15s;
+            animation-delay: -15s;
     -webkit-animation-fill-mode: none;
             animation-fill-mode: none; }
 
@@ -1862,23 +1862,21 @@ h5 {
     stroke: #000; }
   .community.active .community__marquee-bottom .black {
     fill: #000; }
-  .community__marquee-top {
-    height: calc((1vw + 1vh) * (208 / 30)); }
-    .community__marquee-top svg {
-      max-height: 100%;
-      width: auto; }
-    .community__marquee-top .black {
-      fill: #fff;
-      transition: 0.3s; }
-    .community__marquee-top .black-stroke {
-      stroke: #fff;
-      transition: 0.3s; }
-    .community__marquee-top > div {
-      display: -ms-flexbox;
-      display: flex;
-      height: 100%; }
-    .community__marquee-top .js-marquee {
-      height: 100%; }
+  .community__marquee-top svg {
+    max-height: 100%;
+    width: auto; }
+  .community__marquee-top .black {
+    fill: #fff;
+    transition: 0.3s; }
+  .community__marquee-top .black-stroke {
+    stroke: #fff;
+    transition: 0.3s; }
+  .community__marquee-top > div {
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%; }
+  .community__marquee-top .js-marquee {
+    height: 100%; }
   .community__marquee-line {
     height: 2px;
     background: #000000;
@@ -2854,7 +2852,9 @@ h5 {
     color: #000000;
     margin-bottom: calc(var(--index) * -3.66); }
   .exp-section__list {
-    overflow: hidden; }
+    overflow: hidden;
+    display: -ms-flexbox;
+    display: flex; }
     .exp-section__list > div {
       display: -ms-flexbox;
       display: flex; }
@@ -2877,6 +2877,8 @@ h5 {
   overflow: hidden;
   margin: 0 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   background: linear-gradient(168.55deg, rgba(10, 17, 33, 0.06) -4.52%, rgba(22, 29, 50, 0) 112.85%);
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px); }
