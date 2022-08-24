@@ -5279,7 +5279,7 @@ h5 {
   .cnt-section__link {
     margin-top: calc((1vw + 1vh) * (250 / 30));
     color: #c5fd64;
-    font-size: 13.4vw; }
+    font-size: 13.25vw; }
 
 @media (max-width: 1199px) {
   .cnt-section__row {
