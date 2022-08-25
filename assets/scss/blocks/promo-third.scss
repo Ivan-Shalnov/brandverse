@@ -10,6 +10,18 @@
       }
     }
   }
+  & .ticker {
+    & > *:first-child {
+      animation-duration: 30s;
+
+      animation-delay: -30s;
+    }
+    & > *:last-child {
+      animation-duration: 30s;
+
+      animation-delay: -15s;
+    }
+  }
   &__subtitle {
     font-weight: 800;
     font-size: toIndex(66);
@@ -33,7 +45,7 @@
     font-size: 28.8vw;
     line-height: 1;
     letter-spacing: -0.04em;
-    margin-bottom: -2%;
+    margin-bottom: -5%;
     display: flex;
     overflow: hidden;
     @media not all and (min-resolution: 0.001dpcm) {
@@ -83,16 +95,11 @@
       font-family: 'Bebas Neue';
       font-style: normal;
       font-weight: 700;
-      font-size: 281.694px;
+      font-size: toIndexMob(281);
       line-height: 86%;
       letter-spacing: -0.041em;
       color: #000000;
-      height: 280px;
-      margin-bottom: -30px;
-      &>div{
-        display: flex;
-        gap:20px;
-      }
+      margin-bottom: toIndexMob(-40);
     }
   }
 }

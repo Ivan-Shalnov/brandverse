@@ -1,5 +1,3 @@
-import marquee from 'https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js';
-
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -168,18 +166,6 @@ function btnHover(button) {
     loop: true,
     autoplay: true,
     path: 'img/Cube.json',
-  });
-}
-
-{
-  const refs = document.querySelectorAll('[data-ticker]');
-  refs.forEach((el) => {
-    new marquee(el, {
-      duplicated: true,
-      direction: el.dataset.direction || 'left',
-      speed: +el.dataset.speed,
-      gap: +el.dataset.gap,
-    });
   });
 }
 
@@ -556,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           // Section PIN START
           let pinBoxes = document.querySelectorAll('.slide__wrap > div');
           let pinWrap = document.querySelector('.slide__wrap');
-          pinBoxes.forEach((frame) => frame.setAttribute('horizontal', 'true'));
+          pinBoxes.forEach(frame => frame.setAttribute('horizontal', 'true'));
           let pinWrapWidth = pinWrap.offsetWidth;
           let horizontalScrollLength = pinWrapWidth - window.innerWidth;
 
@@ -921,9 +907,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
           let frameRefs = pinWrap.querySelectorAll('.frame');
-          frameRefs.forEach((frame) =>
-            frame.setAttribute('horizontal', 'true'),
-          );
+          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           let pinWrapWidth = pinWrap.offsetWidth;
@@ -1279,7 +1263,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             window.getComputedStyle(itemsRefs[0])['margin-right'],
           );
 
-          itemsRefs.forEach((item) => {
+          itemsRefs.forEach(item => {
             ScrollTrigger.create({
               containerAnimation: animCont,
               trigger: item,
@@ -1335,13 +1319,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 {
   const splitElements = document.querySelectorAll('.split');
-  splitElements.forEach((el) => spliting(el));
+  splitElements.forEach(el => spliting(el));
 }
 
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach((link) => {
+  linkRefs.forEach(link => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(

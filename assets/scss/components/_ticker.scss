@@ -16,6 +16,9 @@
 }
 .ticker {
   white-space: nowrap;
+  &>*{
+    display: inline-block;
+  }
   & > *:first-child {
     will-change: transform;
     animation: ticker-anim 30s infinite linear;
@@ -30,6 +33,9 @@
 }
 .ticker-right {
   white-space: nowrap;
+  &>*{
+    display: inline-block;
+  }
   & > *:first-child {
     will-change: transform;
     animation: ticker-anim 30s infinite linear;

@@ -117,13 +117,16 @@
       flex-shrink: 0;
       width: 36.5%;
       padding-top: 36.5%;
+      transition: 250ms ease-in-out;
+
       &:not(:last-child) {
         margin-bottom: 0;
         margin-right: -2%;
       }
     }
     &__item.active {
-      border-color: #000;
+      background-color: #000;
+      color: #c5fd64;
     }
     &__item-title {
       font-size: toIndex(66);

@@ -104,7 +104,7 @@
       margin-right: toIndex(3);
       content: '(' counter(count-notes) ')';
     }
-    & >a{
+    & > a {
       color: inherit;
     }
   }
@@ -213,7 +213,7 @@
     }
     &__title {
       font-size: toIndex(433);
-      letter-spacing: -0.052em;
+      letter-spacing: -0.018em;
       white-space: nowrap;
       & > .split:not(:last-child) {
         margin-bottom: 0;

@@ -1,5 +1,3 @@
-import marquee from 'https://cdn.jsdelivr.net/npm/vanilla-marquee/dist/vanilla-marquee.js';
-
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -94,18 +92,6 @@ function spliting(element) {
   });
 
   element.innerHTML = result;
-}
-
-{
-  const refs = document.querySelectorAll('[data-ticker]');
-  refs.forEach((el) => {
-    new marquee(el, {
-      duplicated: true,
-      direction: el.dataset.direction || 'left',
-      speed: +el.dataset.speed,
-      gap: +el.dataset.gap,
-    });
-  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -621,9 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
           let frameRefs = pinWrap.querySelectorAll('.frame');
-          frameRefs.forEach((frame) =>
-            frame.setAttribute('horizontal', 'true'),
-          );
+          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           let pinWrapWidth = pinWrap.offsetWidth;
@@ -849,7 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // link hover start
 const linkRefs = document.querySelectorAll('.link');
-linkRefs.forEach((link) => {
+linkRefs.forEach(link => {
   let charsInSpan = link.textContent
     .split('')
     .reduce(
