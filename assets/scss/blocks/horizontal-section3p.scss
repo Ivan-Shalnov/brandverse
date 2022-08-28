@@ -147,7 +147,7 @@
     display: flex;
     flex-direction: column;
     @media (min-width: 1200px) {
-      width: 33%;
+      width: toIndex(595);
     }
   }
   &__col-text {
@@ -251,7 +251,7 @@
   &__title {
     color: #c5fd64;
     @media (min-width: 1200px) {
-      max-width: toIndex(525)
+      max-width: toIndex(525);
     }
   }
 }

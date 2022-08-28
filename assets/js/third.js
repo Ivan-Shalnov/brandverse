@@ -1,3 +1,16 @@
+// DISABLE SCROLL POSITION RECOVERY
+{
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+}
+// RELOAD ON RESIZE
+{
+  window.addEventListener(
+    'resize',
+    debounce(() => location.reload(false), 100),
+  );
+}
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -610,8 +623,12 @@ document.addEventListener('DOMContentLoaded', () => {
           frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
-          let pinWrapWidth = pinWrap.offsetWidth;
-          let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+          function horizontalScrollLengthFn() {
+            let pinWrapWidth = pinWrap.offsetWidth;
+            let horizontalScrollLength =
+              pinWrapWidth - document.body.clientWidth;
+            return horizontalScrollLength;
+          }
           //AMBA FRAME 1
           {
             const ambaFrame1Tl = gsap.timeline({
@@ -636,7 +653,8 @@ document.addEventListener('DOMContentLoaded', () => {
               trigger: '.horizontal',
               pin: true,
               start: 'center center ',
-              end: '+=' + pinWrapWidth,
+              end: () => '+=' + horizontalScrollLengthFn(),
+              invalidateOnRefresh: true,
               onEnterBack: () =>
                 gsap.to(REFS.scroller, {
                   backgroundColor: '#fff',
@@ -644,7 +662,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   overwrite: 'auto',
                 }),
             },
-            x: -horizontalScrollLength,
+            x: () => -horizontalScrollLengthFn(),
+            startAt: { x: 0 },
             ease: 'none',
           });
 
@@ -970,3 +989,14 @@ $('.form').validate({
     return false; // required to block normal submit since you used ajax
   },
 });
+
+// DEBOUNCE
+function debounce(callback, wait) {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+}

@@ -60,6 +60,7 @@
     width: calc(var(--index) * 4.56);
     margin-left: auto;
     svg {
+      position: relative;
       width: 100%;
       height: auto;
       path {

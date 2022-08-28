@@ -34,9 +34,11 @@
   }
   &__name {
     color: #000;
+    opacity: 0.33;
     text-align: right;
     margin-bottom: toIndex(65);
     margin-top: toIndex(50);
+    font-size: toIndex(14);
   }
   &__socials-title {
     font-weight: 800;
@@ -51,6 +53,11 @@
     margin-top: toIndex(250);
     color: $green;
     font-size: 13.25vw;
+    display: inline-block;
+    & > span {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 

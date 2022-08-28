@@ -9,6 +9,7 @@
     font-weight: 700;
     font-size: toIndexMob(14);
     letter-spacing: -0.033em;
+    margin-bottom: 5vh;
   }
   &__title {
     font-weight: 800;
@@ -42,12 +43,9 @@
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: toIndexMob(44);
-    line-height: 1;
+    line-height: 82%;
     text-align: center;
     letter-spacing: -0.033em;
-    & > p:not(:last-child) {
-      margin-bottom: toIndexMob(-8);
-    }
   }
   &__item-text {
     margin-top: toIndexMob(15);
@@ -70,10 +68,8 @@
 }
 @media (min-width: 768px) {
   .roadmap {
-    &__title {
-      & > .split {
-        justify-content: center;
-      }
+    &__subtitle {
+      margin-bottom: toIndexTab(40);
     }
     &__item {
       width: 100%;
@@ -93,7 +89,7 @@
 }
 @media (min-width: 1200px) {
   .roadmap {
-    padding-top: toIndex(275);
+    padding-top: toIndex(200);
     padding-bottom: toIndex(275);
     &__row {
       position: relative;
@@ -102,9 +98,14 @@
     &__subtitle {
       position: absolute;
       font-size: toIndex(16);
+      margin-top: toIndex(15);
+      margin-bottom: 0;
     }
     &__title {
       font-size: toIndex(133);
+      & > .split {
+        justify-content: center;
+      }
     }
 
     &__list {
@@ -130,9 +131,6 @@
     }
     &__item-title {
       font-size: toIndex(66);
-      & > p:not(:last-child) {
-        margin-bottom: toIndex(-12);
-      }
     }
     &__item-text {
       margin-top: toIndex(15);

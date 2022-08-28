@@ -48,8 +48,8 @@
     background: #ffffff;
     border-radius: toIndexMob(14);
     &::before {
-      width: 66px;
-      height: 12px;
+      width: toIndexMob(66);
+      height: toIndexMob(12);
       content: '';
       display: block;
       position: absolute;
@@ -58,7 +58,7 @@
       background-image: url('../img/cross-icon.svg');
       background-repeat: space;
 
-      background-size: 12px;
+      background-size: toIndexMob(12);
     }
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -75,7 +75,7 @@
   }
   &__card-text {
     margin-left: auto;
-    width: 53%;
+    max-width: 53%;
     font-size: toIndexMob(18);
     line-height: 120%;
     /* or 31px */
@@ -85,8 +85,8 @@
       margin-bottom: toIndexMob(10);
       content: '';
       display: block;
-      width: 33px;
-      height: 2px;
+      width: toIndexMob(33);
+      height: toIndexMob(2);
       background: #a7adb3;
     }
   }
@@ -116,9 +116,9 @@
       width: toIndexTab(430);
       border-radius: toIndexTab(19);
       &::before {
-        width: 89.5px;
-        height: 16.5px;
-        background-size: 16.5px;
+        width: toIndexTab(89.5);
+        height: toIndexTab(16.5);
+        background-size: toIndexTab(16.5);
         top: toIndexTab(35);
         right: toIndexTab(35);
       }
@@ -132,6 +132,11 @@
     }
     &__card-text {
       font-size: toIndexTab(26);
+      &::before {
+        margin-bottom: toIndexTab(10);
+        width: toIndexTab(33);
+        height: toIndexTab(2);
+      }
     }
   }
 }
@@ -176,17 +181,17 @@
     }
     &__card {
       margin-left: 0;
-      padding: toIndex(110) toIndex(50);
+      padding: toIndex(110) toIndex(50) toIndex(55) toIndex(50);
       width: toIndex(430);
       min-height: toIndex(635);
       border-radius: toIndex(19);
       &::before {
-        width: 113px;
-        height: 21px;
+        width: toIndex(113);
+        height: toIndex(21);
         top: toIndex(50);
         right: toIndex(50);
 
-        background-size: 21px;
+        background-size: toIndex(21);
       }
       &:nth-child(1) {
         bottom: toIndex(155);
@@ -207,10 +212,12 @@
       line-height: 90%;
     }
     &__card-text {
-      width: 45%;
+      max-width: toIndex(190);
       font-size: toIndex(26);
       &::before {
         margin-bottom: toIndex(25);
+        width: toIndex(33);
+        height: toIndex(2);
       }
     }
   }

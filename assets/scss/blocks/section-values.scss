@@ -134,7 +134,7 @@
 }
 @media (min-width: 1200px) {
   .section-values {
-    padding: toIndex(200) 0 0;
+    padding: toIndex(200) 0 0 0;
     &__title {
       font-size: toIndex(530);
     }
@@ -146,15 +146,17 @@
       padding: 0 toIndex(120);
     }
     &__cards-item {
-      &:nth-child(2) {
-        margin-top: toIndex(300);
+      position: relative;
+      &:nth-child(1) {
+        top: -50%;
       }
       &:nth-child(3) {
-        margin-top: toIndex(600);
+        top: 50%;
       }
-      &:nth-child(4) {
-        margin-top: toIndex(-300);
-      }
+      // &:nth-child(4) {
+      //   top: -50%;
+      // }
+
       &:last-child {
         grid-column-start: 2;
         grid-column-end: 3;

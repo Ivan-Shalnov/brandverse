@@ -1,3 +1,16 @@
+// DISABLE SCROLL POSITION RECOVERY
+{
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+}
+// RELOAD ON RESIZE
+{
+  window.addEventListener(
+    'resize',
+    debounce(() => location.reload(false), 100),
+  );
+}
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -151,12 +164,13 @@ function btnHover(button) {
 }
 
 // JSON ANIMATION
+let percent;
 {
-  const percent = bodymovin.loadAnimation({
+  percent = bodymovin.loadAnimation({
     container: document.getElementById('metaverse-svg'),
     renderer: 'svg',
     loop: true,
-    autoplay: true,
+    autoplay: false,
     path: 'img/35-percent-larger.json',
   });
 
@@ -260,7 +274,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //METAVERSE ANIM START
 
     {
-      //
+      //JSON ANIMATION TRIGGER
+      ScrollTrigger.create({
+        trigger: '#metaverse-svg',
+        scroller: REFS.scroller,
+        start: 'top center',
+        end: 'bottom top',
+        onEnter: () => percent.play(),
+        onEnterBack: () => percent.play(),
+        onLeaveBack: () => percent.pause(),
+        onLeave: () => percent.pause(),
+      });
+      //JSON ANIMATION TRIGGER
+
       const worthTextAnim = function (tl) {
         tl.addLabel('start', '+=1')
           .staggerFrom(
@@ -349,13 +375,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
               '.metaverse__title-wrap',
             );
             const containerEL = document.querySelector('.container');
-            const containerPadding =
-              parseFloat(window.getComputedStyle(containerEL)['padding-left']) *
-              2;
-            const headerScrollLength =
-              titleWrapEl.scrollWidth + containerPadding - window.innerWidth;
+            function headerScrollLengthFn() {
+              const containerPadding =
+                parseFloat(
+                  window.getComputedStyle(containerEL)['padding-left'],
+                ) * 2;
+              const headerScrollLength =
+                titleWrapEl.scrollWidth +
+                containerPadding -
+                document.body.clientWidth;
+              return headerScrollLength;
+            }
             gsap.to(titleWrapEl, {
-              x: -headerScrollLength,
+              x: () => -headerScrollLengthFn(),
+              startAt: { x: 0 },
               ease: 'none',
               scrollTrigger: {
                 scroller: REFS.scroller,
@@ -363,7 +396,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 start: 'top 5%',
                 pin: true,
                 scrub: 1,
-                end: '+=' + headerScrollLength,
+                end: () => '+=' + headerScrollLengthFn(),
+                invalidateOnRefresh: true,
               },
             });
           }
@@ -543,8 +577,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
           let pinBoxes = document.querySelectorAll('.slide__wrap > div');
           let pinWrap = document.querySelector('.slide__wrap');
           pinBoxes.forEach(frame => frame.setAttribute('horizontal', 'true'));
-          let pinWrapWidth = pinWrap.offsetWidth;
-          let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+          function horizontalScrollLengthFn() {
+            let pinWrapWidth = pinWrap.offsetWidth;
+            let horizontalScrollLength =
+              pinWrapWidth - document.body.clientWidth;
+            return horizontalScrollLength;
+          }
 
           // Pinning and horizontal scrolling
 
@@ -555,7 +593,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
               trigger: '.slide',
               pin: true,
               start: 'top top',
-              end: '+=' + pinWrapWidth,
+              invalidateOnRefresh: true,
+              end: () => '+=' + horizontalScrollLengthFn(),
               onEnter: () => {
                 gsap.to(REFS.scroller, {
                   backgroundColor: '#fff',
@@ -571,7 +610,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 });
               },
             },
-            x: -horizontalScrollLength,
+            x: () => -horizontalScrollLengthFn(),
+            startAt: { x: 0 },
             ease: 'none',
           });
           // COLORS CHANGE
@@ -910,8 +950,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
           frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
-          let pinWrapWidth = pinWrap.offsetWidth;
-          let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+          function horizontalScrollLengthFn() {
+            let pinWrapWidth = pinWrap.offsetWidth;
+            let horizontalScrollLength =
+              pinWrapWidth - document.body.clientWidth;
+            return horizontalScrollLength;
+          }
           //AMBA FRAME 1
           {
             const ambaFrame1Tl = gsap.timeline({
@@ -936,7 +980,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
               trigger: '.horizontal',
               pin: true,
               start: 'center center ',
-              end: '+=' + pinWrapWidth,
+              end: () => '+=' + horizontalScrollLengthFn(),
+              invalidateOnRefresh: true,
               onEnterBack: () =>
                 gsap.to(REFS.scroller, {
                   backgroundColor: '#fff',
@@ -944,7 +989,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                   overwrite: 'auto',
                 }),
             },
-            x: -horizontalScrollLength,
+            x: () => -horizontalScrollLengthFn(),
+            startAt: { x: 0 },
             ease: 'none',
           });
 
@@ -1153,20 +1199,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
         ...ANIMATION_PARAMS.textStaggerY100,
       );
 
-      ScrollTrigger.matchMedia({
-        '(min-width: 1199px)': () => {
-          // PARALLAX
-          gsap.to('.section-values__cards', {
-            yPercent: -50,
-            ease: Power2.easeInOut,
-            scrollTrigger: {
-              trigger: '.section-values',
-              scroller: REFS.scroller,
-              scrub: true,
-            },
-          });
-        },
-      });
+      // ScrollTrigger.matchMedia({
+      //   '(min-width: 1199px)': () => {
+      //     // PARALLAX
+      //     gsap.to('.section-values__cards', {
+      //       yPercent: -50,
+      //       ease: Power2.easeInOut,
+      //       scrollTrigger: {
+      //         trigger: '.section-values',
+      //         scroller: REFS.scroller,
+      //         scrub: true,
+      //       },
+      //     });
+      //   },
+      // });
     }
     //VALUES
 
@@ -1217,14 +1263,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
           const wrapEl = document.querySelector('.roadmap__list-wrap');
           const listEl = document.querySelector('.roadmap__list');
           const containerEL = document.querySelector('.container');
-          const containerPadding =
-            parseFloat(window.getComputedStyle(containerEL)['padding-left']) *
-            2;
-          const offset = parseFloat(window.getComputedStyle(listEl)['left']);
-          const scrollLength =
-            wrapEl.scrollWidth + offset - window.innerWidth + containerPadding;
+          function scrollLengthFn() {
+            const containerPadding =
+              parseFloat(window.getComputedStyle(containerEL)['padding-left']) *
+              2;
+            const offset = parseFloat(window.getComputedStyle(listEl)['left']);
+            const scrollLength =
+              wrapEl.scrollWidth +
+              offset -
+              document.body.clientWidth +
+              containerPadding;
+            return scrollLength;
+          }
           const animCont = gsap.to(wrapEl, {
-            x: -scrollLength,
+            x: () => -scrollLengthFn(),
+            startAt: { x: 0 },
             ease: 'none',
             scrollTrigger: {
               scroller: REFS.scroller,
@@ -1232,7 +1285,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
               start: 'center center',
               pin: true,
               scrub: 1,
-              end: '+=' + scrollLength,
+              end: () => '+=' + scrollLengthFn(),
+              invalidateOnRefresh: true,
             },
           });
           // BG CHANGE
@@ -1240,7 +1294,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             trigger: '.roadmap',
             scroller: REFS.scroller,
             start: 'top 50%',
-            end: 'bottom+=' + scrollLength + ' center',
+            end: () => 'bottom+=' + scrollLengthFn() + ' center',
             toggleClass: 'active',
             // refreshPriority: -1,
             // markers: true,
@@ -1259,22 +1313,41 @@ document.addEventListener('DOMContentLoaded', function (event) {
           });
           //ACTIVE STATE FOR ITEM
           const itemsRefs = document.querySelectorAll('.roadmap__item');
-          const itemOverlap = +parseFloat(
-            window.getComputedStyle(itemsRefs[0])['margin-right'],
-          );
+          const itemOverlap = () =>
+            +parseFloat(window.getComputedStyle(itemsRefs[0])['margin-right']);
 
           itemsRefs.forEach(item => {
             ScrollTrigger.create({
               containerAnimation: animCont,
               trigger: item,
-              start: `left-=${itemOverlap}px center`,
-              end: `right+=${itemOverlap}px center`,
+              start: () => `left-=${itemOverlap()}px center`,
+              end: () => `right+=${itemOverlap()}px center`,
               toggleClass: 'active',
             });
           });
         },
       });
     }
+
+    // CNT SECTION
+    {
+      //TITLE ANIMATION
+      const cntSectionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.cnt-section',
+          scroller: REFS.scroller,
+          start: 'top center',
+          end: 'bottom bottom',
+          toggleActions: 'play none none reverse',
+          // markers: true,
+        },
+      });
+      cntSectionTl.staggerFrom(
+        '.cnt-section__title .split span',
+        ...ANIMATION_PARAMS.textStaggerY100,
+      );
+    }
+    // CNT SECTION
 
     //BG COLOR CHANGE
     {
@@ -1422,3 +1495,15 @@ $('.form').validate({
     return false; // required to block normal submit since you used ajax
   },
 });
+
+// DEBOUNCE
+function debounce(callback, wait) {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+}
+// DEBOUNCE

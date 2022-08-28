@@ -1,3 +1,16 @@
+// DISABLE SCROLL POSITION RECOVERY
+{
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+}
+// RELOAD ON RESIZE
+{
+  window.addEventListener(
+    'resize',
+    debounce(() => location.reload(false), 100),
+  );
+}
 const REFS = {
   scroller: document.querySelector('.scroller'),
 };
@@ -172,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     window.requestAnimationFrame(function () {
       //BUTTON HOVER START
       const buttonsRefs = document.querySelectorAll('.button');
-      buttonsRefs.forEach((button) => {
+      buttonsRefs.forEach(button => {
         let charsInSpan = button.textContent
           .split('')
           .reduce(
@@ -280,46 +293,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
         refs.openBtn.addEventListener('click', handleMenuOpen);
         refs.closeBtn.addEventListener('click', handleMenuClose);
       }
-      // START CHANGE BG COLOR
-      const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
-      scrollColorElems.forEach((colorSection, i) => {
-        const prevBg = i === 0 ? '' : scrollColorElems[i - 1].dataset.bgcolor;
-        const accentColor =
-          scrollColorElems[i].dataset?.accentcolor || 'currentColor';
-        const prevText =
-          i === 0 ? '' : scrollColorElems[i - 1].dataset.textcolor;
-
-        ScrollTrigger.create({
-          trigger: colorSection,
-          scroller: REFS.scroller,
-          start: 'top 50%',
-          end: 'bottom 50%',
-          toggleClass: 'active',
-          onEnter: () => {
-            gsap.to(REFS.scroller, {
-              backgroundColor: colorSection.dataset.bgcolor,
-              color: colorSection.dataset.textcolor,
-              '--accentColor': accentColor,
-              overwrite: 'auto',
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(REFS.scroller, {
-              backgroundColor: colorSection.dataset.bgcolor,
-              color: colorSection.dataset.textcolor,
-              '--accentColor': accentColor,
-              overwrite: 'auto',
-            });
-          },
-          onLeaveBack: () =>
-            gsap.to(REFS.scroller, {
-              backgroundColor: prevBg,
-              color: prevText,
-              overwrite: 'auto',
-            }),
-        });
-      });
-      // END CHANGE BG COLOR
 
       // promo animation start
       const promoTl = gsap.timeline({
@@ -359,13 +332,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
           0.05,
           'start',
         )
-        .addLabel('startLink')
-        .from(
-          '.promo__link svg',
-          0.4,
-          { xPercent: -100, yPercent: -100, ease: Power2.easeInOut },
-          'start',
-        );
+        .addLabel('startLink');
+      // .from(
+      //   '.promo__link svg',
+      //   0.4,
+      //   { xPercent: -100, yPercent: -100, ease: Power2.easeInOut },
+      //   'start',
+      // );
       // promo animation end
       // BUTTON FOLLOWING
       ScrollTrigger.matchMedia({
@@ -470,6 +443,47 @@ document.addEventListener('DOMContentLoaded', function (event) {
       });
 
       // discover animation start
+      // Adjust bg video
+      let videoBg = '#E0E3E7';
+      {
+        ScrollTrigger.matchMedia({
+          '(min-width: 1200px)': () => {
+            const videoRef = document.querySelector('.discover__video');
+            videoBg = getVideoBg(videoRef);
+          },
+        });
+        function getVideoBg(video) {
+          const canvas = document.createElement('canvas');
+          canvas.width = 1;
+          canvas.height = 1;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, 1, 1, 0, 0, 1, 1);
+          const pixel = ctx.getImageData(0, 0, 1, 1).data;
+          return `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]}`;
+        }
+        ScrollTrigger.create({
+          trigger: '.discover__video',
+          scroller: REFS.scroller,
+          start: 'top bottom',
+          end: 'bottom top',
+          toggleClass: 'active',
+          // markers: true,
+          onEnter: () => {
+            gsap.set(REFS.scroller, {
+              backgroundColor: videoBg,
+              color: '#000',
+              overwrite: 'auto',
+            });
+          },
+          onLeaveBack: () => {
+            gsap.set(REFS.scroller, {
+              backgroundColor: '#E0E3E7',
+              color: '#000',
+              overwrite: 'auto',
+            });
+          },
+        });
+      }
       const discoverTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.discover',
@@ -533,7 +547,35 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // discover animation end
 
       // hwd animation start
-
+      ScrollTrigger.create({
+        trigger: '.hwd',
+        scroller: REFS.scroller,
+        start: 'top 20%',
+        end: 'bottom center',
+        toggleClass: 'active',
+        // markers: true,
+        onEnter: () => {
+          gsap.to(REFS.scroller, {
+            backgroundColor: '#000',
+            color: '#fff',
+            overwrite: 'auto',
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(REFS.scroller, {
+            backgroundColor: '#000',
+            color: '#fff',
+            overwrite: 'auto',
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(REFS.scroller, {
+            backgroundColor: videoBg,
+            color: '#000',
+            overwrite: 'auto',
+          });
+        },
+      });
       const hwdTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.hwd__title',
@@ -732,7 +774,36 @@ document.addEventListener('DOMContentLoaded', function (event) {
         .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
 
       // contacs animation end
-
+      //BG COLOR CHANGE
+      {
+        const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
+        for (let i = 0; i < scrollColorElems.length; i += 1) {
+          const colorSection = scrollColorElems[i];
+          if (colorSection.hasAttribute('horizontal')) continue;
+          ScrollTrigger.create({
+            trigger: colorSection,
+            scroller: REFS.scroller,
+            start: 'top 50%',
+            end: 'bottom 50%',
+            toggleClass: 'active',
+            // refreshPriority: -1,
+            // markers: true,
+            onEnter: () =>
+              gsap.to(REFS.scroller, {
+                backgroundColor: colorSection.dataset.bgcolor,
+                color: colorSection.dataset.textcolor,
+                overwrite: 'auto',
+              }),
+            onEnterBack: () =>
+              gsap.to(REFS.scroller, {
+                backgroundColor: colorSection.dataset.bgcolor,
+                color: colorSection.dataset.textcolor,
+                overwrite: 'auto',
+              }),
+          });
+        }
+      }
+      // END CHANGE BG COLOR
       ScrollTrigger.refresh();
     });
   };
@@ -789,7 +860,7 @@ watchesBtnRef.addEventListener('click', playFullscreen);
 function playFullscreen() {
   iframe.classList.remove('is-hidden');
 
-  setTimeout(() => playerWatches.playVideo(), 300);
+  setTimeout(() => playerWatches.playVideo(), 500);
 }
 function onPlayerReady(event) {
   iframe = document.querySelector('#watches-fact__video');
@@ -812,7 +883,7 @@ playerContainer.addEventListener('click', function () {
 
 // link hover start
 const linkRefs = document.querySelectorAll('.link');
-linkRefs.forEach((link) => {
+linkRefs.forEach(link => {
   let charsInSpan = link.textContent
     .split('')
     .reduce(
