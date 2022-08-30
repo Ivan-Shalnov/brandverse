@@ -16,7 +16,7 @@
 }
 .ticker {
   white-space: nowrap;
-  &>*{
+  & > * {
     display: inline-block;
   }
   & > *:first-child {
@@ -33,7 +33,7 @@
 }
 .ticker-right {
   white-space: nowrap;
-  &>*{
+  & > * {
     display: inline-block;
   }
   & > *:first-child {
