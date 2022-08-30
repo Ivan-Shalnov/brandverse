@@ -147,6 +147,7 @@
     display: flex;
     flex-direction: column;
     @media (min-width: 1200px) {
+      position: relative;
       width: toIndex(595);
     }
   }
@@ -164,6 +165,13 @@
     }
     & > div {
       overflow: hidden;
+    }
+  }
+  &__col-link {
+    @media (min-width: 1200px) {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
   }
   &__col-line {
@@ -184,6 +192,9 @@
     line-height: 1.14;
     /* or 31px */
     letter-spacing: -0.033em;
+    @media (max-width: 1199px) {
+      margin-bottom: 7.5vh;
+    }
     @media (min-width: 375px) {
       font-size: 33px;
     }
@@ -305,6 +316,9 @@
   }
 }
 .z3na-frame2 {
+  & .link {
+    color: #000;
+  }
   @media (max-width: 1199px) {
     padding-top: toIndexMob(50);
     padding-bottom: toIndexMob(50);

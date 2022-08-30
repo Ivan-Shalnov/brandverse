@@ -4943,6 +4943,7 @@ h5 {
       flex-direction: column; }
   @media (min-width: 1200px) {
     .horizontal__col {
+      position: relative;
       width: calc((1vw + 1vh) * (595 / 30)); } }
 
 .horizontal__col-text {
@@ -4959,6 +4960,12 @@ h5 {
       margin-bottom: calc((1vw + 1vh) * (35 / 30)); } }
   .horizontal__col-text > div {
     overflow: hidden; }
+
+@media (min-width: 1200px) {
+  .horizontal__col-link {
+    position: absolute;
+    bottom: 0;
+    width: 100%; } }
 
 .horizontal__col-line {
   height: 4px;
@@ -4978,6 +4985,9 @@ h5 {
   line-height: 1.14;
   /* or 31px */
   letter-spacing: -0.033em; }
+  @media (max-width: 1199px) {
+    .horizontal__col-subtitle {
+      margin-bottom: 7.5vh; } }
   @media (min-width: 375px) {
     .horizontal__col-subtitle {
       font-size: 33px; } }
@@ -5089,6 +5099,9 @@ h5 {
   @media (min-width: 1200px) {
     .z3na-frame1__title {
       font-size: calc((1vw + 1vh) * (233 / 30)); } }
+
+.z3na-frame2 .link {
+  color: #000; }
 
 @media (max-width: 1199px) {
   .z3na-frame2 {
