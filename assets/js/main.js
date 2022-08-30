@@ -6,9 +6,12 @@
 }
 // RELOAD ON RESIZE
 {
+  let windowWidthSaved = window.innerWidth;
   window.addEventListener(
     'resize',
-    debounce(() => location.reload(false), 100),
+    debounce(function () {
+      window.innerWidth !== windowWidthSaved && location.reload(false);
+    }, 100),
   );
 }
 const REFS = {

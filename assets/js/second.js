@@ -6,13 +6,17 @@
 }
 // RELOAD ON RESIZE
 {
+  let windowWidthSaved = window.innerWidth;
   window.addEventListener(
     'resize',
-    debounce(() => location.reload(false), 100),
+    debounce(function () {
+      window.innerWidth !== windowWidthSaved && location.reload(false);
+    }, 100),
   );
 }
 const REFS = {
   scroller: document.querySelector('.scroller'),
+  skipColorsChange: [],
 };
 const ANIMATION_PARAMS = {
   textStaggerY100: [
@@ -157,12 +161,6 @@ function btnHover(button) {
   });
 }
 
-// ViewPort REAL Height
-{
-  const vh = document.documentElement.clientHeight / 100;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
 // JSON ANIMATION
 let percent;
 {
@@ -185,6 +183,13 @@ let percent;
 
 document.addEventListener('DOMContentLoaded', function (event) {
   window.onload = function () {
+    // ViewPort REAL Height
+    {
+      const vh = document.documentElement.clientHeight / 100;
+      const vw = document.documentElement.clientWidth / 100;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty('--vw', `${vw}px`);
+    }
     // LOCOSCROLL
 
     gsap.registerPlugin(ScrollTrigger);
@@ -459,134 +464,124 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // SLIDE SECTION ANIM
     {
-      const solutionAnim = function (tl) {
-        tl.addLabel('start', '+=1').staggerFrom(
-          '.solution__title .split span',
-          ...ANIMATION_PARAMS.textStaggerY100,
-        );
-      };
-      const reduceAnim = function (tl) {
-        tl.addLabel('start', '+=1').staggerFrom(
-          '.reduce__title .split span',
-          ...ANIMATION_PARAMS.textStaggerY100,
-        );
-      };
-      const slideAnim = function (tl, slideSelector) {
-        tl.addLabel('start', '+=1')
+      const getSlideAnim = function (slideSelector, delay = 0.75) {
+        const tl = gsap.timeline({ paused: true });
+        tl.addLabel('start', '+=' + delay)
           .staggerFrom(
-            slideSelector + ' .slide__title > span span',
+            slideSelector + ' .slide__subtitle > div div',
             ...ANIMATION_PARAMS.textStaggerY100,
+            'start',
           )
           .from(
             slideSelector + ' .slide__text',
-            0.8,
-            { y: 10, opacity: 0, ease: Power2.easeInOut, yoyo: true },
-            0.2,
+            {
+              y: 10,
+              opacity: 0,
+              ease: Power2.easeInOut,
+              yoyo: true,
+              duration: 0.25,
+            },
             '>',
           )
           .from(
             slideSelector + ' .slide__line',
-            0.8,
-            { width: 0, ease: Power2.easeInOut, yoyo: true },
-            0.2,
-            '<',
+            { width: 0, ease: Power2.easeInOut, yoyo: true, duration: 0.25 },
+            '>',
           );
+        return tl;
       };
+      const solutionAnimTl = gsap.timeline({ paused: true });
+      {
+        solutionAnimTl
+          .addLabel('start', '+=0.5')
+          .staggerFrom(
+            '.solution__text > span > span',
+            ...ANIMATION_PARAMS.textStaggerY100,
+            'start',
+          )
+          .staggerFrom(
+            '.solution__title .split span',
+            ...ANIMATION_PARAMS.textStaggerY100,
+            'start',
+          );
+      }
+      function setColors({ bg, color }) {
+        gsap.to(REFS.scroller, {
+          backgroundColor: bg,
+          color: color,
+          overwrite: 'auto',
+        });
+      }
       ScrollTrigger.matchMedia({
-        // MOBILE
         '(max-width: 1199px)': () => {
-          // SOLUTION
+          // SOLUTION SECTION
+          ScrollTrigger.create({
+            trigger: '.solution',
+            scroller: REFS.scroller,
+            start: 'top center',
+            end: 'bottom center',
+            toggleActions: 'play none none reverse',
+            animation: solutionAnimTl,
+          });
+          // SOLUTION SECTION
+
+          // REDUCE SECTION
           {
-            const solutionTl = gsap.timeline({
-              scrollTrigger: {
-                trigger: '.solution',
-                scroller: REFS.scroller,
-                start: 'top center',
-                //markers: true,
-                toggleActions: 'play none none reverse',
-              },
+            ScrollTrigger.create({
+              trigger: '.reduce',
+              start: self => self.previous().end,
+              end: 'bottom center',
+              toggleActions: 'play none none reverse',
+              animation: getSlideAnim('.reduce', 0),
             });
-            solutionAnim(solutionTl);
           }
-          // REDUCE ANIM
+          // REDUCE SECTION
+
+          // CULTIVATE SECTION
           {
-            const reduceTl = gsap.timeline({
-              scrollTrigger: {
-                trigger: '.reduce',
-                start: 'top center',
-                toggleActions: 'play none none reverse',
-                //markers: true,
-              },
+            ScrollTrigger.create({
+              trigger: '.cultivate',
+              start: self => self.previous().end,
+              end: 'bottom center',
+              toggleActions: 'play none none reverse',
+              animation: getSlideAnim('.cultivate', 0),
             });
-            reduceAnim(reduceTl);
           }
-          // SLIDE 1 ANIM
+          // CULTIVATE SECTION
+
+          // NAVIGATE SECTION
           {
-            const slide1Tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: '.slide-1',
-                start: 'top center',
-                // markers: true,
-                toggleActions: 'play none none reverse',
-                // markers: true,
-              },
+            ScrollTrigger.create({
+              trigger: '.navigate',
+              start: self => self.previous().end,
+              end: 'bottom center',
+              toggleActions: 'play none none reverse',
+              animation: getSlideAnim('.navigate', 0),
             });
-            slideAnim(slide1Tl, '.slide-1');
           }
-          // SLIDE 2 ANIM
-          {
-            const slide2Tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: '.slide-2',
-                start: 'top center',
-                toggleActions: 'play none none reverse',
-                //markers: true,
-              },
-            });
-            slideAnim(slide2Tl, '.slide-2');
-          }
-          // SLIDE 3 ANIM
-          {
-            const slide3Tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: '.slide-3',
-                start: 'top center',
-                toggleActions: 'play none none reverse',
-                //markers: true,
-              },
-            });
-            slideAnim(slide3Tl, '.slide-3');
-          }
+          // NAVIGATE SECTION
         },
-        // DESKTOP
         '(min-width: 1200px)': () => {
-          // SOLUTION ANIM
+          // SOLUTION SECTION
           {
-            const solutionTl = gsap.timeline({
-              scrollTrigger: {
-                trigger: '.solution',
-                scroller: REFS.scroller,
-                start: 'top 40%',
-                end: 'bottom center',
-                toggleActions: 'play none none reverse',
-              },
+            const triggerRef = document.querySelector('.solution');
+            REFS.skipColorsChange.push(triggerRef);
+            ScrollTrigger.create({
+              trigger: triggerRef,
+              scroller: REFS.scroller,
+              start: 'top center',
+              end: 'bottom center',
+              toggleActions: 'play none none reverse',
+              animation: solutionAnimTl,
             });
-            solutionAnim(solutionTl);
           }
-          // Section PIN START
-          let pinBoxes = document.querySelectorAll('.slide__wrap > div');
-          let pinWrap = document.querySelector('.slide__wrap');
-          pinBoxes.forEach(frame => frame.setAttribute('horizontal', 'true'));
-          function horizontalScrollLengthFn() {
-            let pinWrapWidth = pinWrap.offsetWidth;
-            let horizontalScrollLength =
-              pinWrapWidth - document.body.clientWidth;
-            return horizontalScrollLength;
-          }
+          // SOLUTION SECTION
 
-          // Pinning and horizontal scrolling
-
-          const slideScrollAnim = gsap.to('.slide__wrap', {
+          // PIN WRAP
+          const wrapRef = document.querySelector('.slide__wrap');
+          const getScrollLength = () =>
+            wrapRef.scrollWidth - document.body.clientWidth;
+          const horizontalScrollAnim = gsap.to('.slide__wrap', {
             scrollTrigger: {
               scroller: REFS.scroller,
               scrub: true,
@@ -594,117 +589,291 @@ document.addEventListener('DOMContentLoaded', function (event) {
               pin: true,
               start: 'top top',
               invalidateOnRefresh: true,
-              end: () => '+=' + horizontalScrollLengthFn(),
-              onEnter: () => {
-                gsap.to(REFS.scroller, {
-                  backgroundColor: '#fff',
-                  color: '#000',
-                  overwrite: 'auto',
-                });
-              },
-              onEnterBack: () => {
-                gsap.to(REFS.scroller, {
-                  backgroundColor: '#000',
-                  color: '#C5FD64',
-                  overwrite: 'auto',
-                });
-              },
+              end: () => `+=${getScrollLength()}`,
+              onEnter: () => setColors({ bg: '#fff', color: '#000' }),
+              onEnterBack: () => setColors({ bg: '#000', color: '#C5FD64' }),
             },
-            x: () => -horizontalScrollLengthFn(),
+            x: () => -getScrollLength(),
             startAt: { x: 0 },
             ease: 'none',
           });
-          // COLORS CHANGE
-          pinBoxes.forEach((colorSection, i) => {
-            const prevBg = i === 0 ? '' : pinBoxes[i - 1].dataset.bgcolor;
-            const prevText = i === 0 ? '' : pinBoxes[i - 1].dataset.textcolor;
+          // PIN WRAP
 
+          // REDUCE SECTION
+          {
+            const triggerRef = document.querySelector('.reduce');
+            const bgColor = triggerRef.dataset.bgcolor;
+            const textColor = triggerRef.dataset.textcolor;
+            REFS.skipColorsChange.push(triggerRef);
             ScrollTrigger.create({
-              containerAnimation: slideScrollAnim,
+              trigger: triggerRef,
+              containerAnimation: horizontalScrollAnim,
               horizontal: true,
-              trigger: colorSection,
               start: 'left center',
               end: 'right center',
-              onEnter: () => {
-                gsap.to(REFS.scroller, {
-                  backgroundColor: colorSection.dataset.bgcolor,
-                  color: colorSection.dataset.textcolor,
-                  overwrite: 'auto',
-                });
-              },
-              onEnterBack: () => {
-                gsap.to(REFS.scroller, {
-                  backgroundColor: colorSection.dataset.bgcolor,
-                  color: colorSection.dataset.textcolor,
-                  overwrite: 'auto',
-                });
-              },
+              toggleActions: 'play none none reverse',
+              animation: getSlideAnim('.reduce'),
+              onEnter: () => setColors({ bg: bgColor, color: textColor }),
+              onEnterBack: () => setColors({ bg: bgColor, color: textColor }),
+              onLeaveBack: () => setColors({ bg: '#fff', color: '#000' }),
             });
-          });
-          // SECTION PIN END
+          }
+          // REDUCE SECTION
 
-          // REDUCE ANIM
+          // CULTIVATE SECTION
           {
-            const reduceTl = gsap.timeline({
-              scrollTrigger: {
-                containerAnimation: slideScrollAnim,
-                trigger: '.reduce',
-                horizontal: true,
-                start: 'left center',
-                end: 'right center',
-                toggleActions: 'play none none reverse',
-                // markers: true,
-              },
+            const triggerRef = document.querySelector('.cultivate');
+            const bgColor = triggerRef.dataset.bgcolor;
+            const textColor = triggerRef.dataset.textcolor;
+            REFS.skipColorsChange.push(triggerRef);
+            ScrollTrigger.create({
+              trigger: triggerRef,
+              containerAnimation: horizontalScrollAnim,
+              horizontal: true,
+              start: self => self.previous().end,
+              end: 'right center',
+              toggleActions: 'play none none reverse',
+              animation: getSlideAnim('.cultivate'),
+              onEnter: () => setColors({ bg: bgColor, color: textColor }),
+              onEnterBack: () => setColors({ bg: bgColor, color: textColor }),
             });
-            reduceAnim(reduceTl);
           }
-          // SLIDE 1 ANIM
+          // CULTIVATE SECTION
+
+          // NAVIGATE SECTION
           {
-            const slide1Tl = gsap.timeline({
-              scrollTrigger: {
-                containerAnimation: slideScrollAnim,
-                trigger: '.slide-1',
-                horizontal: true,
-                start: 'left center',
-                end: 'right center',
-                toggleActions: 'play none none reverse',
-                // markers: true,
-              },
+            const triggerRef = document.querySelector('.navigate');
+            const bgColor = triggerRef.dataset.bgcolor;
+            const textColor = triggerRef.dataset.textcolor;
+            REFS.skipColorsChange.push(triggerRef);
+            ScrollTrigger.create({
+              trigger: triggerRef,
+              containerAnimation: horizontalScrollAnim,
+              horizontal: true,
+              start: self => self.previous().end,
+              end: 'right center',
+              toggleActions: 'play none none reverse',
+              animation: getSlideAnim('.navigate'),
+              onEnter: () => setColors({ bg: bgColor, color: textColor }),
+              onEnterBack: () => setColors({ bg: bgColor, color: textColor }),
             });
-            slideAnim(slide1Tl, '.slide-1');
           }
-          // SLIDE 2 ANIM
-          {
-            const slide2Tl = gsap.timeline({
-              scrollTrigger: {
-                containerAnimation: slideScrollAnim,
-                trigger: '.slide-2',
-                horizontal: true,
-                start: 'left center',
-                end: 'right center',
-                toggleActions: 'play none none reverse',
-                // markers: true,
-              },
-            });
-            slideAnim(slide2Tl, '.slide-2');
-          }
-          // SLIDE 3 ANIM
-          {
-            const slide3Tl = gsap.timeline({
-              scrollTrigger: {
-                containerAnimation: slideScrollAnim,
-                trigger: '.slide-3',
-                horizontal: true,
-                start: 'left center',
-                end: 'right center',
-                toggleActions: 'play none none reverse',
-                // markers: true,
-              },
-            });
-            slideAnim(slide3Tl, '.slide-3');
-          }
+          // NAVIGATE SECTION
         },
       });
+      // ScrollTrigger.matchMedia({
+      //   // MOBILE
+      //   // '(max-width: 1199px)': () => {
+      //   //   // SOLUTION
+      //   //   {
+      //   //     const solutionTl = gsap.timeline({
+      //   //       scrollTrigger: {
+      //   //         trigger: '.solution',
+      //   //         scroller: REFS.scroller,
+      //   //         start: 'top center',
+      //   //         //markers: true,
+      //   //         toggleActions: 'play none none reverse',
+      //   //       },
+      //   //     });
+      //   //     solutionAnim(solutionTl);
+      //   //   }
+      //   //   // REDUCE ANIM
+      //   //   {
+      //   //     const reduceTl = gsap.timeline({
+      //   //       scrollTrigger: {
+      //   //         trigger: '.reduce',
+      //   //         start: 'top center',
+      //   //         toggleActions: 'play none none reverse',
+      //   //         //markers: true,
+      //   //       },
+      //   //     });
+      //   //     reduceAnim(reduceTl);
+      //   //   }
+      //   //   // SLIDE 1 ANIM
+      //   //   {
+      //   //     const slide1Tl = gsap.timeline({
+      //   //       scrollTrigger: {
+      //   //         trigger: '.slide-1',
+      //   //         start: 'top center',
+      //   //         // markers: true,
+      //   //         toggleActions: 'play none none reverse',
+      //   //         // markers: true,
+      //   //       },
+      //   //     });
+      //   //     slideAnim(slide1Tl, '.slide-1');
+      //   //   }
+      //   //   // SLIDE 2 ANIM
+      //   //   {
+      //   //     const slide2Tl = gsap.timeline({
+      //   //       scrollTrigger: {
+      //   //         trigger: '.slide-2',
+      //   //         start: 'top center',
+      //   //         toggleActions: 'play none none reverse',
+      //   //         //markers: true,
+      //   //       },
+      //   //     });
+      //   //     slideAnim(slide2Tl, '.slide-2');
+      //   //   }
+      //   //   // SLIDE 3 ANIM
+      //   //   {
+      //   //     const slide3Tl = gsap.timeline({
+      //   //       scrollTrigger: {
+      //   //         trigger: '.slide-3',
+      //   //         start: 'top center',
+      //   //         toggleActions: 'play none none reverse',
+      //   //         //markers: true,
+      //   //       },
+      //   //     });
+      //   //     slideAnim(slide3Tl, '.slide-3');
+      //   //   }
+      //   // },
+      //   // DESKTOP
+      //   // '(min-width: 1200px)': () => {
+      //   //   // SOLUTION ANIM
+      //   //   {
+      //   //     const solutionTl = gsap.timeline({
+      //   //       scrollTrigger: {
+      //   //         trigger: '.solution',
+      //   //         scroller: REFS.scroller,
+      //   //         start: 'top 40%',
+      //   //         end: 'bottom center',
+      //   //         toggleActions: 'play none none reverse',
+      //   //       },
+      //   //     });
+      //   //     solutionAnim(solutionTl);
+      //   //   }
+      //   //   // Section PIN START
+      //   //   let pinBoxes = document.querySelectorAll('.slide__wrap > div');
+      //   //   let pinWrap = document.querySelector('.slide__wrap');
+      //   //   // pinBoxes.forEach(frame => frame.setAttribute('horizontal', 'true'));
+      //   //   function horizontalScrollLengthFn() {
+      //   //     let pinWrapWidth = pinWrap.offsetWidth;
+      //   //     let horizontalScrollLength =
+      //   //       pinWrapWidth - document.body.clientWidth;
+      //   //     return horizontalScrollLength;
+      //   //   }
+
+      //   //   // Pinning and horizontal scrolling
+
+      //   //   const slideScrollAnim = gsap.to('.slide__wrap', {
+      //   //     scrollTrigger: {
+      //   //       scroller: REFS.scroller,
+      //   //       scrub: true,
+      //   //       trigger: '.slide',
+      //   //       pin: true,
+      //   //       start: 'top top',
+      //   //       invalidateOnRefresh: true,
+      //   //       end: () => '+=' + horizontalScrollLengthFn(),
+      //   //       onEnter: () => {
+      //   //         gsap.to(REFS.scroller, {
+      //   //           backgroundColor: '#fff',
+      //   //           color: '#000',
+      //   //           overwrite: 'auto',
+      //   //         });
+      //   //       },
+      //   //       onEnterBack: () => {
+      //   //         gsap.to(REFS.scroller, {
+      //   //           backgroundColor: '#000',
+      //   //           color: '#C5FD64',
+      //   //           overwrite: 'auto',
+      //   //         });
+      //   //       },
+      //   //     },
+      //   //     x: () => -horizontalScrollLengthFn(),
+      //   //     startAt: { x: 0 },
+      //   //     ease: 'none',
+      //   //   });
+      //   //   // COLORS CHANGE
+      //   //   // pinBoxes.forEach((colorSection, i) => {
+      //   //   //   const prevBg = i === 0 ? '' : pinBoxes[i - 1].dataset.bgcolor;
+      //   //   //   const prevText = i === 0 ? '' : pinBoxes[i - 1].dataset.textcolor;
+
+      //   //   //   ScrollTrigger.create({
+      //   //   //     containerAnimation: slideScrollAnim,
+      //   //   //     horizontal: true,
+      //   //   //     trigger: colorSection,
+      //   //   //     start: 'left center',
+      //   //   //     end: 'right center',
+      //   //   //     onEnter: () => {
+      //   //   //       gsap.to(REFS.scroller, {
+      //   //   //         backgroundColor: colorSection.dataset.bgcolor,
+      //   //   //         color: colorSection.dataset.textcolor,
+      //   //   //         overwrite: 'auto',
+      //   //   //       });
+      //   //   //     },
+      //   //   //     onEnterBack: () => {
+      //   //   //       gsap.to(REFS.scroller, {
+      //   //   //         backgroundColor: colorSection.dataset.bgcolor,
+      //   //   //         color: colorSection.dataset.textcolor,
+      //   //   //         overwrite: 'auto',
+      //   //   //       });
+      //   //   //     },
+      //   //   //   });
+      //   //   // });
+      //   //   // // SECTION PIN END
+
+      //   //   // // REDUCE ANIM
+      //   //   // {
+      //   //   //   const reduceTl = gsap.timeline({
+      //   //   //     scrollTrigger: {
+      //   //   //       containerAnimation: slideScrollAnim,
+      //   //   //       trigger: '.reduce',
+      //   //   //       horizontal: true,
+      //   //   //       start: 'left center',
+      //   //   //       end: 'right center',
+      //   //   //       toggleActions: 'play none none reverse',
+      //   //   //       // markers: true,
+      //   //   //     },
+      //   //   //   });
+      //   //   //   reduceAnim(reduceTl);
+      //   //   // }
+      //   //   // // SLIDE 1 ANIM
+      //   //   // {
+      //   //   //   const slide1Tl = gsap.timeline({
+      //   //   //     scrollTrigger: {
+      //   //   //       containerAnimation: slideScrollAnim,
+      //   //   //       trigger: '.slide-1',
+      //   //   //       horizontal: true,
+      //   //   //       start: 'left center',
+      //   //   //       end: 'right center',
+      //   //   //       toggleActions: 'play none none reverse',
+      //   //   //       // markers: true,
+      //   //   //     },
+      //   //   //   });
+      //   //   //   slideAnim(slide1Tl, '.slide-1');
+      //   //   // }
+      //   //   // // SLIDE 2 ANIM
+      //   //   // {
+      //   //   //   const slide2Tl = gsap.timeline({
+      //   //   //     scrollTrigger: {
+      //   //   //       containerAnimation: slideScrollAnim,
+      //   //   //       trigger: '.slide-2',
+      //   //   //       horizontal: true,
+      //   //   //       start: 'left center',
+      //   //   //       end: 'right center',
+      //   //   //       toggleActions: 'play none none reverse',
+      //   //   //       // markers: true,
+      //   //   //     },
+      //   //   //   });
+      //   //   //   slideAnim(slide2Tl, '.slide-2');
+      //   //   // }
+      //   //   // // SLIDE 3 ANIM
+      //   //   // {
+      //   //   //   const slide3Tl = gsap.timeline({
+      //   //   //     scrollTrigger: {
+      //   //   //       containerAnimation: slideScrollAnim,
+      //   //   //       trigger: '.slide-3',
+      //   //   //       horizontal: true,
+      //   //   //       start: 'left center',
+      //   //   //       end: 'right center',
+      //   //   //       toggleActions: 'play none none reverse',
+      //   //   //       // markers: true,
+      //   //   //     },
+      //   //   //   });
+      //   //   //   slideAnim(slide3Tl, '.slide-3');
+      //   //   // }
+      //   // },
+      // });
     }
     // SLIDE SECTION ANIM
 
@@ -1354,19 +1523,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
       for (let i = 0; i < scrollColorElems.length; i += 1) {
         const colorSection = scrollColorElems[i];
-        if (colorSection.hasAttribute('horizontal')) continue;
-        // const prevBg = i === 0 ? '' : scrollColorElems[i - 1].dataset.bgcolor;
-        // const prevText =
-        //   i === 0 ? '' : scrollColorElems[i - 1].dataset.textcolor;
-        if (colorSection.classList.contains('slide'))
-          obj = { pinnedContainer: '.slide' };
+        if (REFS.skipColorsChange.includes(colorSection)) continue;
         ScrollTrigger.create({
           trigger: colorSection,
           scroller: REFS.scroller,
           start: 'top 50%',
           end: 'bottom 50%',
           toggleClass: 'active',
-          // refreshPriority: -1,
           // markers: true,
           onEnter: () =>
             gsap.to(REFS.scroller, {

@@ -1,20 +1,59 @@
-.slide {
-  &__wrap > div {
+.solution {
+  & > .container {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
+    padding-top: 8vh;
   }
-  &__slide {
-    padding-top: 10vh;
+  &__line {
+    margin-bottom: 3vh;
+    height: 1px;
+    background: #a9b5be;
+  }
+  &__text {
+    font-weight: 600;
+    font-size: toIndexMob(33);
+    letter-spacing: -0.05em;
+    & > span {
+      margin-bottom: toIndexMob(-3);
+      padding-left: 0.05em;
+      padding-right: 0.05em;
+
+      display: flex;
+      justify-content: flex-end;
+      overflow-y: hidden;
+    }
   }
   &__title {
-    margin-bottom: 3vh;
     font-weight: 800;
-    font-size: toIndexMob(50);
+    font-size: toIndexMob(83);
     line-height: 90%;
-
     letter-spacing: -0.05em;
     & > span {
       display: flex;
+      overflow-y: hidden;
+    }
+  }
+}
+.slide {
+  &__title {
+    & > svg {
+      fill: currentColor;
+    }
+  }
+  &__col {
+    display: flex;
+    flex-direction: column;
+  }
+  &__subtitle {
+    margin-bottom: toIndexMob(30);
+    font-weight: 800;
+    font-size: toIndexMob(43);
+    letter-spacing: -0.05em;
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+      margin-bottom: toIndexMob(-15);
       overflow-y: hidden;
     }
   }
@@ -26,182 +65,132 @@
     letter-spacing: -0.05em;
   }
   &__line {
-    width: 33px;
-    height: 5px;
+    width: toIndexMob(33);
+    height: toIndexMob(5);
     background-color: currentColor;
   }
 }
-.solution {
-  padding-top: 10vh;
-  &__line {
-    margin-bottom: 3vh;
-    height: 1px;
-    background: #a9b5be;
-  }
-  &__row {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__first-text {
-    font-weight: 900;
-    font-size: toIndexMob(14);
-    line-height: 90%;
-
-    letter-spacing: -0.05em;
-    & > div {
-      overflow-y: hidden;
-      display: flex;
-    }
-  }
-  &__second-text {
-    font-weight: 600;
-    font-size: toIndexMob(33);
-    line-height: 1.18;
-    text-align: right;
-    & > div {
-      display: flex;
-      justify-content: flex-end;
-      overflow-y: hidden;
-    }
-    & > div:not(:last-child) {
-      margin-bottom: -2%;
-    }
-  }
-  &__title {
-    font-weight: 800;
-    font-size: toIndexMob(88);
-    line-height: 90%;
-
-    letter-spacing: -0.05em;
-    & .split {
-      display: flex;
-      overflow-y: hidden;
-    }
-  }
-}
-.reduce {
-  &__title {
-    position: absolute;
-    font-weight: 800;
-    font-size: toIndexMob(88);
-    line-height: 90%;
-
-    letter-spacing: -0.05em;
-    & .split {
-      overflow-y: hidden;
-      display: flex;
-    }
-  }
-}
-@media (min-width: 768px) {
-  .slide {
-    &__title {
-      font-size: toIndexTab(90);
-    }
-    &__text {
-      font-size: toIndexTab(21);
-    }
-  }
-  .solution {
-    &__first-text {
-      font-size: toIndexTab(17);
-    }
-    &__second-text {
-      font-size: toIndexTab(40);
-    }
-    &__title {
-      font-size: toIndexTab(170);
-    }
-  }
-  .reduce {
-    &__title {
-      font-size: toIndexTab(170);
-    }
-  }
-}
 @media (max-width: 1199px) {
-  .slide {
-    &__text {
-      margin-bottom: 12vh;
-    }
-  }
   .solution {
-    &__row {
-      margin-bottom: 28vh;
+    &__text {
+      margin-bottom: 28.5vh;
     }
-
     &__title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  .reduce {
-    &__title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .slide {
-    display: flex;
-    overflow-x: hidden;
-    &__wrap {
-      display: flex;
-      & > div {
-        min-width: 100vw;
+      & > span {
+        justify-content: center;
       }
     }
+  }
+  .slide {
     &__slide {
-      padding-top: toIndex(110);
+      padding-top: 10vh;
+      padding-bottom: 10vh;
     }
+
     &__title {
-      margin-bottom: toIndex(75);
-      font-size: toIndex(133);
+      position: relative;
+      height: toIndexMob(88);
+      margin-bottom: 13vh;
+      & > svg {
+        position: absolute;
+        transform-origin: 100% 0%;
+        right: 50%;
+        height: toIndexMob(335);
+        line-height: toIndexMob(335);
+        transform: rotate(90deg) translateY(-50%) translateX(100%);
+        width: auto;
+      }
+    }
+    &__subtitle {
+      order: 1;
     }
     &__text {
-      font-size: toIndex(22);
+      margin-bottom: 13vh;
+      order: 2;
+      max-width: toIndexMob(185);
     }
     &__line {
-      width: 100px;
-      height: 7px;
-      position: absolute;
-      bottom: toIndex(110);
+      order: 3;
     }
   }
+}
+@media (min-width: 1200px) {
   .solution {
-    padding-top: toIndex(90);
-    padding-bottom: toIndex(90);
+    & > .container {
+      width: 100vw;
+      width: calc(var(--vw, 1vw) * 100);
+      padding-top: toIndex(90);
+      padding-bottom: toIndex(90);
+    }
+
     &__line {
       margin-bottom: toIndex(35);
     }
-
-    &__first-text {
-      font-size: toIndex(20);
-    }
-
-    &__second-text {
+    &__text {
       font-size: toIndex(50);
+      & > span {
+        margin-bottom: toIndex(-5);
+      }
     }
-
     &__title {
       position: absolute;
       bottom: toIndex(90);
       font-size: toIndex(333);
     }
+    &__col {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-width: toIndex(800);
+    }
   }
-  .reduce {
-    position: relative;
+  .slide {
+    overflow: hidden;
+    &__wrap {
+      display: flex;
+    }
+    &__slide {
+      & > .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        padding-top: toIndex(130);
+        padding-left: toIndex(90);
+        padding-bottom: toIndex(90);
+        padding-right: toIndex(130);
+      }
+    }
+    &__col {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-width: toIndex(800);
+    }
     &__title {
+      align-self: flex-end;
+      & > svg {
+        width: toIndex(183);
+        height: auto;
+      }
+    }
+    &__line {
       position: absolute;
-      bottom: toIndex(88);
-      font-weight: 800;
-      font-size: toIndex(333);
+      top: 0;
+      right: 0;
+      width: toIndex(99);
+      height: toIndex(7);
+    }
+    &__subtitle {
+      margin-bottom: toIndex(80);
+      & > div {
+        margin-bottom: toIndex(-40);
+      }
+    }
+    &__text {
+      font-size: toIndex(22);
     }
   }
 }

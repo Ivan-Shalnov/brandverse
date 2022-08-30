@@ -50,6 +50,9 @@
     margin-bottom: toIndex(20);
   }
   &__link {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     margin-top: toIndex(250);
     color: $green;
     font-size: 13.25vw;
