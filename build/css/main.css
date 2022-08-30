@@ -4774,7 +4774,7 @@ h5 {
   .collections__line {
     height: calc((1vw + 1vh) * (17 / 30));
     width: 100%;
-    background-color: #000;
+    background-color: #fff;
     transition: 0.3s;
     margin-bottom: calc((1vw + 1vh) * (40 / 30)); }
   .collections__marquee {
@@ -4783,10 +4783,10 @@ h5 {
       max-height: 100%;
       width: auto; }
     .collections__marquee .white {
-      fill: #000;
+      fill: currentColor;
       transition: 0.3s; }
     .collections__marquee .green {
-      stroke: #4f06c6;
+      stroke: #c5fd64;
       transition: 0.3s; }
     .collections__marquee > div {
       display: -ms-flexbox;
