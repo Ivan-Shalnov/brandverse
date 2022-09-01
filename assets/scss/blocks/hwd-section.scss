@@ -260,8 +260,29 @@
       margin-bottom: 120px;
       text-align: right;
     }
+    &__title {
+      margin-bottom: 16.5vh;
+    }
     &__block {
-      margin-left: auto;
+      width: 100%;
+      // margin-left: auto;
+    }
+    &__box {
+      width: toIndexMob(22);
+      height: 6px;
+    }
+    &__subtitle {
+      width: toIndexMob(245);
+      margin-bottom: 9.5vh;
+      font-size: toIndexMob(33);
+    }
+    &__block-line {
+      height: 5px;
+      margin-bottom: 3.8vh;
+    }
+    &__text {
+      font-size: toIndexMob(18);
+      width: toIndexMob(200);
     }
   }
 }
@@ -270,7 +291,7 @@
   .hwd {
     padding-top: toIndex(400);
     &__title {
-      margin-bottom: 80px;
+      // margin-bottom: 80px;
       h2 {
         font-size: toIndex(100);
       }
@@ -298,9 +319,9 @@
       margin-top: 30px;
       font-weight: 800;
     }
-    &__text {
-      font-size: 18px;
-      width: 200px;
-    }
+    // &__text {
+    //   // font-size: 18px;
+    //   width: 200px;
+    // }
   }
 }

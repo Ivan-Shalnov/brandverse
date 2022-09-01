@@ -9,9 +9,9 @@
 .ambassador {
   padding-top: calc(var(--index) * 3.5);
   padding-bottom: calc(var(--index) * 11.2);
-  &.active{
-    .ambassador__remark{
-    color: #333333;
+  &.active {
+    .ambassador__remark {
+      color: #333333;
     }
   }
   &__video {
@@ -25,7 +25,6 @@
     font-size: calc(var(--index) * 0.53);
     line-height: 86%;
     letter-spacing: -0.033em;
-
   }
   &__title {
     font-family: 'Bebas Neue', sans-serif;
@@ -211,6 +210,9 @@
       &__title {
         color: $green;
       }
+      &__link {
+        color: $green;
+      }
     }
   }
   &__line {
@@ -222,6 +224,9 @@
   }
   &__title {
     transition: 0.3s;
+  }
+  &__link {
+    color: $purpure;
   }
 }
 @media (min-width: 1200px) {
@@ -255,7 +260,9 @@
       margin-right: auto;
     }
     &__remark {
-      display: none;
+      // display: none;
+      font-size: toIndexMob(14);
+      margin-bottom: 6.15vh;
     }
     &__title {
       font-size: toIndex(240);

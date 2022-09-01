@@ -159,6 +159,16 @@ document.addEventListener('DOMContentLoaded', () => {
       spliting(splitElements[i]);
     }
     ////////////////////
+    // SOCIAL LIST
+    {
+      const linksRef = document.querySelectorAll(
+        '.menu__social-link, .social-list__link',
+      );
+      ScrollTrigger.matchMedia({
+        '(max-width: 1199px)': () => linksRef.forEach(btnHover),
+      });
+    }
+    // SOCIAL LIST
     // MENU
     {
       const refs = {
@@ -167,11 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menu: document.querySelector('.menu'),
         title: document.querySelectorAll('.menu__nav > li > a'),
         scroller: REFS.scroller,
-        menuLinks: document.querySelectorAll('.menu__social-link'),
       };
-      ScrollTrigger.matchMedia({
-        '(max-width: 1199px)': () => refs.menuLinks.forEach(btnHover),
-      });
       const titleAnimation = gsap.from(refs.title, {
         y: '100%',
         stagger: { each: 0.05, ease: Power2.easeInOut },

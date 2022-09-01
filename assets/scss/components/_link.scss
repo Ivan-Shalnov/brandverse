@@ -49,7 +49,22 @@
     }
   }
 }
-
+@media (max-width: 1199px) {
+  .link {
+    font-size: toIndexMob(27);
+    svg {
+      width: toIndexMob(35);
+      height: toIndexMob(35);
+      bottom: toIndexMob(12);
+    }
+    &__left-line {
+      height: toIndexMob(4);
+    }
+    &__right-line {
+      height: toIndexMob(4);
+    }
+  }
+}
 @media (max-width: 767px) {
   .link {
     font-size: 27px;

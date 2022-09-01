@@ -1,18 +1,32 @@
 .footer {
-  padding: toIndex(60) 0;
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: calc(var(--index) * 2);
-    width: calc(100% - calc(var(--index) * 4));
-    border: 1px solid rgba(#d9d9d9, 0.1);
+  &__social-link {
+    font-weight: 600;
   }
-  .container {
+  &__social-list-title {
+    font-weight: 800;
+    font-size: toIndexMob(17);
+    line-height: 120%;
+
+    letter-spacing: -0.033em;
+
+    color: #ffffff;
+
+    opacity: 0.22;
+  }
+  &__inner {
+    position: relative;
+    padding: toIndex(60) 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(var(--index) * 2);
+      width: calc(100% - calc(var(--index) * 4));
+      border: 1px solid rgba(#d9d9d9, 0.1);
+    }
   }
   &__copyright {
     font-weight: 700;
@@ -93,5 +107,74 @@
   }
   &:hover {
     color: #fff;
+  }
+}
+@media (max-width: 1199px) {
+  .footer {
+    padding-top: 16vh;
+    &__social-list-cont {
+      margin-bottom: 16vh;
+    }
+    &__social-list-title {
+      margin-bottom: 4.5vh;
+    }
+    &__social-link {
+      font-size: toIndexMob(33);
+    }
+    &__inner {
+      padding-top: 15.5vh;
+      padding-bottom: 5vh;
+      flex-direction: column-reverse;
+    }
+    &__copyright {
+      font-size: toIndexMob(16);
+    }
+    &__group {
+      flex-direction: column;
+    }
+    &__nav {
+      margin-bottom: 14vh;
+      flex-direction: column;
+
+      & > li:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6vh;
+      }
+      & a {
+        font-weight: 600;
+        font-size: toIndexMob(20);
+        line-height: 120%;
+      }
+    }
+  }
+  .dev {
+    margin-bottom: 14vh;
+    flex-direction: column-reverse;
+    font-weight: 600;
+    font-size: toIndexMob(16);
+    color: #fff;
+    svg {
+      margin-bottom: 4vh;
+      margin-left: 0;
+      width: toIndexMob(48);
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .footer {
+    &__social-list-cont {
+      margin-bottom: toIndex(253);
+    }
+    &__social-list-title {
+      margin-bottom: toIndex(22);
+      font-size: toIndex(17);
+    }
+    &__social-list {
+      display: flex;
+      gap: toIndex(30);
+    }
+    &__social-link {
+      font-size: toIndex(33);
+    }
   }
 }

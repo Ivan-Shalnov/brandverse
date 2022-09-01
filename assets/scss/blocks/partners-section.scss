@@ -142,6 +142,9 @@
       flex-wrap: nowrap;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
     &__list-item {
       width: 440px;
