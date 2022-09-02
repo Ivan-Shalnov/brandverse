@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1661618711");
-  src: url("../fonts/icofont/ico-font.eot??1661618711#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1661618711") format("woff2"), url("../fonts/icofont/ico-font.woff?1661618711") format("woff"), url("../fonts/icofont/ico-font.ttf?1661618711") format("truetype"), url("../fonts/icofont/ico-font.svg?1661618711#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1662028998");
+  src: url("../fonts/icofont/ico-font.eot??1662028998#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1662028998") format("woff2"), url("../fonts/icofont/ico-font.woff?1662028998") format("woff"), url("../fonts/icofont/ico-font.ttf?1662028998") format("truetype"), url("../fonts/icofont/ico-font.svg?1662028998#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -422,8 +422,8 @@ h5 {
     position: absolute;
     bottom: calc((1vw + 1vh) * (10 / 30));
     right: 0;
-    width: calc((1vw + 1vh) * (40 / 30));
-    height: calc((1vw + 1vh) * (40 / 30));
+    width: 1.36em;
+    height: auto;
     stroke-width: calc((1vw + 1vh) * (5 / 30)); }
     .link svg path {
       fill: currentColor; }
@@ -432,8 +432,6 @@ h5 {
   .link {
     font-size: calc((1vw + 1vh) * (27 / 11.87)); }
     .link svg {
-      width: calc((1vw + 1vh) * (35 / 11.87));
-      height: calc((1vw + 1vh) * (35 / 11.87));
       bottom: calc((1vw + 1vh) * (12 / 11.87)); }
     .link__left-line {
       height: calc((1vw + 1vh) * (4 / 11.87)); }
@@ -446,8 +444,6 @@ h5 {
     line-height: 40px;
     padding-bottom: 6px; }
     .link svg {
-      width: 35px;
-      height: 35px;
       bottom: 12px; }
     .link__left-line {
       height: 4px; }
@@ -489,7 +485,12 @@ h5 {
 .ticker {
   white-space: nowrap; }
   .ticker > * {
-    display: inline-block; }
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -ms-flex-align: center;
+        align-items: center; }
   .ticker > *:first-child {
     will-change: transform;
     -webkit-animation: ticker-anim 30s infinite linear;
@@ -507,11 +508,14 @@ h5 {
             animation-fill-mode: none; }
 
 .ticker-right {
+  will-change: transform;
   white-space: nowrap; }
   .ticker-right > * {
-    display: inline-block; }
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap; }
   .ticker-right > *:first-child {
-    will-change: transform;
     -webkit-animation: ticker-anim 30s infinite linear;
             animation: ticker-anim 30s infinite linear;
     animation-direction: reverse;
@@ -1949,16 +1953,16 @@ h5 {
     fill: #000; }
   .community .ticker > *:first-child,
   .community .ticker-right > *:first-child {
-    -webkit-animation-duration: 60s;
-            animation-duration: 60s;
-    -webkit-animation-delay: -60s;
-            animation-delay: -60s; }
+    -webkit-animation-duration: 50s;
+            animation-duration: 50s;
+    -webkit-animation-delay: -50s;
+            animation-delay: -50s; }
   .community .ticker > *:last-child,
   .community .ticker-right > *:last-child {
-    -webkit-animation-duration: 60s;
-            animation-duration: 60s;
-    -webkit-animation-delay: -30s;
-            animation-delay: -30s; }
+    -webkit-animation-duration: 50s;
+            animation-duration: 50s;
+    -webkit-animation-delay: -25s;
+            animation-delay: -25s; }
   .community__marquee-top svg {
     width: 0.9em; }
   .community__marquee-top .black {
@@ -1970,14 +1974,16 @@ h5 {
   .community__title {
     font-family: 'Bebas Neue';
     font-size: calc((1vw + 1vh) * (233 / 30));
-    margin-bottom: calc((1vw + 1vh) * (-42 / 30));
-    letter-spacing: -0.052em; }
+    margin-bottom: calc((1vw + 1vh) * (-42 / 30)); }
+    .community__title span {
+      letter-spacing: -0.052em;
+      padding-left: 0.052em;
+      padding-right: 0.052em; }
+    .community__title > div {
+      margin-right: 0.052em; }
     .community__title > svg {
-      margin-left: 0.052em;
-      padding-left: 0.05em;
-      padding-right: 0.05em;
-      height: auto;
-      vertical-align: middle; }
+      margin-bottom: 0.2em;
+      height: auto; }
   .community__marquee-line {
     height: 2px;
     background: #000000;
@@ -3255,8 +3261,6 @@ h5 {
       margin-bottom: 15px; }
     .partner-card__text {
       font-size: 17px; }
-      .partner-card__text:first-of-type {
-        margin-bottom: 50px; }
     .partner-card__subtitle {
       font-size: 18px;
       margin-bottom: 15px; } }

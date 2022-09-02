@@ -285,19 +285,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //METAVERSE ANIM START
 
     {
-      //JSON ANIMATION TRIGGER
-      ScrollTrigger.create({
-        trigger: '#metaverse-svg',
-        scroller: REFS.scroller,
-        start: 'top center',
-        end: 'bottom top',
-        onEnter: () => percent.play(),
-        onEnterBack: () => percent.play(),
-        onLeaveBack: () => percent.pause(),
-        onLeave: () => percent.pause(),
-      });
-      //JSON ANIMATION TRIGGER
-
       const worthTextAnim = function (tl) {
         tl.addLabel('start', '+=1')
           .staggerFrom(
@@ -438,6 +425,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
           textAnim(metaVerseTextTl);
         },
       });
+
+      //JSON ANIMATION TRIGGER
+      ScrollTrigger.create({
+        trigger: '#metaverse-svg',
+        scroller: REFS.scroller,
+        start: 'top bottom',
+        end: 'bottom top',
+        onEnter: () => percent.play(),
+        onEnterBack: () => percent.play(),
+        onLeaveBack: () => percent.pause(),
+        onLeave: () => percent.pause(),
+      });
+      //JSON ANIMATION TRIGGER
     }
     //METAVERSE ANIM END
 

@@ -681,7 +681,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           scrollTrigger: {
             trigger: '.stay-updated',
             scroller: REFS.scroller,
-            start: 'top top',
+            start: 'top center',
             end: 'bottom bottom',
             toggleActions: 'play none none reverse',
           },
