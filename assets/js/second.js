@@ -218,6 +218,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
     ScrollTrigger.addEventListener('refresh', loadComplete);
     ////////////////////
 
+    // SOCIAL LIST
+    {
+      const linksRef = document.querySelectorAll(
+        '.menu__social-link, .social-list__link',
+      );
+      ScrollTrigger.matchMedia({
+        '(max-width: 1199px)': () => linksRef.forEach(btnHover),
+      });
+    }
+    // SOCIAL LIST
     // MENU
     {
       const refs = {
@@ -226,11 +236,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         menu: document.querySelector('.menu'),
         title: document.querySelectorAll('.menu__nav > li > a'),
         scroller: REFS.scroller,
-        menuLinks: document.querySelectorAll('.menu__social-link'),
       };
-      ScrollTrigger.matchMedia({
-        '(max-width: 1199px)': () => refs.menuLinks.forEach(btnHover),
-      });
       const titleAnimation = gsap.from(refs.title, {
         y: '100%',
         stagger: { each: 0.05, ease: Power2.easeInOut },
@@ -279,19 +285,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //METAVERSE ANIM START
 
     {
-      //JSON ANIMATION TRIGGER
-      ScrollTrigger.create({
-        trigger: '#metaverse-svg',
-        scroller: REFS.scroller,
-        start: 'top center',
-        end: 'bottom top',
-        onEnter: () => percent.play(),
-        onEnterBack: () => percent.play(),
-        onLeaveBack: () => percent.pause(),
-        onLeave: () => percent.pause(),
-      });
-      //JSON ANIMATION TRIGGER
-
       const worthTextAnim = function (tl) {
         tl.addLabel('start', '+=1')
           .staggerFrom(
@@ -432,6 +425,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
           textAnim(metaVerseTextTl);
         },
       });
+
+      //JSON ANIMATION TRIGGER
+      ScrollTrigger.create({
+        trigger: '#metaverse-svg',
+        scroller: REFS.scroller,
+        start: 'top bottom',
+        end: 'bottom top',
+        onEnter: () => percent.play(),
+        onEnterBack: () => percent.play(),
+        onLeaveBack: () => percent.pause(),
+        onLeave: () => percent.pause(),
+      });
+      //JSON ANIMATION TRIGGER
     }
     //METAVERSE ANIM END
 
@@ -1367,21 +1373,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
         '.section-values__title span',
         ...ANIMATION_PARAMS.textStaggerY100,
       );
-
-      // ScrollTrigger.matchMedia({
-      //   '(min-width: 1199px)': () => {
-      //     // PARALLAX
-      //     gsap.to('.section-values__cards', {
-      //       yPercent: -50,
-      //       ease: Power2.easeInOut,
-      //       scrollTrigger: {
-      //         trigger: '.section-values',
-      //         scroller: REFS.scroller,
-      //         scrub: true,
-      //       },
-      //     });
-      //   },
-      // });
     }
     //VALUES
 
@@ -1517,6 +1508,27 @@ document.addEventListener('DOMContentLoaded', function (event) {
       );
     }
     // CNT SECTION
+
+    // PARALLAX FOR MOBILE
+    {
+      ScrollTrigger.matchMedia({
+        '(max-width: 1199px)': () => {
+          const elements = document.querySelectorAll('[data-scroll-speed-mob]');
+          console.log('elements', elements);
+          elements.forEach(el => {
+            gsap.to(el, {
+              yPercent: -10 * el.dataset.scrollSpeedMob,
+              ease: Power2.easeInOut,
+              scrollTrigger: {
+                trigger: el.parentNode,
+                scroller: REFS.scroller,
+                scrub: true,
+              },
+            });
+          });
+        },
+      });
+    }
 
     //BG COLOR CHANGE
     {

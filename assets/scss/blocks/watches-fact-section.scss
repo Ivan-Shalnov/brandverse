@@ -169,7 +169,7 @@
       width: 70%;
       height: 0;
       padding-bottom: 70%;
-      margin-bottom: toIndex(80);
+      // margin-bottom: toIndex(80);
       span {
         position: absolute;
         top: 50%;
@@ -198,6 +198,7 @@
     }
     &__play-btn {
       margin: 80px 0;
+      margin-bottom: 0;
       width: 140%;
       padding-bottom: 140%;
       left: -20%;

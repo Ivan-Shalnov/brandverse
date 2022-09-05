@@ -265,6 +265,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
       ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
       ScrollTrigger.addEventListener('refresh', loadComplete);
       // START INIT SCROLL
+
+      // SOCIAL LIST
+      {
+        const linksRef = document.querySelectorAll(
+          '.menu__social-link, .social-list__link',
+        );
+        ScrollTrigger.matchMedia({
+          '(max-width: 1199px)': () => linksRef.forEach(btnHover),
+        });
+      }
+      // SOCIAL LIST
       // MENU
       {
         const refs = {
@@ -273,11 +284,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           menu: document.querySelector('.menu'),
           title: document.querySelectorAll('.menu__nav > li > a'),
           scroller: REFS.scroller,
-          menuLinks: document.querySelectorAll('.menu__social-link'),
         };
-        ScrollTrigger.matchMedia({
-          '(max-width: 1199px)': () => refs.menuLinks.forEach(btnHover),
-        });
         const titleAnimation = gsap.from(refs.title, {
           y: '100%',
           stagger: { each: 0.05, ease: Power2.easeInOut },
@@ -674,7 +681,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           scrollTrigger: {
             trigger: '.stay-updated',
             scroller: REFS.scroller,
-            start: 'top top',
+            start: 'top center',
             end: 'bottom bottom',
             toggleActions: 'play none none reverse',
           },
@@ -777,6 +784,31 @@ document.addEventListener('DOMContentLoaded', function (event) {
         .from('.contacts-section__name', 0.8, { opacity: 0 }, 'start');
 
       // contacs animation end
+
+      // PARALLAX FOR MOBILE
+      {
+        ScrollTrigger.matchMedia({
+          '(max-width: 1199px)': () => {
+            const elements = document.querySelectorAll(
+              '[data-scroll-speed-mob]',
+            );
+            console.log('elements', elements);
+            elements.forEach(el => {
+              gsap.to(el, {
+                yPercent: -10 * el.dataset.scrollSpeedMob,
+                ease: Power2.easeInOut,
+                scrollTrigger: {
+                  trigger: el.parentNode,
+                  scroller: REFS.scroller,
+                  scrub: true,
+                },
+              });
+            });
+          },
+        });
+      }
+      // PARALLAX FOR MOBILE
+
       //BG COLOR CHANGE
       {
         const scrollColorElems = document.querySelectorAll('[data-bgcolor]');

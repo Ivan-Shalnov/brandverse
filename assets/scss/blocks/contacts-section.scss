@@ -1,5 +1,6 @@
 .contacts-section {
-  padding: toIndex(200) 0;
+  padding-top: toIndex(200);
+  margin-bottom: toIndex(-89);
   &.active {
     .contacts-section {
       &__title {
@@ -88,6 +89,8 @@
 
 @media (max-width: 1199px) {
   .contacts-section {
+    margin-bottom: 0;
+    padding-bottom: 16vh;
     &__row {
       display: block;
       position: relative;

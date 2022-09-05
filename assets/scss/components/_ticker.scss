@@ -17,7 +17,9 @@
 .ticker {
   white-space: nowrap;
   & > * {
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
   }
   & > *:first-child {
     will-change: transform;
@@ -32,12 +34,13 @@
   }
 }
 .ticker-right {
+  will-change: transform;
   white-space: nowrap;
   & > * {
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: nowrap;
   }
   & > *:first-child {
-    will-change: transform;
     animation: ticker-anim 30s infinite linear;
     animation-direction: reverse;
     animation-fill-mode: none;

@@ -20,14 +20,14 @@
   & .ticker,
   & .ticker-right {
     & > *:first-child {
-      animation-duration: 60s;
+      animation-duration: 50s;
 
-      animation-delay: -60s;
+      animation-delay: -50s;
     }
     & > *:last-child {
-      animation-duration: 60s;
+      animation-duration: 50s;
 
-      animation-delay: -30s;
+      animation-delay: -25s;
     }
   }
   &__marquee-top {
@@ -49,14 +49,19 @@
     font-size: toIndex(233);
     margin-bottom: toIndex(-42);
 
-    letter-spacing: -0.052em;
-
+    & span {
+      letter-spacing: -0.052em;
+      padding-left: 0.052em;
+      padding-right: 0.052em;
+    }
+    & > div {
+      margin-right: 0.052em;
+    }
     & > svg {
-      margin-left: 0.052em;
-      padding-left: 0.05em;
-      padding-right: 0.05em;
+      margin-bottom: 0.2em;
+
       height: auto;
-      vertical-align: middle;
+      // vertical-align: middle;
     }
   }
   &__marquee-line {
@@ -69,7 +74,6 @@
   &__marquee-bottom {
     svg {
       width: 0.33em;
-
       transform-origin: center;
       transform: rotateZ(90deg);
     }

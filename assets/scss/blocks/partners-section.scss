@@ -142,6 +142,9 @@
       flex-wrap: nowrap;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
     &__list-item {
       width: 440px;
@@ -240,9 +243,9 @@
     }
     &__text {
       font-size: 17px;
-      &:first-of-type {
-        margin-bottom: 50px;
-      }
+      // &:first-of-type {
+      //   margin-bottom: 50px;
+      // }
     }
     &__subtitle {
       font-size: 18px;

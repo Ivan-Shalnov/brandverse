@@ -8,7 +8,7 @@
     justify-content: space-between;
     position: relative;
   }
-  .link{
+  .link {
     margin-bottom: 3%;
   }
   &__inner {
@@ -32,8 +32,7 @@
     .split {
       overflow-y: hidden;
       display: flex;
-        margin-bottom: -4%;
-      
+      margin-bottom: -4%;
     }
   }
   &__subtitle {
@@ -42,7 +41,7 @@
     line-height: 96%;
     letter-spacing: -0.033em;
     margin-bottom: toIndex(240);
-    &>div{
+    & > div {
       overflow-y: hidden;
     }
   }
@@ -70,35 +69,41 @@
     .container {
       display: block;
     }
+    &__title {
+      font-size: toIndexMob(72);
+    }
     &__logo {
-      top: toIndex(-240);
-      right: toIndex(-120);
+      top: toIndexMob(-180);
+      right: toIndexMob(-40);
       left: auto;
+      width: toIndexMob(265);
+      height: auto;
     }
     &__inner {
       width: 100%;
     }
     &__subtitle {
-      margin-left: auto;
-      max-width: min-content;
-      margin-top: toIndex(100);
-      margin-bottom: toIndex(100);
+      // margin-left: auto;
+      // max-width: min-content;
+      font-size: toIndexMob(26);
+      margin-top: 4.43vh;
+      margin-bottom: 14.9vh;
     }
   }
 }
 
 @media (max-width: 767px) {
   .stay-updated {
-    &__logo {
-      top: -26%;
-    }
+    // &__logo {
+    //   top: -26%;
+    // }
     &__title {
       font-size: toIndexMob(85);
     }
     &__subtitle {
       font-size: toIndexMob(20);
-      margin-top: toIndexMob(100);
-      margin-bottom: toIndexMob(100);
+      // margin-top: toIndexMob(100);
+      // margin-bottom: toIndexMob(100);
     }
   }
 }

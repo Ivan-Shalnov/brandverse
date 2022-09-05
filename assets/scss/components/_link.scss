@@ -41,23 +41,38 @@
     position: absolute;
     bottom: toIndex(10);
     right: 0;
-    width: toIndex(40);
-    height: toIndex(40);
+    width: 1.36em;
+    height: auto;
     stroke-width: toIndex(5);
     path {
       fill: currentColor;
     }
   }
 }
-
+@media (max-width: 1199px) {
+  .link {
+    font-size: toIndexMob(27);
+    svg {
+      // width: toIndexMob(35);
+      // height: toIndexMob(35);
+      bottom: toIndexMob(12);
+    }
+    &__left-line {
+      height: toIndexMob(4);
+    }
+    &__right-line {
+      height: toIndexMob(4);
+    }
+  }
+}
 @media (max-width: 767px) {
   .link {
     font-size: 27px;
     line-height: 40px;
     padding-bottom: 6px;
     svg {
-      width: 35px;
-      height: 35px;
+      // width: 35px;
+      // height: 35px;
       bottom: 12px;
     }
     &__left-line {
