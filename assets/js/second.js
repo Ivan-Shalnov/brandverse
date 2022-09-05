@@ -76,89 +76,6 @@ function loadComplete() {
   // preloader out
   document.getElementById('preloader').classList.add('hide');
   document.body.classList.remove('no-scroll');
-  // var preloaderOutTl = new TimelineMax();
-
-  // // preloaderOutTl
-  // //   .to($('.progress'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn })
-  // //   .to($('.txt-perc'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn }, 0.1)
-  // //   .set($('body'), { className: '-=is-loading' })
-  // //   .set($('#intro'), { className: '+=is-loaded' })
-  // //   .to($('#preloader'), 0.7, { yPercent: 100, ease: Power4.easeInOut })
-  // //   .set($('#preloader'), { className: '+=is-hidden' })
-  // //   .from(
-  // //     $('#intro .title'),
-  // //     1,
-  // //     { autoAlpha: 0, ease: Power1.easeOut },
-  // //     '-=0.2',
-  // //   )
-  // //   .from($('#intro p'), 0.7, { autoAlpha: 0, ease: Power1.easeOut }, '+=0.2')
-  // //   .from(
-  // //     $('.scroll-hint'),
-  // //     0.3,
-  // //     { y: -20, autoAlpha: 0, ease: Power1.easeOut },
-  // //     '+=0.1',
-  // //   );
-
-  // return preloaderOutTl;
-}
-
-// SPLITTING
-function spliting(element) {
-  let text = element.textContent.split('');
-  let result = '';
-  text.forEach(function (char) {
-    result +=
-      char.trim() === '' ? '<span>&nbsp;</span>' : '<span>' + char + '</span>';
-  });
-
-  element.innerHTML = result;
-}
-
-// BUTTON HOVER
-function btnHover(button) {
-  let charsInSpan = button.textContent
-    .split('')
-    .reduce(
-      (acc, char) =>
-        char.trim() === ''
-          ? acc + '<span>&nbsp;</span>'
-          : acc + '<span>' + char + '</span>',
-      '',
-    );
-  button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
-
-  const buttonTl = gsap.timeline({ paused: true });
-  const topLettersRefs = button.querySelectorAll('.button__split-top span');
-  const bottomLettersRefs = button.querySelectorAll(
-    '.button__split-bottom span',
-  );
-  const leftLineRef = button.querySelector('.button__left-line');
-  const rightLineRef = button.querySelector('.button__right-line');
-  buttonTl
-    .staggerTo(
-      topLettersRefs,
-      0.4,
-      { y: '-100%', ease: Power1.easeInOut },
-      0.03,
-    )
-    .staggerTo(
-      bottomLettersRefs,
-      0.4,
-      {
-        y: '-100%',
-        ease: Power1.easeInOut,
-      },
-      0.03,
-      0,
-    )
-    .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
-    .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
-  button.addEventListener('mouseenter', function () {
-    buttonTl.play();
-  });
-  button.addEventListener('mouseleave', function () {
-    buttonTl.reverse();
-  });
 }
 
 // JSON ANIMATION
@@ -1514,7 +1431,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           const elements = document.querySelectorAll('[data-scroll-speed-mob]');
-          console.log('elements', elements);
           elements.forEach(el => {
             gsap.to(el, {
               yPercent: -10 * el.dataset.scrollSpeedMob,
@@ -1591,10 +1507,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const leftLineRef = link.querySelector('.link__left-line');
     const rightLineRef = link.querySelector('.link__right-line');
     const svgRef = link.querySelector('.link svg');
-    console.log(
-      'document.addEventListener ~ bottomLettersRefs',
-      bottomLettersRefs,
-    );
+
     linkTl
       .addLabel('start')
       .staggerTo(
@@ -1622,11 +1535,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
       .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
       .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
     link.addEventListener('mouseenter', function () {
-      console.log('play');
       linkTl.play();
     });
     link.addEventListener('mouseleave', function () {
-      console.log('reverse');
       linkTl.reverse();
     });
   });
@@ -1682,3 +1593,61 @@ function debounce(callback, wait) {
   };
 }
 // DEBOUNCE
+// SPLITTING
+function spliting(element) {
+  let text = element.textContent.split('');
+  let result = '';
+  text.forEach(function (char) {
+    result +=
+      char.trim() === '' ? '<span>&nbsp;</span>' : '<span>' + char + '</span>';
+  });
+
+  element.innerHTML = result;
+}
+
+// BUTTON HOVER
+function btnHover(button) {
+  let charsInSpan = button.textContent
+    .split('')
+    .reduce(
+      (acc, char) =>
+        char.trim() === ''
+          ? acc + '<span>&nbsp;</span>'
+          : acc + '<span>' + char + '</span>',
+      '',
+    );
+  button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
+
+  const buttonTl = gsap.timeline({ paused: true });
+  const topLettersRefs = button.querySelectorAll('.button__split-top span');
+  const bottomLettersRefs = button.querySelectorAll(
+    '.button__split-bottom span',
+  );
+  const leftLineRef = button.querySelector('.button__left-line');
+  const rightLineRef = button.querySelector('.button__right-line');
+  buttonTl
+    .staggerTo(
+      topLettersRefs,
+      0.4,
+      { y: '-100%', ease: Power1.easeInOut },
+      0.03,
+    )
+    .staggerTo(
+      bottomLettersRefs,
+      0.4,
+      {
+        y: '-100%',
+        ease: Power1.easeInOut,
+      },
+      0.03,
+      0,
+    )
+    .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
+    .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
+  button.addEventListener('mouseenter', function () {
+    buttonTl.play();
+  });
+  button.addEventListener('mouseleave', function () {
+    buttonTl.reverse();
+  });
+}
