@@ -615,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           'start',
         )
         .staggerFrom(
-          '.contacts-section__subtitle div span',
+          '.contacts-section__subtitle * span',
           1.2,
           { y: '100%', ease: Power2.easeInOut, yoyo: true },
           0.1,

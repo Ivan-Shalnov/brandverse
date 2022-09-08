@@ -11,7 +11,17 @@
   }
   .col {
     position: relative;
+    &:first-child {
+      width: min-content;
+    }
+    &:last-child {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
+
   &__title {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -22,6 +32,9 @@
     .split {
       display: flex;
       overflow: hidden;
+      padding-right: 0.033em;
+      padding-left: 0.033em;
+
       &:not(:last-child) {
         margin-bottom: -3%;
       }
@@ -31,14 +44,30 @@
     }
   }
   &__subtitle {
+    max-width: toIndex(310);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(70%);
     font-weight: 800;
     font-size: toIndex(26);
     line-height: 94%;
     letter-spacing: -0.033em;
-    margin-top: toIndex(60);
+    // margin-top: toIndex(60);
+    & > div {
+      overflow-y: hidden;
+      &:last-child {
+        padding-bottom: 0.1em;
+      }
+    }
+  }
+  &__name {
+    text-align: right;
+    font-size: toIndex(16);
+    opacity: 0.33;
   }
   .link {
-    margin-bottom: toIndex(35);
+    margin-bottom: toIndex(50);
   }
   .form {
     padding-top: toIndex(40);
@@ -58,34 +87,58 @@
 
 @media (max-width: 1199px) {
   .section-discuss {
+    .container {
+      position: relative;
+    }
     .grid {
-      grid-template-columns: 1fr;
-      gap: toIndex(100);
+      display: block;
+      // grid-template-columns: 1fr;
+      // gap: toIndex(100);
+    }
+    .col {
+      position: static;
+      &:last-child {
+        display: block;
+      }
     }
     &__title {
       margin-bottom: toIndex(50);
     }
     &__subtitle {
-      position: relative;
-      font-size: toIndex(40);
+      margin-bottom: 12vh;
+      max-width: toIndexMob(175);
+      position: static;
+      font-size: toIndexMob(26);
+      transform: none;
     }
+
     &__name {
+      position: absolute;
       transform: rotate(-90deg);
       transform-origin: right;
+      top: 0;
+      right: calc(var(--index) * 2);
+      font-size: 14px;
     }
   }
 }
-
+@media (max-width: 410px) {
+  .section-discuss {
+    &__name {
+      top: -15px;
+    }
+  }
+}
 @media (max-width: 767px) {
   .section-discuss {
     &__title {
       font-size: toIndex(220);
     }
-    &__subtitle {
-      font-size: toIndex(45);
-    }
-    &__name {
-      top: -15%;
-    }
+    // &__subtitle {
+    //   font-size: toIndex(45);
+    // }
+    // &__name {
+    //   top: -15%;
+    // }
   }
 }

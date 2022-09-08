@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         0.05,
       )
       .from(
-        '.section-discuss__subtitle',
+        '.section-discuss__subtitle div',
         0.8,
         { y: '100%', ease: Power2.easeInOut, yoyo: true },
         '-=0.8',

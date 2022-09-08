@@ -3409,24 +3409,27 @@ h5 {
       .contacts-section__title .split span {
         display: block; }
   .contacts-section__header {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
-    margin-bottom: calc(var(--index) * 5.33); }
+    position: relative; }
+  .contacts-section__mail {
+    margin-top: calc((1vw + 1vh) * (15 / 30));
+    display: block;
+    color: #c5fd64; }
   .contacts-section__subtitle {
     font-weight: 800;
     font-size: calc(var(--index) * 1.6);
     line-height: 1.2;
-    letter-spacing: -0.033em;
-    max-width: calc(var(--index) * 15); }
-    .contacts-section__subtitle div {
+    letter-spacing: -0.033em; }
+    .contacts-section__subtitle > * {
+      display: block;
       overflow: hidden; }
-      .contacts-section__subtitle div:not(:last-child) {
+      .contacts-section__subtitle > *:not(:last-child) {
         margin-bottom: -2%; }
     .contacts-section__subtitle span {
       display: block; }
   .contacts-section__name {
+    position: absolute;
+    top: 0;
+    right: 0;
     color: #4f06c6; }
   .contacts-section__socials-title {
     font-weight: 800;
@@ -3440,13 +3443,19 @@ h5 {
     font-size: calc((1vw + 1vh) * (33 / 30));
     color: #fff; }
 
+@media (max-width: 450px) {
+  .contacts-section__mail {
+    font-size: calc((1vw + 1vh) * (26 / 11.87)); } }
+
 @media (max-width: 1199px) {
   .contacts-section {
     margin-bottom: 0;
-    padding-bottom: 16vh; }
+    padding: 16vh 0; }
+    .contacts-section .container {
+      position: relative;
+      padding-top: 11.5vh; }
     .contacts-section__row {
-      display: block;
-      position: relative; }
+      display: block; }
     .contacts-section__col {
       width: 100%; }
       .contacts-section__col:last-child {
@@ -3456,13 +3465,20 @@ h5 {
     .contacts-section__title {
       font-size: 26vw;
       margin-bottom: calc((1vw + 1vh) * (140 / 30)); }
+    .contacts-section__header {
+      position: static; }
     .contacts-section__name {
       position: absolute;
       top: 3%;
-      right: 0; }
+      left: calc(var(--index) * 2); }
     .contacts-section__subtitle {
-      font-size: calc((1vw + 1vh) * (85 / 30));
-      max-width: calc((1vw + 1vh) * (700 / 30)); } }
+      font-size: calc((1vw + 1vh) * (33 / 11.87)); } }
+
+@media (min-width: 1200px) {
+  .contacts-section + .footer .footer__social-list-cont {
+    width: -webkit-min-content;
+    width: min-content;
+    margin-left: auto; } }
 
 .footer__social-link {
   font-weight: 600; }
@@ -5416,6 +5432,17 @@ h5 {
         align-items: flex-end; }
   .section-discuss .col {
     position: relative; }
+    .section-discuss .col:first-child {
+      width: -webkit-min-content;
+      width: min-content; }
+    .section-discuss .col:last-child {
+      height: 100%;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+          flex-direction: column;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
   .section-discuss__title {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -5426,19 +5453,34 @@ h5 {
     .section-discuss__title .split {
       display: -ms-flexbox;
       display: flex;
-      overflow: hidden; }
+      overflow: hidden;
+      padding-right: 0.033em;
+      padding-left: 0.033em; }
       .section-discuss__title .split:not(:last-child) {
         margin-bottom: -3%; }
       .section-discuss__title .split span {
         display: block; }
   .section-discuss__subtitle {
+    max-width: calc((1vw + 1vh) * (310 / 30));
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transform: translateX(70%);
+            transform: translateX(70%);
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (26 / 30));
     line-height: 94%;
-    letter-spacing: -0.033em;
-    margin-top: calc((1vw + 1vh) * (60 / 30)); }
+    letter-spacing: -0.033em; }
+    .section-discuss__subtitle > div {
+      overflow-y: hidden; }
+      .section-discuss__subtitle > div:last-child {
+        padding-bottom: 0.1em; }
+  .section-discuss__name {
+    text-align: right;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    opacity: 0.33; }
   .section-discuss .link {
-    margin-bottom: calc((1vw + 1vh) * (35 / 30)); }
+    margin-bottom: calc((1vw + 1vh) * (50 / 30)); }
   .section-discuss .form {
     padding-top: calc((1vw + 1vh) * (40 / 30)); }
   .section-discuss .form__field-textarea {
@@ -5449,27 +5491,40 @@ h5 {
     font-size: calc((1vw + 1vh) * (220 / 30)); } }
 
 @media (max-width: 1199px) {
+  .section-discuss .container {
+    position: relative; }
   .section-discuss .grid {
-    grid-template-columns: 1fr;
-    gap: calc((1vw + 1vh) * (100 / 30)); }
+    display: block; }
+  .section-discuss .col {
+    position: static; }
+    .section-discuss .col:last-child {
+      display: block; }
   .section-discuss__title {
     margin-bottom: calc((1vw + 1vh) * (50 / 30)); }
   .section-discuss__subtitle {
-    position: relative;
-    font-size: calc((1vw + 1vh) * (40 / 30)); }
+    margin-bottom: 12vh;
+    max-width: calc((1vw + 1vh) * (175 / 11.87));
+    position: static;
+    font-size: calc((1vw + 1vh) * (26 / 11.87));
+    -webkit-transform: none;
+            transform: none; }
   .section-discuss__name {
+    position: absolute;
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg);
     -webkit-transform-origin: right;
-            transform-origin: right; } }
+            transform-origin: right;
+    top: 0;
+    right: calc(var(--index) * 2);
+    font-size: 14px; } }
+
+@media (max-width: 410px) {
+  .section-discuss__name {
+    top: -15px; } }
 
 @media (max-width: 767px) {
   .section-discuss__title {
-    font-size: calc((1vw + 1vh) * (220 / 30)); }
-  .section-discuss__subtitle {
-    font-size: calc((1vw + 1vh) * (45 / 30)); }
-  .section-discuss__name {
-    top: -15%; } }
+    font-size: calc((1vw + 1vh) * (220 / 30)); } }
 
 .cnt-section {
   padding: calc((1vw + 1vh) * (200 / 30)) 0; }
@@ -5486,7 +5541,12 @@ h5 {
     -ms-flex-pack: justify;
         justify-content: space-between; }
   .cnt-section__col:last-child {
-    width: calc(var(--index) * 22.267); }
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
   .cnt-section__title {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -5506,10 +5566,23 @@ h5 {
   .cnt-section__name {
     color: #000;
     opacity: 0.33;
-    text-align: right;
-    margin-bottom: calc((1vw + 1vh) * (65 / 30));
-    margin-top: calc((1vw + 1vh) * (50 / 30));
     font-size: calc((1vw + 1vh) * (14 / 30)); }
+  .cnt-section__mail {
+    margin-top: calc((1vw + 1vh) * (15 / 30));
+    display: block;
+    color: #c5fd64; }
+  .cnt-section__subtitle {
+    font-weight: 800;
+    font-size: calc(var(--index) * 1.6);
+    line-height: 1.2;
+    letter-spacing: -0.033em; }
+    .cnt-section__subtitle > * {
+      display: block;
+      overflow: hidden; }
+      .cnt-section__subtitle > *:not(:last-child) {
+        margin-bottom: -2%; }
+    .cnt-section__subtitle span {
+      display: block; }
   .cnt-section__socials-title {
     font-weight: 800;
     font-size: calc((1vw + 1vh) * (17 / 30));
@@ -5531,10 +5604,16 @@ h5 {
       padding-left: 0;
       padding-right: 0; }
 
+@media (max-width: 450px) {
+  .cnt-section__mail {
+    font-size: calc((1vw + 1vh) * (26 / 11.87)); } }
+
 @media (max-width: 1199px) {
+  .cnt-section .container {
+    position: relative;
+    padding-top: 11.5vh; }
   .cnt-section__row {
-    display: block;
-    position: relative; }
+    display: block; }
   .cnt-section__col {
     width: 100%; }
     .cnt-section__col:last-child {
@@ -5544,9 +5623,14 @@ h5 {
   .cnt-section__title {
     margin-bottom: calc((1vw + 1vh) * (140 / 30)); }
   .cnt-section__name {
-    display: none; }
+    position: absolute;
+    top: 0;
+    display: block;
+    font-size: 16px; }
   .cnt-section__link {
-    font-size: 13vw; } }
+    font-size: 13vw; }
+  .cnt-section__subtitle {
+    font-size: calc((1vw + 1vh) * (33 / 11.87)); } }
 
 @media (max-width: 767px) {
   .cnt-section__title {
