@@ -131,8 +131,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
       },
       pinType: REFS.scroller.style.transform ? 'transform' : 'fixed',
     });
-    ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
-    ScrollTrigger.addEventListener('refresh', loadComplete);
+    ScrollTrigger.addEventListener('refresh', () => {
+      loadComplete();
+      locoScroll.update();
+    }); //locomotive-scroll
     ////////////////////
 
     // SOCIAL LIST
@@ -342,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               return headerScrollLength;
             }
             gsap.to(titleWrapEl, {
-              x: () => -headerScrollLengthFn(),
+              x: () => -headerScrollLengthFn() - 100,
               startAt: { x: 0 },
               ease: 'none',
               scrollTrigger: {
@@ -351,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 start: 'top 5%',
                 pin: true,
                 scrub: 1,
-                end: () => '+=' + headerScrollLengthFn(),
+                end: () => '+=' + headerScrollLengthFn() + 100,
                 invalidateOnRefresh: true,
               },
             });
@@ -488,13 +490,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             'start',
           );
       }
-      function setColors({ bg, color }) {
-        gsap.to(REFS.scroller, {
-          backgroundColor: bg,
-          color: color,
-          overwrite: 'auto',
-        });
-      }
+
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           // SOLUTION SECTION
@@ -913,12 +909,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
         },
         // desktop
         '(min-width: 1200px)': function () {
+          const colletionsSectRef = document.querySelector('.collections');
+          let frameRefs = [...document.querySelectorAll('.horizontal .frame')];
+          REFS.skipColorsChange = [
+            ...REFS.skipColorsChange,
+            ...frameRefs,
+            colletionsSectRef,
+          ];
+          ScrollTrigger.create({
+            trigger: colletionsSectRef,
+            scroller: REFS.scroller,
+            start: 'top center',
+            end: 'bottom center',
+            toggleClass: 'active',
+            markers: true,
+            onEnter: () => setColors({ bg: '#000', color: '#fff' }),
+            onEnterBack: () => setColors({ bg: '#fff', color: '#000' }),
+          });
+
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
-          let frameRefs = pinWrap.querySelectorAll('.frame');
-          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
-          frameRefs[0].setAttribute('horizontal', 'first');
-          frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           function horizontalScrollLengthFn() {
             let pinWrapWidth = pinWrap.offsetWidth;
             let horizontalScrollLength =
@@ -948,15 +958,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
               scrub: true,
               trigger: '.horizontal',
               pin: true,
-              start: 'center center ',
+              start: 'top top ',
               end: () => '+=' + horizontalScrollLengthFn(),
               invalidateOnRefresh: true,
-              onEnterBack: () =>
-                gsap.to(REFS.scroller, {
-                  backgroundColor: '#fff',
-                  color: '#000',
-                  overwrite: 'auto',
-                }),
             },
             x: () => -horizontalScrollLengthFn(),
             startAt: { x: 0 },
@@ -972,20 +976,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             start: 'left left',
             endTrigger: '.amba-frame2',
             end: 'right center',
-            onEnterBack: () =>
-              gsap.to(REFS.scroller, {
-                backgroundColor: '#000',
-                color: '#fff',
-                overwrite: 'auto',
-              }),
-            onEnter: () => {
-              gsap.to(REFS.scroller, {
-                backgroundColor: '#000',
-                color: '#fff',
-                overwrite: 'auto',
-                duration: 0.25,
-              });
-            },
+            onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
           });
 
           // AMBA FRAME 2 ANIMATION
@@ -1009,6 +1000,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               containerAnimation: slideScrollAnim,
               scrub: true,
               trigger: '.amba-frame2',
+              horizontal: true,
               start: 'center center',
               end: 'right center',
             },
@@ -1025,13 +1017,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
             start: 'left center',
             endTrigger: '.z3na-frame2',
             end: 'right right',
-            // markers: true,
-            onEnterBack: () =>
-              gsap.to(REFS.scroller, {
-                backgroundColor: '#fff',
-                color: '#000',
-                overwrite: 'auto',
-              }),
+            // // markers: true,
+            // onEnterBack: () =>
+            //   gsap.to(REFS.scroller, {
+            //     backgroundColor: '#fff',
+            //     color: '#000',
+            //     overwrite: 'auto',
+            //   }),
             onEnter: () => {
               gsap.to(REFS.scroller, {
                 backgroundColor: '#fff',
@@ -1048,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 containerAnimation: slideScrollAnim,
                 trigger: '.z3na-frame1',
                 horizontal: true,
-                scroller: REFS.scroller,
+                // scroller: REFS.scroller,
                 start: 'left center',
                 end: 'right center',
                 toggleActions: 'play none none reverse',
@@ -1064,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 containerAnimation: slideScrollAnim,
                 trigger: '.z3na-frame2',
                 horizontal: true,
-                scroller: REFS.scroller,
+                // scroller: REFS.scroller,
                 start: 'left center',
                 end: 'right center',
                 toggleActions: 'play none none reverse',
@@ -1081,6 +1073,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               containerAnimation: slideScrollAnim,
               scrub: true,
               trigger: '.z3na-frame1',
+              horizontal: true,
               start: 'left center',
               end: 'center center',
             },
@@ -1479,6 +1472,17 @@ function debounce(callback, wait) {
   };
 }
 // DEBOUNCE
+
+// SET COLORS
+function setColors({ bg, color }) {
+  gsap.to(REFS.scroller, {
+    backgroundColor: bg,
+    color: color,
+    overwrite: 'auto',
+  });
+}
+// SET COLORS
+
 // SPLITTING
 function spliting(element) {
   let text = element.textContent.split('');
