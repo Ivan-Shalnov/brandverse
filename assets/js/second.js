@@ -76,89 +76,6 @@ function loadComplete() {
   // preloader out
   document.getElementById('preloader').classList.add('hide');
   document.body.classList.remove('no-scroll');
-  // var preloaderOutTl = new TimelineMax();
-
-  // // preloaderOutTl
-  // //   .to($('.progress'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn })
-  // //   .to($('.txt-perc'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn }, 0.1)
-  // //   .set($('body'), { className: '-=is-loading' })
-  // //   .set($('#intro'), { className: '+=is-loaded' })
-  // //   .to($('#preloader'), 0.7, { yPercent: 100, ease: Power4.easeInOut })
-  // //   .set($('#preloader'), { className: '+=is-hidden' })
-  // //   .from(
-  // //     $('#intro .title'),
-  // //     1,
-  // //     { autoAlpha: 0, ease: Power1.easeOut },
-  // //     '-=0.2',
-  // //   )
-  // //   .from($('#intro p'), 0.7, { autoAlpha: 0, ease: Power1.easeOut }, '+=0.2')
-  // //   .from(
-  // //     $('.scroll-hint'),
-  // //     0.3,
-  // //     { y: -20, autoAlpha: 0, ease: Power1.easeOut },
-  // //     '+=0.1',
-  // //   );
-
-  // return preloaderOutTl;
-}
-
-// SPLITTING
-function spliting(element) {
-  let text = element.textContent.split('');
-  let result = '';
-  text.forEach(function (char) {
-    result +=
-      char.trim() === '' ? '<span>&nbsp;</span>' : '<span>' + char + '</span>';
-  });
-
-  element.innerHTML = result;
-}
-
-// BUTTON HOVER
-function btnHover(button) {
-  let charsInSpan = button.textContent
-    .split('')
-    .reduce(
-      (acc, char) =>
-        char.trim() === ''
-          ? acc + '<span>&nbsp;</span>'
-          : acc + '<span>' + char + '</span>',
-      '',
-    );
-  button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
-
-  const buttonTl = gsap.timeline({ paused: true });
-  const topLettersRefs = button.querySelectorAll('.button__split-top span');
-  const bottomLettersRefs = button.querySelectorAll(
-    '.button__split-bottom span',
-  );
-  const leftLineRef = button.querySelector('.button__left-line');
-  const rightLineRef = button.querySelector('.button__right-line');
-  buttonTl
-    .staggerTo(
-      topLettersRefs,
-      0.4,
-      { y: '-100%', ease: Power1.easeInOut },
-      0.03,
-    )
-    .staggerTo(
-      bottomLettersRefs,
-      0.4,
-      {
-        y: '-100%',
-        ease: Power1.easeInOut,
-      },
-      0.03,
-      0,
-    )
-    .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
-    .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
-  button.addEventListener('mouseenter', function () {
-    buttonTl.play();
-  });
-  button.addEventListener('mouseleave', function () {
-    buttonTl.reverse();
-  });
 }
 
 // JSON ANIMATION
@@ -214,8 +131,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
       },
       pinType: REFS.scroller.style.transform ? 'transform' : 'fixed',
     });
-    ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
-    ScrollTrigger.addEventListener('refresh', loadComplete);
+    ScrollTrigger.addEventListener('refresh', () => {
+      loadComplete();
+      locoScroll.update();
+    }); //locomotive-scroll
     ////////////////////
 
     // SOCIAL LIST
@@ -258,6 +177,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // SECOND PROMO ANIMATION START
 
     {
+      // ScrollTrigger.create({
+      //   trigger: '.promo-second',
+      //   scroller: REFS.scroller,
+      //   start: 'top 50%',
+      //   end: 'bottom 50%',
+      //   toggleClass: 'active',
+      //   // markers: true,
+      //   onEnter: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#E0E3E7',
+      //       color: '#000',
+      //       overwrite: 'auto',
+      //     }),
+      //   onEnterBack: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#E0E3E7',
+      //       color: '#000',
+      //       overwrite: 'auto',
+      //     }),
+      // });
       const promoSecondTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.promo-second',
@@ -285,6 +224,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //METAVERSE ANIM START
 
     {
+      // ScrollTrigger.create({
+      //   trigger: '.metaverse',
+      //   scroller: REFS.scroller,
+      //   start: 'top 50%',
+      //   end: 'bottom 50%',
+      //   toggleClass: 'active',
+      //   // markers: true,
+      //   onEnter: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#000',
+      //       color: '#fff',
+      //       overwrite: 'auto',
+      //     }),
+      //   onEnterBack: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#000',
+      //       color: '#fff',
+      //       overwrite: 'auto',
+      //     }),
+      // });
       const worthTextAnim = function (tl) {
         tl.addLabel('start', '+=1')
           .staggerFrom(
@@ -385,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               return headerScrollLength;
             }
             gsap.to(titleWrapEl, {
-              x: () => -headerScrollLengthFn(),
+              x: () => -headerScrollLengthFn() - 100,
               startAt: { x: 0 },
               ease: 'none',
               scrollTrigger: {
@@ -394,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 start: 'top 5%',
                 pin: true,
                 scrub: 1,
-                end: () => '+=' + headerScrollLengthFn(),
+                end: () => '+=' + headerScrollLengthFn() + 100,
                 invalidateOnRefresh: true,
               },
             });
@@ -443,6 +402,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     //WHATS WRONG WITH META ANIM
     {
+      // ScrollTrigger.create({
+      //   trigger: '.wrng-meta',
+      //   scroller: REFS.scroller,
+      //   start: 'top 50%',
+      //   end: 'bottom 50%',
+      //   toggleClass: 'active',
+      //   // markers: true,
+      //   onEnter: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#E0E3E7',
+      //       color: '#000',
+      //       overwrite: 'auto',
+      //     }),
+      //   onEnterBack: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#E0E3E7',
+      //       color: '#000',
+      //       overwrite: 'auto',
+      //     }),
+      // });
       const wrngMetaTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.wrng-meta',
@@ -511,13 +490,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             'start',
           );
       }
-      function setColors({ bg, color }) {
-        gsap.to(REFS.scroller, {
-          backgroundColor: bg,
-          color: color,
-          overwrite: 'auto',
-        });
-      }
+
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           // SOLUTION SECTION
@@ -528,6 +501,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
             end: 'bottom center',
             toggleActions: 'play none none reverse',
             animation: solutionAnimTl,
+            // onEnter: () => setColors({ bg: '#000', color: '#fff' }),
+            // onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
           });
           // SOLUTION SECTION
 
@@ -539,6 +514,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.reduce', 0),
+              // onEnter: () => setColors({ bg: '#4f06c6', color: '#fff' }),
+              // onEnterBack: () => setColors({ bg: '#4f06c6', color: '#fff' }),
             });
           }
           // REDUCE SECTION
@@ -551,6 +528,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.cultivate', 0),
+
+              // onEnter: () => setColors({ bg: '#C5FD64', color: '#000' }),
+              // onEnterBack: () => setColors({ bg: '#C5FD64', color: '#000' }),
             });
           }
           // CULTIVATE SECTION
@@ -563,6 +543,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.navigate', 0),
+
+              // onEnter: () => setColors({ bg: '#000', color: '#C5FD64' }),
+              // onEnterBack: () => setColors({ bg: '#000', color: '#C5FD64' }),
             });
           }
           // NAVIGATE SECTION
@@ -667,224 +650,31 @@ document.addEventListener('DOMContentLoaded', function (event) {
           // NAVIGATE SECTION
         },
       });
-      // ScrollTrigger.matchMedia({
-      //   // MOBILE
-      //   // '(max-width: 1199px)': () => {
-      //   //   // SOLUTION
-      //   //   {
-      //   //     const solutionTl = gsap.timeline({
-      //   //       scrollTrigger: {
-      //   //         trigger: '.solution',
-      //   //         scroller: REFS.scroller,
-      //   //         start: 'top center',
-      //   //         //markers: true,
-      //   //         toggleActions: 'play none none reverse',
-      //   //       },
-      //   //     });
-      //   //     solutionAnim(solutionTl);
-      //   //   }
-      //   //   // REDUCE ANIM
-      //   //   {
-      //   //     const reduceTl = gsap.timeline({
-      //   //       scrollTrigger: {
-      //   //         trigger: '.reduce',
-      //   //         start: 'top center',
-      //   //         toggleActions: 'play none none reverse',
-      //   //         //markers: true,
-      //   //       },
-      //   //     });
-      //   //     reduceAnim(reduceTl);
-      //   //   }
-      //   //   // SLIDE 1 ANIM
-      //   //   {
-      //   //     const slide1Tl = gsap.timeline({
-      //   //       scrollTrigger: {
-      //   //         trigger: '.slide-1',
-      //   //         start: 'top center',
-      //   //         // markers: true,
-      //   //         toggleActions: 'play none none reverse',
-      //   //         // markers: true,
-      //   //       },
-      //   //     });
-      //   //     slideAnim(slide1Tl, '.slide-1');
-      //   //   }
-      //   //   // SLIDE 2 ANIM
-      //   //   {
-      //   //     const slide2Tl = gsap.timeline({
-      //   //       scrollTrigger: {
-      //   //         trigger: '.slide-2',
-      //   //         start: 'top center',
-      //   //         toggleActions: 'play none none reverse',
-      //   //         //markers: true,
-      //   //       },
-      //   //     });
-      //   //     slideAnim(slide2Tl, '.slide-2');
-      //   //   }
-      //   //   // SLIDE 3 ANIM
-      //   //   {
-      //   //     const slide3Tl = gsap.timeline({
-      //   //       scrollTrigger: {
-      //   //         trigger: '.slide-3',
-      //   //         start: 'top center',
-      //   //         toggleActions: 'play none none reverse',
-      //   //         //markers: true,
-      //   //       },
-      //   //     });
-      //   //     slideAnim(slide3Tl, '.slide-3');
-      //   //   }
-      //   // },
-      //   // DESKTOP
-      //   // '(min-width: 1200px)': () => {
-      //   //   // SOLUTION ANIM
-      //   //   {
-      //   //     const solutionTl = gsap.timeline({
-      //   //       scrollTrigger: {
-      //   //         trigger: '.solution',
-      //   //         scroller: REFS.scroller,
-      //   //         start: 'top 40%',
-      //   //         end: 'bottom center',
-      //   //         toggleActions: 'play none none reverse',
-      //   //       },
-      //   //     });
-      //   //     solutionAnim(solutionTl);
-      //   //   }
-      //   //   // Section PIN START
-      //   //   let pinBoxes = document.querySelectorAll('.slide__wrap > div');
-      //   //   let pinWrap = document.querySelector('.slide__wrap');
-      //   //   // pinBoxes.forEach(frame => frame.setAttribute('horizontal', 'true'));
-      //   //   function horizontalScrollLengthFn() {
-      //   //     let pinWrapWidth = pinWrap.offsetWidth;
-      //   //     let horizontalScrollLength =
-      //   //       pinWrapWidth - document.body.clientWidth;
-      //   //     return horizontalScrollLength;
-      //   //   }
-
-      //   //   // Pinning and horizontal scrolling
-
-      //   //   const slideScrollAnim = gsap.to('.slide__wrap', {
-      //   //     scrollTrigger: {
-      //   //       scroller: REFS.scroller,
-      //   //       scrub: true,
-      //   //       trigger: '.slide',
-      //   //       pin: true,
-      //   //       start: 'top top',
-      //   //       invalidateOnRefresh: true,
-      //   //       end: () => '+=' + horizontalScrollLengthFn(),
-      //   //       onEnter: () => {
-      //   //         gsap.to(REFS.scroller, {
-      //   //           backgroundColor: '#fff',
-      //   //           color: '#000',
-      //   //           overwrite: 'auto',
-      //   //         });
-      //   //       },
-      //   //       onEnterBack: () => {
-      //   //         gsap.to(REFS.scroller, {
-      //   //           backgroundColor: '#000',
-      //   //           color: '#C5FD64',
-      //   //           overwrite: 'auto',
-      //   //         });
-      //   //       },
-      //   //     },
-      //   //     x: () => -horizontalScrollLengthFn(),
-      //   //     startAt: { x: 0 },
-      //   //     ease: 'none',
-      //   //   });
-      //   //   // COLORS CHANGE
-      //   //   // pinBoxes.forEach((colorSection, i) => {
-      //   //   //   const prevBg = i === 0 ? '' : pinBoxes[i - 1].dataset.bgcolor;
-      //   //   //   const prevText = i === 0 ? '' : pinBoxes[i - 1].dataset.textcolor;
-
-      //   //   //   ScrollTrigger.create({
-      //   //   //     containerAnimation: slideScrollAnim,
-      //   //   //     horizontal: true,
-      //   //   //     trigger: colorSection,
-      //   //   //     start: 'left center',
-      //   //   //     end: 'right center',
-      //   //   //     onEnter: () => {
-      //   //   //       gsap.to(REFS.scroller, {
-      //   //   //         backgroundColor: colorSection.dataset.bgcolor,
-      //   //   //         color: colorSection.dataset.textcolor,
-      //   //   //         overwrite: 'auto',
-      //   //   //       });
-      //   //   //     },
-      //   //   //     onEnterBack: () => {
-      //   //   //       gsap.to(REFS.scroller, {
-      //   //   //         backgroundColor: colorSection.dataset.bgcolor,
-      //   //   //         color: colorSection.dataset.textcolor,
-      //   //   //         overwrite: 'auto',
-      //   //   //       });
-      //   //   //     },
-      //   //   //   });
-      //   //   // });
-      //   //   // // SECTION PIN END
-
-      //   //   // // REDUCE ANIM
-      //   //   // {
-      //   //   //   const reduceTl = gsap.timeline({
-      //   //   //     scrollTrigger: {
-      //   //   //       containerAnimation: slideScrollAnim,
-      //   //   //       trigger: '.reduce',
-      //   //   //       horizontal: true,
-      //   //   //       start: 'left center',
-      //   //   //       end: 'right center',
-      //   //   //       toggleActions: 'play none none reverse',
-      //   //   //       // markers: true,
-      //   //   //     },
-      //   //   //   });
-      //   //   //   reduceAnim(reduceTl);
-      //   //   // }
-      //   //   // // SLIDE 1 ANIM
-      //   //   // {
-      //   //   //   const slide1Tl = gsap.timeline({
-      //   //   //     scrollTrigger: {
-      //   //   //       containerAnimation: slideScrollAnim,
-      //   //   //       trigger: '.slide-1',
-      //   //   //       horizontal: true,
-      //   //   //       start: 'left center',
-      //   //   //       end: 'right center',
-      //   //   //       toggleActions: 'play none none reverse',
-      //   //   //       // markers: true,
-      //   //   //     },
-      //   //   //   });
-      //   //   //   slideAnim(slide1Tl, '.slide-1');
-      //   //   // }
-      //   //   // // SLIDE 2 ANIM
-      //   //   // {
-      //   //   //   const slide2Tl = gsap.timeline({
-      //   //   //     scrollTrigger: {
-      //   //   //       containerAnimation: slideScrollAnim,
-      //   //   //       trigger: '.slide-2',
-      //   //   //       horizontal: true,
-      //   //   //       start: 'left center',
-      //   //   //       end: 'right center',
-      //   //   //       toggleActions: 'play none none reverse',
-      //   //   //       // markers: true,
-      //   //   //     },
-      //   //   //   });
-      //   //   //   slideAnim(slide2Tl, '.slide-2');
-      //   //   // }
-      //   //   // // SLIDE 3 ANIM
-      //   //   // {
-      //   //   //   const slide3Tl = gsap.timeline({
-      //   //   //     scrollTrigger: {
-      //   //   //       containerAnimation: slideScrollAnim,
-      //   //   //       trigger: '.slide-3',
-      //   //   //       horizontal: true,
-      //   //   //       start: 'left center',
-      //   //   //       end: 'right center',
-      //   //   //       toggleActions: 'play none none reverse',
-      //   //   //       // markers: true,
-      //   //   //     },
-      //   //   //   });
-      //   //   //   slideAnim(slide3Tl, '.slide-3');
-      //   //   // }
-      //   // },
-      // });
     }
     // SLIDE SECTION ANIM
 
     //KILLER FEATRUE ANIM
     {
+      // ScrollTrigger.create({
+      //   trigger: '.killer-feature',
+      //   scroller: REFS.scroller,
+      //   start: 'top 50%',
+      //   end: 'bottom 50%',
+      //   toggleClass: 'active',
+      //   // markers: true,
+      //   onEnter: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#000',
+      //       color: '#fff',
+      //       overwrite: 'auto',
+      //     }),
+      //   onEnterBack: () =>
+      //     gsap.to(REFS.scroller, {
+      //       backgroundColor: '#000',
+      //       color: '#fff',
+      //       overwrite: 'auto',
+      //     }),
+      // });
       const wrngMetaTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.killer-feature',
@@ -1119,12 +909,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
         },
         // desktop
         '(min-width: 1200px)': function () {
+          const colletionsSectRef = document.querySelector('.collections');
+          let frameRefs = [...document.querySelectorAll('.horizontal .frame')];
+          REFS.skipColorsChange = [
+            ...REFS.skipColorsChange,
+            ...frameRefs,
+            colletionsSectRef,
+          ];
+          ScrollTrigger.create({
+            trigger: colletionsSectRef,
+            scroller: REFS.scroller,
+            start: 'top center',
+            end: 'bottom center',
+            toggleClass: 'active',
+            markers: true,
+            onEnter: () => setColors({ bg: '#000', color: '#fff' }),
+            onEnterBack: () => setColors({ bg: '#fff', color: '#000' }),
+          });
+
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
-          let frameRefs = pinWrap.querySelectorAll('.frame');
-          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
-          frameRefs[0].setAttribute('horizontal', 'first');
-          frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           function horizontalScrollLengthFn() {
             let pinWrapWidth = pinWrap.offsetWidth;
             let horizontalScrollLength =
@@ -1154,15 +958,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
               scrub: true,
               trigger: '.horizontal',
               pin: true,
-              start: 'center center ',
+              start: 'top top ',
               end: () => '+=' + horizontalScrollLengthFn(),
               invalidateOnRefresh: true,
-              onEnterBack: () =>
-                gsap.to(REFS.scroller, {
-                  backgroundColor: '#fff',
-                  color: '#000',
-                  overwrite: 'auto',
-                }),
             },
             x: () => -horizontalScrollLengthFn(),
             startAt: { x: 0 },
@@ -1178,20 +976,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             start: 'left left',
             endTrigger: '.amba-frame2',
             end: 'right center',
-            onEnterBack: () =>
-              gsap.to(REFS.scroller, {
-                backgroundColor: '#000',
-                color: '#fff',
-                overwrite: 'auto',
-              }),
-            onEnter: () => {
-              gsap.to(REFS.scroller, {
-                backgroundColor: '#000',
-                color: '#fff',
-                overwrite: 'auto',
-                duration: 0.25,
-              });
-            },
+            onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
           });
 
           // AMBA FRAME 2 ANIMATION
@@ -1215,6 +1000,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               containerAnimation: slideScrollAnim,
               scrub: true,
               trigger: '.amba-frame2',
+              horizontal: true,
               start: 'center center',
               end: 'right center',
             },
@@ -1231,13 +1017,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
             start: 'left center',
             endTrigger: '.z3na-frame2',
             end: 'right right',
-            // markers: true,
-            onEnterBack: () =>
-              gsap.to(REFS.scroller, {
-                backgroundColor: '#fff',
-                color: '#000',
-                overwrite: 'auto',
-              }),
+            // // markers: true,
+            // onEnterBack: () =>
+            //   gsap.to(REFS.scroller, {
+            //     backgroundColor: '#fff',
+            //     color: '#000',
+            //     overwrite: 'auto',
+            //   }),
             onEnter: () => {
               gsap.to(REFS.scroller, {
                 backgroundColor: '#fff',
@@ -1254,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 containerAnimation: slideScrollAnim,
                 trigger: '.z3na-frame1',
                 horizontal: true,
-                scroller: REFS.scroller,
+                // scroller: REFS.scroller,
                 start: 'left center',
                 end: 'right center',
                 toggleActions: 'play none none reverse',
@@ -1270,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 containerAnimation: slideScrollAnim,
                 trigger: '.z3na-frame2',
                 horizontal: true,
-                scroller: REFS.scroller,
+                // scroller: REFS.scroller,
                 start: 'left center',
                 end: 'right center',
                 toggleActions: 'play none none reverse',
@@ -1287,6 +1073,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               containerAnimation: slideScrollAnim,
               scrub: true,
               trigger: '.z3na-frame1',
+              horizontal: true,
               start: 'left center',
               end: 'center center',
             },
@@ -1502,10 +1289,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
           // markers: true,
         },
       });
-      cntSectionTl.staggerFrom(
-        '.cnt-section__title .split span',
-        ...ANIMATION_PARAMS.textStaggerY100,
-      );
+      cntSectionTl
+        .staggerFrom(
+          '.cnt-section__title .split span',
+          ...ANIMATION_PARAMS.textStaggerY100,
+        )
+        .staggerFrom(
+          '.cnt-section__subtitle * span',
+          1.2,
+          { y: '100%', ease: Power2.easeInOut, yoyo: true },
+          0.1,
+          'start',
+        )
+        .from('.cnt-section__name', 0.8, { opacity: 0 }, 'start');
     }
     // CNT SECTION
 
@@ -1514,7 +1310,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           const elements = document.querySelectorAll('[data-scroll-speed-mob]');
-          console.log('elements', elements);
           elements.forEach(el => {
             gsap.to(el, {
               yPercent: -10 * el.dataset.scrollSpeedMob,
@@ -1530,7 +1325,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       });
     }
 
-    //BG COLOR CHANGE
+    // BG COLOR CHANGE
     {
       const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
       for (let i = 0; i < scrollColorElems.length; i += 1) {
@@ -1591,10 +1386,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const leftLineRef = link.querySelector('.link__left-line');
     const rightLineRef = link.querySelector('.link__right-line');
     const svgRef = link.querySelector('.link svg');
-    console.log(
-      'document.addEventListener ~ bottomLettersRefs',
-      bottomLettersRefs,
-    );
+
     linkTl
       .addLabel('start')
       .staggerTo(
@@ -1622,11 +1414,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
       .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
       .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
     link.addEventListener('mouseenter', function () {
-      console.log('play');
       linkTl.play();
     });
     link.addEventListener('mouseleave', function () {
-      console.log('reverse');
       linkTl.reverse();
     });
   });
@@ -1682,3 +1472,72 @@ function debounce(callback, wait) {
   };
 }
 // DEBOUNCE
+
+// SET COLORS
+function setColors({ bg, color }) {
+  gsap.to(REFS.scroller, {
+    backgroundColor: bg,
+    color: color,
+    overwrite: 'auto',
+  });
+}
+// SET COLORS
+
+// SPLITTING
+function spliting(element) {
+  let text = element.textContent.split('');
+  let result = '';
+  text.forEach(function (char) {
+    result +=
+      char.trim() === '' ? '<span>&nbsp;</span>' : '<span>' + char + '</span>';
+  });
+
+  element.innerHTML = result;
+}
+
+// BUTTON HOVER
+function btnHover(button) {
+  let charsInSpan = button.textContent
+    .split('')
+    .reduce(
+      (acc, char) =>
+        char.trim() === ''
+          ? acc + '<span>&nbsp;</span>'
+          : acc + '<span>' + char + '</span>',
+      '',
+    );
+  button.innerHTML = `<span class="button__split-top">${charsInSpan}</span><span  class="button__split-bottom">${charsInSpan}</span><div class="button__left-line"></div><div class="button__right-line"></div>`;
+
+  const buttonTl = gsap.timeline({ paused: true });
+  const topLettersRefs = button.querySelectorAll('.button__split-top span');
+  const bottomLettersRefs = button.querySelectorAll(
+    '.button__split-bottom span',
+  );
+  const leftLineRef = button.querySelector('.button__left-line');
+  const rightLineRef = button.querySelector('.button__right-line');
+  buttonTl
+    .staggerTo(
+      topLettersRefs,
+      0.4,
+      { y: '-100%', ease: Power1.easeInOut },
+      0.03,
+    )
+    .staggerTo(
+      bottomLettersRefs,
+      0.4,
+      {
+        y: '-100%',
+        ease: Power1.easeInOut,
+      },
+      0.03,
+      0,
+    )
+    .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
+    .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
+  button.addEventListener('mouseenter', function () {
+    buttonTl.play();
+  });
+  button.addEventListener('mouseleave', function () {
+    buttonTl.reverse();
+  });
+}

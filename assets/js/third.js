@@ -41,8 +41,6 @@ function loadProgress(imgLoad, image) {
 
   loadingProgress = loadedCount / imagesToLoad;
 
-  //console.log(loadingProgress);
-
   // GSAP timeline for our progress bar
   TweenLite.to(progressTl, 0.7, {
     progress: loadingProgress,
@@ -72,65 +70,10 @@ function loadComplete() {
   // preloader out
   document.getElementById('preloader').classList.add('hide');
   document.body.classList.remove('no-scroll');
-  // var preloaderOutTl = new TimelineMax();
-
-  // // preloaderOutTl
-  // //   .to($('.progress'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn })
-  // //   .to($('.txt-perc'), 0.3, { y: 100, autoAlpha: 0, ease: Back.easeIn }, 0.1)
-  // //   .set($('body'), { className: '-=is-loading' })
-  // //   .set($('#intro'), { className: '+=is-loaded' })
-  // //   .to($('#preloader'), 0.7, { yPercent: 100, ease: Power4.easeInOut })
-  // //   .set($('#preloader'), { className: '+=is-hidden' })
-  // //   .from(
-  // //     $('#intro .title'),
-  // //     1,
-  // //     { autoAlpha: 0, ease: Power1.easeOut },
-  // //     '-=0.2',
-  // //   )
-  // //   .from($('#intro p'), 0.7, { autoAlpha: 0, ease: Power1.easeOut }, '+=0.2')
-  // //   .from(
-  // //     $('.scroll-hint'),
-  // //     0.3,
-  // //     { y: -20, autoAlpha: 0, ease: Power1.easeOut },
-  // //     '+=0.1',
-  // //   );
-
-  // return preloaderOutTl;
-}
-
-// SPLITTING
-function spliting(element) {
-  let text = element.textContent.split('');
-  let result = '';
-  text.forEach(function (char) {
-    result +=
-      char.trim() === '' ? '<span>&nbsp;</span>' : '<span>' + char + '</span>';
-  });
-
-  element.innerHTML = result;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // $('.spinner-wrapper').fadeOut('slow');
-
-  // const progressbar = $('#preloader');
-
-  // const tween = new TweenLite(progressbar, 5, {
-  //   onUpdate: countPercent,
-  //   onComplete: function () {
-  //     progressbar.addClass('hide');
-  //   },
-  // });
-
-  // function countPercent() {
-  //   newPercent = (tween.progress() * 100).toFixed();
-
-  //   $('#percent').text(newPercent + '%');
-  // }
-
   window.onload = function () {
-    const splitElements = document.querySelectorAll('.split');
-
     gsap.registerPlugin(ScrollTrigger);
     const locoScroll = new LocomotiveScroll({
       el: REFS.scroller,
@@ -155,9 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     ScrollTrigger.addEventListener('refresh', () => locoScroll.update()); //locomotive-scroll
     ScrollTrigger.addEventListener('refresh', loadComplete);
-    for (let i = 0; i < splitElements.length; i++) {
-      spliting(splitElements[i]);
-    }
+
     ////////////////////
     // SOCIAL LIST
     {
@@ -371,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         0.05,
       )
       .from(
-        '.section-discuss__subtitle',
+        '.section-discuss__subtitle div',
         0.8,
         { y: '100%', ease: Power2.easeInOut, yoyo: true },
         '-=0.8',
@@ -839,8 +780,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     }
-    ScrollTrigger.refresh();
-
     const dist = document.getElementById('slider').offsetHeight;
     gsap
       .timeline({ repeat: -1 })
@@ -856,64 +795,68 @@ document.addEventListener('DOMContentLoaded', () => {
       );
 
     // text.words;
+    ScrollTrigger.refresh();
   };
 });
 
 // link hover start
-const linkRefs = document.querySelectorAll('.link');
-linkRefs.forEach(link => {
-  let charsInSpan = link.textContent
-    .split('')
-    .reduce(
-      (acc, char) =>
-        char.trim() === ''
-          ? acc + '<span>&nbsp;</span>'
-          : acc + '<span>' + char + '</span>',
-      '',
-    );
-  link.innerHTML = `<span class="link__split-top">${charsInSpan}</span><span  class="link__split-bottom">${charsInSpan}</span> <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M43.1015 44.7985L2 3.57352L3.5356 2L44.7961 43.3845V13.3871H46.9946V46.5621H46.5588V46.997H13.3837V44.7985H43.1015ZM43.6466 44.7985H44.7961V43.6205L43.6466 44.7985Z" fill="#C5FD64"/><path d="M2 3.57352L1.05216 2.64853L0.139751 3.58347L1.06211 4.5086L2 3.57352ZM43.1015 44.7985V46.1229H46.2921L44.0394 43.8634L43.1015 44.7985ZM3.5356 2L4.47349 1.06492L3.52552 0.114098L2.58777 1.075L3.5356 2ZM44.7961 43.3845L43.8582 44.3196L46.1205 46.5886V43.3845H44.7961ZM44.7961 13.3871V12.0627H43.4717V13.3871H44.7961ZM46.9946 13.3871H48.319V12.0627H46.9946V13.3871ZM46.9946 46.5621V47.8865H48.319V46.5621H46.9946ZM46.5588 46.5621V45.2377H45.2344V46.5621H46.5588ZM46.5588 46.997V48.3214H47.8832V46.997H46.5588ZM13.3837 46.997H12.0593V48.3214H13.3837V46.997ZM13.3837 44.7985V43.4741H12.0593V44.7985H13.3837ZM43.6466 44.7985L42.6987 43.8735L40.5035 46.1229H43.6466V44.7985ZM44.7961 44.7985V46.1229H46.1205V44.7985H44.7961ZM44.7961 43.6205H46.1205V40.3672L43.8483 42.6955L44.7961 43.6205ZM1.06211 4.5086L42.1636 45.7336L44.0394 43.8634L2.93789 2.63844L1.06211 4.5086ZM2.58777 1.075L1.05216 2.64853L2.94784 4.49852L4.48344 2.925L2.58777 1.075ZM45.734 42.4494L4.47349 1.06492L2.59772 2.93508L43.8582 44.3196L45.734 42.4494ZM43.4717 13.3871V43.3845H46.1205V13.3871H43.4717ZM46.9946 12.0627H44.7961V14.7114H46.9946V12.0627ZM48.319 46.5621V13.3871H45.6702V46.5621H48.319ZM46.5588 47.8865H46.9946V45.2377H46.5588V47.8865ZM45.2344 46.5621V46.997H47.8832V46.5621H45.2344ZM46.5588 45.6726H13.3837V48.3214H46.5588V45.6726ZM14.7081 46.997V44.7985H12.0593V46.997H14.7081ZM13.3837 46.1229H43.1015V43.4741H13.3837V46.1229ZM43.6466 46.1229H44.7961V43.4741H43.6466V46.1229ZM43.4717 43.6205V44.7985H46.1205V43.6205H43.4717ZM44.5944 45.7235L45.744 44.5455L43.8483 42.6955L42.6987 43.8735L44.5944 45.7235Z"/></svg><div class="link__left-line"></div><div class="link__right-line"></div>`;
+{
+  const linkRefs = document.querySelectorAll('.link');
+  linkRefs.forEach(link => {
+    let charsInSpan = link.textContent
+      .split('')
+      .reduce(
+        (acc, char) =>
+          char.trim() === ''
+            ? acc + '<span>&nbsp;</span>'
+            : acc + '<span>' + char + '</span>',
+        '',
+      );
+    link.innerHTML = `<span class="link__split-top">${charsInSpan}</span><span  class="link__split-bottom">${charsInSpan}</span> <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M43.1015 44.7985L2 3.57352L3.5356 2L44.7961 43.3845V13.3871H46.9946V46.5621H46.5588V46.997H13.3837V44.7985H43.1015ZM43.6466 44.7985H44.7961V43.6205L43.6466 44.7985Z" fill="#C5FD64"/><path d="M2 3.57352L1.05216 2.64853L0.139751 3.58347L1.06211 4.5086L2 3.57352ZM43.1015 44.7985V46.1229H46.2921L44.0394 43.8634L43.1015 44.7985ZM3.5356 2L4.47349 1.06492L3.52552 0.114098L2.58777 1.075L3.5356 2ZM44.7961 43.3845L43.8582 44.3196L46.1205 46.5886V43.3845H44.7961ZM44.7961 13.3871V12.0627H43.4717V13.3871H44.7961ZM46.9946 13.3871H48.319V12.0627H46.9946V13.3871ZM46.9946 46.5621V47.8865H48.319V46.5621H46.9946ZM46.5588 46.5621V45.2377H45.2344V46.5621H46.5588ZM46.5588 46.997V48.3214H47.8832V46.997H46.5588ZM13.3837 46.997H12.0593V48.3214H13.3837V46.997ZM13.3837 44.7985V43.4741H12.0593V44.7985H13.3837ZM43.6466 44.7985L42.6987 43.8735L40.5035 46.1229H43.6466V44.7985ZM44.7961 44.7985V46.1229H46.1205V44.7985H44.7961ZM44.7961 43.6205H46.1205V40.3672L43.8483 42.6955L44.7961 43.6205ZM1.06211 4.5086L42.1636 45.7336L44.0394 43.8634L2.93789 2.63844L1.06211 4.5086ZM2.58777 1.075L1.05216 2.64853L2.94784 4.49852L4.48344 2.925L2.58777 1.075ZM45.734 42.4494L4.47349 1.06492L2.59772 2.93508L43.8582 44.3196L45.734 42.4494ZM43.4717 13.3871V43.3845H46.1205V13.3871H43.4717ZM46.9946 12.0627H44.7961V14.7114H46.9946V12.0627ZM48.319 46.5621V13.3871H45.6702V46.5621H48.319ZM46.5588 47.8865H46.9946V45.2377H46.5588V47.8865ZM45.2344 46.5621V46.997H47.8832V46.5621H45.2344ZM46.5588 45.6726H13.3837V48.3214H46.5588V45.6726ZM14.7081 46.997V44.7985H12.0593V46.997H14.7081ZM13.3837 46.1229H43.1015V43.4741H13.3837V46.1229ZM43.6466 46.1229H44.7961V43.4741H43.6466V46.1229ZM43.4717 43.6205V44.7985H46.1205V43.6205H43.4717ZM44.5944 45.7235L45.744 44.5455L43.8483 42.6955L42.6987 43.8735L44.5944 45.7235Z"/></svg><div class="link__left-line"></div><div class="link__right-line"></div>`;
 
-  const linkTl = gsap.timeline({ paused: true });
-  const topLettersRefs = link.querySelectorAll('.link__split-top span');
-  const bottomLettersRefs = link.querySelectorAll('.link__split-bottom span');
-  const leftLineRef = link.querySelector('.link__left-line');
-  const rightLineRef = link.querySelector('.link__right-line');
-  const svgRef = link.querySelector('.link svg');
-  console.log(
-    'document.addEventListener ~ bottomLettersRefs',
-    bottomLettersRefs,
-  );
-  linkTl
-    .addLabel('start')
-    .staggerTo(
-      topLettersRefs,
-      0.4,
-      { y: '-100%', ease: Power1.easeInOut },
-      0.03,
-    )
-    .staggerTo(
-      bottomLettersRefs,
-      0.4,
-      {
-        y: '-100%',
-        ease: Power1.easeInOut,
-      },
-      0.03,
-      0,
-    )
-    .to(svgRef, 0.4, { x: '100%', y: '100%', ease: Power1.easeInOut }, 'start')
-    .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
-    .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
-  link.addEventListener('mouseenter', function () {
-    console.log('play');
-    linkTl.play();
+    const linkTl = gsap.timeline({ paused: true });
+    const topLettersRefs = link.querySelectorAll('.link__split-top span');
+    const bottomLettersRefs = link.querySelectorAll('.link__split-bottom span');
+    const leftLineRef = link.querySelector('.link__left-line');
+    const rightLineRef = link.querySelector('.link__right-line');
+    const svgRef = link.querySelector('.link svg');
+
+    linkTl
+      .addLabel('start')
+      .staggerTo(
+        topLettersRefs,
+        0.4,
+        { y: '-100%', ease: Power1.easeInOut },
+        0.03,
+      )
+      .staggerTo(
+        bottomLettersRefs,
+        0.4,
+        {
+          y: '-100%',
+          ease: Power1.easeInOut,
+        },
+        0.03,
+        0,
+      )
+      .to(
+        svgRef,
+        0.4,
+        { x: '100%', y: '100%', ease: Power1.easeInOut },
+        'start',
+      )
+      .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
+      .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
+    link.addEventListener('mouseenter', function () {
+      linkTl.play();
+    });
+    link.addEventListener('mouseleave', function () {
+      linkTl.reverse();
+    });
   });
-  link.addEventListener('mouseleave', function () {
-    console.log('reverse');
-    linkTl.reverse();
-  });
-});
+}
 // link hover end
+
 const buttonsRefs = document.querySelectorAll('.button');
 buttonsRefs.forEach(btnHover);
 function btnHover(button) {
@@ -935,10 +878,6 @@ function btnHover(button) {
   );
   const leftLineRef = button.querySelector('.button__left-line');
   const rightLineRef = button.querySelector('.button__right-line');
-  console.log(
-    'document.addEventListener ~ bottomLettersRefs',
-    bottomLettersRefs,
-  );
   buttonTl
     .staggerTo(
       topLettersRefs,
@@ -959,16 +898,15 @@ function btnHover(button) {
     .to(rightLineRef, 0.3, { width: '0%', ease: Power1.easeInOut }, 0)
     .to(leftLineRef, 0.4, { width: '100%', ease: Power1.easeInOut }, 0);
   button.addEventListener('mouseenter', function () {
-    console.log('play');
     buttonTl.play();
   });
   button.addEventListener('mouseleave', function () {
-    console.log('reverse');
     buttonTl.reverse();
   });
 }
 // BUTTON HOVER END
 
+// FORM START
 $('.form').validate({
   rules: {
     email: {
@@ -998,6 +936,7 @@ $('.form').validate({
     return false; // required to block normal submit since you used ajax
   },
 });
+// FORM END
 
 // DEBOUNCE
 function debounce(callback, wait) {
@@ -1008,4 +947,22 @@ function debounce(callback, wait) {
       callback.apply(null, args);
     }, wait);
   };
+}
+
+// SPLITTING
+// SPLIT TEXT
+const splitElements = document.querySelectorAll('.split');
+for (let i = 0; i < splitElements.length; i++) {
+  spliting(splitElements[i]);
+}
+// SPLIT TEXT
+function spliting(element) {
+  let text = element.textContent.split('');
+  let result = '';
+  text.forEach(function (char) {
+    result +=
+      char.trim() === '' ? '<span>&nbsp;</span>' : '<span>' + char + '</span>';
+  });
+
+  element.innerHTML = result;
 }
