@@ -109,6 +109,19 @@
     }
   }
 }
+
+#metaverse-svg {
+  position: relative;
+  padding-bottom: 56.5%;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .metaverse {
     &__line {

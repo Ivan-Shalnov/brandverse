@@ -78,26 +78,6 @@ function loadComplete() {
   document.body.classList.remove('no-scroll');
 }
 
-// JSON ANIMATION
-let percent;
-{
-  percent = bodymovin.loadAnimation({
-    container: document.getElementById('metaverse-svg'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: false,
-    path: 'img/35-percent-larger.json',
-  });
-
-  const cube = bodymovin.loadAnimation({
-    container: document.getElementById('cube-svg'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'img/Cube.json',
-  });
-}
-
 document.addEventListener('DOMContentLoaded', function (event) {
   window.onload = function () {
     // ViewPort REAL Height
@@ -134,7 +114,27 @@ document.addEventListener('DOMContentLoaded', function (event) {
     ScrollTrigger.addEventListener('refresh', () => {
       loadComplete();
       locoScroll.update();
-    }); //locomotive-scroll
+    });
+
+    // JSON ANIMATION
+    {
+      const percent = bodymovin.loadAnimation({
+        container: document.getElementById('metaverse-svg'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'img/35-percent-larger.json',
+      });
+      // const cube = bodymovin.loadAnimation({
+      //   container: document.getElementById('cube-svg'),
+      //   renderer: 'svg',
+      //   loop: true,
+      //   autoplay: true,
+      //   path: 'img/Cube.json',
+      // });
+    }
+
+    //locomotive-scroll
     ////////////////////
 
     // SOCIAL LIST
@@ -345,16 +345,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
             }
             gsap.to(titleWrapEl, {
               x: () => -headerScrollLengthFn() - 100,
-              startAt: { x: 0 },
+              // startAt: { x: 0 },
               ease: 'none',
               scrollTrigger: {
                 scroller: REFS.scroller,
                 trigger: '.metaverse__header',
-                start: 'top 5%',
+                start: 'center center',
                 pin: true,
                 scrub: 1,
                 end: () => '+=' + headerScrollLengthFn() + 100,
                 invalidateOnRefresh: true,
+                anticipatePin: 0.5,
               },
             });
           }
@@ -386,16 +387,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
       });
 
       //JSON ANIMATION TRIGGER
-      ScrollTrigger.create({
-        trigger: '#metaverse-svg',
-        scroller: REFS.scroller,
-        start: 'top bottom',
-        end: 'bottom top',
-        onEnter: () => percent.play(),
-        onEnterBack: () => percent.play(),
-        onLeaveBack: () => percent.pause(),
-        onLeave: () => percent.pause(),
-      });
+      // ScrollTrigger.create({
+      //   trigger: '#metaverse-svg',
+      //   scroller: REFS.scroller,
+      //   start: 'top bottom',
+      //   end: 'bottom top',
+      //   onEnter: () => percent.play(),
+      //   onEnterBack: () => percent.play(),
+      //   onLeaveBack: () => percent.pause(),
+      //   onLeave: () => percent.pause(),
+      // });
       //JSON ANIMATION TRIGGER
     }
     //METAVERSE ANIM END
@@ -510,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           {
             ScrollTrigger.create({
               trigger: '.reduce',
-              start: self => self.previous().end,
+              start: (self) => self.previous().end,
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.reduce', 0),
@@ -524,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           {
             ScrollTrigger.create({
               trigger: '.cultivate',
-              start: self => self.previous().end,
+              start: (self) => self.previous().end,
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.cultivate', 0),
@@ -539,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           {
             ScrollTrigger.create({
               trigger: '.navigate',
-              start: self => self.previous().end,
+              start: (self) => self.previous().end,
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.navigate', 0),
@@ -562,6 +563,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: solutionAnimTl,
+              // onEnter: () => setColors({ bg: bgColor, color: textColor }),
+              // onEnterBack: () => setColors({ bg: bgColor, color: textColor }),
+              // onLeaveBack: () => setColors({ bg: '#fff', color: '#000' }),
             });
           }
           // SOLUTION SECTION
@@ -619,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               trigger: triggerRef,
               containerAnimation: horizontalScrollAnim,
               horizontal: true,
-              start: self => self.previous().end,
+              start: (self) => self.previous().end,
               end: 'right center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.cultivate'),
@@ -639,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               trigger: triggerRef,
               containerAnimation: horizontalScrollAnim,
               horizontal: true,
-              start: self => self.previous().end,
+              start: (self) => self.previous().end,
               end: 'right center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.navigate'),
@@ -924,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             toggleClass: 'active',
             markers: true,
             onEnter: () => setColors({ bg: '#000', color: '#fff' }),
-            onEnterBack: () => setColors({ bg: '#fff', color: '#000' }),
+            onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
           });
 
           const section = document.querySelector('.horizontal');
@@ -1263,7 +1267,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           const itemOverlap = () =>
             +parseFloat(window.getComputedStyle(itemsRefs[0])['margin-right']);
 
-          itemsRefs.forEach(item => {
+          itemsRefs.forEach((item) => {
             ScrollTrigger.create({
               containerAnimation: animCont,
               trigger: item,
@@ -1310,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           const elements = document.querySelectorAll('[data-scroll-speed-mob]');
-          elements.forEach(el => {
+          elements.forEach((el) => {
             gsap.to(el, {
               yPercent: -10 * el.dataset.scrollSpeedMob,
               ease: Power2.easeInOut,
@@ -1362,13 +1366,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 {
   const splitElements = document.querySelectorAll('.split');
-  splitElements.forEach(el => spliting(el));
+  splitElements.forEach((el) => spliting(el));
 }
 
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach(link => {
+  linkRefs.forEach((link) => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(
