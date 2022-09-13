@@ -118,13 +118,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // JSON ANIMATION
     {
-      const percent = bodymovin.loadAnimation({
-        container: document.getElementById('metaverse-svg'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'img/35-percent-larger.json',
-      });
+      // const percent = bodymovin.loadAnimation({
+      //   container: document.getElementById('metaverse-svg'),
+      //   renderer: 'svg',
+      //   loop: true,
+      //   autoplay: true,
+      //   path: 'img/35-percent-larger.json',
+      // });
       // const cube = bodymovin.loadAnimation({
       //   container: document.getElementById('cube-svg'),
       //   renderer: 'svg',
