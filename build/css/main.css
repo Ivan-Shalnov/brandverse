@@ -5499,6 +5499,13 @@ h5 {
     text-align: right;
     font-size: calc((1vw + 1vh) * (16 / 30));
     opacity: 0.33; }
+  .section-discuss__email {
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (47 / 30));
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #c5fd64;
+    margin-bottom: calc((1vw + 1vh) * (30 / 30)); }
   .section-discuss .link {
     margin-bottom: calc((1vw + 1vh) * (50 / 30)); }
   .section-discuss .form {
@@ -5544,7 +5551,9 @@ h5 {
 
 @media (max-width: 767px) {
   .section-discuss__title {
-    font-size: calc((1vw + 1vh) * (220 / 30)); } }
+    font-size: calc((1vw + 1vh) * (220 / 30)); }
+  .section-discuss__email {
+    font-size: 27px; } }
 
 .cnt-section {
   padding: calc((1vw + 1vh) * (200 / 30)) 0; }

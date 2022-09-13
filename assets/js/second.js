@@ -118,20 +118,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // JSON ANIMATION
     {
-      // const percent = bodymovin.loadAnimation({
-      //   container: document.getElementById('metaverse-svg'),
-      //   renderer: 'svg',
-      //   loop: true,
-      //   autoplay: true,
-      //   path: 'img/35-percent-larger.json',
-      // });
-      // const cube = bodymovin.loadAnimation({
-      //   container: document.getElementById('cube-svg'),
-      //   renderer: 'svg',
-      //   loop: true,
-      //   autoplay: true,
-      //   path: 'img/Cube.json',
-      // });
+      const percent = bodymovin.loadAnimation({
+        container: document.getElementById('metaverse-svg'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'img/35-percent-larger.json',
+      });
+      const cube = bodymovin.loadAnimation({
+        container: document.getElementById('cube-svg'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'img/Cube.json',
+      });
     }
 
     //locomotive-scroll
@@ -926,7 +926,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             start: 'top center',
             end: 'bottom center',
             toggleClass: 'active',
-            markers: true,
+            // markers: true,
             onEnter: () => setColors({ bg: '#000', color: '#fff' }),
             onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
           });
