@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           {
             ScrollTrigger.create({
               trigger: '.reduce',
-              start: (self) => self.previous().end,
+              start: self => self.previous().end,
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.reduce', 0),
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           {
             ScrollTrigger.create({
               trigger: '.cultivate',
-              start: (self) => self.previous().end,
+              start: self => self.previous().end,
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.cultivate', 0),
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           {
             ScrollTrigger.create({
               trigger: '.navigate',
-              start: (self) => self.previous().end,
+              start: self => self.previous().end,
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.navigate', 0),
@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               trigger: triggerRef,
               containerAnimation: horizontalScrollAnim,
               horizontal: true,
-              start: (self) => self.previous().end,
+              start: self => self.previous().end,
               end: 'right center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.cultivate'),
@@ -643,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               trigger: triggerRef,
               containerAnimation: horizontalScrollAnim,
               horizontal: true,
-              start: (self) => self.previous().end,
+              start: self => self.previous().end,
               end: 'right center',
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.navigate'),
@@ -743,7 +743,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           .staggerFrom(
             '.amba-frame2 .horizontal__col-text div p',
             ...ANIMATION_PARAMS.textStaggerY100,
-            '+=0.4',
+            'start',
           )
           .from(
             '.amba-frame2 .horizontal__col-line',
@@ -791,7 +791,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           .staggerFrom(
             '.z3na-frame1 .horizontal__subtitle p',
             ...ANIMATION_PARAMS.textStaggerY100,
-            '+=0.4',
+            'start',
           );
       };
       const z3naFrame1AnimMob = function (tl) {
@@ -817,7 +817,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           .staggerFrom(
             '.z3na-frame2 .horizontal__col-text div p',
             ...ANIMATION_PARAMS.textStaggerY100,
-            '+=0.4',
+            'start',
           )
           .from(
             '.z3na-frame2 .horizontal__col-line',
@@ -1267,7 +1267,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           const itemOverlap = () =>
             +parseFloat(window.getComputedStyle(itemsRefs[0])['margin-right']);
 
-          itemsRefs.forEach((item) => {
+          itemsRefs.forEach(item => {
             ScrollTrigger.create({
               containerAnimation: animCont,
               trigger: item,
@@ -1314,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           const elements = document.querySelectorAll('[data-scroll-speed-mob]');
-          elements.forEach((el) => {
+          elements.forEach(el => {
             gsap.to(el, {
               yPercent: -10 * el.dataset.scrollSpeedMob,
               ease: Power2.easeInOut,
@@ -1366,13 +1366,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 {
   const splitElements = document.querySelectorAll('.split');
-  splitElements.forEach((el) => spliting(el));
+  splitElements.forEach(el => spliting(el));
 }
 
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach((link) => {
+  linkRefs.forEach(link => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(

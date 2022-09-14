@@ -4739,6 +4739,7 @@ h5 {
     .promo-third__title span {
       display: block; }
   .promo-third__line {
+    margin-top: 5vw;
     width: 100%;
     height: calc((1vw + 1vh) * (33 / 30));
     background-color: #fff;
@@ -4960,6 +4961,10 @@ h5 {
     letter-spacing: -0.033em; }
   .section-text__name {
     text-align: right; }
+  .section-text + .collections .collections__line {
+    background-color: currentColor; }
+  .section-text + .collections .green {
+    stroke: currentColor; }
 
 @media (max-width: 1199px) {
   .section-text__body {
@@ -5082,10 +5087,10 @@ h5 {
     display: -ms-flexbox;
     display: flex;
     overflow: hidden; }
-  .horizontal__title > div:not(:last-child) {
+  .horizontal__title > div {
     margin-bottom: calc((1vw + 1vh) * (-16 / 11.87)); }
     @media (min-width: 1200px) {
-      .horizontal__title > div:not(:last-child) {
+      .horizontal__title > div {
         margin-bottom: calc((1vw + 1vh) * (-16 / 30)); } }
 
 .horizontal__small-title {
@@ -5181,7 +5186,7 @@ h5 {
 @media (min-width: 1200px) {
   .horizontal__col-link {
     position: absolute;
-    bottom: 0;
+    bottom: calc((1vw + 1vh) * (10 / 30));
     width: 100%; } }
 
 .horizontal__col-line {
@@ -5211,10 +5216,10 @@ h5 {
   @media (min-width: 768px) {
     .horizontal__col-subtitle {
       margin-left: auto; } }
-  .horizontal__col-subtitle > div:not(:last-child) {
+  .horizontal__col-subtitle > div {
     margin-bottom: calc((1vw + 1vh) * (-4 / 11.87)); }
     @media (min-width: 375px) {
-      .horizontal__col-subtitle > div:not(:last-child) {
+      .horizontal__col-subtitle > div {
         margin-bottom: -4px; } }
   .horizontal__col-subtitle > div {
     overflow: hidden; }

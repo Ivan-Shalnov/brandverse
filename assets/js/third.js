@@ -16,6 +16,7 @@
 }
 const REFS = {
   scroller: document.querySelector('.scroller'),
+  skipColorsChange: [],
 };
 // ViewPort REAL Height
 {
@@ -370,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
             0.8,
             { y: '100%', ease: Power2.easeInOut, yoyo: true },
             0.05,
-            '+=0.4',
+            'start',
           )
           .from(
             '.amba-frame2 .horizontal__col-line',
@@ -430,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
             0.8,
             { y: '100%', ease: Power2.easeInOut, yoyo: true },
             0.05,
-            '+=0.4',
+            'start',
           );
       };
       const z3naFrame1AnimMob = function (tl) {
@@ -464,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
             0.8,
             { y: '100%', ease: Power2.easeInOut, yoyo: true },
             0.05,
-            '+=0.4',
+            'start',
           )
           .from(
             '.z3na-frame2 .horizontal__col-line',
@@ -567,9 +568,25 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         // desktop
         '(min-width: 1200px)': function () {
+          const colletionsSectRef = document.querySelector('.collections');
+          let frameRefs = [...document.querySelectorAll('.horizontal .frame')];
+          REFS.skipColorsChange = [
+            ...REFS.skipColorsChange,
+            ...frameRefs,
+            colletionsSectRef,
+          ];
+          ScrollTrigger.create({
+            trigger: colletionsSectRef,
+            scroller: REFS.scroller,
+            start: 'top center',
+            end: 'bottom center',
+            toggleClass: 'active',
+            // markers: true,
+            onEnter: () => setColors({ bg: '#000', color: '#fff' }),
+            onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
+          });
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
-          let frameRefs = pinWrap.querySelectorAll('.frame');
           frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
@@ -748,23 +765,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // HORIZONTAL SECTION ANIM
-    //BG COLOR CHANGE
     {
       const scrollColorElems = document.querySelectorAll('[data-bgcolor]');
       for (let i = 0; i < scrollColorElems.length; i += 1) {
         const colorSection = scrollColorElems[i];
-        if (colorSection.hasAttribute('horizontal')) continue;
-        const prevBg = i === 0 ? '' : scrollColorElems[i - 1].dataset.bgcolor;
-        const prevText =
-          i === 0 ? '' : scrollColorElems[i - 1].dataset.textcolor;
-
+        if (REFS.skipColorsChange.includes(colorSection)) continue;
         ScrollTrigger.create({
           trigger: colorSection,
           scroller: REFS.scroller,
           start: 'top 50%',
           end: 'bottom 50%',
           toggleClass: 'active',
-          refreshPriority: -1,
+          // markers: true,
           onEnter: () =>
             gsap.to(REFS.scroller, {
               backgroundColor: colorSection.dataset.bgcolor,
@@ -966,3 +978,12 @@ function spliting(element) {
 
   element.innerHTML = result;
 }
+// SET COLORS
+function setColors({ bg, color }) {
+  gsap.to(REFS.scroller, {
+    backgroundColor: bg,
+    color: color,
+    overwrite: 'auto',
+  });
+}
+// SET COLORS

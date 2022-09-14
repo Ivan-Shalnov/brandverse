@@ -19,6 +19,14 @@
   &__name {
     text-align: right;
   }
+  & + .collections {
+    .collections__line {
+      background-color: currentColor;
+    }
+    .green {
+      stroke: currentColor;
+    }
+  }
 }
 
 @media (max-width: 1199px) {

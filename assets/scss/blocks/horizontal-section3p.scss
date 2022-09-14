@@ -70,7 +70,7 @@
       display: flex;
       overflow: hidden;
     }
-    & > div:not(:last-child) {
+    & > div {
       margin-bottom: toIndexMob(-16);
       @media (min-width: 1200px) {
         margin-bottom: toIndex(-16);
@@ -170,7 +170,7 @@
   &__col-link {
     @media (min-width: 1200px) {
       position: absolute;
-      bottom: 0;
+      bottom: toIndex(10);
       width: 100%;
     }
   }
@@ -201,7 +201,7 @@
     @media (min-width: 768px) {
       margin-left: auto;
     }
-    & > div:not(:last-child) {
+    & > div {
       margin-bottom: toIndexMob(-4);
       @media (min-width: 375px) {
         margin-bottom: -4px;
