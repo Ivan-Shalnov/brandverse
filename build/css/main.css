@@ -2909,6 +2909,12 @@ h5 {
       transition: 250ms; }
   .team__member-card.active::before {
     opacity: 0.8; }
+  .team--active-card-white-bg .team__member-card::before {
+    background-color: #fff;
+    transition: 250ms; }
+  .team--active-card-white-bg.active .team__member-card::before {
+    background-color: #c5fd64;
+    transition: 250ms; }
   .team__member-position {
     position: absolute;
     top: calc((1vw + 1vh) * (25 / 30));
@@ -4394,7 +4400,7 @@ h5 {
     .roadmap__subtitle {
       position: absolute;
       font-size: calc((1vw + 1vh) * (16 / 30));
-      margin-top: calc((1vw + 1vh) * (15 / 30));
+      top: calc((1vw + 1vh) * (45 / 30));
       margin-bottom: 0; }
     .roadmap__title {
       font-size: calc((1vw + 1vh) * (133 / 30)); }
@@ -4732,10 +4738,6 @@ h5 {
     display: -ms-flexbox;
     display: flex;
     overflow: hidden; }
-    @media not all and (min-resolution: 0.001dpcm) {
-      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-        .promo-third__title {
-          margin-bottom: -5vw; } } }
     .promo-third__title span {
       display: block; }
   .promo-third__line {

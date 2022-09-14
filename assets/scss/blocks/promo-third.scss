@@ -49,11 +49,11 @@
     display: flex;
     overflow: hidden;
 
-    @media not all and (min-resolution: 0.001dpcm) {
-      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-        margin-bottom: -5vw;
-      }
-    }
+    // @media not all and (min-resolution: 0.001dpcm) {
+    //   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    //     margin-bottom: -5vw;
+    //   }
+    // }
     span {
       display: block;
     }

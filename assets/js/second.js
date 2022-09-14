@@ -1280,6 +1280,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
       });
     }
 
+    // TEAM SECTION
+    {
+      const teamSectionRef = document.querySelector('.team');
+      teamSectionRef.classList.add('team--active-card-white-bg');
+    }
     // CNT SECTION
     {
       //TITLE ANIMATION

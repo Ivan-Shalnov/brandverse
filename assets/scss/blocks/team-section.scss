@@ -302,6 +302,18 @@
         opacity: 0.8;
       }
     }
+    &--active-card-white-bg .team__member-card {
+      &::before {
+        background-color: #fff;
+        transition: 250ms;
+      }
+    }
+    &--active-card-white-bg.active .team__member-card {
+      &::before {
+        background-color: #c5fd64;
+        transition: 250ms;
+      }
+    }
     &__member-position {
       position: absolute;
       top: toIndex(25);

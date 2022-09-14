@@ -987,3 +987,9 @@ function setColors({ bg, color }) {
   });
 }
 // SET COLORS
+
+// IS SAFARI
+function IsSafari() {
+  var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
+  return is_safari;
+}

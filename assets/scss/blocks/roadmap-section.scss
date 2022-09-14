@@ -91,6 +91,7 @@
   .roadmap {
     padding-top: toIndex(200);
     padding-bottom: toIndex(275);
+
     &__row {
       position: relative;
       margin-bottom: toIndex(105);
@@ -98,7 +99,7 @@
     &__subtitle {
       position: absolute;
       font-size: toIndex(16);
-      margin-top: toIndex(15);
+      top: toIndex(45);
       margin-bottom: 0;
     }
     &__title {
