@@ -72,6 +72,9 @@
     }
     & > div {
       margin-bottom: toIndexMob(-16);
+      padding-left: 0.033em;
+      padding-right: 0.033em;
+
       @media (min-width: 1200px) {
         margin-bottom: toIndex(-16);
       }
@@ -263,6 +266,14 @@
     color: #c5fd64;
     @media (min-width: 1200px) {
       max-width: toIndex(525);
+    }
+  }
+  .horizontal__col-link {
+    color: #4f06c6;
+  }
+  &.active {
+    .horizontal__col-link {
+      color: #c5fd64;
     }
   }
 }

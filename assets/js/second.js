@@ -695,11 +695,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
           ...ANIMATION_PARAMS.textStaggerY100,
         )
         .staggerFrom(
-          '.killer-feature__text p',
-          0.8,
-          { y: 10, opacity: 0, ease: Power2.easeInOut, yoyo: true },
-          0.2,
-          '>',
+          '.killer-feature__text p span>span',
+          ...ANIMATION_PARAMS.textStaggerY100,
         );
     }
     // KILLER FEATRUE ANIM
@@ -992,6 +989,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 horizontal: true,
                 start: 'left center',
                 end: 'right center',
+                toggleClass: 'active',
                 toggleActions: 'play none none reverse',
                 // markers: true,
               },

@@ -666,6 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 containerAnimation: slideScrollAnim,
                 trigger: '.amba-frame2',
                 horizontal: true,
+                toggleClass: 'active',
                 start: 'left center',
                 end: 'right center',
                 toggleActions: 'play none none reverse',
