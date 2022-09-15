@@ -574,22 +574,45 @@ document.addEventListener('DOMContentLoaded', function (event) {
           const wrapRef = document.querySelector('.slide__wrap');
           const getScrollLength = () =>
             wrapRef.scrollWidth - document.body.clientWidth;
-          const horizontalScrollAnim = gsap.to('.slide__wrap', {
+          const horizontalScrollAnim = gsap.timeline({
             scrollTrigger: {
               scroller: REFS.scroller,
               scrub: true,
               trigger: '.slide',
               pin: true,
               start: 'top top',
+              // markers: true,
               invalidateOnRefresh: true,
-              end: () => `+=${getScrollLength()}`,
+              end: () => `+=${getScrollLength() * 1.1}`,
               onEnter: () => setColors({ bg: '#fff', color: '#000' }),
               onEnterBack: () => setColors({ bg: '#000', color: '#C5FD64' }),
             },
-            x: () => -getScrollLength(),
-            startAt: { x: 0 },
-            ease: 'none',
           });
+          horizontalScrollAnim
+            .to({}, { duration: 0.5 })
+            .to('.slide__wrap', {
+              x: () => -getScrollLength(),
+              startAt: { x: 0 },
+              ease: 'none',
+              duration: 10,
+            })
+            .to({}, { duration: 0.5 });
+          // const horizontalScrollAnim = gsap.to('.slide__wrap', {
+          //   scrollTrigger: {
+          //     scroller: REFS.scroller,
+          //     scrub: true,
+          //     trigger: '.slide',
+          //     pin: true,
+          //     start: 'top top',
+          //     invalidateOnRefresh: true,
+          //     end: () => `+=${getScrollLength()}`,
+          //     onEnter: () => setColors({ bg: '#fff', color: '#000' }),
+          //     onEnterBack: () => setColors({ bg: '#000', color: '#C5FD64' }),
+          //   },
+          //   x: () => -getScrollLength(),
+          //   startAt: { x: 0 },
+          //   ease: 'none',
+          // });
           // PIN WRAP
 
           // REDUCE SECTION
@@ -604,6 +627,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               horizontal: true,
               start: 'left center',
               end: 'right center',
+              // markers: true,
               toggleActions: 'play none none reverse',
               animation: getSlideAnim('.reduce'),
               onEnter: () => setColors({ bg: bgColor, color: textColor }),
