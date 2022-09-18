@@ -50,3 +50,4 @@ yarn-error.log*
 
 build/**
 !build/img/**
+!build/img/*

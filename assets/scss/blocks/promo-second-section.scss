@@ -5,7 +5,7 @@
     position: relative;
     & > .promo-second__subtitle {
       position: absolute;
-      transform: rotate(-90deg) translate(-50%, 100%);
+      transform: rotate(-90deg) translate(-50%, 200%);
       top: 0;
       right: 0;
     }
@@ -18,49 +18,45 @@
   &__title {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: toIndexMob(86);
+    font-size: toIndexMob(84);
     line-height: 1;
     letter-spacing: -0.032em;
-    display: flex;
-    flex-wrap: wrap;
-    & > .split {
-      display: flex;
+    &--color-accent {
+      color: $purpure;
+    }
+    & > .line {
       overflow-y: hidden;
-      padding-right: var(--index);
+      padding-right: 0.032em;
     }
   }
   &__bottom-title-cont {
     margin-bottom: 2vh;
+    text-align: right;
     & > .promo-second__subtitle {
       display: none;
     }
   }
-  &__bottom-title {
-    color: #4f06c6;
-    justify-content: flex-end;
-    margin-right: calc(var(--index) * -1);
-    & > .split {
-      justify-content: flex-end;
-    }
-  }
+
   &__text {
     font-weight: 800;
     font-size: toIndexMob(22);
     line-height: 94%;
     text-align: right;
     letter-spacing: -0.033em;
+    max-width: toIndexMob(275);
+    margin-left: auto;
   }
 }
-@media (max-width: 767px) {
+
+@media (max-width: 1199px) {
   .promo-second {
-    &__top-title {
-      & > .split:first-child {
-        width: 100%;
-      }
+    .desktop {
+      display: none;
     }
-    &__text {
-      max-width: 87%;
-      margin-left: auto;
+    &__title {
+      .line {
+        margin-bottom: toIndexMob(-16);
+      }
     }
   }
 }
@@ -68,26 +64,22 @@
   .promo-second {
     padding-top: toIndex(245);
     padding-bottom: toIndex(120);
+    .mobile {
+      display: none;
+    }
     &__subtitle {
       font-size: 16px;
     }
 
     &__title {
       font-size: toIndex(189);
-      & > span {
+      & > .line {
         margin-bottom: toIndex(-26);
       }
     }
-    &__top-title {
-      max-width: toIndex(1200);
-      .split:last-child {
-        span:last-child {
-          color: $purpure;
-        }
-      }
-    }
+
     &__bottom-title-cont {
-      margin-top: toIndex(-163);
+      margin-top: toIndex(-189);
       margin-bottom: toIndex(30);
       position: relative;
       & > .promo-second__subtitle {
@@ -97,18 +89,7 @@
         left: 0;
       }
     }
-    &__bottom-title {
-      margin-left: auto;
-      max-width: toIndex(920);
-      &>span {
-        &:first-child {
-          margin-left: 40%;
-        }
-        &:nth-child(3){
-          margin-left:20%;
-        }
-      }
-    }
+
     &__text {
       font-size: toIndex(33);
     }

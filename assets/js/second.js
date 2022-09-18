@@ -1,3 +1,5 @@
+gsap.registerPlugin(SplitText);
+
 // DISABLE SCROLL POSITION RECOVERY
 {
   if (history.scrollRestoration) {
@@ -118,20 +120,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // JSON ANIMATION
     {
-      const percent = bodymovin.loadAnimation({
-        container: document.getElementById('metaverse-svg'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'img/35-percent-larger.json',
-      });
-      const cube = bodymovin.loadAnimation({
-        container: document.getElementById('cube-svg'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'img/Cube.json',
-      });
+      // const percent = bodymovin.loadAnimation({
+      //   container: document.getElementById('metaverse-svg'),
+      //   renderer: 'svg',
+      //   loop: true,
+      //   autoplay: true,
+      //   path: 'img/35-percent-larger.json',
+      // });
+      // const cube = bodymovin.loadAnimation({
+      //   container: document.getElementById('cube-svg'),
+      //   renderer: 'svg',
+      //   loop: true,
+      //   autoplay: true,
+      //   path: 'img/Cube.json',
+      // });
     }
 
     //locomotive-scroll
@@ -177,26 +179,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // SECOND PROMO ANIMATION START
 
     {
-      // ScrollTrigger.create({
-      //   trigger: '.promo-second',
-      //   scroller: REFS.scroller,
-      //   start: 'top 50%',
-      //   end: 'bottom 50%',
-      //   toggleClass: 'active',
-      //   // markers: true,
-      //   onEnter: () =>
-      //     gsap.to(REFS.scroller, {
-      //       backgroundColor: '#E0E3E7',
-      //       color: '#000',
-      //       overwrite: 'auto',
-      //     }),
-      //   onEnterBack: () =>
-      //     gsap.to(REFS.scroller, {
-      //       backgroundColor: '#E0E3E7',
-      //       color: '#000',
-      //       overwrite: 'auto',
-      //     }),
-      // });
+      // SPLIT TITLE INTO CHARS
+      ScrollTrigger.matchMedia({
+        '(max-width: 1199px)': () => {
+          new SplitText('.promo-second__title.mobile', {
+            type: 'chars',
+            charsClass: 'char',
+          });
+        },
+        '(min-width:1200px)': () => {
+          new SplitText('.promo-second__title.desktop', {
+            type: 'chars',
+            charsClass: 'char',
+          });
+        },
+      });
       const promoSecondTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.promo-second',
@@ -210,11 +207,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
       promoSecondTl
         .addLabel('start', '+=1')
         .staggerFrom(
-          '.promo-second__top-title .split span',
+          '.promo-second__top-title .char',
           ...ANIMATION_PARAMS.textStaggerY100,
         )
         .staggerFrom(
-          '.promo-second__bottom-title .split span',
+          '.promo-second__bottom-title .char',
           ...ANIMATION_PARAMS.textStaggerY100,
           'start',
         )
@@ -344,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               return headerScrollLength;
             }
             gsap.to(titleWrapEl, {
-              x: () => -headerScrollLengthFn() - 100,
+              x: () => -headerScrollLengthFn(),
               // startAt: { x: 0 },
               ease: 'none',
               scrollTrigger: {
@@ -352,8 +349,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 trigger: '.metaverse__header',
                 start: 'center center',
                 pin: true,
-                scrub: 1,
-                end: () => '+=' + headerScrollLengthFn() + 100,
+                scrub: true,
+                end: () => '+=' + headerScrollLengthFn(),
                 invalidateOnRefresh: true,
                 anticipatePin: 0.5,
               },
@@ -402,59 +399,115 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //METAVERSE ANIM END
 
     //WHATS WRONG WITH META ANIM
-    {
-      // ScrollTrigger.create({
-      //   trigger: '.wrng-meta',
-      //   scroller: REFS.scroller,
-      //   start: 'top 50%',
-      //   end: 'bottom 50%',
-      //   toggleClass: 'active',
-      //   // markers: true,
-      //   onEnter: () =>
-      //     gsap.to(REFS.scroller, {
-      //       backgroundColor: '#E0E3E7',
-      //       color: '#000',
-      //       overwrite: 'auto',
-      //     }),
-      //   onEnterBack: () =>
-      //     gsap.to(REFS.scroller, {
-      //       backgroundColor: '#E0E3E7',
-      //       color: '#000',
-      //       overwrite: 'auto',
-      //     }),
-      // });
-      const wrngMetaTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.wrng-meta',
-          scroller: REFS.scroller,
-          start: 'top 50%',
-          end: 'bottom bottom',
-          toggleActions: 'play none none reverse',
-        },
-      });
-      wrngMetaTl
-        .addLabel('start', '+=0.5')
-        .staggerFrom(
-          '.wrng-meta__top-title .split span',
-          ...ANIMATION_PARAMS.textStaggerY100,
-          'start',
-        )
-        .staggerFrom(
-          '.wrng-meta__bottom-title .split span',
-          ...ANIMATION_PARAMS.textStaggerY100,
-          '<30%',
-        )
-        .from('.wrng-meta__icon-b', ...ANIMATION_PARAMS.opacity, '>');
-    }
+    // {
+    // ScrollTrigger.create({
+    //   trigger: '.wrng-meta',
+    //   scroller: REFS.scroller,
+    //   start: 'top 50%',
+    //   end: 'bottom 50%',
+    //   toggleClass: 'active',
+    //   // markers: true,
+    //   onEnter: () =>
+    //     gsap.to(REFS.scroller, {
+    //       backgroundColor: '#E0E3E7',
+    //       color: '#000',
+    //       overwrite: 'auto',
+    //     }),
+    //   onEnterBack: () =>
+    //     gsap.to(REFS.scroller, {
+    //       backgroundColor: '#E0E3E7',
+    //       color: '#000',
+    //       overwrite: 'auto',
+    //     }),
+    // });
+    //   const wrngMetaTl = gsap.timeline({
+    //     scrollTrigger: {
+    //       trigger: '.wrng-meta',
+    //       scroller: REFS.scroller,
+    //       start: 'top 50%',
+    //       end: 'bottom bottom',
+    //       toggleActions: 'play none none reverse',
+    //     },
+    //   });
+    //   wrngMetaTl
+    //     .addLabel('start', '+=0.5')
+    //     .staggerFrom(
+    //       '.wrng-meta__top-title .split span',
+    //       ...ANIMATION_PARAMS.textStaggerY100,
+    //       'start',
+    //     )
+    //     .staggerFrom(
+    //       '.wrng-meta__bottom-title .split span',
+    //       ...ANIMATION_PARAMS.textStaggerY100,
+    //       '<30%',
+    //     )
+    //     .from('.wrng-meta__icon-b', ...ANIMATION_PARAMS.opacity, '>');
+    // }
     // WHATS WRONG WITH META ANIM
 
     // SLIDE SECTION ANIM
     {
-      const getSlideAnim = function (slideSelector, delay = 0.75) {
+      // JSON ANIMATION
+      {
+        // REDUCE
+        bodymovin.loadAnimation({
+          container: document.querySelector(`.reduce .slide__title`),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: `img/reduce.json`,
+          rendererSettings: {
+            viewBoxSize: '90 700 1490 300',
+          },
+        });
+
+        // CULTIVATE
+        bodymovin.loadAnimation({
+          container: document.querySelector(`.cultivate .slide__title`),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: `img/cultivate.json`,
+          rendererSettings: {
+            viewBoxSize: '90 700 1750 300',
+          },
+        });
+
+        // NAVIGATE
+        bodymovin.loadAnimation({
+          container: document.querySelector(`.navigate .slide__title`),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: `img/navigate.json`,
+          rendererSettings: {
+            viewBoxSize: '90 700 1750 300',
+          },
+        });
+      }
+      // JSON ANIMATION
+
+      // SOLUTION TITLE SPLIT
+      const solutionTitleRef = new SplitText('.solution__title', {
+        type: 'chars',
+        charsClass: 'char',
+      });
+      const solutionTextRef = new SplitText('.solution__text', {
+        type: 'lines, words',
+        linesClass: 'line',
+      });
+
+      // SLIDES SUBTITLES SPLIT
+      new SplitText('.slide__subtitle', {
+        type: 'lines,words',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      const getSlideAnim = function (slideSelector, delay = 0) {
         const tl = gsap.timeline({ paused: true });
         tl.addLabel('start', '+=' + delay)
           .staggerFrom(
-            slideSelector + ' .slide__subtitle > div div',
+            slideSelector + ' .slide__subtitle .word',
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
@@ -468,12 +521,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
               duration: 0.25,
             },
             '>',
-          )
-          .from(
-            slideSelector + ' .slide__line',
-            { width: 0, ease: Power2.easeInOut, yoyo: true, duration: 0.25 },
-            '>',
           );
+        // .from(
+        //   slideSelector + ' .slide__line',
+        //   { width: 0, ease: Power2.easeInOut, yoyo: true, duration: 0.25 },
+        //   '>',
+        // );
         return tl;
       };
       const solutionAnimTl = gsap.timeline({ paused: true });
@@ -481,17 +534,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
         solutionAnimTl
           .addLabel('start', '+=0.5')
           .staggerFrom(
-            '.solution__text > span > span',
+            solutionTextRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
-            '.solution__title .split span',
+            solutionTitleRef.chars,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           );
       }
-
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {
           // SOLUTION SECTION
@@ -683,26 +735,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     //KILLER FEATRUE ANIM
     {
-      // ScrollTrigger.create({
-      //   trigger: '.killer-feature',
-      //   scroller: REFS.scroller,
-      //   start: 'top 50%',
-      //   end: 'bottom 50%',
-      //   toggleClass: 'active',
-      //   // markers: true,
-      //   onEnter: () =>
-      //     gsap.to(REFS.scroller, {
-      //       backgroundColor: '#000',
-      //       color: '#fff',
-      //       overwrite: 'auto',
-      //     }),
-      //   onEnterBack: () =>
-      //     gsap.to(REFS.scroller, {
-      //       backgroundColor: '#000',
-      //       color: '#fff',
-      //       overwrite: 'auto',
-      //     }),
-      // });
+      // TEXT SPLIT
+      const textTopRef = new SplitText('.killer-feature__text-top', {
+        type: 'lines,words',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
       const wrngMetaTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.killer-feature',
@@ -941,16 +979,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
             ...frameRefs,
             colletionsSectRef,
           ];
-          ScrollTrigger.create({
-            trigger: colletionsSectRef,
-            scroller: REFS.scroller,
-            start: 'top center',
-            end: 'bottom center',
-            toggleClass: 'active',
-            // markers: true,
-            onEnter: () => setColors({ bg: '#000', color: '#fff' }),
-            onEnterBack: () => setColors({ bg: '#000', color: '#fff' }),
-          });
 
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
@@ -960,6 +988,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
               pinWrapWidth - document.body.clientWidth;
             return horizontalScrollLength;
           }
+
+          ScrollTrigger.create({
+            trigger: colletionsSectRef,
+            scroller: REFS.scroller,
+            start: 'top center',
+            end: () => `bottom+=${horizontalScrollLengthFn()} center`,
+            toggleClass: 'active',
+            // markers: true,
+            onEnter: () => setColors({ bg: '#000', color: '#fff' }),
+            onEnterBack: () => setColors({ bg: '#fff', color: '#000' }),
+          });
           //AMBA FRAME 1
           {
             const ambaFrame1Tl = gsap.timeline({

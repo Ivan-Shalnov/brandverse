@@ -12,7 +12,7 @@
     text-align: right;
     letter-spacing: -0.033em;
     max-width: toIndex(720);
-    margin: 0 auto toIndex(70);
+    margin: 0 auto;
     .split {
       display: flex;
       justify-content: flex-end;
@@ -29,7 +29,7 @@
     position: absolute;
     top: 34%;
     left: toIndex(60);
-    max-width: 237px;
+    // max-width: 237px;
     p {
       font-weight: 700;
       font-size: 18px;
@@ -45,36 +45,64 @@
         overflow-y: hidden;
       }
     }
-    p:last-child {
-      max-width: 203px;
-    }
+
     a {
+      position: relative;
+      display: inline-block;
       color: $green;
       text-decoration: underline;
+      & > * {
+        text-decoration: underline;
+      }
     }
+  }
+  &__text-top {
+    max-width: toIndex(237);
+  }
+  &__text-bottom {
+    max-width: toIndex(203);
+  }
+  &__cube {
+    margin-top: toIndex(-30);
+    width: 100%;
+    height: auto;
   }
 }
 
-#cube-svg {
-  position: relative;
-  padding-bottom: 56%;
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
+// #cube-svg {
+//   position: relative;
+//   padding-bottom: 56%;
+//   svg {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
 
 @media (max-width: 1199px) {
   .killer-feature {
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    &__title {
+      margin-bottom: toIndexMob(35);
+    }
     &__text {
-      position: relative;
-      top: 0;
-      left: 0;
-      max-width: toIndex(720);
-      margin: 0 auto toIndex(70);
+      position: static;
+      margin-bottom: toIndexMob(90);
+    }
+    &__text-top {
+      max-width: toIndexMob(290);
+    }
+    &__text-bottom {
+      max-width: toIndexMob(260);
+    }
+    &__cube {
+      width: 250%;
+      align-self: center;
     }
   }
 }
@@ -82,7 +110,9 @@
 @media (max-width: 767px) {
   .killer-feature {
     &__text {
-      padding-right: 20%;
+      & > div {
+        display: inline-block;
+      }
     }
   }
 }

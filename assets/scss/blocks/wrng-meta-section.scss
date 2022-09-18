@@ -16,25 +16,17 @@
     line-height: 1;
 
     letter-spacing: -0.033em;
-    & > .split {
-      display: flex;
-      overflow-y: hidden;
-    }
-
-    & > span:not(:last-child) {
+    & > .line {
       margin-bottom: toIndexMob(-14);
     }
   }
-  &__lastrow.split {
-    display: inline-flex;
-  }
-  &__bottom-title {
-    margin-left: auto;
-  }
+
   &__icon-b {
-    margin-left: toIndexMob(11);
-    width: toIndexMob(64);
-    height: auto;
+    display: inline-block;
+    margin: auto 0;
+    width: auto;
+    height: 0.8em;
+    transform: translateY(0.0005em);
   }
   &__card {
     margin-left: auto;
@@ -102,14 +94,14 @@
   .wrng-meta {
     &__title {
       font-size: toIndexTab(125);
-      & > span:not(:last-child) {
+      & > .line {
         margin-bottom: toIndexTab(-22);
       }
     }
-    &__icon-b {
-      margin-left: toIndexTab(15);
-      width: toIndexTab(90);
+    &__bottom-title {
+      margin-left: auto;
     }
+
     &__card {
       padding: toIndexTab(75) toIndexTab(30);
       min-height: toIndexTab(635);
@@ -140,11 +132,21 @@
     }
   }
 }
+@media (max-width: 1199px) {
+  .wrng-meta {
+    .desktop {
+      display: none;
+    }
+  }
+}
 @media (min-width: 1200px) {
   .wrng-meta {
     padding: toIndex(220) 0;
+    .mobile {
+      display: none;
+    }
     &__header {
-      margin-bottom: toIndex(170);
+      margin-bottom: 210px;
       position: relative;
     }
     &__top-title {
@@ -168,10 +170,6 @@
       & > span:not(:last-child) {
         margin-bottom: toIndex(-46.8);
       }
-    }
-    &__icon-b {
-      margin-left: toIndex(15);
-      width: toIndex(182);
     }
 
     &__cards-list {

@@ -34,7 +34,7 @@
 
     & span {
       display: inline-flex;
-      overflow: hidden;
+      overflow-y: hidden;
     }
   }
   &__sup {
@@ -46,6 +46,9 @@
   }
   &__img-wrap {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   &__img-text {
     position: relative;
@@ -67,6 +70,10 @@
     width: 33px;
     height: 8px;
     background: #c5fd64;
+  }
+  &__anim {
+    width: 236vw;
+    height: auto;
   }
   &__text-cont {
     text-align: center;
@@ -110,17 +117,17 @@
   }
 }
 
-#metaverse-svg {
-  position: relative;
-  padding-bottom: 56.5%;
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
+// #metaverse-svg {
+//   position: relative;
+//   padding-bottom: 56.5%;
+//   svg {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
 
 @media (min-width: 768px) {
   .metaverse {
@@ -160,9 +167,9 @@
   .metaverse {
     &__title {
       text-align: center;
-      & > .split {
-        display: flex;
-        justify-content: center;
+      line-height: 82%;
+      & > span {
+        display: block;
       }
     }
     &__worth-text {
@@ -172,7 +179,14 @@
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 11vh;
+      & > span:last-child {
+        margin-right: -16px;
+      }
+      .metaverse__sup {
+        padding-left: 3px;
+      }
     }
+
     &__img-wrap {
       margin-bottom: 11vh;
     }
@@ -183,23 +197,28 @@
       text-align: center;
       & > div div {
         justify-content: center;
+        width: 100%;
+      }
+      & div:first-child > span {
+        margin-right: -8px;
       }
     }
     &__img-text-line {
       margin: 0 auto 3vh auto;
     }
-    &__img {
-      width: 202vw;
-      height: auto;
-      position: relative;
-      transform: translateX(-50%);
-      left: 50%;
+    &__anim {
+      width: 270%;
     }
     &__text-cont {
       margin-bottom: 12vh;
     }
     &__text {
       margin-bottom: 2vh;
+    }
+    &__acccent-text {
+      .metaverse__sup {
+        margin-right: -16px;
+      }
     }
     &__note {
       line-height: 139%;
@@ -233,7 +252,6 @@
         margin-bottom: 0;
       }
     }
-
     &__worth-text {
       margin-bottom: toIndex(75);
       font-size: toIndex(66);
@@ -246,6 +264,7 @@
       font-size: toIndex(18);
     }
     &__img-wrap {
+      display: block;
       margin: 0 auto;
       margin-bottom: toIndex(155);
       width: 93.28%;
@@ -265,7 +284,7 @@
       margin-bottom: toIndex(50);
     }
 
-    &__img {
+    &__anim {
       width: 100%;
       height: auto;
       max-width: 100%;
