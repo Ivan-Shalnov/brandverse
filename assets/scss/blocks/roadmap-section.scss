@@ -1,6 +1,6 @@
 .roadmap {
   padding-top: 7vh;
-  padding-bottom: 7vh;
+  padding-bottom: 18vh;
   overflow-x: hidden;
   &__row {
     margin-bottom: 11vh;
@@ -12,12 +12,14 @@
     margin-bottom: 5vh;
   }
   &__title {
+    display: flex;
+    justify-content: center;
     font-weight: 800;
     font-size: toIndexMob(70);
     letter-spacing: -0.05em;
-    & > .split {
+    & > .line {
       overflow-y: hidden;
-      display: flex;
+      padding: 0 0.05em;
     }
   }
   &__list-wrap {

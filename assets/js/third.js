@@ -1,3 +1,12 @@
+gsap.registerPlugin(SplitText);
+const ANIMATION_PARAMS = {
+  textStaggerY100: [
+    0.8,
+    { y: '100%', ease: Power2.easeInOut, yoyo: true },
+    0.05,
+  ],
+  opacity: [0.4, { opacity: 0, ease: Power2.easeInOut }],
+};
 // DISABLE SCROLL POSITION RECOVERY
 {
   if (history.scrollRestoration) {
@@ -267,30 +276,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // hwd animation end
 
     // text section animation start
-    const text = SplitType.create('.section-text__title', {
-      types: 'words, chars',
-    });
+    // const text = SplitType.create('.section-text__title', {
+    //   types: 'words, chars',
+    // });
 
-    const textTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.section-text',
-        scroller: REFS.scroller,
-        start: 'top 30%',
-        end: 'bottom bottom',
-        scrub: true,
-        toggleActions: 'play none none reverse',
-      },
-    });
+    // const textTl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: '.section-text',
+    //     scroller: REFS.scroller,
+    //     start: 'top 30%',
+    //     end: 'bottom bottom',
+    //     scrub: true,
+    //     toggleActions: 'play none none reverse',
+    //   },
+    // });
 
-    textTl.staggerFrom(
-      text.chars,
-      0.8,
-      {
-        opacity: 0.2,
-        ease: Linear.easeNone,
-      },
-      0.05,
-    );
+    // textTl.staggerFrom(
+    //   text.chars,
+    //   0.8,
+    //   {
+    //     opacity: 0.2,
+    //     ease: Linear.easeNone,
+    //   },
+    //   0.05,
+    // );
     // text section animation end
 
     // discuss section animation start
@@ -322,37 +331,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // HORIZONTAL SECTION ANIM
     {
+      // TEXT SPLIT
+      // AMBASADOR FRAME 1
+      const ambaFrame1TitleRef = new SplitText('.amba-frame1__title', {
+        type: 'lines, chars',
+        charsClass: 'char',
+        linesClass: 'line',
+      });
+      const ambaFrame1SubtitleRef = new SplitText('.amba-frame1__subtitle', {
+        type: 'lines, words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+
+      // AMBASADOR FRAME 2
+      const ambaFrame2TitleRef = new SplitText('.amba-frame2__title', {
+        type: 'lines, words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      // Z3NA FRAME 1
+      const z3naFrame1TitleRef = new SplitText('.z3na-frame1__title', {
+        type: 'lines,chars',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      const z3naFrame1SubtitleRef = new SplitText('.z3na-frame1__subtitle', {
+        type: 'lines, words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      // Z3NA FRAME 2
+      const z3naFrame2TitleRef = new SplitText('.z3na-frame2__title', {
+        type: 'lines,words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+
       const ambaFrame1Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame1__title div span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ambaFrame1TitleRef.chars,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .from(
-            '.amba-frame1 .horizontal__subtitle p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ambaFrame1SubtitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           );
       };
       const ambaFrame1AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame1__title div span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ambaFrame1TitleRef.chars,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
-            '.amba-frame1 .horizontal__subtitle p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ambaFrame1SubtitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           );
       };
@@ -360,17 +403,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const ambaFrame2Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame2 .horizontal__small-title > span > span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ambaFrame2TitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
             '.amba-frame2 .horizontal__col-text div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .from(
@@ -381,26 +420,20 @@ document.addEventListener('DOMContentLoaded', () => {
           )
           .staggerFrom(
             '.amba-frame2 .horizontal__col-subtitle div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '>',
           );
       };
       const ambaFrame2AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame2 .horizontal__small-title > span > span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ambaFrame2TitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
             '.amba-frame2 .horizontal__col-text div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           )
           .from(
@@ -411,60 +444,46 @@ document.addEventListener('DOMContentLoaded', () => {
           )
           .staggerFrom(
             '.amba-frame2 .horizontal__col-subtitle div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '>',
           );
       };
       const z3naFrame1Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame1__title > div span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            z3naFrame1TitleRef.chars,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
-            '.z3na-frame1 .horizontal__subtitle p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            z3naFrame1SubtitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           );
       };
       const z3naFrame1AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame1__title > div span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            z3naFrame1TitleRef.chars,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .from(
-            '.z3na-frame1 .horizontal__subtitle p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            z3naFrame1SubtitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           );
       };
       const z3naFrame2Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame2 .horizontal__small-title > span span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            z3naFrame2TitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
             '.z3na-frame2 .horizontal__col-text div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .from(
@@ -475,26 +494,20 @@ document.addEventListener('DOMContentLoaded', () => {
           )
           .staggerFrom(
             '.z3na-frame2 .horizontal__col-subtitle div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '>',
           );
       };
       const z3naFrame2AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame2 .horizontal__small-title > span span',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            z3naFrame2TitleRef.words,
+            ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
             '.z3na-frame2 .horizontal__col-text div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           )
           .from(
@@ -505,9 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
           )
           .staggerFrom(
             '.z3na-frame2 .horizontal__col-subtitle div p',
-            0.8,
-            { y: '100%', ease: Power2.easeInOut, yoyo: true },
-            0.05,
+            ...ANIMATION_PARAMS.textStaggerY100,
             '>',
           );
       };

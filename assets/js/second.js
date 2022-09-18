@@ -737,9 +737,18 @@ document.addEventListener('DOMContentLoaded', function (event) {
     {
       // TEXT SPLIT
       const textTopRef = new SplitText('.killer-feature__text-top', {
-        type: 'lines,words',
+        type: 'lines',
+        wordsClass: 'word',
+      });
+
+      const textBottomRef = new SplitText('.killer-feature__text-bottom', {
+        type: 'lines',
         linesClass: 'line',
         wordsClass: 'word',
+      });
+      new SplitText('.killer-feature__text-top,.killer-feature__text-bottom', {
+        type: 'lines',
+        linesClass: 'line',
       });
       const wrngMetaTl = gsap.timeline({
         scrollTrigger: {
@@ -757,7 +766,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           ...ANIMATION_PARAMS.textStaggerY100,
         )
         .staggerFrom(
-          '.killer-feature__text p span>span',
+          '.killer-feature__text .line div',
           ...ANIMATION_PARAMS.textStaggerY100,
         );
     }
@@ -765,15 +774,57 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // HORIZONTAL SECTION ANIM
     {
+      // TEXT SPLIT
+      // AMBASADOR FRAME 1
+      const ambaFrame1TitleRef = new SplitText('.amba-frame1__title', {
+        type: 'lines, chars',
+        charsClass: 'char',
+        linesClass: 'line',
+      });
+      const ambaFrame1SubtitleRef = new SplitText('.amba-frame1__subtitle', {
+        type: 'lines, words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+
+      // AMBASADOR FRAME 2
+      const ambaFrame2TitleRef = new SplitText('.amba-frame2__title', {
+        type: 'lines, words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      // Z3NA FRAME 1
+      const z3naFrame1TitleRef = new SplitText('.z3na-frame1__title', {
+        type: 'lines,chars',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      const z3naFrame1SubtitleRef = new SplitText('.z3na-frame1__subtitle', {
+        type: 'lines, words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+      // Z3NA FRAME 2
+      const z3naFrame2TitleRef = new SplitText('.z3na-frame2__title', {
+        type: 'lines,words',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
+
       const ambaFrame1Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame1__title div span',
+            ambaFrame1TitleRef.chars,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .from(
-            '.amba-frame1 .horizontal__subtitle p',
+            ambaFrame1SubtitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           );
@@ -781,12 +832,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const ambaFrame1AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame1__title div span',
+            ambaFrame1TitleRef.chars,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
-            '.amba-frame1 .horizontal__subtitle p',
+            ambaFrame1SubtitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           );
@@ -795,7 +846,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const ambaFrame2Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame2 .horizontal__small-title > span > span',
+            ambaFrame2TitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
@@ -819,7 +870,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const ambaFrame2AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.amba-frame2 .horizontal__small-title > span > span',
+            ambaFrame2TitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
@@ -843,12 +894,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const z3naFrame1Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame1__title > div span',
+            z3naFrame1TitleRef.chars,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .staggerFrom(
-            '.z3na-frame1 .horizontal__subtitle p',
+            z3naFrame1SubtitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           );
@@ -856,12 +907,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const z3naFrame1AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame1__title > div span',
+            z3naFrame1TitleRef.chars,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
           .from(
-            '.z3na-frame1 .horizontal__subtitle p',
+            z3naFrame1SubtitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             '<',
           );
@@ -869,7 +920,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const z3naFrame2Anim = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame2 .horizontal__small-title > span span',
+            z3naFrame2TitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
@@ -893,7 +944,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const z3naFrame2AnimMob = function (tl) {
         tl.addLabel('start')
           .staggerFrom(
-            '.z3na-frame2 .horizontal__small-title > span span',
+            z3naFrame2TitleRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
           )
@@ -1230,6 +1281,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // ROADMAP ANIM
     {
+      // TEXT SPLIT
+      const titleRef = new SplitText('.roadmap__title', {
+        type: 'lines,chars',
+        charsClass: 'char',
+        linesClass: 'line',
+        wordsClass: 'word',
+      });
       //TITLE ANIMATION
       const roadMapTl = gsap.timeline({
         scrollTrigger: {
@@ -1242,7 +1300,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         },
       });
       roadMapTl.staggerFrom(
-        '.roadmap__title .split span',
+        titleRef.chars,
         ...ANIMATION_PARAMS.textStaggerY100,
       );
       ScrollTrigger.matchMedia({

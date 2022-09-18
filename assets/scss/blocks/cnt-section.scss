@@ -93,13 +93,7 @@
     }
   }
 }
-@media (max-width: 450px) {
-  .cnt-section {
-    &__mail {
-      font-size: toIndexMob(26);
-    }
-  }
-}
+
 @media (max-width: 1199px) {
   .cnt-section {
     .container {
@@ -144,6 +138,13 @@
     }
     &__link {
       font-size: 12.7vw;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .cnt-section {
+    &__subtitle {
+      font-size: toIndexMob(26);
     }
   }
 }

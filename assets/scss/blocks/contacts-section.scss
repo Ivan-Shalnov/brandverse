@@ -96,13 +96,7 @@
     }
   }
 }
-@media (max-width: 450px) {
-  .contacts-section {
-    &__mail {
-      font-size: toIndexMob(26);
-    }
-  }
-}
+
 @media (max-width: 1199px) {
   .contacts-section {
     margin-bottom: 0;
@@ -146,5 +140,12 @@
   .contacts-section + .footer .footer__social-list-cont {
     width: min-content;
     margin-left: auto;
+  }
+}
+@media (max-width: 450px) {
+  .contacts-section {
+    &__subtitle {
+      font-size: toIndexMob(26);
+    }
   }
 }

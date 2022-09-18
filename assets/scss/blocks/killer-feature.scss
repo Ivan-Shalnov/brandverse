@@ -38,10 +38,7 @@
       &:not(:last-child) {
         margin-bottom: toIndex(20);
       }
-      span {
-        display: block;
-      }
-      & > span {
+      & > .line {
         overflow-y: hidden;
       }
     }
