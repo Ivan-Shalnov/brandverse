@@ -4496,13 +4496,13 @@ h5 {
         overflow-y: hidden; }
     .killer-feature__text a {
       position: relative;
-      display: inline-block;
+      display: inline;
       color: #c5fd64;
       text-decoration: underline; }
       .killer-feature__text a > * {
         text-decoration: underline; }
   .killer-feature__text-top {
-    max-width: calc((1vw + 1vh) * (237 / 30)); }
+    max-width: 240px; }
   .killer-feature__text-bottom {
     max-width: calc((1vw + 1vh) * (203 / 30)); }
   .killer-feature__cube {

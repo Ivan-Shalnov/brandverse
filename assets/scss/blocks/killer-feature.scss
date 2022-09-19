@@ -45,7 +45,7 @@
 
     a {
       position: relative;
-      display: inline-block;
+      display: inline;
       color: $green;
       text-decoration: underline;
       & > * {
@@ -54,7 +54,7 @@
     }
   }
   &__text-top {
-    max-width: toIndex(237);
+    max-width: 240px;
   }
   &__text-bottom {
     max-width: toIndex(203);

@@ -736,20 +736,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //KILLER FEATRUE ANIM
     {
       // TEXT SPLIT
-      const textTopRef = new SplitText('.killer-feature__text-top', {
-        type: 'lines',
-        wordsClass: 'word',
-      });
+      // const textTopRef = new SplitText('.killer-feature__text-top', {
+      //   type: 'lines',
+      //   wordsClass: 'word',
+      // });
 
-      const textBottomRef = new SplitText('.killer-feature__text-bottom', {
-        type: 'lines',
-        linesClass: 'line',
-        wordsClass: 'word',
-      });
-      new SplitText('.killer-feature__text-top,.killer-feature__text-bottom', {
-        type: 'lines',
-        linesClass: 'line',
-      });
+      // const textBottomRef = new SplitText('.killer-feature__text-bottom', {
+      //   type: 'lines',
+      //   linesClass: 'line',
+      //   wordsClass: 'word',
+      // });
+      // new SplitText('.killer-feature__text-top,.killer-feature__text-bottom', {
+      //   type: 'lines',
+      //   linesClass: 'line',
+      // });
       const wrngMetaTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.killer-feature',
@@ -764,11 +764,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
         .staggerFrom(
           '.killer-feature__title .split span',
           ...ANIMATION_PARAMS.textStaggerY100,
-        )
-        .staggerFrom(
-          '.killer-feature__text .line div',
-          ...ANIMATION_PARAMS.textStaggerY100,
         );
+      // .staggerFrom(
+      //   '.killer-feature__text .line div',
+      //   ...ANIMATION_PARAMS.textStaggerY100,
+      // );
     }
     // KILLER FEATRUE ANIM
 
