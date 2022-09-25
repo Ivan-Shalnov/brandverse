@@ -154,3 +154,8 @@
     // }
   }
 }
+@media (min-width: 1200px) {
+  .section-discuss + .footer .footer__social-list-cont {
+    display: none;
+  }
+}

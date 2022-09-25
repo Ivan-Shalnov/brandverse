@@ -24,11 +24,11 @@
   }
   &__subtitle {
     font-weight: 800;
-    font-size: toIndex(66);
+    font-size: toIndexMob(24);
     line-height: 1;
     letter-spacing: -0.033em;
     overflow: hidden;
-    margin-bottom: -1.2%;
+    margin-bottom: toIndex(-35);
     p {
       line-height: 1.2;
     }
@@ -38,7 +38,12 @@
       }
     }
   }
+  &__title-wrap {
+    width: min-content;
+    margin: 0 auto;
+  }
   &__title {
+    margin-left: -0.04em;
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 700;
@@ -46,7 +51,7 @@
     line-height: 1;
     letter-spacing: -0.04em;
     margin-bottom: -5%;
-    display: flex;
+    display: inline-flex;
     overflow: hidden;
 
     // @media not all and (min-resolution: 0.001dpcm) {
@@ -59,8 +64,7 @@
     }
   }
   &__line {
-    margin-top: 5vw;
-    width: 100%;
+    margin-top: toIndex(50);
     height: toIndex(33);
     background-color: #fff;
     transition: background-color 0.3s;
@@ -69,6 +73,12 @@
 
 @media (max-width: 1199px) {
   .promo-third {
+    &__title-wrap {
+      width: 100%;
+    }
+    &__subtitle {
+      max-width: toIndexMob(170);
+    }
     &__title {
       font-size: 27.5vw;
     }
@@ -101,7 +111,7 @@
       line-height: 86%;
       letter-spacing: -0.041em;
       color: #000000;
-      margin-bottom: toIndexMob(-40);
+      margin-bottom: toIndexMob(-20);
     }
   }
 }
@@ -110,6 +120,9 @@
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     @media (max-width: 767px) {
       .promo-third {
+        &__title {
+          margin-bottom: -5vw;
+        }
         &__marquee {
           margin-bottom: -70px;
         }

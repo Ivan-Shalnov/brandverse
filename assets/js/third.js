@@ -187,6 +187,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // promo animation end
 
     // benefits animation start
+    const benefitsTitleRef = new SplitText('.benefits__title .line', {
+      type: 'chars',
+      charsClass: 'char',
+    });
+    const benefitsCardsTitles = new SplitText('.benefit-card__title', {
+      type: 'lines',
+    });
+    new SplitText('.benefit-card__title', {
+      type: 'lines',
+      linesClass: 'line',
+    });
     const benefitsTl = gsap.timeline({
       scrollTrigger: {
         trigger: '.benefits',
@@ -198,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     benefitsTl.staggerFrom(
-      '.benefits__title .split span',
+      benefitsTitleRef.chars,
       0.8,
       { y: '100%', ease: Power2.easeInOut, yoyo: true },
       0.05,
@@ -225,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'start',
       )
       .staggerFrom(
-        '.benefit-card__title div p',
+        '.benefit-card__title .line div',
         0.8,
         { y: '100%', ease: Power2.easeInOut, yoyo: true },
         0.05,

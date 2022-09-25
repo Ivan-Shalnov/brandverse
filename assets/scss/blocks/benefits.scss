@@ -26,28 +26,22 @@
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 700;
-    font-size: toIndex(160);
+    font-size: toIndexMob(87);
     line-height: 1;
     letter-spacing: -0.035em;
     position: relative;
     margin-bottom: toIndex(300);
-    h2 {
-      display: flex;
+    .line {
+      margin-bottom: toIndex(-33);
       overflow: hidden;
-      &:not(:last-child) {
-        margin-bottom: -5%;
-      }
-      span {
-        display: block;
-      }
     }
     &.purpure {
       color: $purpure;
     }
     &.right {
       margin-top: toIndex(390);
-      h2 {
-        justify-content: flex-end;
+      .line {
+        text-align: right;
       }
     }
   }
@@ -99,6 +93,7 @@
     position: relative;
   }
   &__title {
+    max-width: 75%;
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 700;
@@ -106,7 +101,7 @@
     line-height: 1;
     letter-spacing: -0.033em;
     color: $purpure;
-    div {
+    .line {
       margin-bottom: toIndex(-15);
       overflow: hidden;
     }
@@ -142,21 +137,24 @@
 
 @media (max-width: 1199px) {
   .benefits {
+    padding-bottom: 19.7vh;
     &__header {
       grid-template-columns: 1fr;
       margin-bottom: toIndex(200);
     }
     &__title {
       margin-bottom: 0;
-      h2:not(:last-child) {
-        margin-bottom: -2%;
+      .line {
+        margin-bottom: toIndexMob(-12);
       }
       &.right {
         margin-top: 0;
       }
     }
     &__circle {
-      left: toIndex(200);
+      top: toIndexMob(35);
+      left: auto;
+      right: toIndexMob(245);
     }
     &__list {
       grid-template-columns: 1fr 1fr;
@@ -179,7 +177,7 @@
     padding-top: 0;
     &__title {
       &:not(:last-child) {
-        margin-bottom: toIndex(100);
+        margin-bottom: toIndexMob(50);
       }
     }
   }
@@ -201,22 +199,28 @@
   .benefit-card {
     &__line-wrap {
       width: calc(100vw - (var(--index) * 4));
+      height: toIndexMob(16);
+      overflow: hidden;
+      margin-bottom: toIndexMob(35);
     }
     &__line {
       width: calc(100vw - (var(--index) * 4));
     }
     &__title {
-      font-size: toIndex(200);
-      display: flex;
-      flex-wrap: wrap;
-      > div {
+      font-size: toIndexMob(66);
+      max-width: toIndexMob(285);
+      // display: flex;
+      // flex-wrap: wrap;
+      .line {
         margin-right: 0.2em;
+        margin-bottom: toIndexMob(-12);
       }
     }
     &__number {
       font-size: 12px;
     }
     &__text {
+      display: none;
       font-size: toIndex(50);
       margin-top: toIndex(50);
     }

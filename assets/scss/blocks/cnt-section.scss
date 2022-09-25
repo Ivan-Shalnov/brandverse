@@ -1,7 +1,4 @@
 .cnt-section {
-  & + .footer .footer__social-list-cont {
-    display: none;
-  }
   padding: toIndex(200) 0;
   &__row {
     display: flex;
@@ -146,5 +143,10 @@
     &__subtitle {
       font-size: toIndexMob(26);
     }
+  }
+}
+@media (min-width: 1200px) {
+  .cnt-section + .footer .footer__social-list-cont {
+    display: none;
   }
 }
