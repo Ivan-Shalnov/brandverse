@@ -5132,7 +5132,7 @@ h5 {
     .horizontal__title {
       font-size: calc((1vw + 1vh) * (199 / 30));
       max-width: calc((1vw + 1vh) * (770 / 30)); } }
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     .horizontal__title {
       margin-bottom: calc((1vw + 1vh) * (35 / 11.87)); } }
   .horizontal__title > .line {
