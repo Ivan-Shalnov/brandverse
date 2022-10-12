@@ -24,7 +24,7 @@
     letter-spacing: -0.033em;
     .split {
       overflow-y: hidden;
-    padding-right: 0.033em;
+      padding-right: 0.033em;
 
       display: flex;
       &:not(:last-child) {
@@ -35,7 +35,7 @@
   &__block {
     text-align: right;
     margin-top: auto;
-    margin-bottom: 2.5%;
+    // margin-bottom: 2.5%;
   }
   &__block-title {
     font-weight: 800;

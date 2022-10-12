@@ -180,20 +180,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     {
       // SPLIT TITLE INTO CHARS
-      ScrollTrigger.matchMedia({
-        '(max-width: 1199px)': () => {
-          new SplitText('.promo-second__title.mobile', {
-            type: 'chars',
-            charsClass: 'char',
-          });
-        },
-        '(min-width:1200px)': () => {
-          new SplitText('.promo-second__title.desktop', {
-            type: 'chars',
-            charsClass: 'char',
-          });
-        },
-      });
+      // ScrollTrigger.matchMedia({
+      //   '(max-width: 1199px)': () => {
+      //     new SplitText('.promo-second__title.mobile', {
+      //       type: 'chars',
+      //       charsClass: 'char',
+      //     });
+      //   },
+      //   '(min-width:1200px)': () => {
+      //     new SplitText('.promo-second__title.desktop', {
+      //       type: 'chars',
+      //       charsClass: 'char',
+      //     });
+      //   },
+      // });
       const promoSecondTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.promo-second',
@@ -206,16 +206,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
       promoSecondTl
         .addLabel('start', '+=1')
-        .staggerFrom(
-          '.promo-second__top-title .char',
-          ...ANIMATION_PARAMS.textStaggerY100,
-        )
-        .staggerFrom(
-          '.promo-second__bottom-title .char',
-          ...ANIMATION_PARAMS.textStaggerY100,
-          'start',
-        )
-        .from('.promo-second__text', ...ANIMATION_PARAMS.opacity, '>');
+        // .staggerFrom(
+        //   '.promo-second__top-title .char',
+        //   ...ANIMATION_PARAMS.textStaggerY100,
+        // )
+        // .staggerFrom(
+        //   '.promo-second__bottom-title .char',
+        //   ...ANIMATION_PARAMS.textStaggerY100,
+        //   'start',
+        // )
+        .from('.promo-second__text', ...ANIMATION_PARAMS.opacity, 'start');
     }
 
     //METAVERSE ANIM START
@@ -488,10 +488,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // JSON ANIMATION
 
       // SOLUTION TITLE SPLIT
-      const solutionTitleRef = new SplitText('.solution__title', {
-        type: 'chars',
-        charsClass: 'char',
-      });
+      // const solutionTitleRef = new SplitText('.solution__title', {
+      //   type: 'chars',
+      //   charsClass: 'char',
+      // });
       const solutionTextRef = new SplitText('.solution__text', {
         type: 'lines, words',
         linesClass: 'line',
@@ -537,12 +537,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
             solutionTextRef.words,
             ...ANIMATION_PARAMS.textStaggerY100,
             'start',
-          )
-          .staggerFrom(
-            solutionTitleRef.chars,
-            ...ANIMATION_PARAMS.textStaggerY100,
-            'start',
           );
+        // .staggerFrom(
+        //   solutionTitleRef.chars,
+        //   ...ANIMATION_PARAMS.textStaggerY100,
+        //   'start',
+        // );
       }
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => {

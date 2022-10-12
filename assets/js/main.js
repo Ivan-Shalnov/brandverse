@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             endTrigger: '.ambassador__perks-container',
             pin: true,
             start: 'center center',
-            end: 'bottom 85.5%',
+            end: 'bottom 97%',
           });
         },
       });
@@ -667,12 +667,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
               gsap.to(REFS.scroller, {
                 backgroundColor: colorSection.dataset.bgcolor,
                 color: colorSection.dataset.textcolor,
+                '--accent-color': colorSection.dataset.accentcolor || '',
                 overwrite: 'auto',
               }),
             onEnterBack: () =>
               gsap.to(REFS.scroller, {
                 backgroundColor: colorSection.dataset.bgcolor,
                 color: colorSection.dataset.textcolor,
+                '--accent-color': colorSection.dataset.accentcolor || '',
                 overwrite: 'auto',
               }),
           });

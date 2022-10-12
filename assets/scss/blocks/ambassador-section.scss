@@ -55,7 +55,7 @@
   &__perks-container {
     margin-left: auto;
     z-index: 1;
-    width: calc(var(--index) * 13.7);
+    width: toIndex(410);
   }
   &__perks-title {
     margin-bottom: calc(var(--index) * 6.33);

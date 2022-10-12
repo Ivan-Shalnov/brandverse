@@ -7,12 +7,12 @@
           fill: #000;
         }
         .black-stroke {
-          stroke: #000;
+          stroke: var(--accent-color, #000);
         }
       }
       &__marquee-bottom {
         .black {
-          fill: #000;
+          fill: var(--accent-color, #4f06c6);
         }
       }
     }
@@ -33,14 +33,15 @@
   &__marquee-top {
     // height: toIndex(208);
     svg {
-      width: 0.9em;
+      width: 0.8em;
+      vertical-align: baseline;
     }
     .black {
       fill: #fff;
       transition: 0.3s;
     }
     .black-stroke {
-      stroke: #fff;
+      stroke: var(--accent-color, #fff);
       transition: 0.3s;
     }
   }
@@ -58,7 +59,7 @@
       margin-right: 0.052em;
     }
     & > svg {
-      margin-bottom: 0.2em;
+      // margin-bottom: 0.2em;
 
       height: auto;
       // vertical-align: middle;
@@ -78,7 +79,7 @@
       transform: rotateZ(90deg);
     }
     .black {
-      fill: #fff;
+      fill: var(--accent-color, #fff);
       transition: 0.3s;
     }
   }

@@ -4,7 +4,7 @@
   overflow: hidden;
   font-weight: 800;
   font-size: toIndex(33);
-  line-height: 150%;
+  line-height: 165%;
   letter-spacing: -0.033em;
   color: #c5fd64;
   display: flex;
@@ -39,10 +39,11 @@
   }
   svg {
     position: absolute;
+    top: 0;
     bottom: toIndex(10);
     right: 0;
-    width: 1.36em;
-    height: auto;
+    width: auto;
+    height: 83%;
     stroke-width: toIndex(5);
     path {
       fill: currentColor;

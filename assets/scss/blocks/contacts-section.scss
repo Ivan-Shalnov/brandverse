@@ -137,6 +137,9 @@
   }
 }
 @media (min-width: 1200px) {
+  .contacts-section__title {
+    margin-top: -5%;
+  }
   .contacts-section + .footer .footer__social-list-cont {
     width: min-content;
     margin-left: auto;

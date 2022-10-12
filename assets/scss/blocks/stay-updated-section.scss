@@ -24,6 +24,8 @@
     left: 77.5%;
   }
   &__title {
+    margin-bottom: -1%;
+
     font-family: 'Bebas Neue';
     font-weight: 700;
     font-size: toIndex(300);
@@ -32,6 +34,8 @@
     .split {
       overflow-y: hidden;
       display: flex;
+    }
+    .split:not(:last-child) {
       margin-bottom: -4%;
     }
   }
