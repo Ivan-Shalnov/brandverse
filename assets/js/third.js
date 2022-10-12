@@ -609,7 +609,9 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
-          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
+          frameRefs.forEach((frame) =>
+            frame.setAttribute('horizontal', 'true'),
+          );
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           function horizontalScrollLengthFn() {
@@ -837,7 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach(link => {
+  linkRefs.forEach((link) => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(
