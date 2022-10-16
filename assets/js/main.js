@@ -108,9 +108,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
       // SOCIAL LIST
       {
-        const linksRef = document.querySelectorAll(
-          '.menu__social-link, .social-list__link',
-        );
+        const linksRef = document.querySelectorAll('.social-list__link');
         ScrollTrigger.matchMedia({
           '(max-width: 1199px)': () => linksRef.forEach(btnHover),
         });
