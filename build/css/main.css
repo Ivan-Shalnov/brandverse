@@ -824,6 +824,8 @@ h5 {
   left: 0;
   width: 100%;
   z-index: 10; }
+  .header--single .socials {
+    margin-right: 0; }
   .header__logo {
     margin-right: auto;
     width: calc((1vw + 1vh) * (166 / 30));
@@ -4936,7 +4938,7 @@ h5 {
 
 .benefit-card__number {
   position: absolute;
-  top: calc((1vw + 1vh) * (20 / 30));
+  top: calc((1vw + 1vh) * (16 / 30));
   right: 0;
   font-weight: 700;
   font-size: calc((1vw + 1vh) * (16 / 30));
@@ -5596,7 +5598,7 @@ h5 {
     line-height: 96%;
     letter-spacing: -0.033em;
     color: #c5fd64;
-    margin-bottom: calc((1vw + 1vh) * (30 / 30)); }
+    margin-bottom: calc((1vw + 1vh) * (34 / 30)); }
   .section-discuss .link {
     margin-bottom: calc((1vw + 1vh) * (50 / 30)); }
   .section-discuss .form {
@@ -5765,6 +5767,53 @@ h5 {
 @media (min-width: 1200px) {
   .cnt-section + .footer .footer__social-list-cont {
     display: none; } }
+
+.not-found {
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  padding: 0 calc(var(--index) * 2); }
+  .not-found__body {
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center; }
+  .not-found__title {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20.6vw;
+    line-height: 82%;
+    letter-spacing: -0.033em;
+    color: #000000; }
+  .not-found__footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding-bottom: calc((1vw + 1vh) * (60 / 30)); }
+  .not-found__list {
+    display: -ms-flexbox;
+    display: flex;
+    gap: calc((1vw + 1vh) * (100 / 30)); }
+    .not-found__list a {
+      font-weight: 400;
+      font-size: calc((1vw + 1vh) * (60 / 30));
+      line-height: 86%;
+      letter-spacing: -0.033em;
+      color: #000000; }
+  .not-found__email {
+    font-size: calc((1vw + 1vh) * (60 / 30));
+    line-height: 86%;
+    letter-spacing: -0.033em;
+    color: #000000;
+    opacity: 0.1; }
 
 body {
   -webkit-font-smoothing: antialiased;

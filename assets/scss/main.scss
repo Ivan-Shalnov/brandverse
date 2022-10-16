@@ -82,6 +82,9 @@
 @import 'blocks/section-discuss';
 @import 'blocks/cnt-section.scss';
 
+// 404 page
+@import 'blocks/not-found.scss';
+
 body {
   &.no-scroll {
     overflow: hidden;

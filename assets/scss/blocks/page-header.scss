@@ -5,6 +5,11 @@
   left: 0;
   width: 100%;
   z-index: 10;
+  &--single {
+    .socials {
+      margin-right: 0;
+    }
+  }
   &__logo {
     margin-right: auto;
     width: toIndex(166);
