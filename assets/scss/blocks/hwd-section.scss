@@ -150,6 +150,9 @@
       width: toIndex(30);
       background-color: #fff;
     }
+    &__block {
+      position: relative;
+    }
 
     &__block-line {
       margin-bottom: toIndex(24);
@@ -199,6 +202,18 @@
   &__block {
     width: toIndex(777);
     position: relative;
+  }
+  &__block-marker {
+    font-weight: 700;
+    font-size: toIndex(16);
+    line-height: 86%;
+    text-align: center;
+    letter-spacing: -0.033em;
+    color: #333333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: toIndex(30);
+    left: toIndex(-460);
   }
   &__subtitle {
     margin-bottom: toIndex(78);

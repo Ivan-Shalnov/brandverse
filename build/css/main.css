@@ -1482,6 +1482,8 @@ h5 {
       height: calc((1vw + 1vh) * (9 / 30));
       width: calc((1vw + 1vh) * (30 / 30));
       background-color: #fff; }
+    .hwd__title-top__block {
+      position: relative; }
     .hwd__title-top__block-line {
       margin-bottom: calc((1vw + 1vh) * (24 / 30));
       height: calc((1vw + 1vh) * (7 / 30));
@@ -1519,6 +1521,18 @@ h5 {
   .hwd__block {
     width: calc((1vw + 1vh) * (777 / 30));
     position: relative; }
+  .hwd__block-marker {
+    font-weight: 700;
+    font-size: calc((1vw + 1vh) * (16 / 30));
+    line-height: 86%;
+    text-align: center;
+    letter-spacing: -0.033em;
+    color: #333333;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    position: absolute;
+    top: calc((1vw + 1vh) * (30 / 30));
+    left: calc((1vw + 1vh) * (-460 / 30)); }
   .hwd__subtitle {
     margin-bottom: calc((1vw + 1vh) * (78 / 30));
     width: calc((1vw + 1vh) * (519 / 30));
