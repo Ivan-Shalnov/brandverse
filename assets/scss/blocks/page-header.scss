@@ -12,8 +12,9 @@
   }
   &__logo {
     margin-right: auto;
-    width: toIndex(166);
+    width: 130px;
     display: block;
+    margin-top: 4px;
     img {
       width: 100%;
     }
@@ -91,6 +92,12 @@
   .header {
     .socials {
       display: none;
+    }
+    &__menu-btn {
+      position: fixed !important;
+      z-index: 1;
+      top: toIndex(60) !important;
+      right: toIndex(60) !important;
     }
   }
 }

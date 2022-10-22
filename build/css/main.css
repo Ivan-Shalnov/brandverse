@@ -904,8 +904,9 @@ h5 {
     margin-right: 0; }
   .header__logo {
     margin-right: auto;
-    width: calc((1vw + 1vh) * (166 / 30));
-    display: block; }
+    width: 130px;
+    display: block;
+    margin-top: 4px; }
     .header__logo img {
       width: 100%; }
   .header__menu-btn {
@@ -968,7 +969,12 @@ h5 {
 
 @media (max-width: 767px) {
   .header .socials {
-    display: none; } }
+    display: none; }
+  .header__menu-btn {
+    position: fixed !important;
+    z-index: 1;
+    top: calc((1vw + 1vh) * (60 / 30)) !important;
+    right: calc((1vw + 1vh) * (60 / 30)) !important; } }
 
 .promo {
   min-height: 100vh;
@@ -2227,13 +2233,15 @@ h5 {
       margin-bottom: calc((1vw + 1vh) * (-18 / 11.87)); }
     .community__card {
       width: 270px;
-      height: 430px; }
+      height: 430px;
+      padding: calc((1vw + 1vh) * (160 / 30)) calc((1vw + 1vh) * (80 / 30)); }
       .community__card::before {
         width: 8px;
         height: 8px; }
       .community__card::after {
         height: 8px;
-        border-radius: 90px; }
+        border-radius: 90px;
+        left: calc((1vw + 1vh) * (80 / 30)); }
     .community__card-title {
       font-size: 35px;
       margin-bottom: 30px; }
@@ -3113,8 +3121,8 @@ h5 {
     font-size: 18px;
     margin-bottom: 35px; }
   .team__social-item {
-    width: 26px;
-    height: 26px; }
+    width: 22px;
+    height: 22px; }
     .team__social-item:not(:last-child) {
       margin-right: 10px; } }
 
@@ -3181,7 +3189,9 @@ h5 {
 
 @media (max-width: 767px) {
   .exp-section__title {
-    font-size: calc((1vw + 1vh) * (240 / 30)); } }
+    font-size: calc((1vw + 1vh) * (240 / 30)); }
+  .exp-card img {
+    max-width: 40%; } }
 
 .partners-section {
   padding: calc(var(--index) * 6.667) 0; }
@@ -3466,7 +3476,8 @@ h5 {
     font-size: calc(var(--index) * 1.1);
     line-height: 94%;
     letter-spacing: -0.033em;
-    color: currentColor; }
+    color: currentColor;
+    border-radius: 0; }
     .subscribe-form__input::-webkit-input-placeholder {
       color: currentColor; }
     .subscribe-form__input:-ms-input-placeholder {

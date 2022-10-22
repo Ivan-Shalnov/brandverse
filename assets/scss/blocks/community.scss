@@ -194,6 +194,7 @@
     &__card {
       width: 270px;
       height: 430px;
+      padding: toIndex(160) toIndex(80);
       &::before {
         width: 8px;
         height: 8px;
@@ -201,6 +202,7 @@
       &::after {
         height: 8px;
         border-radius: 90px;
+        left: toIndex(80);
       }
     }
     &__card-title {
