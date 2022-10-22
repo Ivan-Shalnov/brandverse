@@ -128,7 +128,7 @@
   }
 }
 
-#watches-fact__video {
+#watches-fact__video-wrap {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -140,12 +140,44 @@
   pointer-events: all;
   transition: 700ms ease-in-out;
 }
-#watches-fact__video.is-hidden {
+#watches-fact__video-wrap.is-hidden {
   transition: 700ms ease-in-out;
 
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
+}
+.watches-fact__video {
+  width: 100%;
+  height: 100%;
+}
+.watches-fact__video-close-btn {
+  display: flex;
+  gap: toIndex(20);
+  align-items: center;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 800;
+  font-size: toIndex(20);
+  line-height: 86%;
+  /* or 17px */
+
+  letter-spacing: -0.033em;
+  text-transform: uppercase;
+  color: $green;
+  cursor: pointer;
+  z-index: 999;
+  .icon {
+    width: 1.9em;
+    height: auto;
+  }
+  @media (max-width: 1199px) {
+    top: 10%;
+    gap: toIndexMob(20);
+    font-size: toIndexMob(20);
+  }
 }
 // @media (max-width: 1299px) {
 //   .watches-fact {

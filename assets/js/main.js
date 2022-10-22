@@ -695,13 +695,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   REFS.scroller.insertAdjacentHTML(
     'beforebegin',
-    '<div id="watches-fact__video" class="watches-fact__video is-hidden"></div>',
+    `<div id="watches-fact__video-wrap" class="watches-fact__video-wrap is-hidden">
+    <div class="watches-fact__video-close-btn"><span>Close</span><img class="icon" src="./img/close-4.svg"></img><span>Close</span></div>
+    <div id="watches-fact__video" class="watches-fact__video"></div></div>`,
   );
+  const videoWrapRef = document.querySelector('.watches-fact__video-wrap');
+  const closeBtnRef = document.querySelector('.watches-fact__video-close-btn');
+  closeBtnRef.addEventListener('click', onPlayerClose);
+
   var player;
   let playerWatches;
   let iframe;
-  const watchesContainer = document.querySelector('.watches-fact');
-  const watchesPlayer = document.querySelector('.watches-fact__video');
 
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -717,9 +721,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       width: '0',
       videoId: '0BgE91oLEN8',
       events: {
-        // onStateChange: onPlayWatches,
         onReady: onPlayerReady,
-        onStateChange: onPauseWatch,
       },
     });
   }
@@ -733,21 +735,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   watchesBtnRef.addEventListener('click', playFullscreen);
   function playFullscreen() {
-    iframe.classList.remove('is-hidden');
-
-    setTimeout(() => playerWatches.playVideo(), 500);
+    videoWrapRef.classList.remove('is-hidden');
+  }
+  function onPlayerClose() {
+    playerWatches.pauseVideo();
+    videoWrapRef.classList.toggle('is-hidden');
   }
   function onPlayerReady(event) {
     iframe = document.querySelector('#watches-fact__video');
-  }
-  function onPauseWatch(event) {
-    if (
-      event.data == YT.PlayerState.PAUSED ||
-      event.data == YT.PlayerState.ENDED
-    ) {
-      playerWatches.pauseVideo();
-      iframe.classList.add('is-hidden');
-    }
   }
   playerContainer.addEventListener('click', function () {
     locoScroll.scrollTo(playerContainer);
