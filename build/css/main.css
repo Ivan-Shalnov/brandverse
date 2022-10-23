@@ -781,7 +781,8 @@ h5 {
 @media (max-width: 1199px) {
   .menu {
     height: 100vh;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    overflow-x: hidden; }
     .menu__nav {
       margin-bottom: calc((1vw + 1vh) * (45 / 11.87)); }
     .menu__social-link {
