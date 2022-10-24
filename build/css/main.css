@@ -911,6 +911,7 @@ h5 {
     .header__logo img {
       width: 100%; }
   .header__menu-btn {
+    z-index: 9999;
     overflow-y: hidden;
     font-size: calc(var(--index) * 4.3);
     line-height: 1;
@@ -4314,8 +4315,14 @@ h5 {
     white-space: nowrap;
     padding: 0 0.05em; }
 
-.slide__title > svg {
-  fill: currentColor; }
+.slide__title {
+  font-weight: 800;
+  font-size: calc((1vw + 1vh) * (333 / 30));
+  line-height: 90%;
+  /* identical to box height, or 300px */
+  letter-spacing: -0.05em; }
+  .slide__title > svg {
+    fill: currentColor; }
 
 .slide__col {
   display: -ms-flexbox;
@@ -4374,30 +4381,21 @@ h5 {
   .slide__slide {
     padding: 18.5vh 0; }
     .slide__slide .container {
-      position: relative; }
-    .slide__slide:nth-child(even) .slide__title {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: calc((1vw + 1vh) * (400 / 11.87));
-      -webkit-transform-origin: top left;
-              transform-origin: top left;
-      -webkit-transform: rotateZ(-90deg) translateY(-20%) translateX(-100%);
-              transform: rotateZ(-90deg) translateY(-20%) translateX(-100%); }
-    .slide__slide:nth-child(even) .slide__col {
-      margin-left: auto; }
-    .slide__slide:nth-child(odd) .slide__title {
-      position: absolute;
-      top: 0;
-      right: 0;
-      -webkit-transform-origin: top left;
-              transform-origin: top left;
-      -webkit-transform: rotateZ(-90deg) translateY(100%) translateX(-100%);
-              transform: rotateZ(-90deg) translateY(100%) translateX(-100%); }
-    .slide__slide:nth-child(odd) .slide__col {
-      margin-right: auto; }
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+    .slide__slide:nth-child(odd) .container {
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
   .slide__title {
-    width: calc((1vw + 1vh) * (400 / 11.87)); }
+    -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+    -webkit-text-orientation: mixed;
+            text-orientation: mixed;
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg); }
   .slide__col {
     max-width: calc((1vw + 1vh) * (165 / 11.87)); }
   .slide__subtitle {
@@ -4475,9 +4473,6 @@ h5 {
           flex-direction: column;
       -ms-flex-pack: end;
           justify-content: flex-end; }
-    .slide__title {
-      width: calc((1vw + 1vh) * (1209 / 30));
-      height: calc((1vw + 1vh) * (300 / 30)); }
     .slide__line {
       position: absolute;
       top: 0;

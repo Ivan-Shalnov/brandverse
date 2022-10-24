@@ -21,6 +21,7 @@
   }
 
   &__menu-btn {
+    z-index: 9999;
     overflow-y: hidden;
     font-size: calc(var(--index) * 4.3);
     line-height: 1;

@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     // SOCIAL LIST
+
     // MENU
     {
       const refs = {
@@ -145,6 +146,28 @@ document.addEventListener('DOMContentLoaded', () => {
       refs.openBtn.addEventListener('click', handleMenuOpen);
       refs.closeBtn.addEventListener('click', handleMenuClose);
     }
+
+    // MENU PIN
+    const menuBtnRef = document.querySelector('.header__menu-btn');
+    const menuAnim = gsap.to(menuBtnRef, {
+      opacity: 0,
+      xPercent: 100,
+      paused: true,
+    });
+    ScrollTrigger.matchMedia({
+      '(min-width:1200px)': () => {
+        ScrollTrigger.create({
+          scroller: REFS.scroller,
+          trigger: menuBtnRef,
+          pin: true,
+          pinSpacing: false,
+          start: 'top 5%',
+          end: '+=9999999',
+        });
+      },
+    });
+    // MENU PIN
+
     // promo animation start
 
     const promoTl = gsap.timeline({
@@ -607,9 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
-          frameRefs.forEach((frame) =>
-            frame.setAttribute('horizontal', 'true'),
-          );
+          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           function horizontalScrollLengthFn() {
@@ -655,7 +676,19 @@ document.addEventListener('DOMContentLoaded', () => {
             startAt: { x: 0 },
             ease: 'none',
           });
-
+          // Hide menu
+          ScrollTrigger.create({
+            scroller: REFS.scroller,
+            trigger: '.horizontal__wrap',
+            start: 'top 5%',
+            // markers: true,
+            end: () => '+=' + (horizontalScrollLengthFn() + window.innerHeight),
+            onEnter: () => menuAnim.play(),
+            onEnterBack: () => menuAnim.play(),
+            onLeaveBack: () => menuAnim.reverse(),
+            onLeave: () => menuAnim.reverse(),
+          });
+          // Hide Menu
           // AMBA COLLOR TRIGGER
           ScrollTrigger.create({
             containerAnimation: slideScrollAnim,
@@ -837,7 +870,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach((link) => {
+  linkRefs.forEach(link => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(

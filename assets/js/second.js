@@ -141,9 +141,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // SOCIAL LIST
     {
-      const linksRef = document.querySelectorAll(
-        '.social-list__link',
-      );
+      const linksRef = document.querySelectorAll('.social-list__link');
       ScrollTrigger.matchMedia({
         '(max-width: 1199px)': () => linksRef.forEach(btnHover),
       });
@@ -176,6 +174,27 @@ document.addEventListener('DOMContentLoaded', function (event) {
       refs.openBtn.addEventListener('click', handleMenuOpen);
       refs.closeBtn.addEventListener('click', handleMenuClose);
     }
+
+    // MENU PIN
+    const menuBtnRef = document.querySelector('.header__menu-btn');
+    const menuAnim = gsap.to(menuBtnRef, {
+      opacity: 0,
+      xPercent: 100,
+      paused: true,
+    });
+    ScrollTrigger.matchMedia({
+      '(min-width:1200px)': () => {
+        ScrollTrigger.create({
+          scroller: REFS.scroller,
+          trigger: menuBtnRef,
+          pin: true,
+          pinSpacing: false,
+          start: 'top 5%',
+          end: '+=9999999',
+        });
+      },
+    });
+    // MENU PIN
     // SECOND PROMO ANIMATION START
 
     {
@@ -448,43 +467,43 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // SLIDE SECTION ANIM
     {
       // JSON ANIMATION
-      {
-        // REDUCE
-        bodymovin.loadAnimation({
-          container: document.querySelector(`.reduce .slide__title`),
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: `img/reduce.json`,
-          rendererSettings: {
-            viewBoxSize: '90 700 1490 300',
-          },
-        });
+      // {
+      //   // REDUCE
+      //   bodymovin.loadAnimation({
+      //     container: document.querySelector(`.reduce .slide__title`),
+      //     renderer: 'svg',
+      //     loop: true,
+      //     autoplay: true,
+      //     path: `img/reduce.json`,
+      //     rendererSettings: {
+      //       viewBoxSize: '90 700 1490 300',
+      //     },
+      //   });
 
-        // CULTIVATE
-        bodymovin.loadAnimation({
-          container: document.querySelector(`.cultivate .slide__title`),
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: `img/cultivate.json`,
-          rendererSettings: {
-            viewBoxSize: '90 700 1750 300',
-          },
-        });
+      //   // CULTIVATE
+      //   bodymovin.loadAnimation({
+      //     container: document.querySelector(`.cultivate .slide__title`),
+      //     renderer: 'svg',
+      //     loop: true,
+      //     autoplay: true,
+      //     path: `img/cultivate.json`,
+      //     rendererSettings: {
+      //       viewBoxSize: '90 700 1750 300',
+      //     },
+      //   });
 
-        // NAVIGATE
-        bodymovin.loadAnimation({
-          container: document.querySelector(`.navigate .slide__title`),
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: `img/navigate.json`,
-          rendererSettings: {
-            viewBoxSize: '90 700 1750 300',
-          },
-        });
-      }
+      //   // NAVIGATE
+      //   bodymovin.loadAnimation({
+      //     container: document.querySelector(`.navigate .slide__title`),
+      //     renderer: 'svg',
+      //     loop: true,
+      //     autoplay: true,
+      //     path: `img/navigate.json`,
+      //     rendererSettings: {
+      //       viewBoxSize: '90 700 1750 300',
+      //     },
+      //   });
+      // }
       // JSON ANIMATION
 
       // SOLUTION TITLE SPLIT
@@ -615,9 +634,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
               end: 'bottom center',
               toggleActions: 'play none none reverse',
               animation: solutionAnimTl,
-              // onEnter: () => setColors({ bg: bgColor, color: textColor }),
-              // onEnterBack: () => setColors({ bg: bgColor, color: textColor }),
-              // onLeaveBack: () => setColors({ bg: '#fff', color: '#000' }),
+              // onEnter: () => gsap.to(menuBtnRef, { opacity: 0 }),
+              // onEnterBack: () => gsap.to(menuBtnRef, { opacity: 0 }),
             });
           }
           // SOLUTION SECTION
@@ -636,8 +654,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
               // markers: true,
               invalidateOnRefresh: true,
               end: () => `+=${getScrollLength() * 1.1}`,
-              onEnter: () => setColors({ bg: '#fff', color: '#000' }),
-              onEnterBack: () => setColors({ bg: '#000', color: '#C5FD64' }),
+              onEnter: () => {
+                setColors({ bg: '#fff', color: '#000' });
+                menuAnim.play();
+              },
+              onEnterBack: () => {
+                setColors({ bg: '#000', color: '#C5FD64' });
+                menuAnim.play();
+              },
+              onLeaveBack: () => menuAnim.reverse(),
+              onLeave: () => menuAnim.reverse(),
             },
           });
           horizontalScrollAnim
@@ -1081,7 +1107,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
             startAt: { x: 0 },
             ease: 'none',
           });
-
+          // Hide menu
+          ScrollTrigger.create({
+            scroller: REFS.scroller,
+            trigger: '.horizontal__wrap',
+            start: 'top 5%',
+            // markers: true,
+            end: () => '+=' + (horizontalScrollLengthFn() + window.innerHeight),
+            onEnter: () => menuAnim.play(),
+            onEnterBack: () => menuAnim.play(),
+            onLeaveBack: () => menuAnim.reverse(),
+            onLeave: () => menuAnim.reverse(),
+          });
+          // Hide Menu
           // AMBA COLLOR TRIGGER
           ScrollTrigger.create({
             containerAnimation: slideScrollAnim,

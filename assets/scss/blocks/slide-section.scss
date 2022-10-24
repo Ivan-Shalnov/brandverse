@@ -34,6 +34,12 @@
 }
 .slide {
   &__title {
+    font-weight: 800;
+    font-size: toIndex(333);
+    line-height: 90%;
+    /* identical to box height, or 300px */
+
+    letter-spacing: -0.05em;
     & > svg {
       fill: currentColor;
     }
@@ -100,38 +106,49 @@
     &__slide {
       padding: 18.5vh 0;
       .container {
-        position: relative;
-      }
-      &:nth-child(even) {
-        .slide__title {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: toIndexMob(400);
-          transform-origin: top left;
-          transform: rotateZ(-90deg) translateY(-20%) translateX(-100%);
-        }
-        .slide__col {
-          margin-left: auto;
-        }
+        display: flex;
+        justify-content: space-between;
       }
       &:nth-child(odd) {
-        .slide__title {
-          position: absolute;
-          top: 0;
-          right: 0;
-          transform-origin: top left;
-          transform: rotateZ(-90deg) translateY(100%) translateX(-100%);
-        }
-        .slide__col {
-          margin-right: auto;
+        .container {
+          flex-direction: row-reverse;
         }
       }
+      // &:nth-child(even) {
+      //   .slide__title {
+      //     position: absolute;
+      //     top: 0;
+      //     left: calc(var(--index) * 2);
+      //     // width: toIndexMob(400);
+      //     transform-origin: top left;
+      //     transform: rotateZ(-90deg) translateX(-100%);
+      //   }
+      //   .slide__col {
+      //     margin-left: auto;
+      //   }
+      // }
+      // &:nth-child(odd) {
+      //   .slide__title {
+      //     position: absolute;
+      //     top: 0;
+      //     right: calc(var(--index) * 2);
+      //     transform-origin: top left;
+      //     transform: translateX(100%) rotateZ(-90deg) translateY(-100%)
+      //       translateX(-100%);
+      //   }
+      //   .slide__col {
+      //     margin-right: auto;
+      //   }
+      // }
     }
-
     &__title {
-      width: toIndexMob(400);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotateZ(180deg);
     }
+    // &__title {
+    //   width: toIndexMob(400);
+    // }
     &__col {
       max-width: toIndexMob(165);
     }
@@ -214,10 +231,10 @@
       flex-direction: column;
       justify-content: flex-end;
     }
-    &__title {
-      width: toIndex(1209);
-      height: toIndex(300);
-    }
+    // &__title {
+    //   width: toIndex(1209);
+    //   height: toIndex(300);
+    // }
     &__line {
       position: absolute;
       top: 0;

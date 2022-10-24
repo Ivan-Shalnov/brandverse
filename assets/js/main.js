@@ -142,6 +142,22 @@ document.addEventListener('DOMContentLoaded', function (event) {
         refs.closeBtn.addEventListener('click', handleMenuClose);
       }
 
+      // MENU PIN
+      const menuBtnRef = document.querySelector('.header__menu-btn');
+      ScrollTrigger.matchMedia({
+        '(min-width:1200px)': () => {
+          ScrollTrigger.create({
+            scroller: REFS.scroller,
+            trigger: menuBtnRef,
+            pin: true,
+            pinSpacing: false,
+            start: 'top 5%',
+            end: '+=9999999',
+          });
+        },
+      });
+      // MENU PIN
+
       // promo animation start
       const promoTl = gsap.timeline({
         scrollTrigger: {
@@ -631,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               '[data-scroll-speed-mob]',
             );
             console.log('elements', elements);
-            elements.forEach((el) => {
+            elements.forEach(el => {
               gsap.to(el, {
                 yPercent: -10 * el.dataset.scrollSpeedMob,
                 ease: Power2.easeInOut,
@@ -679,6 +695,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }
       }
       // END CHANGE BG COLOR
+
       ScrollTrigger.refresh();
     });
   };
@@ -771,7 +788,7 @@ function spliting(element) {
 // BUTTON HOVER START
 {
   const buttonsRefs = document.querySelectorAll('.button');
-  buttonsRefs.forEach((button) => {
+  buttonsRefs.forEach(button => {
     let charsInSpan = button.textContent
       .split('')
       .reduce(
@@ -869,7 +886,7 @@ function spliting(element) {
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach((link) => {
+  linkRefs.forEach(link => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(
