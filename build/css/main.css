@@ -1952,13 +1952,27 @@ h5 {
     margin-top: calc((1vw + 1vh) * (100 / 30));
     width: 70%;
     height: 0;
-    padding-bottom: 70%; }
+    padding-bottom: 70%;
+    -webkit-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    overflow: hidden; }
     .watches-fact__play-btn span {
       position: absolute;
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%); }
+    .watches-fact__play-btn img {
+      -webkit-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      border-radius: 50%;
+      overflow: hidden; }
+      .watches-fact__play-btn img:focus {
+        outline: none; }
+    .watches-fact__play-btn:focus {
+      outline: none; }
   .watches-fact__text {
     margin-top: 0; } }
 
@@ -1972,6 +1986,8 @@ h5 {
       margin-top: 0; }
     .watches-fact__subtext {
       font-size: 24px; }
+    .watches-fact__video-wrap:focus {
+      outline: none; }
     .watches-fact__play-btn {
       margin: 80px 0;
       margin-bottom: 0;

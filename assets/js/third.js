@@ -308,30 +308,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // hwd animation end
 
     // text section animation start
-    // const text = SplitType.create('.section-text__title', {
-    //   types: 'words, chars',
-    // });
+    const text = SplitText.create('.section-text__title', {
+      types: 'words, chars',
+    });
 
-    // const textTl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '.section-text',
-    //     scroller: REFS.scroller,
-    //     start: 'top 30%',
-    //     end: 'bottom bottom',
-    //     scrub: true,
-    //     toggleActions: 'play none none reverse',
-    //   },
-    // });
+    const textTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.section-text',
+        scroller: REFS.scroller,
+        start: 'top 30%',
+        end: 'bottom bottom',
+        scrub: true,
+        toggleActions: 'play none none reverse',
+      },
+    });
 
-    // textTl.staggerFrom(
-    //   text.chars,
-    //   0.8,
-    //   {
-    //     opacity: 0.2,
-    //     ease: Linear.easeNone,
-    //   },
-    //   0.05,
-    // );
+    textTl.staggerFrom(
+      text.chars,
+      0.8,
+      {
+        opacity: 0.2,
+        ease: Linear.easeNone,
+      },
+      0.05,
+    );
     // text section animation end
 
     // discuss section animation start
@@ -630,7 +630,9 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           const section = document.querySelector('.horizontal');
           let pinWrap = document.querySelector('.horizontal__wrap');
-          frameRefs.forEach(frame => frame.setAttribute('horizontal', 'true'));
+          frameRefs.forEach((frame) =>
+            frame.setAttribute('horizontal', 'true'),
+          );
           frameRefs[0].setAttribute('horizontal', 'first');
           frameRefs[frameRefs.length - 1].setAttribute('horizontal', 'last');
           function horizontalScrollLengthFn() {
@@ -870,7 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach(link => {
+  linkRefs.forEach((link) => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(

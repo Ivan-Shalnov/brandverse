@@ -647,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               '[data-scroll-speed-mob]',
             );
             console.log('elements', elements);
-            elements.forEach(el => {
+            elements.forEach((el) => {
               gsap.to(el, {
                 yPercent: -10 * el.dataset.scrollSpeedMob,
                 ease: Power2.easeInOut,
@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     playerWatches = new YT.Player('watches-fact__video', {
       height: '320',
       width: '0',
-      videoId: '0BgE91oLEN8',
+      videoId: 'rCwt3jV5MYU',
       events: {
         onReady: onPlayerReady,
       },
@@ -788,7 +788,7 @@ function spliting(element) {
 // BUTTON HOVER START
 {
   const buttonsRefs = document.querySelectorAll('.button');
-  buttonsRefs.forEach(button => {
+  buttonsRefs.forEach((button) => {
     let charsInSpan = button.textContent
       .split('')
       .reduce(
@@ -886,7 +886,7 @@ function spliting(element) {
 // link hover start
 {
   const linkRefs = document.querySelectorAll('.link');
-  linkRefs.forEach(link => {
+  linkRefs.forEach((link) => {
     let charsInSpan = link.textContent
       .split('')
       .reduce(
