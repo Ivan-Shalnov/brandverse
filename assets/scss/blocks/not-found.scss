@@ -3,6 +3,19 @@
   display: flex;
   flex-direction: column;
   padding: 0 calc(var(--index) * 2);
+  &__logo {
+    margin-right: 0;
+  }
+  &__header-text {
+    align-self: center;
+    font-weight: 800;
+    font-size: toIndex(15);
+    line-height: 86%;
+    /* identical to box height, or 13px */
+
+    letter-spacing: -0.033em;
+    text-transform: uppercase;
+  }
   &__body {
     flex-grow: 1;
     display: flex;
@@ -25,13 +38,45 @@
   }
   &__list {
     display: flex;
-    gap: toIndex(100);
+    gap: toIndex(44);
     a {
       font-weight: 400;
       font-size: toIndex(60);
       line-height: 86%;
       letter-spacing: -0.033em;
       color: #000000;
+      position: relative;
+      display: block;
+      span {
+        display: block;
+        transition: 0.3s ease-in-out;
+        position: relative;
+      }
+      &::after {
+        content: attr(data-link-hover);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: block;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        pointer-events: none;
+      }
+      &:hover {
+        span {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        &::after {
+          top: 0px;
+          opacity: 1;
+        }
+      }
+    }
+    li {
+      display: flex;
+      gap: toIndex(44);
     }
   }
   &__email {
@@ -40,5 +85,75 @@
     letter-spacing: -0.033em;
     color: #000000;
     opacity: 0.1;
+  }
+}
+@media (min-width: 1200px) {
+  .not-found {
+    &__list {
+      li:not(:last-child)::after {
+        content: '';
+        display: block;
+        align-self: center;
+        width: toIndex(41);
+        height: toIndex(41);
+        background: url('../../img/vector-5-3.svg') no-repeat top left;
+        background-size: cover;
+      }
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .not-found {
+    min-height: auto;
+    &__header {
+      position: static;
+    }
+    &__header-text {
+      font-weight: 800;
+      font-size: toIndexMob(14);
+    }
+    &__body {
+      margin-top: toIndexMob(115);
+      margin-bottom: toIndexMob(55);
+      flex-grow: 0;
+    }
+    &__title {
+      font-family: 'Bebas Neue';
+      font-weight: 700;
+      font-size: toIndexMob(112);
+      line-height: 82%;
+      /* or 92px */
+
+      letter-spacing: -0.033em;
+    }
+    &__footer {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+    &__email {
+      margin-bottom: toIndexMob(170);
+    }
+    &__list {
+      flex-grow: 1;
+      flex-direction: column;
+      width: min-content;
+      margin-left: auto;
+      li {
+        gap: toIndexMob(10);
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        &::after {
+          content: '';
+          display: block;
+          align-self: center;
+          width: toIndexMob(20);
+          height: toIndexMob(20);
+          background: url('../../img/vector-5-3.svg') no-repeat top left;
+          background-size: cover;
+        }
+      }
+    }
   }
 }

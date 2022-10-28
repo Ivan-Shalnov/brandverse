@@ -328,8 +328,8 @@ h5 {
 
 @font-face {
   font-family: "ico-font";
-  src: url("../fonts/icofont/ico-font.eot?1663530372");
-  src: url("../fonts/icofont/ico-font.eot??1663530372#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1663530372") format("woff2"), url("../fonts/icofont/ico-font.woff?1663530372") format("woff"), url("../fonts/icofont/ico-font.ttf?1663530372") format("truetype"), url("../fonts/icofont/ico-font.svg?1663530372#ico-font") format("svg");
+  src: url("../fonts/icofont/ico-font.eot?1666610382");
+  src: url("../fonts/icofont/ico-font.eot??1666610382#iefix") format("eot"), url("../fonts/icofont/ico-font.woff2?1666610382") format("woff2"), url("../fonts/icofont/ico-font.woff?1666610382") format("woff"), url("../fonts/icofont/ico-font.ttf?1666610382") format("truetype"), url("../fonts/icofont/ico-font.svg?1666610382#ico-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -5921,6 +5921,17 @@ h5 {
   -ms-flex-direction: column;
       flex-direction: column;
   padding: 0 calc(var(--index) * 2); }
+  .not-found__logo {
+    margin-right: 0; }
+  .not-found__header-text {
+    -ms-flex-item-align: center;
+        align-self: center;
+    font-weight: 800;
+    font-size: calc((1vw + 1vh) * (15 / 30));
+    line-height: 86%;
+    /* identical to box height, or 13px */
+    letter-spacing: -0.033em;
+    text-transform: uppercase; }
   .not-found__body {
     -ms-flex-positive: 1;
         flex-grow: 1;
@@ -5947,19 +5958,112 @@ h5 {
   .not-found__list {
     display: -ms-flexbox;
     display: flex;
-    gap: calc((1vw + 1vh) * (100 / 30)); }
+    gap: calc((1vw + 1vh) * (44 / 30)); }
     .not-found__list a {
       font-weight: 400;
       font-size: calc((1vw + 1vh) * (60 / 30));
       line-height: 86%;
       letter-spacing: -0.033em;
-      color: #000000; }
+      color: #000000;
+      position: relative;
+      display: block; }
+      .not-found__list a span {
+        display: block;
+        transition: 0.3s ease-in-out;
+        position: relative; }
+      .not-found__list a::after {
+        content: attr(data-link-hover);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: block;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        pointer-events: none; }
+      .not-found__list a:hover span {
+        -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+        opacity: 0; }
+      .not-found__list a:hover::after {
+        top: 0px;
+        opacity: 1; }
+    .not-found__list li {
+      display: -ms-flexbox;
+      display: flex;
+      gap: calc((1vw + 1vh) * (44 / 30)); }
   .not-found__email {
     font-size: calc((1vw + 1vh) * (60 / 30));
     line-height: 86%;
     letter-spacing: -0.033em;
     color: #000000;
     opacity: 0.1; }
+
+@media (min-width: 1200px) {
+  .not-found__list li:not(:last-child)::after {
+    content: '';
+    display: block;
+    -ms-flex-item-align: center;
+        align-self: center;
+    width: calc((1vw + 1vh) * (41 / 30));
+    height: calc((1vw + 1vh) * (41 / 30));
+    background: url("../../img/vector-5-3.svg") no-repeat top left;
+    background-size: cover; } }
+
+@media (max-width: 1199px) {
+  .not-found {
+    min-height: auto; }
+    .not-found__header {
+      position: static; }
+    .not-found__header-text {
+      font-weight: 800;
+      font-size: calc((1vw + 1vh) * (14 / 11.87)); }
+    .not-found__body {
+      margin-top: calc((1vw + 1vh) * (115 / 11.87));
+      margin-bottom: calc((1vw + 1vh) * (55 / 11.87));
+      -ms-flex-positive: 0;
+          flex-grow: 0; }
+    .not-found__title {
+      font-family: 'Bebas Neue';
+      font-weight: 700;
+      font-size: calc((1vw + 1vh) * (112 / 11.87));
+      line-height: 82%;
+      /* or 92px */
+      letter-spacing: -0.033em; }
+    .not-found__footer {
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+      -ms-flex-align: start;
+          align-items: flex-start;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+    .not-found__email {
+      margin-bottom: calc((1vw + 1vh) * (170 / 11.87)); }
+    .not-found__list {
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+      -ms-flex-direction: column;
+          flex-direction: column;
+      width: -webkit-min-content;
+      width: min-content;
+      margin-left: auto; }
+      .not-found__list li {
+        gap: calc((1vw + 1vh) * (10 / 11.87));
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+        .not-found__list li::after {
+          content: '';
+          display: block;
+          -ms-flex-item-align: center;
+              align-self: center;
+          width: calc((1vw + 1vh) * (20 / 11.87));
+          height: calc((1vw + 1vh) * (20 / 11.87));
+          background: url("../../img/vector-5-3.svg") no-repeat top left;
+          background-size: cover; } }
 
 body {
   -webkit-font-smoothing: antialiased;

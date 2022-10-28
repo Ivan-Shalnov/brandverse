@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.addEventListener('refresh', loadComplete);
 
     ////////////////////
+    // NAV LINKS HOVER
 
     // text.words;
     ScrollTrigger.refresh();
