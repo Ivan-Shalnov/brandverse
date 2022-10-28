@@ -1892,13 +1892,11 @@ h5 {
           transform: translateX(0);
   opacity: 1;
   z-index: 3;
-  pointer-events: all;
   transition: 700ms ease-in-out; }
 
 #watches-fact__video-wrap.is-hidden {
   transition: 700ms ease-in-out;
   opacity: 0;
-  pointer-events: none;
   -webkit-transform: translateX(100%);
           transform: translateX(100%); }
 
@@ -1953,9 +1951,6 @@ h5 {
     width: 70%;
     height: 0;
     padding-bottom: 70%;
-    -webkit-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
     overflow: hidden; }
     .watches-fact__play-btn span {
       position: absolute;
@@ -1964,9 +1959,6 @@ h5 {
       -webkit-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%); }
     .watches-fact__play-btn img {
-      -webkit-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
       border-radius: 50%;
       overflow: hidden; }
       .watches-fact__play-btn img:focus {
